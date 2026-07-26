@@ -1,4 +1,7 @@
 ActiveAdmin.register User do
+  actions :all, except: :destroy
+  config.batch_actions = false
+
   permit_params :email, :display_name, :role, :active, :password, :password_confirmation
 
   filter :email

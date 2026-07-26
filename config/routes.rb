@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users
+
+  namespace :internal do
+    get "auth/module_access", to: "module_access#show"
+  end
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

@@ -12,7 +12,7 @@ module AdapterProtocol
     end
 
     def initialize(manifest)
-      @manifest = manifest || {}
+      @manifest = manifest.is_a?(Hash) ? manifest : {}
       @errors = []
     end
 
@@ -33,7 +33,8 @@ module AdapterProtocol
       add("identity.module_key is required") if identity["module_key"].blank?
       add("identity.name is required") if identity["name"].blank?
       add("identity.version is required") if identity["version"].blank?
-      add("identity.module_key must be snake_case") if identity["module_key"].present? && !identity["module_key"].match?(MODULE_KEY_PATTERN)
+      module_key = identity["module_key"]
+      add("identity.module_key must be snake_case") if module_key.present? && (!module_key.is_a?(String) || !module_key.match?(MODULE_KEY_PATTERN))
     end
 
     def validate_protocol

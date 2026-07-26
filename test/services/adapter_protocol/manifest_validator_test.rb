@@ -37,6 +37,23 @@ class AdapterProtocol::ManifestValidatorTest < ActiveSupport::TestCase
     assert_includes result.errors, "identity.module_key must be snake_case"
   end
 
+  test "rejects a non-string module key without raising" do
+    manifest = VALID_MANIFEST.deep_dup
+    manifest["identity"]["module_key"] = 123
+
+    result = AdapterProtocol::ManifestValidator.call(manifest)
+
+    assert_not result.valid?
+    assert_includes result.errors, "identity.module_key must be snake_case"
+  end
+
+  test "rejects a non-hash root manifest without raising" do
+    result = AdapterProtocol::ManifestValidator.call("invalid")
+
+    assert_not result.valid?
+    assert_includes result.errors, "identity.module_key is required"
+  end
+
   test "requires v1 capabilities" do
     manifest = VALID_MANIFEST.deep_dup
     manifest["protocol"]["capabilities"] = ["manifest.v1"]

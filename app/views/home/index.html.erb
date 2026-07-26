@@ -1,0 +1,30 @@
+<main>
+  <h1>Ayaya</h1>
+
+  <nav>
+    <% if current_user.admin? %>
+      <%= link_to "Admin", admin_root_path %>
+    <% end %>
+    <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
+  </nav>
+
+  <section>
+    <h2>Modules</h2>
+
+    <% if @modules.any? %>
+      <ul>
+        <% @modules.each do |registered_module| %>
+          <% presentation = registered_module.manifest_snapshot.fetch("presentation", {}) %>
+          <li>
+            <%= link_to registered_module.name, "/m/#{registered_module.module_key}" %>
+            <% if presentation["description"].present? %>
+              <p><%= presentation["description"] %></p>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>No modules are available.</p>
+    <% end %>
+  </section>
+</main>

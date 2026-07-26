@@ -8,7 +8,7 @@ module Internal
       return head :forbidden if module_key.blank?
 
       registered_module = RegisteredModule.find_by(module_key:)
-      return head :not_found unless registered_module
+      return head :forbidden unless registered_module
       return head :service_unavailable unless %w[healthy degraded].include?(registered_module.runtime_status)
       return head :forbidden unless registered_module.accessible_by?(current_user)
 

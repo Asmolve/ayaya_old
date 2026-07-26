@@ -56,4 +56,13 @@ class Internal::ModuleAccessControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :service_unavailable
   end
+
+  test "blocks unregistered module" do
+    user = User.create!(email: "user@example.test", password: "password123", role: "user")
+    sign_in user
+
+    get "/internal/auth/module_access", headers: { "X-Original-URI" => "/m/unknown" }
+
+    assert_response :forbidden
+  end
 end

@@ -34,6 +34,8 @@ class AdminAccessTest < ActionDispatch::IntegrationTest
   end
 
   test "ActiveAdmin does not configure destructive batch actions" do
+    ActiveAdmin.application.load!
+
     resource = ActiveAdmin.application.namespaces[:admin].resources[User]
 
     assert_empty resource.batch_actions

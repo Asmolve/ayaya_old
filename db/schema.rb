@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_26_231642) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_26_232452) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -26,6 +26,39 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_26_231642) do
     t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author"
     t.index ["namespace"], name: "index_active_admin_comments_on_namespace"
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource"
+  end
+
+  create_table "module_user_accesses", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.bigint "registered_module_id", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["registered_module_id", "user_id"], name: "index_module_access_on_module_and_user", unique: true
+    t.index ["registered_module_id"], name: "index_module_user_accesses_on_registered_module_id"
+    t.index ["user_id"], name: "index_module_user_accesses_on_user_id"
+  end
+
+  create_table "registered_modules", force: :cascade do |t|
+    t.string "access_policy_mode", default: "manual", null: false
+    t.string "adapter_protocol_version", null: false
+    t.string "adapter_secret_digest", null: false
+    t.string "adapter_url", null: false
+    t.string "admin_state", default: "registered", null: false
+    t.datetime "created_at", null: false
+    t.datetime "last_manifest_refreshed_at"
+    t.datetime "last_status_refreshed_at"
+    t.text "maintenance_reason"
+    t.jsonb "manifest_snapshot", default: {}, null: false
+    t.string "module_key", null: false
+    t.string "name", null: false
+    t.string "runtime_status", default: "unknown", null: false
+    t.jsonb "status_snapshot", default: {}, null: false
+    t.datetime "updated_at", null: false
+    t.string "version", null: false
+    t.index ["access_policy_mode"], name: "index_registered_modules_on_access_policy_mode"
+    t.index ["admin_state"], name: "index_registered_modules_on_admin_state"
+    t.index ["module_key"], name: "index_registered_modules_on_module_key", unique: true
+    t.index ["runtime_status"], name: "index_registered_modules_on_runtime_status"
   end
 
   create_table "users", force: :cascade do |t|
@@ -44,4 +77,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_26_231642) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["role"], name: "index_users_on_role"
   end
+
+  add_foreign_key "module_user_accesses", "registered_modules"
+  add_foreign_key "module_user_accesses", "users"
 end

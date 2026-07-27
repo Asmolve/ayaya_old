@@ -25,3 +25,9 @@
 
 # Ignore key files for decrypting credentials and more.
 /config/*.key
+
+# Ignore graphify cache files
+/graphify-out/cache
+
+# Ignore system attributes
+.DS_Store

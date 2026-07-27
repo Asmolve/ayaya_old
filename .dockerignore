@@ -39,3 +39,9 @@
 # Ignore Docker-related files
 /.dockerignore
 /Dockerfile*
+
+# Ignore graphify cache files
+/graphify-out/cache
+
+# Ignore system attributes
+.DS_Store

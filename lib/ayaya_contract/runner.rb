@@ -36,9 +36,15 @@ module AyayaContract
 
     def compare_critical_fields
       CRITICAL_FIELDS.each do |path|
-        package_value = package_manifest.dig(*path)
-        runtime_value = runtime_manifest.dig(*path)
+        package_value = safely_dig(package_manifest, path)
+        runtime_value = safely_dig(runtime_manifest, path)
         errors << "critical field mismatch: #{path.join(".")}" unless package_value == runtime_value
+      end
+    end
+
+    def safely_dig(value, path)
+      path.reduce(value) do |current, key|
+        current.is_a?(Hash) ? current[key] : nil
       end
     end
   end

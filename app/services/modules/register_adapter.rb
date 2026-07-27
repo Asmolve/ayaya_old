@@ -44,7 +44,7 @@ module Modules
         Result.new(success?: false, registered_module:, errors: registered_module.errors.full_messages)
       end
     rescue AdapterProtocol::Client::Error => e
-      Result.new(success?: false, errors: [e.message])
+      Result.new(success?: false, errors: [ e.message ])
     end
 
     private

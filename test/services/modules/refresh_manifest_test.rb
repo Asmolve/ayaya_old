@@ -3,7 +3,7 @@ require "test_helper"
 class Modules::RefreshManifestTest < ActiveSupport::TestCase
   VALID_MANIFEST = {
     "identity" => { "module_key" => "notes", "name" => "New Notes", "version" => "0.2.0" },
-    "protocol" => { "adapter_protocol_version" => "1.0", "capabilities" => ["manifest.v1", "health.v1", "status.v1"] },
+    "protocol" => { "adapter_protocol_version" => "1.0", "capabilities" => [ "manifest.v1", "health.v1", "status.v1" ] },
     "routes" => { "ui_base_path" => "/m/notes", "api_base_path" => "/m/notes/api" },
     "access" => { "default_policy" => "authenticated" }
   }.freeze

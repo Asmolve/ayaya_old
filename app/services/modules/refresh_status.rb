@@ -47,7 +47,7 @@ module Modules
         status_snapshot: { "error" => error },
         last_status_refreshed_at: Time.current
       )
-      Result.new(success?: false, registered_module:, errors: [error])
+      Result.new(success?: false, registered_module:, errors: [ error ])
     end
   end
 end

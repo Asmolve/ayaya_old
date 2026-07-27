@@ -9,7 +9,7 @@ class AdapterProtocol::ManifestValidatorTest < ActiveSupport::TestCase
     },
     "protocol" => {
       "adapter_protocol_version" => "1.0",
-      "capabilities" => ["manifest.v1", "health.v1", "status.v1"]
+      "capabilities" => [ "manifest.v1", "health.v1", "status.v1" ]
     },
     "routes" => {
       "ui_base_path" => "/m/notes",
@@ -56,7 +56,7 @@ class AdapterProtocol::ManifestValidatorTest < ActiveSupport::TestCase
 
   test "requires v1 capabilities" do
     manifest = VALID_MANIFEST.deep_dup
-    manifest["protocol"]["capabilities"] = ["manifest.v1"]
+    manifest["protocol"]["capabilities"] = [ "manifest.v1" ]
 
     result = AdapterProtocol::ManifestValidator.call(manifest)
 

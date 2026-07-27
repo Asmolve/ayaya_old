@@ -8,6 +8,7 @@ class User < ApplicationRecord
   validates :display_name, length: { maximum: 120 }
 
   before_validation :default_display_name
+  before_destroy :prevent_destruction
 
   scope :active, -> { where(active: true) }
   scope :admins, -> { where(role: "admin") }
@@ -28,5 +29,10 @@ class User < ApplicationRecord
 
   def default_display_name
     self.display_name = email.to_s.split("@").first if display_name.blank? && email.present?
+  end
+
+  def prevent_destruction
+    errors.add(:base, "users can only be deactivated")
+    throw(:abort)
   end
 end

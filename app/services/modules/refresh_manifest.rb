@@ -16,6 +16,13 @@ module Modules
       validation = AdapterProtocol::ManifestValidator.call(manifest)
       return Result.new(success?: false, registered_module:, errors: validation.errors) unless validation.valid?
 
+      manifest_module_key = manifest.dig("identity", "module_key")
+      if manifest_module_key != registered_module.module_key
+        error = "manifest identity.module_key #{manifest_module_key.inspect} does not match registered module #{registered_module.module_key.inspect}"
+        registered_module.update!(runtime_status: "incompatible")
+        return Result.new(success?: false, registered_module:, errors: [error])
+      end
+
       registered_module.update!(
         name: manifest.dig("identity", "name"),
         version: manifest.dig("identity", "version"),

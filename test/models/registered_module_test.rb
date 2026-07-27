@@ -38,4 +38,29 @@ class RegisteredModuleTest < ActiveSupport::TestCase
 
     assert mod.accessible_by?(admin)
   end
+
+  test "inactive users cannot access an enabled module" do
+    user = User.create!(email: "inactive@example.test", password: "password123", role: "user", active: false)
+
+    assert_not build_module.accessible_by?(user)
+  end
+
+  test "admin_only modules reject regular users and allow admins" do
+    user = User.create!(email: "user@example.test", password: "password123", role: "user")
+    admin = User.create!(email: "admin@example.test", password: "password123", role: "admin")
+    mod = build_module(access_policy_mode: "admin_only")
+
+    assert_not mod.accessible_by?(user)
+    assert mod.accessible_by?(admin)
+  end
+
+  test "manual modules require an allowlist grant for regular users" do
+    user = User.create!(email: "user@example.test", password: "password123", role: "user")
+    mod = build_module(access_policy_mode: "manual")
+
+    assert_not mod.accessible_by?(user)
+    mod.save!
+    mod.module_user_accesses.create!(user: user)
+    assert mod.accessible_by?(user)
+  end
 end

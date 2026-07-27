@@ -20,4 +20,12 @@ class UserTest < ActiveSupport::TestCase
 
     assert_not user.active_for_authentication?
   end
+
+  test "users cannot be physically destroyed" do
+    user = User.create!(email: "alice@example.test", password: "password123", role: "user")
+
+    assert_not user.destroy
+    assert User.exists?(user.id)
+    assert_includes user.errors[:base], "users can only be deactivated"
+  end
 end

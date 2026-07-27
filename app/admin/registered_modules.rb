@@ -1,5 +1,5 @@
 ActiveAdmin.register RegisteredModule do
-  permit_params :name, :admin_state, :runtime_status, :access_policy_mode, :maintenance_reason, user_ids: []
+  permit_params :admin_state, :access_policy_mode, :maintenance_reason, user_ids: []
 
   filter :module_key
   filter :name

@@ -328,7 +328,7 @@ User traffic must pass through NGINX and Core `auth_request` before reaching the
 
 Module App ports must not be publicly exposed.
 
-NGINX must strip incoming `X-Ayaya-*` headers and set platform-trusted headers itself.
+NGINX must strip incoming `X-Ayaya-*` headers and set platform-trusted headers itself. A stock-NGINX route can do this by keeping `proxy_pass_request_headers off`, explicitly forwarding an allowlist of normal request headers needed by the Module App, and then setting exactly the six trusted `X-Ayaya-*` headers from the successful `auth_request` response. It must not forward arbitrary client `X-Ayaya-*` headers.
 
 ## 12. Trusted Identity Headers
 
@@ -480,4 +480,3 @@ ayaya-contract test --module-yml module.yml --adapter-url http://notes_adapter:8
 ```
 
 The exact tool implementation is not required before the contract is documented, but compatibility must remain mechanically testable.
-

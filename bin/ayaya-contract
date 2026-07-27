@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+
+require_relative "../config/environment"
+require "json"
+require "net/http"
+require_relative "../lib/ayaya_contract/manifest_loader"
+require_relative "../lib/ayaya_contract/runner"
+
+args = ARGV.each_slice(2).to_h
+module_yml = args.fetch("--module-yml")
+adapter_url = args.fetch("--adapter-url")
+adapter_secret = args.fetch("--adapter-secret")
+
+package_manifest = AyayaContract::ManifestLoader.load_file(module_yml)
+runtime_manifest = AdapterProtocol::Client.new(adapter_url:, adapter_secret:).manifest
+result = AyayaContract::Runner.new(package_manifest:, runtime_manifest:).call
+
+if result.success?
+  puts "Ayaya contract: PASS"
+  exit 0
+else
+  puts "Ayaya contract: FAIL"
+  result.errors.each { |error| puts "- #{error}" }
+  exit 1
+end

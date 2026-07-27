@@ -20,4 +20,6 @@ Before proxying to a Module App, NGINX must call `/internal/auth/module_access` 
 
 NGINX must not trust incoming client-provided `X-Ayaya-*` headers. The example config sets platform headers from Core auth response values only.
 
+The example config is a standalone NGINX configuration for direct `nginx -t -c` validation. The Module App route disables forwarding of client request headers and explicitly sets only the standard proxy headers and trusted platform headers.
+
 Module App ports must remain internal and must not be publicly exposed.

@@ -1,24 +1,39 @@
-# README
+# Ayaya
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ayaya is a Rails Core application for a modular personal productivity platform.
 
-Things you may want to cover:
+## Local Docker Runtime
 
-* Ruby version
+Start Core, PostgreSQL, and NGINX:
 
-* System dependencies
+```bash
+docker compose up --build
+```
 
-* Configuration
+Entrypoints:
 
-* Database creation
+- Platform NGINX: `http://localhost:8081`
+- Direct Rails Core debugging: `http://localhost:3000`
 
-* Database initialization
+The Compose runtime uses:
 
-* How to run the test suite
+- `postgres` for the shared PostgreSQL instance;
+- `core` for Rails Core;
+- `nginx` for the platform routing and `auth_request` boundary.
 
-* Services (job queues, cache servers, search engines, etc.)
+The first reference module is expected to join the same Compose network as `notes_app` and own a separate database inside the shared PostgreSQL service.
 
-* Deployment instructions
+## Local Rails Runtime
 
-* ...
+The app can still run directly on the host when PostgreSQL is available locally:
+
+```bash
+bin/setup --skip-server
+bin/rails server
+```
+
+Run the test suite:
+
+```bash
+bin/rails test
+```

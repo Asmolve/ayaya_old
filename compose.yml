@@ -1,0 +1,61 @@
+name: ayaya
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ayaya
+      POSTGRES_PASSWORD: ayaya
+      POSTGRES_DB: ayaya_core_development
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ayaya -d ayaya_core_development"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  core:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    environment:
+      RAILS_ENV: development
+      DATABASE_HOST: postgres
+      DATABASE_PORT: 5432
+      DATABASE_USERNAME: ayaya
+      DATABASE_PASSWORD: ayaya
+      DATABASE_NAME: ayaya_core_development
+      RAILS_LOG_TO_STDOUT: "true"
+      AYAYA_ALLOWED_HOSTS: ayaya.local,localhost
+    depends_on:
+      postgres:
+        condition: service_healthy
+    command: >
+      sh -lc "rm -f tmp/pids/server.pid &&
+      bin/rails db:prepare &&
+      bin/rails server -b 0.0.0.0 -p 3000"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:3000/up >/dev/null"]
+      interval: 5s
+      timeout: 5s
+      retries: 24
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/rails
+    stdin_open: true
+    tty: true
+
+  nginx:
+    image: nginx:1.27-alpine
+    depends_on:
+      core:
+        condition: service_healthy
+    ports:
+      - "8081:80"
+    volumes:
+      - ./deploy/nginx/ayaya.example.conf:/etc/nginx/nginx.conf:ro
+
+volumes:
+  postgres_data:

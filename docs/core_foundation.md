@@ -10,7 +10,7 @@ Only `User` records with `role = admin` can access ActiveAdmin.
 
 The foundation slice supports module records, access policy editing, manifest snapshots, and runtime status snapshots.
 
-Adapter registration can be wired into a custom ActiveAdmin action after the model and service tests pass.
+Adapter registration is a manual Core Rails runner operation in the current reference runtime. ActiveAdmin does not provide adapter registration or manifest/status refresh actions. The Notes module is already wired into the root Compose network; follow [the Notes registration procedure](../modules/notes/docs/REGISTER.md) to call `Modules::RegisterAdapter`, `Modules::RefreshManifest`, and `Modules::RefreshStatus`, then use ActiveAdmin only to enable the module or adjust its access policy.
 
 ## NGINX Static Routing
 
@@ -28,17 +28,27 @@ Module App ports must remain internal and must not be publicly exposed.
 
 ## Docker Development Runtime
 
-Local development has a Docker Compose runtime for the platform boundary services:
+Local development has a Docker Compose runtime for the platform and the Notes reference module:
 
 - `postgres` runs the shared PostgreSQL instance.
 - `core` runs the Rails Core application with `DATABASE_HOST=postgres`.
+- `notes_app` runs the Notes Module App with `DATABASE_NAME=ayaya_mod_notes`.
+- `notes_adapter` exposes the Notes Adapter Protocol endpoints to Core on the internal Compose network.
 - `nginx` exposes the platform entry point on `http://localhost:8081`.
+
+Prepare the Notes database explicitly:
+
+```bash
+docker compose run --rm notes_app bin/rails db:prepare
+```
 
 Use `docker compose up --build` to start the runtime.
 
 Core is also published directly on `http://localhost:3000` for Rails-only debugging. User traffic validation should use the NGINX entry point because NGINX owns `auth_request` and trusted header injection.
 
-The PostgreSQL container creates the Core development database. Future modules should receive their own separate database in the same PostgreSQL service unless a module has a documented reason to own a dedicated database service.
+The PostgreSQL container creates the Core development database. The Notes reference module uses its own `ayaya_mod_notes` database in the same PostgreSQL service. Future modules should receive their own separate database unless a module has a documented reason to own a dedicated database service.
+
+Module App and adapter ports are internal-only and are not published to the host. Core communicates with Notes through `http://notes_adapter:8080`; user traffic reaches Notes through NGINX at `/m/notes`.
 
 ## Foundation Verification
 

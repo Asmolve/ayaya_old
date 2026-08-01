@@ -47,6 +47,50 @@ services:
     stdin_open: true
     tty: true
 
+  notes_app:
+    build:
+      context: ./modules/notes/app
+      dockerfile: Dockerfile.dev
+    environment:
+      RAILS_ENV: development
+      DATABASE_HOST: postgres
+      DATABASE_PORT: 5432
+      DATABASE_USERNAME: ayaya
+      DATABASE_PASSWORD: ayaya
+      DATABASE_NAME: ayaya_mod_notes
+      RAILS_LOG_TO_STDOUT: "true"
+      AYAYA_ALLOWED_HOSTS: ayaya.local,localhost,notes_app
+      NOTES_INTERNAL_STATUS_SECRET: development-notes-internal-status-secret
+    depends_on:
+      postgres:
+        condition: service_healthy
+    command: >
+      sh -lc "rm -f tmp/pids/server.pid &&
+      bin/rails server -b 0.0.0.0 -p 3000"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:3000/up >/dev/null"]
+      interval: 5s
+      timeout: 5s
+      retries: 24
+    volumes:
+      - ./modules/notes/app:/rails
+    stdin_open: true
+    tty: true
+
+  notes_adapter:
+    build:
+      context: ./modules/notes/adapter
+    environment:
+      NOTES_ADAPTER_SECRET: development-notes-adapter-secret
+      NOTES_INTERNAL_STATUS_SECRET: development-notes-internal-status-secret
+      NOTES_APP_INTERNAL_STATUS_URL: http://notes_app:3000/internal/ayaya/status
+      NOTES_MODULE_YML: /module/module.yml
+    depends_on:
+      notes_app:
+        condition: service_healthy
+    volumes:
+      - ./modules/notes/module.yml:/module/module.yml:ro
+
   nginx:
     image: nginx:1.27-alpine
     depends_on:

@@ -1,0 +1,23 @@
+identity:
+  module_key: notes
+  name: Notes
+  version: 0.1.0
+
+protocol:
+  adapter_protocol_version: "1.0"
+  capabilities:
+    - manifest.v1
+    - health.v1
+    - status.v1
+
+presentation:
+  description: Personal notes
+  icon: file-text
+  category: productivity
+
+routes:
+  ui_base_path: /m/notes
+  api_base_path: /m/notes/api
+
+access:
+  default_policy: authenticated

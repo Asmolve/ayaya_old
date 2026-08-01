@@ -1,0 +1,22 @@
+services:
+  notes_app:
+    build:
+      context: ./app
+    environment:
+      DATABASE_HOST: postgres
+      DATABASE_PORT: 5432
+      DATABASE_USERNAME: ayaya
+      DATABASE_PASSWORD: ayaya
+      DATABASE_NAME: ayaya_mod_notes
+      NOTES_INTERNAL_STATUS_SECRET: development-notes-internal-status-secret
+
+  notes_adapter:
+    build:
+      context: ./adapter
+    environment:
+      NOTES_ADAPTER_SECRET: development-notes-adapter-secret
+      NOTES_INTERNAL_STATUS_SECRET: development-notes-internal-status-secret
+      NOTES_APP_INTERNAL_STATUS_URL: http://notes_app:3000/internal/ayaya/status
+      NOTES_MODULE_YML: /module/module.yml
+    volumes:
+      - ./module.yml:/module/module.yml:ro

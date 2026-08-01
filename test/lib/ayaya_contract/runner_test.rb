@@ -26,6 +26,16 @@ class AyayaContract::RunnerTest < ActiveSupport::TestCase
     assert_includes result.errors, "runtime: routes.ui_base_path must equal /m/other"
   end
 
+  test "fails when package route is outside module namespace" do
+    package = VALID_MANIFEST.deep_dup
+    package["routes"]["ui_base_path"] = "/notes"
+
+    result = AyayaContract::Runner.new(package_manifest: package, runtime_manifest: VALID_MANIFEST).call
+
+    assert_not result.success?
+    assert_includes result.errors, "package: routes.ui_base_path must equal /m/notes"
+  end
+
   test "fails with validator errors when package manifest root is malformed" do
     runner = AyayaContract::Runner.new(package_manifest: "invalid", runtime_manifest: VALID_MANIFEST)
 

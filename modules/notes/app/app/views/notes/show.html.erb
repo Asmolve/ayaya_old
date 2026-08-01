@@ -1,0 +1,11 @@
+<main>
+  <header>
+    <h1><%= @note.title %></h1>
+    <%= link_to "Edit", edit_note_path(@note) %>
+  </header>
+
+  <p><%= simple_format(@note.body) %></p>
+
+  <%= button_to "Delete", note_path(@note), method: :delete, data: { turbo_confirm: "Delete this note?" } %>
+  <%= link_to "Back", notes_root_path %>
+</main>

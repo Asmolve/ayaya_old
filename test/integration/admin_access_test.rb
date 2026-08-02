@@ -132,6 +132,77 @@ class AdminAccessTest < ActionDispatch::IntegrationTest
     assert_includes response.body, "Module runtime is unreachable. Refresh status or fix the module service."
   end
 
+  test "admin can enable a healthy registered module" do
+    admin = User.create!(email: "enable-admin@example.test", password: "password123", role: "admin")
+    mod = RegisteredModule.create!(
+      module_key: "notes",
+      name: "Notes",
+      version: "0.1.0",
+      adapter_url: "http://notes_adapter:8080",
+      adapter_secret_digest: "digest",
+      adapter_protocol_version: "1.0",
+      admin_state: "registered",
+      runtime_status: "healthy",
+      access_policy_mode: "authenticated",
+      manifest_snapshot: {},
+      status_snapshot: {},
+    )
+    sign_in admin
+
+    post enable_admin_registered_module_path(mod)
+
+    assert_redirected_to admin_registered_module_path(mod)
+    assert_equal "enabled", mod.reload.admin_state
+  end
+
+  test "admin cannot enable an unhealthy registered module" do
+    admin = User.create!(email: "blocked-enable-admin@example.test", password: "password123", role: "admin")
+    mod = RegisteredModule.create!(
+      module_key: "notes",
+      name: "Notes",
+      version: "0.1.0",
+      adapter_url: "http://notes_adapter:8080",
+      adapter_secret_digest: "digest",
+      adapter_protocol_version: "1.0",
+      admin_state: "registered",
+      runtime_status: "unreachable",
+      access_policy_mode: "authenticated",
+      manifest_snapshot: {},
+      status_snapshot: {},
+    )
+    sign_in admin
+
+    post enable_admin_registered_module_path(mod)
+
+    assert_redirected_to admin_registered_module_path(mod)
+    assert_equal "registered", mod.reload.admin_state
+  end
+
+  test "admin can disable and enter maintenance mode" do
+    admin = User.create!(email: "state-admin@example.test", password: "password123", role: "admin")
+    mod = RegisteredModule.create!(
+      module_key: "notes",
+      name: "Notes",
+      version: "0.1.0",
+      adapter_url: "http://notes_adapter:8080",
+      adapter_secret_digest: "digest",
+      adapter_protocol_version: "1.0",
+      admin_state: "enabled",
+      runtime_status: "healthy",
+      access_policy_mode: "authenticated",
+      manifest_snapshot: {},
+      status_snapshot: {},
+    )
+    sign_in admin
+
+    post disable_admin_registered_module_path(mod)
+    assert_equal "disabled", mod.reload.admin_state
+
+    post maintenance_admin_registered_module_path(mod), params: { maintenance_reason: "Upgrade" }
+    assert_equal "maintenance", mod.reload.admin_state
+    assert_equal "Upgrade", mod.maintenance_reason
+  end
+
   test "signed-in admin can follow ActiveAdmin GET links" do
     admin = User.create!(email: "link-admin@example.test", password: "password123", role: "admin")
     RegisteredModule.create!(

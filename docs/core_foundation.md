@@ -10,7 +10,7 @@ Only `User` records with `role = admin` can access ActiveAdmin.
 
 The foundation slice supports module records, access policy editing, manifest snapshots, and runtime status snapshots.
 
-Adapter registration is a manual Core Rails runner operation in the current reference runtime. ActiveAdmin does not provide adapter registration or manifest/status refresh actions. The Notes module is already wired into the root Compose network; follow [the Notes registration procedure](../modules/notes/docs/REGISTER.md) to call `Modules::RegisterAdapter`, `Modules::RefreshManifest`, and `Modules::RefreshStatus`, then use ActiveAdmin only to enable the module or adjust its access policy.
+The local reference Notes module can be registered from the empty state on `/admin`, then refreshed and enabled from its ActiveAdmin resource page. The Notes module is already wired into the root Compose network; use [the Notes registration procedure](../modules/notes/docs/REGISTER.md) for the admin workflow and Rails runner commands as fallback diagnostics only.
 
 ## NGINX Static Routing
 

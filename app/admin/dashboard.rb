@@ -3,6 +3,16 @@
 ActiveAdmin.register_page "Dashboard" do
   menu priority: 1, label: proc { I18n.t("active_admin.dashboard") }
 
+  page_action :register_reference_notes, method: :post do
+    result = Modules::RegisterReferenceNotes.call
+
+    if result.success?
+      redirect_to admin_registered_module_path(result.registered_module), notice: "Notes adapter registered."
+    else
+      redirect_to admin_root_path, alert: "Notes adapter registration failed: #{result.errors.join('; ')}"
+    end
+  end
+
   content title: proc { I18n.t("active_admin.dashboard") } do
     registered_modules = RegisteredModule.order(:module_key)
 
@@ -12,7 +22,7 @@ ActiveAdmin.register_page "Dashboard" do
           span class: "blank_slate" do
             span "No modules registered"
             small do
-              link_to "Register the local Notes adapter", admin_registered_modules_path
+              link_to "Register the local Notes adapter", admin_dashboard_register_reference_notes_path, method: :post
             end
           end
         end

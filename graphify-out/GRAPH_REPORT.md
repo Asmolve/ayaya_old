@@ -1,16 +1,16 @@
-# Graph Report - ayaya  (2026-08-02)
+# Graph Report - ayaya  (2026-08-03)
 
 ## Corpus Check
 - 140 files · ~47,727 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 573 nodes · 560 edges · 118 communities (74 shown, 44 thin omitted)
+- 574 nodes · 556 edges · 119 communities (74 shown, 45 thin omitted)
 - Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 17 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `ccaed929`
+- Built from commit: `8fa2b643`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -80,6 +80,7 @@
 - create_app
 - client.rb
 - TestCase
+- TestCase
 
 ## God Nodes (most connected - your core abstractions)
 1. `Ayaya Architecture Constitution` - 24 edges
@@ -87,7 +88,7 @@
 3. `Reference Notes Module Design` - 19 edges
 4. `Admin UI/UX Improvements Design` - 19 edges
 5. `create_app()` - 18 edges
-6. `RegisteredModule` - 17 edges
+6. `RegisteredModule` - 16 edges
 7. `File Structure` - 13 edges
 8. `NotesController` - 12 edges
 9. `17. Вопросы для уточнения` - 11 edges
@@ -108,7 +109,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (118 total, 44 thin omitted)
+## Communities (119 total, 45 thin omitted)
 
 ### Community 0 - "Ayaya Module Contract v1"
 Cohesion: 0.06
@@ -127,8 +128,8 @@ Cohesion: 0.06
 Nodes (30): 10. Хранение данных, 11. Scheduler, 12. Интеграции, 13. Развёртывание, 14. Масштабирование, 15. Нефункциональные требования, 16. Предварительная архитектура, 17. Вопросы для уточнения (+22 more)
 
 ### Community 4 - "RegisteredModule"
-Cohesion: 0.10
-Nodes (12): failure_result(), reference_notes_runtime?(), refresh_reference_manifest(), refresh_reference_status(), Modules, RefreshStatus, Result, Modules (+4 more)
+Cohesion: 0.08
+Nodes (16): AdapterProtocol, Client, Error, InvalidResponse, Unauthorized, Unavailable, Modules, RefreshManifest (+8 more)
 
 ### Community 5 - "init_spec.md"
 Cohesion: 0.11
@@ -143,8 +144,8 @@ Cohesion: 0.33
 Nodes (3): AdapterProtocol, ManifestValidator, Result
 
 ### Community 10 - "AyayaContract::ComposeExposureTest"
-Cohesion: 0.15
-Nodes (10): AdapterProtocol, Client, Error, InvalidResponse, Unauthorized, Unavailable, Modules, RefreshManifest (+2 more)
+Cohesion: 0.26
+Nodes (6): failure_result(), reference_notes_runtime?(), refresh_reference_manifest(), refresh_reference_status(), Modules, RegisterReferenceNotes
 
 ### Community 11 - "Runner"
 Cohesion: 0.18
@@ -195,24 +196,24 @@ Cohesion: 0.22
 Nodes (8): Admin UI/UX Improvements Implementation Plan, File Structure, Final Verification, Global Constraints, Task 1: RegisteredModule State Helpers, Task 2: ActiveAdmin Dashboard Operations Overview, Task 3: Registered Modules Resource UX Cleanup, Task 4: Module Operational Admin Actions
 
 ## Knowledge Gaps
-- **190 isolated node(s):** `Internal`, `ApplicationHelper`, `AdapterProtocol`, `AdapterProtocol`, `Result` (+185 more)
+- **190 isolated node(s):** `Modules`, `Register Notes In Core`, `Internal`, `ApplicationHelper`, `AdapterProtocol` (+185 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **44 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **45 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `RegisteredModule` connect `Ayaya Module Contract v1` to `RegisteredModule`?**
-  _High betweenness centrality (0.023) - this node is a cross-community bridge._
+  _High betweenness centrality (0.020) - this node is a cross-community bridge._
 - **Why does `NotesController` connect `NotesController` to `RegisteredModule`?**
-  _High betweenness centrality (0.012) - this node is a cross-community bridge._
-- **Why does `Client` connect `AyayaContract::ComposeExposureTest` to `RegisteredModule`?**
-  _High betweenness centrality (0.008) - this node is a cross-community bridge._
+  _High betweenness centrality (0.010) - this node is a cross-community bridge._
 - **Are the 13 inferred relationships involving `create_app()` (e.g. with `require_adapter_secret()` and `test_live_requires_adapter_secret()`) actually correct?**
   _`create_app()` has 13 INFERRED edges - model-reasoned connections that need verification._
-- **What connects `Internal`, `ApplicationHelper`, `AdapterProtocol` to the rest of the system?**
+- **What connects `Modules`, `Register Notes In Core`, `Internal` to the rest of the system?**
   _190 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Ayaya Module Contract v1` be split into smaller, more focused modules?**
   _Cohesion score 0.06258890469416785 - nodes in this community are weakly interconnected._
 - **Should `TestCase` be split into smaller, more focused modules?**
   _Cohesion score 0.07407407407407407 - nodes in this community are weakly interconnected._
+- **Should `Client` be split into smaller, more focused modules?**
+  _Cohesion score 0.08 - nodes in this community are weakly interconnected._

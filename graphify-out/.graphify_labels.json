@@ -116,5 +116,6 @@
   "114": "Internal::Ayaya::StatusControllerTest",
   "115": "create_app",
   "116": "client.rb",
+  "117": "TestCase",
   "120": "TestCase"
 }

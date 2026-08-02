@@ -70,6 +70,44 @@ class AdminAccessTest < ActionDispatch::IntegrationTest
     assert_includes response.body, "ready to enable"
   end
 
+  test "registered modules admin does not expose manual create or destroy actions" do
+    ActiveAdmin.application.load!
+    resource = ActiveAdmin.application.namespaces[:admin].resources[RegisteredModule]
+
+    assert_not_includes resource.defined_actions, :new
+    assert_not_includes resource.defined_actions, :create
+    assert_not_includes resource.defined_actions, :destroy
+    assert_empty resource.batch_actions
+  end
+
+  test "registered module form exposes only safe policy fields" do
+    admin = User.create!(email: "safe-form-admin@example.test", password: "password123", role: "admin")
+    mod = RegisteredModule.create!(
+      module_key: "notes",
+      name: "Notes",
+      version: "0.1.0",
+      adapter_url: "http://notes_adapter:8080",
+      adapter_secret_digest: "digest",
+      adapter_protocol_version: "1.0",
+      admin_state: "registered",
+      runtime_status: "healthy",
+      access_policy_mode: "authenticated",
+      manifest_snapshot: {},
+      status_snapshot: {},
+    )
+    sign_in admin
+
+    get edit_admin_registered_module_path(mod)
+
+    assert_response :success
+    assert_includes response.body, "admin_state"
+    assert_includes response.body, "access_policy_mode"
+    assert_includes response.body, "maintenance_reason"
+    assert_not_includes response.body, "adapter_secret_digest"
+    assert_not_includes response.body, "runtime_status"
+    assert_not_includes response.body, "manifest_snapshot"
+  end
+
   test "signed-in admin can follow ActiveAdmin GET links" do
     admin = User.create!(email: "link-admin@example.test", password: "password123", role: "admin")
     RegisteredModule.create!(

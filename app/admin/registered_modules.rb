@@ -1,4 +1,7 @@
 ActiveAdmin.register RegisteredModule do
+  actions :all, except: %i[new create destroy]
+  config.batch_actions = false
+
   permit_params :admin_state, :access_policy_mode, :maintenance_reason, user_ids: []
 
   filter :module_key
@@ -8,17 +11,18 @@ ActiveAdmin.register RegisteredModule do
   filter :access_policy_mode, as: :select, collection: RegisteredModule::ACCESS_POLICY_MODES
 
   index do
-    selectable_column
-    id_column
     column :module_key
     column :name
     column :version
+    column "Availability" do |registered_module|
+      registered_module.availability_label
+    end
     column :admin_state
     column :runtime_status
     column :access_policy_mode
     column :last_manifest_refreshed_at
     column :last_status_refreshed_at
-    actions
+    actions defaults: true
   end
 
   show do
@@ -34,21 +38,33 @@ ActiveAdmin.register RegisteredModule do
       row :maintenance_reason
       row :last_manifest_refreshed_at
       row :last_status_refreshed_at
-      row :manifest_snapshot do |record|
-        pre JSON.pretty_generate(record.manifest_snapshot)
-      end
-      row :status_snapshot do |record|
-        pre JSON.pretty_generate(record.status_snapshot)
-      end
+    end
+
+    panel "Manifest diagnostics" do
+      pre JSON.pretty_generate(resource.manifest_snapshot)
+    end
+
+    panel "Status diagnostics" do
+      pre JSON.pretty_generate(resource.status_snapshot)
     end
   end
 
   form do |f|
     f.inputs do
-      f.input :admin_state, as: :select, collection: RegisteredModule::ADMIN_STATES
-      f.input :access_policy_mode, as: :select, collection: RegisteredModule::ACCESS_POLICY_MODES
-      f.input :maintenance_reason
-      f.input :allowed_users, as: :check_boxes, collection: User.active.order(:email)
+      f.input :admin_state,
+        as: :select,
+        collection: RegisteredModule::ADMIN_STATES,
+        hint: "Controls whether the module is registered, enabled, disabled, or in maintenance."
+      f.input :access_policy_mode,
+        as: :select,
+        collection: RegisteredModule::ACCESS_POLICY_MODES,
+        hint: "Controls which signed-in users may access the module."
+      f.input :maintenance_reason,
+        hint: "Explain why the module is in maintenance mode."
+      f.input :allowed_users,
+        as: :check_boxes,
+        collection: User.active.order(:email),
+        hint: "Select the users allowed to access this module when policy requires it."
     end
     f.actions
   end

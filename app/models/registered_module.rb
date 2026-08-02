@@ -2,6 +2,7 @@ class RegisteredModule < ApplicationRecord
   ADMIN_STATES = %w[registered enabled disabled maintenance].freeze
   RUNTIME_STATUSES = %w[unknown healthy degraded unhealthy unreachable incompatible].freeze
   ACCESS_POLICY_MODES = %w[authenticated admin_only manual].freeze
+  USER_AVAILABLE_RUNTIME_STATUSES = %w[healthy degraded].freeze
   MODULE_KEY_PATTERN = /\A[a-z][a-z0-9_]*[a-z0-9]\z/
 
   has_many :module_user_accesses, dependent: :destroy
@@ -14,7 +15,34 @@ class RegisteredModule < ApplicationRecord
   validates :access_policy_mode, inclusion: { in: ACCESS_POLICY_MODES }
 
   def enabled_for_users?
-    admin_state == "enabled" && %w[healthy degraded].include?(runtime_status)
+    user_available?
+  end
+
+  def user_available?
+    admin_state == "enabled" && USER_AVAILABLE_RUNTIME_STATUSES.include?(runtime_status)
+  end
+
+  def ready_to_enable?
+    admin_state == "registered" && USER_AVAILABLE_RUNTIME_STATUSES.include?(runtime_status)
+  end
+
+  def availability_label
+    return "available" if user_available?
+    return "ready to enable" if ready_to_enable?
+    return "maintenance" if admin_state == "maintenance"
+    return "disabled" if admin_state == "disabled"
+
+    "needs attention"
+  end
+
+  def availability_blocker
+    return "Users can access this module." if user_available?
+    return "Module is registered and healthy. Enable it to make it available." if ready_to_enable?
+    return maintenance_reason.presence || "Module is in maintenance mode." if admin_state == "maintenance"
+    return "Module is disabled by an admin." if admin_state == "disabled"
+    return "Module runtime is #{runtime_status}. Refresh status or fix the module service." unless USER_AVAILABLE_RUNTIME_STATUSES.include?(runtime_status)
+
+    "Module is not enabled for users."
   end
 
   def accessible_by?(user)

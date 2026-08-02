@@ -33,4 +33,27 @@ class RegisteredModule < ApplicationRecord
       false
     end
   end
+
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[
+      access_policy_mode
+      adapter_protocol_version
+      adapter_url
+      admin_state
+      created_at
+      id
+      last_manifest_refreshed_at
+      last_status_refreshed_at
+      maintenance_reason
+      module_key
+      name
+      runtime_status
+      updated_at
+      version
+    ]
+  end
+
+  def self.ransackable_associations(_auth_object = nil)
+    []
+  end
 end

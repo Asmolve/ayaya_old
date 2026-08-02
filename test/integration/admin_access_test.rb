@@ -1,4 +1,6 @@
 require "test_helper"
+require "nokogiri"
+require "set"
 
 class AdminAccessTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
@@ -22,6 +24,56 @@ class AdminAccessTest < ActionDispatch::IntegrationTest
     assert_redirected_to new_user_session_path
   end
 
+  test "signed-in admin can access ActiveAdmin dashboard" do
+    admin = User.create!(email: "admin@example.test", password: "password123", role: "admin")
+    sign_in admin
+
+    get admin_root_path
+
+    assert_response :success
+  end
+
+  test "signed-in admin can follow ActiveAdmin GET links" do
+    admin = User.create!(email: "link-admin@example.test", password: "password123", role: "admin")
+    RegisteredModule.create!(
+      module_key: "link_check_notes",
+      name: "Link Check Notes",
+      version: "0.0.1",
+      adapter_url: "http://notes_adapter:8080",
+      adapter_secret_digest: "digest",
+      adapter_protocol_version: "v1",
+      admin_state: "enabled",
+      runtime_status: "healthy",
+      access_policy_mode: "authenticated",
+      manifest_snapshot: {},
+      status_snapshot: {},
+    )
+    sign_in admin
+
+    failures = []
+    visited_paths = Set.new
+    pending_paths = [ admin_root_path ]
+
+    until pending_paths.empty?
+      path = pending_paths.shift
+      next if visited_paths.include?(path)
+
+      visited_paths << path
+      get path
+      failures << [ path, response.status ] unless response.status.between?(200, 399)
+
+      next unless response.successful? && response.media_type == "text/html"
+
+      admin_get_links(response.body).each do |href|
+        next if visited_paths.include?(href)
+
+        pending_paths << href
+      end
+    end
+
+    assert_empty failures, failures.map { |path, status| "#{status} #{path}" }.join("\n")
+  end
+
   test "admins cannot delete users through ActiveAdmin" do
     admin = User.create!(email: "admin@example.test", password: "password123", role: "admin")
     target = User.create!(email: "target@example.test", password: "password123", role: "user")
@@ -40,4 +92,21 @@ class AdminAccessTest < ActionDispatch::IntegrationTest
 
     assert_empty resource.batch_actions
   end
+
+  private
+
+    def admin_get_links(html)
+      Nokogiri::HTML5(html).css("a[href]").filter_map do |anchor|
+        next if anchor["data-method"].present? || anchor["data-turbo-method"].present?
+
+        uri = URI.parse(anchor["href"])
+        next if uri.scheme.present? && !%w[http https].include?(uri.scheme)
+        next if uri.host.present? && uri.host != "www.example.com"
+        next unless uri.path.start_with?("/admin")
+
+        [ uri.path, uri.query.presence ].compact.join("?")
+      rescue URI::InvalidURIError
+        nil
+      end.uniq
+    end
 end

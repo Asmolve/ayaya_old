@@ -25,6 +25,22 @@ class User < ApplicationRecord
     active? ? super : :inactive
   end
 
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[
+      active
+      created_at
+      display_name
+      email
+      id
+      role
+      updated_at
+    ]
+  end
+
+  def self.ransackable_associations(_auth_object = nil)
+    []
+  end
+
   private
 
   def default_display_name

@@ -1,16 +1,16 @@
 # Graph Report - ayaya  (2026-08-02)
 
 ## Corpus Check
-- 137 files · ~44,700 words
+- 138 files · ~46,494 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 547 nodes · 516 edges · 122 communities (77 shown, 45 thin omitted)
+- 556 nodes · 524 edges · 122 communities (77 shown, 45 thin omitted)
 - Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 17 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `0076f4f8`
+- Built from commit: `1563af8b`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -130,8 +130,8 @@ Cohesion: 0.06
 Nodes (30): 10. Хранение данных, 11. Scheduler, 12. Интеграции, 13. Развёртывание, 14. Масштабирование, 15. Нефункциональные требования, 16. Предварительная архитектура, 17. Вопросы для уточнения (+22 more)
 
 ### Community 4 - "RegisteredModule"
-Cohesion: 0.10
-Nodes (10): Client, Modules, RefreshManifest, Result, Modules, RefreshStatus, Result, Modules (+2 more)
+Cohesion: 0.08
+Nodes (16): AdapterProtocol, Client, Error, InvalidResponse, Unauthorized, Unavailable, Modules, RefreshManifest (+8 more)
 
 ### Community 5 - "init_spec.md"
 Cohesion: 0.11
@@ -194,8 +194,8 @@ Cohesion: 0.13
 Nodes (31): BaseModel, FastAPI, MockTransport, require_adapter_secret(), create_app(), BaseTransport, load_manifest(), Any (+23 more)
 
 ### Community 116 - "client.rb"
-Cohesion: 0.43
-Nodes (6): AdapterProtocol, Error, InvalidResponse, Unauthorized, Unavailable, StandardError
+Cohesion: 0.22
+Nodes (8): Admin UI/UX Improvements Implementation Plan, File Structure, Final Verification, Global Constraints, Task 1: RegisteredModule State Helpers, Task 2: ActiveAdmin Dashboard Operations Overview, Task 3: Registered Modules Resource UX Cleanup, Task 4: Module Operational Admin Actions
 
 ### Community 117 - "Notes Module"
 Cohesion: 0.33
@@ -206,7 +206,7 @@ Cohesion: 0.50
 Nodes (3): Ayaya, Local Docker Runtime, Local Rails Runtime
 
 ## Knowledge Gaps
-- **183 isolated node(s):** `Local Docker Runtime`, `Local Rails Runtime`, `ActiveAdmin`, `Module Registry`, `NGINX Static Routing` (+178 more)
+- **189 isolated node(s):** `Global Constraints`, `Task 1: RegisteredModule State Helpers`, `Task 2: ActiveAdmin Dashboard Operations Overview`, `Task 3: Registered Modules Resource UX Cleanup`, `Task 4: Module Operational Admin Actions` (+184 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **45 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -214,16 +214,16 @@ Nodes (3): Ayaya, Local Docker Runtime, Local Rails Runtime
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `RegisteredModule` connect `Ayaya Module Contract v1` to `RegisteredModule`?**
-  _High betweenness centrality (0.019) - this node is a cross-community bridge._
+  _High betweenness centrality (0.018) - this node is a cross-community bridge._
 - **Why does `NotesController` connect `NotesController` to `RegisteredModule`?**
-  _High betweenness centrality (0.011) - this node is a cross-community bridge._
-- **Why does `Client` connect `RegisteredModule` to `client.rb`?**
-  _High betweenness centrality (0.008) - this node is a cross-community bridge._
+  _High betweenness centrality (0.010) - this node is a cross-community bridge._
 - **Are the 13 inferred relationships involving `create_app()` (e.g. with `require_adapter_secret()` and `test_live_requires_adapter_secret()`) actually correct?**
   _`create_app()` has 13 INFERRED edges - model-reasoned connections that need verification._
-- **What connects `Local Docker Runtime`, `Local Rails Runtime`, `ActiveAdmin` to the rest of the system?**
-  _183 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **What connects `Global Constraints`, `Task 1: RegisteredModule State Helpers`, `Task 2: ActiveAdmin Dashboard Operations Overview` to the rest of the system?**
+  _189 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Ayaya Module Contract v1` be split into smaller, more focused modules?**
   _Cohesion score 0.062388591800356503 - nodes in this community are weakly interconnected._
 - **Should `TestCase` be split into smaller, more focused modules?**
   _Cohesion score 0.07407407407407407 - nodes in this community are weakly interconnected._
+- **Should `Client` be split into smaller, more focused modules?**
+  _Cohesion score 0.08 - nodes in this community are weakly interconnected._

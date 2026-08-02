@@ -4,15 +4,114 @@
   "graph": {},
   "nodes": [
     {
+      "label": "2026-08-02-admin-ui-ux-improvements.md",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-08-02-admin-ui-ux-improvements.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_superpowers_plans_2026_08_02_admin_ui_ux_improvements",
+      "community": 116,
+      "community_name": "client.rb",
+      "norm_label": "2026-08-02-admin-ui-ux-improvements.md"
+    },
+    {
+      "label": "Admin UI/UX Improvements Implementation Plan",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-08-02-admin-ui-ux-improvements.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_superpowers_plans_2026_08_02_admin_ui_ux_improvements_admin_ui_ux_improvements_implementation_plan",
+      "community": 116,
+      "community_name": "client.rb",
+      "norm_label": "admin ui/ux improvements implementation plan"
+    },
+    {
+      "label": "Global Constraints",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-08-02-admin-ui-ux-improvements.md",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "docs_superpowers_plans_2026_08_02_admin_ui_ux_improvements_global_constraints",
+      "community": 116,
+      "community_name": "client.rb",
+      "norm_label": "global constraints"
+    },
+    {
+      "label": "File Structure",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-08-02-admin-ui-ux-improvements.md",
+      "source_location": "L27",
+      "_origin": "ast",
+      "id": "docs_superpowers_plans_2026_08_02_admin_ui_ux_improvements_file_structure",
+      "community": 116,
+      "community_name": "client.rb",
+      "norm_label": "file structure"
+    },
+    {
+      "label": "Task 1: RegisteredModule State Helpers",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-08-02-admin-ui-ux-improvements.md",
+      "source_location": "L37",
+      "_origin": "ast",
+      "id": "docs_superpowers_plans_2026_08_02_admin_ui_ux_improvements_task_1_registeredmodule_state_helpers",
+      "community": 116,
+      "community_name": "client.rb",
+      "norm_label": "task 1: registeredmodule state helpers"
+    },
+    {
+      "label": "Task 2: ActiveAdmin Dashboard Operations Overview",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-08-02-admin-ui-ux-improvements.md",
+      "source_location": "L151",
+      "_origin": "ast",
+      "id": "docs_superpowers_plans_2026_08_02_admin_ui_ux_improvements_task_2_activeadmin_dashboard_operations_overview",
+      "community": 116,
+      "community_name": "client.rb",
+      "norm_label": "task 2: activeadmin dashboard operations overview"
+    },
+    {
+      "label": "Task 3: Registered Modules Resource UX Cleanup",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-08-02-admin-ui-ux-improvements.md",
+      "source_location": "L246",
+      "_origin": "ast",
+      "id": "docs_superpowers_plans_2026_08_02_admin_ui_ux_improvements_task_3_registered_modules_resource_ux_cleanup",
+      "community": 116,
+      "community_name": "client.rb",
+      "norm_label": "task 3: registered modules resource ux cleanup"
+    },
+    {
+      "label": "Task 4: Module Operational Admin Actions",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-08-02-admin-ui-ux-improvements.md",
+      "source_location": "L344",
+      "_origin": "ast",
+      "id": "docs_superpowers_plans_2026_08_02_admin_ui_ux_improvements_task_4_module_operational_admin_actions",
+      "community": 116,
+      "community_name": "client.rb",
+      "norm_label": "task 4: module operational admin actions"
+    },
+    {
+      "label": "Final Verification",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-08-02-admin-ui-ux-improvements.md",
+      "source_location": "L527",
+      "_origin": "ast",
+      "id": "docs_superpowers_plans_2026_08_02_admin_ui_ux_improvements_final_verification",
+      "community": 116,
+      "community_name": "client.rb",
+      "norm_label": "final verification"
+    },
+    {
       "label": "registered_module.rb",
       "file_type": "code",
       "source_file": "app/models/registered_module.rb",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "app_models_registered_module",
       "community": 0,
       "community_name": "Ayaya Module Contract v1",
-      "norm_label": "registered_module.rb"
+      "norm_label": "registered_module.rb",
+      "id": "app_models_registered_module"
     },
     {
       "label": "RegisteredModule",
@@ -20,10 +119,10 @@
       "source_file": "app/models/registered_module.rb",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "app_models_registered_module_registeredmodule",
       "community": 0,
       "community_name": "Ayaya Module Contract v1",
-      "norm_label": "registeredmodule"
+      "norm_label": "registeredmodule",
+      "id": "app_models_registered_module_registeredmodule"
     },
     {
       "label": "ApplicationRecord",
@@ -31,10 +130,10 @@
       "source_file": "",
       "source_location": "",
       "_origin": "ast",
-      "id": "app_models_registered_module_rb_applicationrecord",
       "community": 0,
       "community_name": "Ayaya Module Contract v1",
-      "norm_label": "applicationrecord"
+      "norm_label": "applicationrecord",
+      "id": "app_models_registered_module_rb_applicationrecord"
     },
     {
       "label": ".enabled_for_users?()",
@@ -42,10 +141,10 @@
       "source_file": "app/models/registered_module.rb",
       "source_location": "L16",
       "_origin": "ast",
-      "id": "app_models_registered_module_registeredmodule_enabled_for_users",
       "community": 0,
       "community_name": "Ayaya Module Contract v1",
-      "norm_label": ".enabled_for_users?()"
+      "norm_label": ".enabled_for_users?()",
+      "id": "app_models_registered_module_registeredmodule_enabled_for_users"
     },
     {
       "label": ".accessible_by?()",
@@ -53,10 +152,10 @@
       "source_file": "app/models/registered_module.rb",
       "source_location": "L20",
       "_origin": "ast",
-      "id": "app_models_registered_module_registeredmodule_accessible_by",
       "community": 0,
       "community_name": "Ayaya Module Contract v1",
-      "norm_label": ".accessible_by?()"
+      "norm_label": ".accessible_by?()",
+      "id": "app_models_registered_module_registeredmodule_accessible_by"
     },
     {
       "label": ".ransackable_attributes()",
@@ -64,10 +163,10 @@
       "source_file": "app/models/registered_module.rb",
       "source_location": "L37",
       "_origin": "ast",
-      "id": "app_models_registered_module_registeredmodule_ransackable_attributes",
       "community": 0,
       "community_name": "Ayaya Module Contract v1",
-      "norm_label": ".ransackable_attributes()"
+      "norm_label": ".ransackable_attributes()",
+      "id": "app_models_registered_module_registeredmodule_ransackable_attributes"
     },
     {
       "label": ".ransackable_associations()",
@@ -75,10 +174,10 @@
       "source_file": "app/models/registered_module.rb",
       "source_location": "L56",
       "_origin": "ast",
-      "id": "app_models_registered_module_registeredmodule_ransackable_associations",
       "community": 0,
       "community_name": "Ayaya Module Contract v1",
-      "norm_label": ".ransackable_associations()"
+      "norm_label": ".ransackable_associations()",
+      "id": "app_models_registered_module_registeredmodule_ransackable_associations"
     },
     {
       "label": "user.rb",
@@ -86,10 +185,10 @@
       "source_file": "app/models/user.rb",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "app_models_user",
       "community": 8,
       "community_name": "ManifestValidator",
-      "norm_label": "user.rb"
+      "norm_label": "user.rb",
+      "id": "app_models_user"
     },
     {
       "label": "User",
@@ -97,10 +196,10 @@
       "source_file": "app/models/user.rb",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "app_models_user_user",
       "community": 8,
       "community_name": "ManifestValidator",
-      "norm_label": "user"
+      "norm_label": "user",
+      "id": "app_models_user_user"
     },
     {
       "label": "ApplicationRecord",
@@ -108,10 +207,10 @@
       "source_file": "",
       "source_location": "",
       "_origin": "ast",
-      "id": "app_models_user_rb_applicationrecord",
       "community": 8,
       "community_name": "ManifestValidator",
-      "norm_label": "applicationrecord"
+      "norm_label": "applicationrecord",
+      "id": "app_models_user_rb_applicationrecord"
     },
     {
       "label": ".admin?()",
@@ -119,10 +218,10 @@
       "source_file": "app/models/user.rb",
       "source_location": "L16",
       "_origin": "ast",
-      "id": "app_models_user_user_admin",
       "community": 8,
       "community_name": "ManifestValidator",
-      "norm_label": ".admin?()"
+      "norm_label": ".admin?()",
+      "id": "app_models_user_user_admin"
     },
     {
       "label": ".active_for_authentication?()",
@@ -130,10 +229,10 @@
       "source_file": "app/models/user.rb",
       "source_location": "L20",
       "_origin": "ast",
-      "id": "app_models_user_user_active_for_authentication",
       "community": 8,
       "community_name": "ManifestValidator",
-      "norm_label": ".active_for_authentication?()"
+      "norm_label": ".active_for_authentication?()",
+      "id": "app_models_user_user_active_for_authentication"
     },
     {
       "label": ".inactive_message()",
@@ -141,10 +240,10 @@
       "source_file": "app/models/user.rb",
       "source_location": "L24",
       "_origin": "ast",
-      "id": "app_models_user_user_inactive_message",
       "community": 8,
       "community_name": "ManifestValidator",
-      "norm_label": ".inactive_message()"
+      "norm_label": ".inactive_message()",
+      "id": "app_models_user_user_inactive_message"
     },
     {
       "label": ".ransackable_attributes()",
@@ -152,10 +251,10 @@
       "source_file": "app/models/user.rb",
       "source_location": "L28",
       "_origin": "ast",
-      "id": "app_models_user_user_ransackable_attributes",
       "community": 8,
       "community_name": "ManifestValidator",
-      "norm_label": ".ransackable_attributes()"
+      "norm_label": ".ransackable_attributes()",
+      "id": "app_models_user_user_ransackable_attributes"
     },
     {
       "label": ".ransackable_associations()",
@@ -163,10 +262,10 @@
       "source_file": "app/models/user.rb",
       "source_location": "L40",
       "_origin": "ast",
-      "id": "app_models_user_user_ransackable_associations",
       "community": 8,
       "community_name": "ManifestValidator",
-      "norm_label": ".ransackable_associations()"
+      "norm_label": ".ransackable_associations()",
+      "id": "app_models_user_user_ransackable_associations"
     },
     {
       "label": ".default_display_name()",
@@ -174,10 +273,10 @@
       "source_file": "app/models/user.rb",
       "source_location": "L46",
       "_origin": "ast",
-      "id": "app_models_user_user_default_display_name",
       "community": 8,
       "community_name": "ManifestValidator",
-      "norm_label": ".default_display_name()"
+      "norm_label": ".default_display_name()",
+      "id": "app_models_user_user_default_display_name"
     },
     {
       "label": ".prevent_destruction()",
@@ -185,10 +284,10 @@
       "source_file": "app/models/user.rb",
       "source_location": "L50",
       "_origin": "ast",
-      "id": "app_models_user_user_prevent_destruction",
       "community": 8,
       "community_name": "ManifestValidator",
-      "norm_label": ".prevent_destruction()"
+      "norm_label": ".prevent_destruction()",
+      "id": "app_models_user_user_prevent_destruction"
     },
     {
       "label": "admin_access_test.rb",
@@ -196,10 +295,10 @@
       "source_file": "test/integration/admin_access_test.rb",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "test_integration_admin_access_test",
       "community": 27,
       "community_name": "AGENTS.md",
-      "norm_label": "admin_access_test.rb"
+      "norm_label": "admin_access_test.rb",
+      "id": "test_integration_admin_access_test"
     },
     {
       "label": "AdminAccessTest",
@@ -207,10 +306,10 @@
       "source_file": "test/integration/admin_access_test.rb",
       "source_location": "L5",
       "_origin": "ast",
-      "id": "test_integration_admin_access_test_adminaccesstest",
       "community": 27,
       "community_name": "AGENTS.md",
-      "norm_label": "adminaccesstest"
+      "norm_label": "adminaccesstest",
+      "id": "test_integration_admin_access_test_adminaccesstest"
     },
     {
       "label": "IntegrationTest",
@@ -218,10 +317,10 @@
       "source_file": "",
       "source_location": "",
       "_origin": "ast",
-      "id": "integrationtest",
       "community": 27,
       "community_name": "AGENTS.md",
-      "norm_label": "integrationtest"
+      "norm_label": "integrationtest",
+      "id": "integrationtest"
     },
     {
       "label": ".admin_get_links()",
@@ -229,10 +328,10 @@
       "source_file": "test/integration/admin_access_test.rb",
       "source_location": "L98",
       "_origin": "ast",
-      "id": "test_integration_admin_access_test_adminaccesstest_admin_get_links",
       "community": 27,
       "community_name": "AGENTS.md",
-      "norm_label": ".admin_get_links()"
+      "norm_label": ".admin_get_links()",
+      "id": "test_integration_admin_access_test_adminaccesstest_admin_get_links"
     },
     {
       "label": "docker-entrypoint",
@@ -1161,8 +1260,8 @@
       "source_file": "app/services/adapter_protocol/client.rb",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 116,
-      "community_name": "client.rb",
+      "community": 4,
+      "community_name": "RegisteredModule",
       "norm_label": "client.rb",
       "id": "app_services_adapter_protocol_client"
     },
@@ -1172,8 +1271,8 @@
       "source_file": "app/services/adapter_protocol/client.rb",
       "source_location": "L4",
       "_origin": "ast",
-      "community": 116,
-      "community_name": "client.rb",
+      "community": 4,
+      "community_name": "RegisteredModule",
       "norm_label": "adapterprotocol",
       "id": "app_services_adapter_protocol_client_adapterprotocol"
     },
@@ -1194,8 +1293,8 @@
       "source_file": "app/services/adapter_protocol/client.rb",
       "source_location": "L6",
       "_origin": "ast",
-      "community": 116,
-      "community_name": "client.rb",
+      "community": 4,
+      "community_name": "RegisteredModule",
       "norm_label": "error",
       "id": "app_services_adapter_protocol_client_error"
     },
@@ -1205,8 +1304,8 @@
       "source_file": "",
       "source_location": "",
       "_origin": "ast",
-      "community": 116,
-      "community_name": "client.rb",
+      "community": 4,
+      "community_name": "RegisteredModule",
       "norm_label": "standarderror",
       "id": "standarderror"
     },
@@ -1216,8 +1315,8 @@
       "source_file": "app/services/adapter_protocol/client.rb",
       "source_location": "L7",
       "_origin": "ast",
-      "community": 116,
-      "community_name": "client.rb",
+      "community": 4,
+      "community_name": "RegisteredModule",
       "norm_label": "unauthorized",
       "id": "app_services_adapter_protocol_client_unauthorized"
     },
@@ -1227,8 +1326,8 @@
       "source_file": "app/services/adapter_protocol/client.rb",
       "source_location": "L8",
       "_origin": "ast",
-      "community": 116,
-      "community_name": "client.rb",
+      "community": 4,
+      "community_name": "RegisteredModule",
       "norm_label": "unavailable",
       "id": "app_services_adapter_protocol_client_unavailable"
     },
@@ -1238,8 +1337,8 @@
       "source_file": "app/services/adapter_protocol/client.rb",
       "source_location": "L9",
       "_origin": "ast",
-      "community": 116,
-      "community_name": "client.rb",
+      "community": 4,
+      "community_name": "RegisteredModule",
       "norm_label": "invalidresponse",
       "id": "app_services_adapter_protocol_client_invalidresponse"
     },
@@ -6041,13 +6140,101 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-08-02-admin-ui-ux-improvements.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_superpowers_plans_2026_08_02_admin_ui_ux_improvements",
+      "target": "docs_superpowers_plans_2026_08_02_admin_ui_ux_improvements_admin_ui_ux_improvements_implementation_plan",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-08-02-admin-ui-ux-improvements.md",
+      "source_location": "L27",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_superpowers_plans_2026_08_02_admin_ui_ux_improvements_admin_ui_ux_improvements_implementation_plan",
+      "target": "docs_superpowers_plans_2026_08_02_admin_ui_ux_improvements_file_structure",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-08-02-admin-ui-ux-improvements.md",
+      "source_location": "L527",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_superpowers_plans_2026_08_02_admin_ui_ux_improvements_admin_ui_ux_improvements_implementation_plan",
+      "target": "docs_superpowers_plans_2026_08_02_admin_ui_ux_improvements_final_verification",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-08-02-admin-ui-ux-improvements.md",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_superpowers_plans_2026_08_02_admin_ui_ux_improvements_admin_ui_ux_improvements_implementation_plan",
+      "target": "docs_superpowers_plans_2026_08_02_admin_ui_ux_improvements_global_constraints",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-08-02-admin-ui-ux-improvements.md",
+      "source_location": "L37",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_superpowers_plans_2026_08_02_admin_ui_ux_improvements_file_structure",
+      "target": "docs_superpowers_plans_2026_08_02_admin_ui_ux_improvements_task_1_registeredmodule_state_helpers",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-08-02-admin-ui-ux-improvements.md",
+      "source_location": "L151",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_superpowers_plans_2026_08_02_admin_ui_ux_improvements_file_structure",
+      "target": "docs_superpowers_plans_2026_08_02_admin_ui_ux_improvements_task_2_activeadmin_dashboard_operations_overview",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-08-02-admin-ui-ux-improvements.md",
+      "source_location": "L246",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_superpowers_plans_2026_08_02_admin_ui_ux_improvements_file_structure",
+      "target": "docs_superpowers_plans_2026_08_02_admin_ui_ux_improvements_task_3_registered_modules_resource_ux_cleanup",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-08-02-admin-ui-ux-improvements.md",
+      "source_location": "L344",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_superpowers_plans_2026_08_02_admin_ui_ux_improvements_file_structure",
+      "target": "docs_superpowers_plans_2026_08_02_admin_ui_ux_improvements_task_4_module_operational_admin_actions",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "app/models/registered_module.rb",
       "source_location": "L1",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "app_models_registered_module",
-      "target": "app_models_registered_module_registeredmodule",
-      "confidence_score": 1.0
+      "target": "app_models_registered_module_registeredmodule"
     },
     {
       "relation": "calls",
@@ -6080,9 +6267,9 @@
       "source_location": "L1",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "app_models_registered_module_registeredmodule",
-      "target": "app_models_registered_module_rb_applicationrecord",
-      "confidence_score": 1.0
+      "target": "app_models_registered_module_rb_applicationrecord"
     },
     {
       "relation": "method",
@@ -6091,9 +6278,9 @@
       "source_location": "L20",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "app_models_registered_module_registeredmodule",
-      "target": "app_models_registered_module_registeredmodule_accessible_by",
-      "confidence_score": 1.0
+      "target": "app_models_registered_module_registeredmodule_accessible_by"
     },
     {
       "relation": "method",
@@ -6102,9 +6289,9 @@
       "source_location": "L16",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "app_models_registered_module_registeredmodule",
-      "target": "app_models_registered_module_registeredmodule_enabled_for_users",
-      "confidence_score": 1.0
+      "target": "app_models_registered_module_registeredmodule_enabled_for_users"
     },
     {
       "relation": "method",
@@ -6113,9 +6300,9 @@
       "source_location": "L56",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "app_models_registered_module_registeredmodule",
-      "target": "app_models_registered_module_registeredmodule_ransackable_associations",
-      "confidence_score": 1.0
+      "target": "app_models_registered_module_registeredmodule_ransackable_associations"
     },
     {
       "relation": "method",
@@ -6124,9 +6311,9 @@
       "source_location": "L37",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "app_models_registered_module_registeredmodule",
-      "target": "app_models_registered_module_registeredmodule_ransackable_attributes",
-      "confidence_score": 1.0
+      "target": "app_models_registered_module_registeredmodule_ransackable_attributes"
     },
     {
       "relation": "calls",
@@ -6184,9 +6371,9 @@
       "source_location": "L22",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "app_models_registered_module_registeredmodule_accessible_by",
-      "target": "app_models_registered_module_registeredmodule_enabled_for_users",
-      "confidence_score": 1.0
+      "target": "app_models_registered_module_registeredmodule_enabled_for_users"
     },
     {
       "relation": "contains",
@@ -6195,9 +6382,9 @@
       "source_location": "L1",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "app_models_user",
-      "target": "app_models_user_user",
-      "confidence_score": 1.0
+      "target": "app_models_user_user"
     },
     {
       "relation": "inherits",
@@ -6206,9 +6393,9 @@
       "source_location": "L1",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "app_models_user_user",
-      "target": "app_models_user_rb_applicationrecord",
-      "confidence_score": 1.0
+      "target": "app_models_user_rb_applicationrecord"
     },
     {
       "relation": "method",
@@ -6217,9 +6404,9 @@
       "source_location": "L20",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "app_models_user_user",
-      "target": "app_models_user_user_active_for_authentication",
-      "confidence_score": 1.0
+      "target": "app_models_user_user_active_for_authentication"
     },
     {
       "relation": "method",
@@ -6228,9 +6415,9 @@
       "source_location": "L16",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "app_models_user_user",
-      "target": "app_models_user_user_admin",
-      "confidence_score": 1.0
+      "target": "app_models_user_user_admin"
     },
     {
       "relation": "method",
@@ -6239,9 +6426,9 @@
       "source_location": "L46",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "app_models_user_user",
-      "target": "app_models_user_user_default_display_name",
-      "confidence_score": 1.0
+      "target": "app_models_user_user_default_display_name"
     },
     {
       "relation": "method",
@@ -6250,9 +6437,9 @@
       "source_location": "L24",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "app_models_user_user",
-      "target": "app_models_user_user_inactive_message",
-      "confidence_score": 1.0
+      "target": "app_models_user_user_inactive_message"
     },
     {
       "relation": "method",
@@ -6261,9 +6448,9 @@
       "source_location": "L50",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "app_models_user_user",
-      "target": "app_models_user_user_prevent_destruction",
-      "confidence_score": 1.0
+      "target": "app_models_user_user_prevent_destruction"
     },
     {
       "relation": "method",
@@ -6272,9 +6459,9 @@
       "source_location": "L40",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "app_models_user_user",
-      "target": "app_models_user_user_ransackable_associations",
-      "confidence_score": 1.0
+      "target": "app_models_user_user_ransackable_associations"
     },
     {
       "relation": "method",
@@ -6283,9 +6470,9 @@
       "source_location": "L28",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "app_models_user_user",
-      "target": "app_models_user_user_ransackable_attributes",
-      "confidence_score": 1.0
+      "target": "app_models_user_user_ransackable_attributes"
     },
     {
       "relation": "contains",
@@ -6294,9 +6481,9 @@
       "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "test_integration_admin_access_test",
-      "target": "test_integration_admin_access_test_adminaccesstest",
-      "confidence_score": 1.0
+      "target": "test_integration_admin_access_test_adminaccesstest"
     },
     {
       "relation": "inherits",
@@ -6305,9 +6492,9 @@
       "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "test_integration_admin_access_test_adminaccesstest",
-      "target": "integrationtest",
-      "confidence_score": 1.0
+      "target": "integrationtest"
     },
     {
       "relation": "method",
@@ -6316,9 +6503,9 @@
       "source_location": "L98",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "test_integration_admin_access_test_adminaccesstest",
-      "target": "test_integration_admin_access_test_adminaccesstest_admin_get_links",
-      "confidence_score": 1.0
+      "target": "test_integration_admin_access_test_adminaccesstest_admin_get_links"
     },
     {
       "relation": "contains",
@@ -11825,5 +12012,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "0076f4f8539ef2069943cf0912083ddf004f98e2"
+  "built_at_commit": "1563af8b7da336a7c6650e52be6e4d81217d818b"
 }

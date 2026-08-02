@@ -843,5 +843,10 @@
     "mtime": 1785696230.3522289,
     "ast_hash": "65bf2891d840783a6745d6440c7dafc9",
     "semantic_hash": ""
+  },
+  "docs/superpowers/plans/2026-08-02-admin-ui-ux-improvements.md": {
+    "mtime": 1785699332.7939718,
+    "ast_hash": "801a2861b7ce889cd400569fa30bbc26",
+    "semantic_hash": ""
   }
 }

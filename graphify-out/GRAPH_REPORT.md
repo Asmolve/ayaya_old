@@ -1,16 +1,16 @@
 # Graph Report - ayaya  (2026-08-02)
 
 ## Corpus Check
-- 139 files · ~47,612 words
+- 140 files · ~47,727 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 567 nodes · 552 edges · 118 communities (75 shown, 43 thin omitted)
+- 573 nodes · 560 edges · 118 communities (74 shown, 44 thin omitted)
 - Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 17 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `99c93651`
+- Built from commit: `ccaed929`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -108,11 +108,11 @@
 ## Import Cycles
 - None detected.
 
-## Communities (118 total, 43 thin omitted)
+## Communities (118 total, 44 thin omitted)
 
 ### Community 0 - "Ayaya Module Contract v1"
-Cohesion: 0.08
-Nodes (12): HomeController, ApplicationController, ApplicationRecord, RegisteredModule, TestCase, RegisteredModuleTest, FakeClient, Modules::RefreshManifestTest (+4 more)
+Cohesion: 0.06
+Nodes (15): HomeController, ApplicationController, Internal, ModuleAccessController, ApplicationController, ApplicationRecord, RegisteredModule, TestCase (+7 more)
 
 ### Community 1 - "TestCase"
 Cohesion: 0.07
@@ -158,10 +158,6 @@ Nodes (15): ActiveAdmin, Ayaya Core Foundation Notes, Docker Development Runtime
 Cohesion: 0.40
 Nodes (3): SystemTestCase, ApplicationSystemTestCase, HomeTest
 
-### Community 33 - "registered_modules.rb"
-Cohesion: 0.33
-Nodes (3): Internal, ModuleAccessController, ApplicationController
-
 ### Community 61 - "HomeTest"
 Cohesion: 0.10
 Nodes (19): Acceptance Criteria, Adapter Protocol, Architecture, Compose Integration, Database, Internal Status Endpoint, Local Users, Manifest (+11 more)
@@ -201,12 +197,12 @@ Nodes (8): Admin UI/UX Improvements Implementation Plan, File Structure, Final V
 ## Knowledge Gaps
 - **190 isolated node(s):** `Internal`, `ApplicationHelper`, `AdapterProtocol`, `AdapterProtocol`, `Result` (+185 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **43 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **44 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `RegisteredModule` connect `Ayaya Module Contract v1` to `registered_modules.rb`, `RegisteredModule`?**
+- **Why does `RegisteredModule` connect `Ayaya Module Contract v1` to `RegisteredModule`?**
   _High betweenness centrality (0.023) - this node is a cross-community bridge._
 - **Why does `NotesController` connect `NotesController` to `RegisteredModule`?**
   _High betweenness centrality (0.012) - this node is a cross-community bridge._
@@ -217,6 +213,6 @@ _Questions this graph is uniquely positioned to answer:_
 - **What connects `Internal`, `ApplicationHelper`, `AdapterProtocol` to the rest of the system?**
   _190 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Ayaya Module Contract v1` be split into smaller, more focused modules?**
-  _Cohesion score 0.07741935483870968 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.06258890469416785 - nodes in this community are weakly interconnected._
 - **Should `TestCase` be split into smaller, more focused modules?**
   _Cohesion score 0.07407407407407407 - nodes in this community are weakly interconnected._

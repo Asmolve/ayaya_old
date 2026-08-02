@@ -5,8 +5,8 @@
     "semantic_hash": ""
   },
   "app/admin/registered_modules.rb": {
-    "mtime": 1785700547.1644073,
-    "ast_hash": "3d7c6e17ed74bd69affae012aad929e0",
+    "mtime": 1785701987.669966,
+    "ast_hash": "3ef9e767a963907208c9dac1abc5a80c",
     "semantic_hash": ""
   },
   "app/admin/users.rb": {
@@ -460,8 +460,8 @@
     "semantic_hash": ""
   },
   "compose.yml": {
-    "mtime": 1785692900.2877102,
-    "ast_hash": "640e46c2e77338e3917627b9bc71b0d5",
+    "mtime": 1785701987.8221488,
+    "ast_hash": "1441098993f9779165bd868bb3cae165",
     "semantic_hash": ""
   },
   "test/system/home_test.rb": {
@@ -480,8 +480,8 @@
     "semantic_hash": ""
   },
   "modules/notes/compose.yml": {
-    "mtime": 1785547358.9467666,
-    "ast_hash": "9d3f98cfa51945bdcb13af7aa2e371cd",
+    "mtime": 1785701988.0409696,
+    "ast_hash": "1241a52729778df20d4ce9f956a85102",
     "semantic_hash": ""
   },
   "modules/notes/docs/CONTRACT.md": {
@@ -830,8 +830,8 @@
     "semantic_hash": ""
   },
   "modules/notes/docs/REGISTER.md": {
-    "mtime": 1785700599.8910344,
-    "ast_hash": "c49d5b0e916ecbbb6ae838aa3e72411c",
+    "mtime": 1785702010.130752,
+    "ast_hash": "202c8d15153e17e23eda05ef59d6c0a4",
     "semantic_hash": ""
   },
   "modules/notes/app/test/lib/docker_entrypoint_test.rb": {
@@ -850,8 +850,13 @@
     "semantic_hash": ""
   },
   "app/services/modules/register_reference_notes.rb": {
-    "mtime": 1785700546.6343615,
-    "ast_hash": "5c0544cab1c60196decec715dfe42306",
+    "mtime": 1785701987.5140052,
+    "ast_hash": "661e83833181d81f54cc5b4eb2aee020",
+    "semantic_hash": ""
+  },
+  "test/services/modules/register_reference_notes_test.rb": {
+    "mtime": 1785702046.3665266,
+    "ast_hash": "0e4d510122721c6f80d0959945a86f5f",
     "semantic_hash": ""
   }
 }

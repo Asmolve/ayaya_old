@@ -1,13 +1,18 @@
 module Modules
   class RegisterReferenceNotes
-    ADAPTER_URL = "http://notes_adapter:8080"
-    ADAPTER_SECRET = "development-notes-adapter-secret"
+    def self.adapter_url
+      ENV.fetch("NOTES_ADAPTER_URL")
+    end
+
+    def self.adapter_secret
+      ENV.fetch("NOTES_ADAPTER_SECRET")
+    end
 
     def self.call
       existing = RegisteredModule.find_by(module_key: "notes")
       return RegisterAdapter::Result.new(success?: true, registered_module: existing, errors: []) if existing
 
-      RegisterAdapter.call(adapter_url: ADAPTER_URL, adapter_secret: ADAPTER_SECRET)
+      RegisterAdapter.call(adapter_url: adapter_url, adapter_secret: adapter_secret)
     end
   end
 end

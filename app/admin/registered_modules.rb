@@ -139,7 +139,7 @@ ActiveAdmin.register RegisteredModule do
 
       Modules::RefreshManifest.call(
         registered_module: registered_module,
-        adapter_secret: Modules::RegisterReferenceNotes::ADAPTER_SECRET
+        adapter_secret: Modules::RegisterReferenceNotes.adapter_secret
       )
     end
 
@@ -148,12 +148,12 @@ ActiveAdmin.register RegisteredModule do
 
       Modules::RefreshStatus.call(
         registered_module: registered_module,
-        adapter_secret: Modules::RegisterReferenceNotes::ADAPTER_SECRET
+        adapter_secret: Modules::RegisterReferenceNotes.adapter_secret
       )
     end
 
     def reference_notes_runtime?(registered_module)
-      registered_module.module_key == "notes" && registered_module.adapter_url == Modules::RegisterReferenceNotes::ADAPTER_URL
+      registered_module.module_key == "notes" && registered_module.adapter_url == Modules::RegisterReferenceNotes.adapter_url
     end
 
     def failure_result(message)

@@ -28,6 +28,8 @@ services:
       DATABASE_NAME: ayaya_core_development
       RAILS_LOG_TO_STDOUT: "true"
       AYAYA_ALLOWED_HOSTS: ayaya.local,localhost
+      NOTES_ADAPTER_URL: ${NOTES_ADAPTER_URL:-http://notes_adapter:8080}
+      NOTES_ADAPTER_SECRET: ${NOTES_ADAPTER_SECRET:?Set NOTES_ADAPTER_SECRET before starting Compose}
     depends_on:
       postgres:
         condition: service_healthy
@@ -81,7 +83,7 @@ services:
     build:
       context: ./modules/notes/adapter
     environment:
-      NOTES_ADAPTER_SECRET: development-notes-adapter-secret
+      NOTES_ADAPTER_SECRET: ${NOTES_ADAPTER_SECRET:?Set NOTES_ADAPTER_SECRET before starting Compose}
       NOTES_INTERNAL_STATUS_SECRET: development-notes-internal-status-secret
       NOTES_APP_INTERNAL_STATUS_URL: http://notes_app:3000/internal/ayaya/status
       NOTES_MODULE_YML: /module/module.yml

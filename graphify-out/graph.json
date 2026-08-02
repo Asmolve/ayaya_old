@@ -197,8 +197,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_controllers_internal_module_access_controller",
-      "community": 33,
-      "community_name": "registered_modules.rb",
+      "community": 0,
+      "community_name": "Ayaya Module Contract v1",
       "norm_label": "module_access_controller.rb"
     },
     {
@@ -208,8 +208,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_controllers_internal_module_access_controller_internal",
-      "community": 33,
-      "community_name": "registered_modules.rb",
+      "community": 0,
+      "community_name": "Ayaya Module Contract v1",
       "norm_label": "internal"
     },
     {
@@ -219,8 +219,8 @@
       "source_location": "L2",
       "_origin": "ast",
       "id": "app_controllers_internal_module_access_controller_moduleaccesscontroller",
-      "community": 33,
-      "community_name": "registered_modules.rb",
+      "community": 0,
+      "community_name": "Ayaya Module Contract v1",
       "norm_label": "moduleaccesscontroller"
     },
     {
@@ -230,8 +230,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "app_controllers_internal_module_access_controller_rb_applicationcontroller",
-      "community": 33,
-      "community_name": "registered_modules.rb",
+      "community": 0,
+      "community_name": "Ayaya Module Contract v1",
       "norm_label": "applicationcontroller"
     },
     {
@@ -241,8 +241,8 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "app_controllers_internal_module_access_controller_moduleaccesscontroller_show",
-      "community": 33,
-      "community_name": "registered_modules.rb",
+      "community": 0,
+      "community_name": "Ayaya Module Contract v1",
       "norm_label": ".show()"
     },
     {
@@ -252,8 +252,8 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "app_controllers_internal_module_access_controller_moduleaccesscontroller_force_non_navigational_format",
-      "community": 33,
-      "community_name": "registered_modules.rb",
+      "community": 0,
+      "community_name": "Ayaya Module Contract v1",
       "norm_label": ".force_non_navigational_format()"
     },
     {
@@ -263,8 +263,8 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "app_controllers_internal_module_access_controller_moduleaccesscontroller_extract_module_key",
-      "community": 33,
-      "community_name": "registered_modules.rb",
+      "community": 0,
+      "community_name": "Ayaya Module Contract v1",
       "norm_label": ".extract_module_key()"
     },
     {
@@ -1170,10 +1170,32 @@
       "norm_label": "registerreferencenotes"
     },
     {
+      "label": ".adapter_url()",
+      "file_type": "code",
+      "source_file": "app/services/modules/register_reference_notes.rb",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "app_services_modules_register_reference_notes_registerreferencenotes_adapter_url",
+      "community": 4,
+      "community_name": "RegisteredModule",
+      "norm_label": ".adapter_url()"
+    },
+    {
+      "label": ".adapter_secret()",
+      "file_type": "code",
+      "source_file": "app/services/modules/register_reference_notes.rb",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "app_services_modules_register_reference_notes_registerreferencenotes_adapter_secret",
+      "community": 4,
+      "community_name": "RegisteredModule",
+      "norm_label": ".adapter_secret()"
+    },
+    {
       "label": ".call()",
       "file_type": "code",
       "source_file": "app/services/modules/register_reference_notes.rb",
-      "source_location": "L6",
+      "source_location": "L11",
       "_origin": "ast",
       "id": "app_services_modules_register_reference_notes_registerreferencenotes_call",
       "community": 4,
@@ -3980,6 +4002,50 @@
       "norm_label": ".status()"
     },
     {
+      "label": "register_reference_notes_test.rb",
+      "file_type": "code",
+      "source_file": "test/services/modules/register_reference_notes_test.rb",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "test_services_modules_register_reference_notes_test",
+      "community": 33,
+      "community_name": "registered_modules.rb",
+      "norm_label": "register_reference_notes_test.rb"
+    },
+    {
+      "label": "Modules::RegisterReferenceNotesTest",
+      "file_type": "code",
+      "source_file": "test/services/modules/register_reference_notes_test.rb",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "test_services_modules_register_reference_notes_test_modules_registerreferencenotestest",
+      "community": 33,
+      "community_name": "registered_modules.rb",
+      "norm_label": "modules::registerreferencenotestest"
+    },
+    {
+      "label": "TestCase",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "test_services_modules_register_reference_notes_test_rb_testcase",
+      "community": 33,
+      "community_name": "registered_modules.rb",
+      "norm_label": "testcase"
+    },
+    {
+      "label": ".with_adapter_environment()",
+      "file_type": "code",
+      "source_file": "test/services/modules/register_reference_notes_test.rb",
+      "source_location": "L21",
+      "_origin": "ast",
+      "id": "test_services_modules_register_reference_notes_test_modules_registerreferencenotestest_with_adapter_environment",
+      "community": 33,
+      "community_name": "registered_modules.rb",
+      "norm_label": ".with_adapter_environment()"
+    },
+    {
       "label": "home_test.rb",
       "file_type": "code",
       "source_file": "test/system/home_test.rb",
@@ -6353,6 +6419,18 @@
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/admin/registered_modules.rb",
+      "source_location": "L142",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_admin_registered_modules_refresh_reference_manifest",
+      "target": "app_services_modules_register_reference_notes_registerreferencenotes_adapter_secret"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
       "source_file": "app/admin/registered_modules.rb",
       "source_location": "L147",
       "weight": 1.0,
@@ -6384,6 +6462,30 @@
       "_origin": "ast",
       "source": "app_admin_registered_modules_refresh_reference_status",
       "target": "app_services_modules_refresh_status_refreshstatus_call"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/admin/registered_modules.rb",
+      "source_location": "L151",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_admin_registered_modules_refresh_reference_status",
+      "target": "app_services_modules_register_reference_notes_registerreferencenotes_adapter_secret"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/admin/registered_modules.rb",
+      "source_location": "L156",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_admin_registered_modules_reference_notes_runtime",
+      "target": "app_services_modules_register_reference_notes_registerreferencenotes_adapter_url"
     },
     {
       "relation": "contains",
@@ -6780,7 +6882,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/services/modules/register_reference_notes.rb",
-      "source_location": "L7",
+      "source_location": "L12",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_services_modules_register_reference_notes_registerreferencenotes_call",
@@ -7725,7 +7827,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/services/modules/register_reference_notes.rb",
-      "source_location": "L10",
+      "source_location": "L15",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_services_modules_register_reference_notes_registerreferencenotes_call",
@@ -7757,7 +7859,29 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "app/services/modules/register_reference_notes.rb",
-      "source_location": "L6",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_services_modules_register_reference_notes_registerreferencenotes",
+      "target": "app_services_modules_register_reference_notes_registerreferencenotes_adapter_secret",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/services/modules/register_reference_notes.rb",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_services_modules_register_reference_notes_registerreferencenotes",
+      "target": "app_services_modules_register_reference_notes_registerreferencenotes_adapter_url",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/services/modules/register_reference_notes.rb",
+      "source_location": "L11",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_services_modules_register_reference_notes_registerreferencenotes",
@@ -10343,6 +10467,39 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "test/services/modules/register_reference_notes_test.rb",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "test_services_modules_register_reference_notes_test",
+      "target": "test_services_modules_register_reference_notes_test_modules_registerreferencenotestest",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "test/services/modules/register_reference_notes_test.rb",
+      "source_location": "L21",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "test_services_modules_register_reference_notes_test_modules_registerreferencenotestest",
+      "target": "test_services_modules_register_reference_notes_test_modules_registerreferencenotestest_with_adapter_environment",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "test/services/modules/register_reference_notes_test.rb",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "test_services_modules_register_reference_notes_test_modules_registerreferencenotestest",
+      "target": "test_services_modules_register_reference_notes_test_rb_testcase",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "test/system/home_test.rb",
       "source_location": "L3",
       "weight": 1.0,
@@ -12454,5 +12611,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "99c9365185e4ab5c8756890f2149060543841f35"
+  "built_at_commit": "ccaed929618f70b04faa8294f33a69a79cae6a53"
 }

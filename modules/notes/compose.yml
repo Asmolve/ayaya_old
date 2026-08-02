@@ -14,7 +14,7 @@ services:
     build:
       context: ./adapter
     environment:
-      NOTES_ADAPTER_SECRET: development-notes-adapter-secret
+      NOTES_ADAPTER_SECRET: ${NOTES_ADAPTER_SECRET:?Set NOTES_ADAPTER_SECRET before starting Compose}
       NOTES_INTERNAL_STATUS_SECRET: development-notes-internal-status-secret
       NOTES_APP_INTERNAL_STATUS_URL: http://notes_app:3000/internal/ayaya/status
       NOTES_MODULE_YML: /module/module.yml

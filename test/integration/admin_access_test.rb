@@ -108,6 +108,30 @@ class AdminAccessTest < ActionDispatch::IntegrationTest
     assert_not_includes response.body, "manifest_snapshot"
   end
 
+  test "registered module admin explains availability blocker" do
+    admin = User.create!(email: "availability-admin@example.test", password: "password123", role: "admin")
+    mod = RegisteredModule.create!(
+      module_key: "blocked_notes",
+      name: "Blocked Notes",
+      version: "0.1.0",
+      adapter_url: "http://notes_adapter:8080",
+      adapter_secret_digest: "digest",
+      adapter_protocol_version: "1.0",
+      admin_state: "enabled",
+      runtime_status: "unreachable",
+      access_policy_mode: "authenticated",
+      manifest_snapshot: {},
+      status_snapshot: {},
+    )
+    sign_in admin
+
+    get admin_registered_module_path(mod)
+
+    assert_response :success
+    assert_includes response.body, "needs attention"
+    assert_includes response.body, "Module runtime is unreachable. Refresh status or fix the module service."
+  end
+
   test "signed-in admin can follow ActiveAdmin GET links" do
     admin = User.create!(email: "link-admin@example.test", password: "password123", role: "admin")
     RegisteredModule.create!(

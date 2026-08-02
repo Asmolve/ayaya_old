@@ -15,7 +15,7 @@ ActiveAdmin.register RegisteredModule do
     column :name
     column :version
     column "Availability" do |registered_module|
-      registered_module.availability_label
+      span registered_module.availability_label, title: registered_module.availability_blocker
     end
     column :admin_state
     column :runtime_status
@@ -35,6 +35,8 @@ ActiveAdmin.register RegisteredModule do
       row :admin_state
       row :runtime_status
       row :access_policy_mode
+      row("Availability") { |registered_module| registered_module.availability_label }
+      row("Availability details") { |registered_module| registered_module.availability_blocker }
       row :maintenance_reason
       row :last_manifest_refreshed_at
       row :last_status_refreshed_at

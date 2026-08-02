@@ -1,12 +1,12 @@
 {
   "app/admin/dashboard.rb": {
-    "mtime": 1785139533.8642623,
-    "ast_hash": "6bd83b37132bd5e9e0b5f3d7d786bbac",
+    "mtime": 1785700583.630428,
+    "ast_hash": "9d908f40b6c2cce78535a9c0cdcec51a",
     "semantic_hash": ""
   },
   "app/admin/registered_modules.rb": {
-    "mtime": 1785111803.0454757,
-    "ast_hash": "ef16551291aafd3b5d12d92449744b3b",
+    "mtime": 1785700547.1644073,
+    "ast_hash": "3d7c6e17ed74bd69affae012aad929e0",
     "semantic_hash": ""
   },
   "app/admin/users.rb": {
@@ -60,8 +60,8 @@
     "semantic_hash": ""
   },
   "app/models/registered_module.rb": {
-    "mtime": 1785586779.9607823,
-    "ast_hash": "09c8430051ae4e65b42f23202e099bbd",
+    "mtime": 1785699453.6397367,
+    "ast_hash": "24f2c22f3688f151538d751bbddb0760",
     "semantic_hash": ""
   },
   "app/models/user.rb": {
@@ -285,8 +285,8 @@
     "semantic_hash": ""
   },
   "test/integration/admin_access_test.rb": {
-    "mtime": 1785586818.1905112,
-    "ast_hash": "977e6ea612bea11c2c958125202350a0",
+    "mtime": 1785700483.284848,
+    "ast_hash": "19a456088aa286a53ed31bc67c3653bd",
     "semantic_hash": ""
   },
   "test/lib/ayaya_contract/runner_test.rb": {
@@ -295,8 +295,8 @@
     "semantic_hash": ""
   },
   "test/models/registered_module_test.rb": {
-    "mtime": 1785111877.0596251,
-    "ast_hash": "49bb209c1ca5a7605d5f5b4d6c637b06",
+    "mtime": 1785699425.5453267,
+    "ast_hash": "3937c3222ecbf217a66ae97c65eb6511",
     "semantic_hash": ""
   },
   "test/models/user_test.rb": {
@@ -385,8 +385,8 @@
     "semantic_hash": ""
   },
   "docs/core_foundation.md": {
-    "mtime": 1785692900.7036605,
-    "ast_hash": "d3397dc2a7fbb147c117e4c527efec83",
+    "mtime": 1785700547.3165514,
+    "ast_hash": "586a42e291484c4c4ec2ccfd33b6c2d3",
     "semantic_hash": ""
   },
   "docs/init_spec.md": {
@@ -825,13 +825,13 @@
     "semantic_hash": ""
   },
   "test/lib/ayaya_contract/compose_exposure_test.rb": {
-    "mtime": 1785693138.9437065,
-    "ast_hash": "520e912d9d1573bc531899e7089944e5",
+    "mtime": 1785700753.644322,
+    "ast_hash": "c5a8244c1d0a0c6b891f9b0657b0f65a",
     "semantic_hash": ""
   },
   "modules/notes/docs/REGISTER.md": {
-    "mtime": 1785546750.442455,
-    "ast_hash": "8faf6642d0acb3a6a695b5e17774f85e",
+    "mtime": 1785700599.8910344,
+    "ast_hash": "c49d5b0e916ecbbb6ae838aa3e72411c",
     "semantic_hash": ""
   },
   "modules/notes/app/test/lib/docker_entrypoint_test.rb": {
@@ -847,6 +847,11 @@
   "docs/superpowers/plans/2026-08-02-admin-ui-ux-improvements.md": {
     "mtime": 1785699332.7939718,
     "ast_hash": "801a2861b7ce889cd400569fa30bbc26",
+    "semantic_hash": ""
+  },
+  "app/services/modules/register_reference_notes.rb": {
+    "mtime": 1785700546.6343615,
+    "ast_hash": "5c0544cab1c60196decec715dfe42306",
     "semantic_hash": ""
   }
 }

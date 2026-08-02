@@ -116,9 +116,5 @@
   "114": "Internal::Ayaya::StatusControllerTest",
   "115": "create_app",
   "116": "client.rb",
-  "117": "Notes Module",
-  "118": "Ayaya",
-  "119": "REGISTER.md",
-  "120": "TestCase",
-  "121": "IntegrationTest"
+  "120": "TestCase"
 }

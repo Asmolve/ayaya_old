@@ -41,7 +41,7 @@ services:
       timeout: 5s
       retries: 24
     ports:
-      - "3000:3000"
+      - "3001:3000"
     volumes:
       - .:/rails
     stdin_open: true
@@ -97,7 +97,7 @@ services:
       core:
         condition: service_healthy
     ports:
-      - "8081:80"
+      - "3000:80"
     volumes:
       - ./deploy/nginx/ayaya.example.conf:/etc/nginx/nginx.conf:ro
 

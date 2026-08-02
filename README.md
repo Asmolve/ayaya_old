@@ -18,8 +18,8 @@ docker compose up --build
 
 Entrypoints:
 
-- Platform NGINX: `http://localhost:8081`
-- Direct Rails Core debugging: `http://localhost:3000`
+- Platform NGINX: `http://localhost:3000`
+- Direct Rails Core debugging: `http://localhost:3001`
 
 The Compose runtime uses:
 

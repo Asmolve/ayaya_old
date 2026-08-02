@@ -34,7 +34,7 @@ Local development has a Docker Compose runtime for the platform and the Notes re
 - `core` runs the Rails Core application with `DATABASE_HOST=postgres`.
 - `notes_app` runs the Notes Module App with `DATABASE_NAME=ayaya_mod_notes`.
 - `notes_adapter` exposes the Notes Adapter Protocol endpoints to Core on the internal Compose network.
-- `nginx` exposes the platform entry point on `http://localhost:8081`.
+- `nginx` exposes the platform entry point on `http://localhost:3000`.
 
 Prepare the Notes database explicitly:
 

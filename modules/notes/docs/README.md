@@ -109,9 +109,9 @@ Rollback guidance:
 
 Run this check with the platform services running:
 
-1. Sign in to Core through `http://localhost:8081`.
+1. Sign in to Core through `http://localhost:3000`.
 2. Ensure `notes` is registered, healthy, enabled, and available to authenticated users. See [REGISTER.md](REGISTER.md) if registration or status refresh is needed.
-3. Open `http://localhost:8081/m/notes`.
+3. Open `http://localhost:3000/m/notes`.
 4. Create a note through the Notes UI.
 5. Confirm the created note appears in the notes list.
 6. Confirm direct internal app access without trusted `X-Ayaya-*` headers is rejected:
@@ -125,7 +125,7 @@ Run this check with the platform services running:
 To verify the unauthenticated NGINX route from the host, run this without browser cookies:
 
 ```bash
-curl -i http://127.0.0.1:8081/m/notes
+curl -i http://127.0.0.1:3000/m/notes
 ```
 
 Expected response: a redirect to Core login or an unauthorized response according to the Core authentication flow. Use the signed-in browser steps above to verify the authenticated `200 OK` Notes page.

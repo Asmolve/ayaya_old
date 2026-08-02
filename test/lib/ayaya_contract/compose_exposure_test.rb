@@ -16,8 +16,8 @@ class AyayaContract::ComposeExposureTest < ActiveSupport::TestCase
     compose = YAML.safe_load_file("compose.yml", aliases: true)
     services = compose.fetch("services")
 
-    assert_equal ["3001:3000"], services.dig("core", "ports")
-    assert_equal ["3000:80"], services.dig("nginx", "ports")
+    assert_equal [ "3001:3000" ], services.dig("core", "ports")
+    assert_equal [ "3000:80" ], services.dig("nginx", "ports")
   end
 
   test "preserves the public host and port through nginx" do

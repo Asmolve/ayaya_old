@@ -71,7 +71,7 @@
   "69": "Ayaya Core Foundation Notes",
   "70": "ApplicationJob",
   "71": "ApplicationMailer",
-  "72": "Ayaya",
+  "72": "Admin UI/UX Improvements Design",
   "73": "Application",
   "74": "test_helper.rb",
   "75": "AyayaContract::RunnerTest",
@@ -114,5 +114,11 @@
   "112": "NoteTest",
   "113": "StatusController",
   "114": "Internal::Ayaya::StatusControllerTest",
-  "115": "create_app"
+  "115": "create_app",
+  "116": "client.rb",
+  "117": "Notes Module",
+  "118": "Ayaya",
+  "119": "REGISTER.md",
+  "120": "TestCase",
+  "121": "IntegrationTest"
 }

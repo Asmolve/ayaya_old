@@ -34,7 +34,7 @@ class AdminAccessTest < ActionDispatch::IntegrationTest
   end
 
   test "admin dashboard explains empty module registry" do
-    RegisteredModule.delete_all
+    RegisteredModule.destroy_all
     admin = User.create!(email: "empty-dashboard-admin@example.test", password: "password123", role: "admin")
     sign_in admin
 

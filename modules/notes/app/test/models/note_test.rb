@@ -32,4 +32,13 @@ class NoteTest < ActiveSupport::TestCase
     assert_not duplicate.valid?
     assert_includes duplicate.errors[:start_date], "has already been taken for this range"
   end
+
+  test "diary allows a range that matches a regular note" do
+    user = LocalUser.create!(core_user_id: "cross-type-owner")
+    dates = { start_date: Date.new(2026, 9, 7), end_date: Date.new(2026, 9, 7) }
+    Note.create!(local_user: user, title: "Regular", entry_type: :regular, **dates)
+    diary = Note.new(local_user: user, title: "Diary", entry_type: :diary, **dates)
+
+    assert_predicate diary, :valid?
+  end
 end

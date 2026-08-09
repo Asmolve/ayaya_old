@@ -8,6 +8,7 @@ class Note < ApplicationRecord
   validates :title, presence: true
   validates :start_date, :end_date, presence: true, if: :diary?
   validates :start_date, uniqueness: { scope: %i[local_user_id end_date],
+                                      conditions: -> { where(entry_type: "diary") },
                                       message: "has already been taken for this range" }, if: :diary?
 
   validate :diary_dates_are_in_order

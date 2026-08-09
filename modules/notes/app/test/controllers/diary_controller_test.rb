@@ -65,4 +65,28 @@ class DiaryControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :unprocessable_entity
   end
+
+  test "rejects empty structured date parameters" do
+    [ [], {} ].each do |value|
+      index_status = request_with_query_parameters("/m/notes/diary", { "quarter" => value })
+      entry_status = request_with_query_parameters(
+        "/m/notes/diary/entry", { "start_date" => value, "end_date" => "2026-09-07" }
+      )
+
+      assert_equal 422, index_status
+      assert_equal 422, entry_status
+    end
+  end
+
+  private
+
+  def request_with_query_parameters(path, query_parameters)
+    env = Rack::MockRequest.env_for(path, method: "GET")
+    env["HTTP_USER_AGENT"] = ""
+    env["action_dispatch.request.query_parameters"] = query_parameters
+    ayaya_headers.each { |name, value| env["HTTP_#{name.upcase.tr('-', '_')}"] = value }
+
+    status, = Rails.application.call(env)
+    status
+  end
 end

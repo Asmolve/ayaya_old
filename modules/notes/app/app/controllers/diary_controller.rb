@@ -25,7 +25,7 @@ class DiaryController < ApplicationController
   private
 
   def parse_iso_date(value)
-    return if value.blank?
+    return if value.nil? || value == ""
 
     raise Date::Error unless value.is_a?(String)
 
@@ -33,6 +33,9 @@ class DiaryController < ApplicationController
   end
 
   def parse_required_iso_date(name)
-    parse_iso_date(params.require(name))
+    value = params[name]
+    raise ActionController::ParameterMissing, name if value.nil? || value == ""
+
+    parse_iso_date(value)
   end
 end

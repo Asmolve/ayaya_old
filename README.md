@@ -4,6 +4,12 @@ Ayaya is a Rails Core application for a modular personal productivity platform.
 
 ## Local Docker Runtime
 
+Create your local Compose configuration, then replace the password and both secret placeholders with unique values:
+
+```bash
+cp .env.example .env
+```
+
 Prepare the Notes database explicitly before starting the platform:
 
 ```bash

@@ -350,8 +350,8 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1785692900.4550111,
-    "ast_hash": "9fc2167fe52b1d399263b2f6327c5da1",
+    "mtime": 1786302034.8553562,
+    "ast_hash": "5c133da05f3f82048826003eb1957486",
     "semantic_hash": ""
   },
   "config/bundler-audit.yml": {
@@ -460,8 +460,8 @@
     "semantic_hash": ""
   },
   "compose.yml": {
-    "mtime": 1785701987.8221488,
-    "ast_hash": "1441098993f9779165bd868bb3cae165",
+    "mtime": 1786302236.0341692,
+    "ast_hash": "de57e25491f5c2afcea156f326680db4",
     "semantic_hash": ""
   },
   "test/system/home_test.rb": {
@@ -480,8 +480,8 @@
     "semantic_hash": ""
   },
   "modules/notes/compose.yml": {
-    "mtime": 1785701988.0409696,
-    "ast_hash": "1241a52729778df20d4ce9f956a85102",
+    "mtime": 1786302236.1001909,
+    "ast_hash": "1fb025f4f319aba80bf7b2685a8d2bc9",
     "semantic_hash": ""
   },
   "modules/notes/docs/CONTRACT.md": {
@@ -490,8 +490,8 @@
     "semantic_hash": ""
   },
   "modules/notes/docs/README.md": {
-    "mtime": 1785693212.5569046,
-    "ast_hash": "bca8fd98a7ec9b3da2586365118dc9ea",
+    "mtime": 1786302236.1638634,
+    "ast_hash": "7a1c3836e018c26b685223ebd3c971d8",
     "semantic_hash": ""
   },
   "modules/notes/module.yml": {
@@ -575,8 +575,8 @@
     "semantic_hash": ""
   },
   "modules/notes/app/config/application.rb": {
-    "mtime": 1786284170.8141744,
-    "ast_hash": "4d1a5be460f0212142ea681836b6246b",
+    "mtime": 1786296161.303365,
+    "ast_hash": "55c96db964faabcd3bd29a6bc6792129",
     "semantic_hash": ""
   },
   "modules/notes/app/config/boot.rb": {
@@ -825,8 +825,8 @@
     "semantic_hash": ""
   },
   "test/lib/ayaya_contract/compose_exposure_test.rb": {
-    "mtime": 1785700753.644322,
-    "ast_hash": "c5a8244c1d0a0c6b891f9b0657b0f65a",
+    "mtime": 1786302244.5144105,
+    "ast_hash": "2e53b5bb65071b8bde5c9d7a2c425880",
     "semantic_hash": ""
   },
   "modules/notes/docs/REGISTER.md": {
@@ -857,21 +857,6 @@
   "test/services/modules/register_reference_notes_test.rb": {
     "mtime": 1785702046.3665266,
     "ast_hash": "0e4d510122721c6f80d0959945a86f5f",
-    "semantic_hash": ""
-  },
-  "config/initializers/new_framework_defaults_8_1.rb": {
-    "mtime": 1785709191.9917696,
-    "ast_hash": "e6c67f0f779fadb0e27345385ba045e2",
-    "semantic_hash": ""
-  },
-  ".superpowers/brainstorm/19158-1786269718/content/diary-calendar-layout.html": {
-    "mtime": 1786269793.3072195,
-    "ast_hash": "407989ecb68fa8a7867b45cc0a5b3655",
-    "semantic_hash": ""
-  },
-  ".superpowers/brainstorm/19158-1786269718/content/waiting-1.html": {
-    "mtime": 1786271626.3858545,
-    "ast_hash": "efb0a9b78f7ffa0daa5cb386155bfc54",
     "semantic_hash": ""
   },
   "docs/superpowers/specs/2026-08-09-diary-mode-design.md": {
@@ -947,6 +932,16 @@
   "modules/notes/app/test/system/diary_calendar_test.rb": {
     "mtime": 1786292369.8111775,
     "ast_hash": "d7bd5ed4f8ffc3151742840c7019ac6f",
+    "semantic_hash": ""
+  },
+  "docs/superpowers/plans/2026-08-09-compose-env.md": {
+    "mtime": 1786301787.475179,
+    "ast_hash": "ef1d4bab01f4f5fc3cf3b50b4ebd8653",
+    "semantic_hash": ""
+  },
+  "docs/superpowers/specs/2026-08-09-compose-env-design.md": {
+    "mtime": 1786301688.7924154,
+    "ast_hash": "8b41e06f51ded867771100042261e14e",
     "semantic_hash": ""
   }
 }

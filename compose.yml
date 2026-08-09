@@ -4,11 +4,11 @@ services:
   postgres:
     image: postgres:16-alpine
     environment:
-      POSTGRES_USER: ayaya
-      POSTGRES_PASSWORD: ayaya
-      POSTGRES_DB: ayaya_core_development
+      POSTGRES_USER: ${POSTGRES_USER:?Set POSTGRES_USER in .env}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+      POSTGRES_DB: ${CORE_DATABASE_NAME:?Set CORE_DATABASE_NAME in .env}
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ayaya -d ayaya_core_development"]
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
       interval: 5s
       timeout: 5s
       retries: 12
@@ -20,15 +20,15 @@ services:
       context: .
       dockerfile: Dockerfile.dev
     environment:
-      RAILS_ENV: development
-      DATABASE_HOST: postgres
-      DATABASE_PORT: 5432
-      DATABASE_USERNAME: ayaya
-      DATABASE_PASSWORD: ayaya
-      DATABASE_NAME: ayaya_core_development
-      RAILS_LOG_TO_STDOUT: "true"
-      AYAYA_ALLOWED_HOSTS: ayaya.local,localhost
-      NOTES_ADAPTER_URL: ${NOTES_ADAPTER_URL:-http://notes_adapter:8080}
+      RAILS_ENV: ${RAILS_ENV:?Set RAILS_ENV in .env}
+      DATABASE_HOST: ${DATABASE_HOST:?Set DATABASE_HOST in .env}
+      DATABASE_PORT: ${DATABASE_PORT:?Set DATABASE_PORT in .env}
+      DATABASE_USERNAME: ${DATABASE_USERNAME:?Set DATABASE_USERNAME in .env}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD:?Set DATABASE_PASSWORD in .env}
+      DATABASE_NAME: ${CORE_DATABASE_NAME:?Set CORE_DATABASE_NAME in .env}
+      RAILS_LOG_TO_STDOUT: ${RAILS_LOG_TO_STDOUT:?Set RAILS_LOG_TO_STDOUT in .env}
+      AYAYA_ALLOWED_HOSTS: ${CORE_ALLOWED_HOSTS:?Set CORE_ALLOWED_HOSTS in .env}
+      NOTES_ADAPTER_URL: ${NOTES_ADAPTER_URL:?Set NOTES_ADAPTER_URL in .env}
       NOTES_ADAPTER_SECRET: ${NOTES_ADAPTER_SECRET:?Set NOTES_ADAPTER_SECRET before starting Compose}
     depends_on:
       postgres:
@@ -43,7 +43,7 @@ services:
       timeout: 5s
       retries: 24
     ports:
-      - "3001:3000"
+      - "${CORE_HOST_PORT:?Set CORE_HOST_PORT in .env}:3000"
     volumes:
       - .:/rails
     stdin_open: true
@@ -54,15 +54,15 @@ services:
       context: ./modules/notes/app
       dockerfile: Dockerfile.dev
     environment:
-      RAILS_ENV: development
-      DATABASE_HOST: postgres
-      DATABASE_PORT: 5432
-      DATABASE_USERNAME: ayaya
-      DATABASE_PASSWORD: ayaya
-      DATABASE_NAME: ayaya_mod_notes
-      RAILS_LOG_TO_STDOUT: "true"
-      AYAYA_ALLOWED_HOSTS: ayaya.local,localhost,notes_app
-      NOTES_INTERNAL_STATUS_SECRET: development-notes-internal-status-secret
+      RAILS_ENV: ${RAILS_ENV:?Set RAILS_ENV in .env}
+      DATABASE_HOST: ${DATABASE_HOST:?Set DATABASE_HOST in .env}
+      DATABASE_PORT: ${DATABASE_PORT:?Set DATABASE_PORT in .env}
+      DATABASE_USERNAME: ${DATABASE_USERNAME:?Set DATABASE_USERNAME in .env}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD:?Set DATABASE_PASSWORD in .env}
+      DATABASE_NAME: ${NOTES_DATABASE_NAME:?Set NOTES_DATABASE_NAME in .env}
+      RAILS_LOG_TO_STDOUT: ${RAILS_LOG_TO_STDOUT:?Set RAILS_LOG_TO_STDOUT in .env}
+      AYAYA_ALLOWED_HOSTS: ${NOTES_ALLOWED_HOSTS:?Set NOTES_ALLOWED_HOSTS in .env}
+      NOTES_INTERNAL_STATUS_SECRET: ${NOTES_INTERNAL_STATUS_SECRET:?Set NOTES_INTERNAL_STATUS_SECRET in .env}
     depends_on:
       postgres:
         condition: service_healthy
@@ -83,10 +83,10 @@ services:
     build:
       context: ./modules/notes/adapter
     environment:
-      NOTES_ADAPTER_SECRET: ${NOTES_ADAPTER_SECRET:?Set NOTES_ADAPTER_SECRET before starting Compose}
-      NOTES_INTERNAL_STATUS_SECRET: development-notes-internal-status-secret
-      NOTES_APP_INTERNAL_STATUS_URL: http://notes_app:3000/internal/ayaya/status
-      NOTES_MODULE_YML: /module/module.yml
+      NOTES_ADAPTER_SECRET: ${NOTES_ADAPTER_SECRET:?Set NOTES_ADAPTER_SECRET in .env}
+      NOTES_INTERNAL_STATUS_SECRET: ${NOTES_INTERNAL_STATUS_SECRET:?Set NOTES_INTERNAL_STATUS_SECRET in .env}
+      NOTES_APP_INTERNAL_STATUS_URL: ${NOTES_APP_INTERNAL_STATUS_URL:?Set NOTES_APP_INTERNAL_STATUS_URL in .env}
+      NOTES_MODULE_YML: ${NOTES_MODULE_YML:?Set NOTES_MODULE_YML in .env}
     depends_on:
       notes_app:
         condition: service_healthy
@@ -99,7 +99,7 @@ services:
       core:
         condition: service_healthy
     ports:
-      - "3000:80"
+      - "${NGINX_HOST_PORT:?Set NGINX_HOST_PORT in .env}:80"
     volumes:
       - ./deploy/nginx/ayaya.example.conf:/etc/nginx/nginx.conf:ro
 

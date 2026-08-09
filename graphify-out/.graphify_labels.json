@@ -111,6 +111,7 @@
   "109": "schema.rb",
   "110": "Note",
   "111": "CreateNotes",
+  "112": "AyayaIdentity",
   "113": "StatusController",
   "114": "Internal::Ayaya::StatusControllerTest",
   "115": "create_app",
@@ -127,6 +128,9 @@
   "126": "DiaryControllerTest",
   "127": "DiaryController",
   "128": "ApplicationController",
+  "129": "DiaryController",
   "130": "application.js",
-  "131": "importmap.rb"
+  "131": "importmap.rb",
+  "132": "Ayaya",
+  "133": "TestCase"
 }

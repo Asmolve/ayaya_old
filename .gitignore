@@ -9,6 +9,7 @@
 
 # Ignore all environment files.
 /.env*
+!/.env.example
 
 # Ignore all logfiles and tempfiles.
 /log/*
@@ -32,7 +33,12 @@
 # Ignore system attributes
 .DS_Store
 
+# Ignore IDE settings
+/.idea
+
 # Ignore graphify cache and backup files
 /graphify-out/cache
 /graphify-out/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]/
 
+# Superpowers brainstorm data
+/.superpowers/brainstorm/*

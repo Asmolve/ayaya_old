@@ -23,6 +23,29 @@ class DiaryCalendarTest < ApplicationSystemTestCase
     assert_equal "2026-09-11", find("#note_end_date").value
   end
 
+  test "touch dragging reserves the selected dates and chooses both inclusive boundaries" do
+    visit_as_ayaya_user "/m/notes/diary?quarter=2026-09-01"
+
+    assert_equal "none", page.evaluate_script("getComputedStyle(document.querySelector('[data-date=\"2026-09-07\"]')).touchAction")
+    perform_touch_drag("2026-09-07", "2026-09-11")
+
+    assert_selector "#diary-modal.is-open"
+    assert_equal "2026-09-07", find("#note_start_date").value
+    assert_equal "2026-09-11", find("#note_end_date").value
+  end
+
+  test "a canceled touch selection leaves the modal closed and does not poison the next touch selection" do
+    visit_as_ayaya_user "/m/notes/diary?quarter=2026-09-01"
+
+    perform_touch_cancel("2026-09-07")
+    assert_no_selector "#diary-modal.is-open"
+
+    perform_touch_drag("2026-09-07", "2026-09-11")
+    assert_selector "#diary-modal.is-open"
+    assert_equal "2026-09-07", find("#note_start_date").value
+    assert_equal "2026-09-11", find("#note_end_date").value
+  end
+
   test "clicking an ISO week number selects its full Monday-to-Sunday range" do
     visit_as_ayaya_user "/m/notes/diary?quarter=2026-09-01"
 
@@ -54,6 +77,22 @@ class DiaryCalendarTest < ApplicationSystemTestCase
 
     assert_equal "Saved entry", find("#note_title").value
     assert_equal "Saved body", page.evaluate_script("document.querySelector('trix-editor').editor.getDocument().toString()").strip
+  end
+
+  test "a stale exact-range response cannot overwrite a newer selection" do
+    visit_as_ayaya_user "/m/notes/diary?quarter=2026-09-01"
+    owner = LocalUser.find_by!(core_user_id: "1")
+    Note.create!(local_user: owner, title: "Stale response", entry_type: :diary,
+                 start_date: "2026-09-07", end_date: "2026-09-07")
+    delay_exact_range_lookup("2026-09-07")
+
+    find('[data-date="2026-09-07"]').click
+    page.execute_script("arguments[0].click()", find('[data-date="2026-09-11"]').native)
+    sleep 0.4
+
+    assert_equal "2026-09-11", find("#note_start_date").value
+    assert_equal "2026-09-11", find("#note_end_date").value
+    assert_equal "", find("#note_title").value
   end
 
   test "opening a range restores its unexpired matching draft" do
@@ -143,5 +182,38 @@ class DiaryCalendarTest < ApplicationSystemTestCase
 
       sleep 0.05
     end
+  end
+
+  def perform_touch_drag(start_date, end_date)
+    actions = page.driver.browser.action
+    touch = actions.add_pointer_input(:touch, "diary-touch-drag")
+    touch.create_pointer_move(origin: find("[data-date='#{start_date}']").native)
+    touch.create_pointer_down(:touch)
+    touch.create_pointer_move(duration: 0.2, origin: find("[data-date='#{end_date}']").native)
+    touch.create_pointer_up(:touch)
+    actions.perform
+  end
+
+  def perform_touch_cancel(date)
+    actions = page.driver.browser.action
+    touch = actions.add_pointer_input(:touch, "diary-touch-cancel")
+    touch.create_pointer_move(origin: find("[data-date='#{date}']").native)
+    touch.create_pointer_down(:touch)
+    touch.create_pointer_cancel
+    actions.perform
+  end
+
+  def delay_exact_range_lookup(start_date)
+    page.execute_script(<<~JS, start_date)
+      const originalFetch = window.fetch
+      window.fetch = (input, options) => {
+        const url = new URL(input, window.location.origin)
+        const response = originalFetch(input, options)
+        if (url.pathname === "/m/notes/diary/entry" && url.searchParams.get("start_date") === arguments[0]) {
+          return new Promise((resolve, reject) => window.setTimeout(() => response.then(resolve, reject), 250))
+        }
+        return response
+      }
+    JS
   end
 end

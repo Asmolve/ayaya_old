@@ -100,7 +100,7 @@ trix-editor:focus-visible {
 .diary-week-label,
 .diary-week-number { color: #627080; }
 
-.diary-day { min-width: 2rem; min-height: 2rem; border-radius: 50%; }
+.diary-day { min-width: 2rem; min-height: 2rem; border-radius: 50%; touch-action: none; }
 .diary-day:hover { background: #e8f0fc; }
 .diary-day.is-selecting { background: #cbdcf6; }
 .diary-weekend { color: #b42318; }

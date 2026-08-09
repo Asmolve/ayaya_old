@@ -23,6 +23,7 @@ class DiaryCalendar {
     this.dragEnd = null
     this.skipNextDayClick = false
     this.draftTimer = null
+    this.selectionVersion = 0
 
     this.connect()
   }
@@ -38,7 +39,10 @@ class DiaryCalendar {
     })
     this.calendar.addEventListener("pointermove", (event) => this.extendDrag(event))
     this.calendar.addEventListener("pointerup", (event) => this.finishDrag(event))
-    this.calendar.addEventListener("pointercancel", () => this.cancelDrag())
+    this.calendar.addEventListener("pointercancel", () => {
+      this.cancelDrag()
+      this.skipNextDayClick = false
+    })
 
     this.modal.querySelector("[data-diary-close]").addEventListener("click", () => this.close())
     this.modal.addEventListener("click", (event) => {
@@ -112,14 +116,19 @@ class DiaryCalendar {
 
   async openRange(start, end) {
     ;[ start, end ] = normalizeRange(start, end)
+    const selectionVersion = ++this.selectionVersion
     this.resetForm(start, end)
     this.show()
 
     try {
       const entry = await this.fetchEntry(start, end)
+      if (selectionVersion !== this.selectionVersion) return
+
       if (entry) this.populateForm(entry)
       this.restoreDraft(start, end)
     } catch (_) {
+      if (selectionVersion !== this.selectionVersion) return
+
       this.showErrors([ "Unable to load this diary entry." ])
     }
   }

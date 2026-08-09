@@ -75,7 +75,7 @@ class DiaryCalendarTest < ApplicationSystemTestCase
     visit "/m/notes/diary?quarter=2026-09-01"
     find('[data-date="2026-09-07"]').click
 
-    assert_equal "Saved entry", find("#note_title").value
+    assert_input_value "#note_title", "Saved entry"
     assert_equal "Saved body", page.evaluate_script("document.querySelector('trix-editor').editor.getDocument().toString()").strip
   end
 
@@ -114,7 +114,7 @@ class DiaryCalendarTest < ApplicationSystemTestCase
     find('[data-date="2026-09-07"]').click
 
     assert_equal "", find("#note_title").value
-    assert_nil page.evaluate_script("localStorage.getItem(arguments[0])", key)
+    assert_draft_removed(key)
   end
 
   test "drafts are stored after editing" do
@@ -157,6 +157,26 @@ class DiaryCalendarTest < ApplicationSystemTestCase
     assert_nil Note.find_by(id: note.id)
   end
 
+  test "saving an existing diary entry sends the CSRF token with its FormData request" do
+    visit_as_ayaya_user "/m/notes/diary?quarter=2026-09-01"
+    owner = LocalUser.find_by!(core_user_id: "1")
+    note = Note.create!(local_user: owner, title: "Before update", entry_type: :diary,
+                        start_date: "2026-09-07", end_date: "2026-09-07")
+
+    visit "/m/notes/diary?quarter=2026-09-01"
+    csrf_token = "csrf-regression-token"
+    page.execute_script("const tag = document.createElement('meta'); tag.name = 'csrf-token'; tag.content = arguments[0]; document.head.append(tag)", csrf_token)
+    capture_save_csrf_header
+    find('[data-date="2026-09-07"]').click
+    fill_in "Title", with: "After update"
+
+    click_on "Save"
+
+    assert_no_selector "#diary-modal.is-open"
+    assert_equal "After update", note.reload.title
+    assert_equal csrf_token, page.evaluate_script("localStorage.getItem('diary-save-csrf-header')")
+  end
+
   private
 
   def draft_key(start_date, end_date)
@@ -184,6 +204,28 @@ class DiaryCalendarTest < ApplicationSystemTestCase
     end
   end
 
+  def assert_draft_removed(key)
+    deadline = Process.clock_gettime(Process::CLOCK_MONOTONIC) + Capybara.default_max_wait_time
+    loop do
+      return if page.evaluate_script("localStorage.getItem(arguments[0])", key).nil?
+
+      raise "Timed out waiting for an expired diary draft to be removed" if Process.clock_gettime(Process::CLOCK_MONOTONIC) >= deadline
+
+      sleep 0.05
+    end
+  end
+
+  def assert_input_value(selector, expected)
+    deadline = Process.clock_gettime(Process::CLOCK_MONOTONIC) + Capybara.default_max_wait_time
+    loop do
+      return if find(selector).value == expected
+
+      raise "Timed out waiting for #{selector} to equal #{expected.inspect}" if Process.clock_gettime(Process::CLOCK_MONOTONIC) >= deadline
+
+      sleep 0.05
+    end
+  end
+
   def perform_touch_drag(start_date, end_date)
     actions = page.driver.browser.action
     touch = actions.add_pointer_input(:touch, "diary-touch-drag")
@@ -192,6 +234,19 @@ class DiaryCalendarTest < ApplicationSystemTestCase
     touch.create_pointer_move(duration: 0.2, origin: find("[data-date='#{end_date}']").native)
     touch.create_pointer_up(:touch)
     actions.perform
+  end
+
+  def capture_save_csrf_header
+    page.execute_script(<<~JS)
+      const originalFetch = window.fetch
+      window.fetch = (input, options = {}) => {
+        const url = new URL(input, window.location.origin)
+        if (url.pathname.startsWith("/m/notes/notes/") && options.method === "POST") {
+          localStorage.setItem("diary-save-csrf-header", new Headers(options.headers || {}).get("X-CSRF-Token") || "")
+        }
+        return originalFetch(input, options)
+      }
+    JS
   end
 
   def perform_touch_cancel(date)

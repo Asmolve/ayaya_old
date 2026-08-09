@@ -231,7 +231,11 @@ class DiaryCalendar {
     this.clearErrors()
 
     try {
-      const response = await fetch(this.form.action, { method: "POST", body: new FormData(this.form) })
+      const response = await fetch(this.form.action, {
+        method: "POST",
+        headers: this.csrfHeaders(),
+        body: new FormData(this.form)
+      })
       if (!response.ok) return this.showResponseErrors(response)
 
       this.clearCurrentDraft()

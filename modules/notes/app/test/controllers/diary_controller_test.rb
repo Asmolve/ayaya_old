@@ -34,6 +34,39 @@ class DiaryControllerTest < ActionDispatch::IntegrationTest
     assert_includes response.body, "trix-editor"
   end
 
+  test "marks each visible day intersecting the current user's diary entries" do
+    owner = LocalUser.create!(core_user_id: "1")
+    Note.create!(local_user: owner, title: "Quarter boundary", entry_type: :diary,
+                 start_date: Date.new(2026, 6, 30), end_date: Date.new(2026, 7, 2))
+    Note.create!(local_user: owner, title: "September", entry_type: :diary,
+                 start_date: Date.new(2026, 9, 29), end_date: Date.new(2026, 10, 2))
+
+    get "/m/notes/diary?quarter=2026-09-01", headers: ayaya_headers
+
+    assert_response :success
+    assert_select '[data-date="2026-07-01"] .diary-entry-indicator', count: 1
+    assert_select '[data-date="2026-07-02"] .diary-entry-indicator', count: 1
+    assert_select '[data-date="2026-09-29"] .diary-entry-indicator', count: 1
+    assert_select '[data-date="2026-09-30"] .diary-entry-indicator', count: 1
+    assert_select '[data-date="2026-07-03"] .diary-entry-indicator', count: 0
+  end
+
+  test "does not mark another user's diary entries" do
+    owner = LocalUser.create!(core_user_id: "1")
+    other = LocalUser.create!(core_user_id: "2")
+    Note.create!(local_user: owner, title: "Visible", entry_type: :diary,
+                 start_date: Date.new(2026, 9, 7), end_date: Date.new(2026, 9, 7))
+    Note.create!(local_user: other, title: "Private", entry_type: :diary,
+                 start_date: Date.new(2026, 9, 7), end_date: Date.new(2026, 9, 9))
+
+    get "/m/notes/diary?quarter=2026-09-01", headers: ayaya_headers
+
+    assert_response :success
+    assert_select '[data-date="2026-09-07"] .diary-entry-indicator', count: 1
+    assert_select '[data-date="2026-09-08"] .diary-entry-indicator', count: 0
+    assert_select '[data-date="2026-09-09"] .diary-entry-indicator', count: 0
+  end
+
   test "loads Action Text with the resolved Diary calendar module" do
     application_entrypoint = Rails.root.join("app/javascript/application.js").read
     importmap = Rails.root.join("config/importmap.rb").read

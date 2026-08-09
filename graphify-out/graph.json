@@ -2427,8 +2427,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "modules_notes_app_app_controllers_diary_controller",
-      "community": 104,
-      "community_name": "NotesController",
+      "community": 110,
+      "community_name": "Note",
       "norm_label": "diary_controller.rb"
     },
     {
@@ -2438,8 +2438,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "modules_notes_app_app_controllers_diary_controller_diarycontroller",
-      "community": 104,
-      "community_name": "NotesController",
+      "community": 110,
+      "community_name": "Note",
       "norm_label": "diarycontroller"
     },
     {
@@ -2449,8 +2449,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "modules_notes_app_app_controllers_diary_controller_rb_applicationcontroller",
-      "community": 104,
-      "community_name": "NotesController",
+      "community": 110,
+      "community_name": "Note",
       "norm_label": "applicationcontroller"
     },
     {
@@ -2460,41 +2460,41 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "modules_notes_app_app_controllers_diary_controller_diarycontroller_index",
-      "community": 104,
-      "community_name": "NotesController",
+      "community": 110,
+      "community_name": "Note",
       "norm_label": ".index()"
     },
     {
       "label": ".entry()",
       "file_type": "code",
       "source_file": "modules/notes/app/app/controllers/diary_controller.rb",
-      "source_location": "L12",
+      "source_location": "L15",
       "_origin": "ast",
       "id": "modules_notes_app_app_controllers_diary_controller_diarycontroller_entry",
-      "community": 104,
-      "community_name": "NotesController",
+      "community": 110,
+      "community_name": "Note",
       "norm_label": ".entry()"
     },
     {
       "label": ".parse_iso_date()",
       "file_type": "code",
       "source_file": "modules/notes/app/app/controllers/diary_controller.rb",
-      "source_location": "L27",
+      "source_location": "L30",
       "_origin": "ast",
       "id": "modules_notes_app_app_controllers_diary_controller_diarycontroller_parse_iso_date",
-      "community": 104,
-      "community_name": "NotesController",
+      "community": 110,
+      "community_name": "Note",
       "norm_label": ".parse_iso_date()"
     },
     {
       "label": ".parse_required_iso_date()",
       "file_type": "code",
       "source_file": "modules/notes/app/app/controllers/diary_controller.rb",
-      "source_location": "L35",
+      "source_location": "L38",
       "_origin": "ast",
       "id": "modules_notes_app_app_controllers_diary_controller_diarycontroller_parse_required_iso_date",
-      "community": 104,
-      "community_name": "NotesController",
+      "community": 110,
+      "community_name": "Note",
       "norm_label": ".parse_required_iso_date()"
     },
     {
@@ -2666,7 +2666,7 @@
       "label": ".edit()",
       "file_type": "code",
       "source_file": "modules/notes/app/app/controllers/notes_controller.rb",
-      "source_location": "L27",
+      "source_location": "L29",
       "_origin": "ast",
       "id": "modules_notes_app_app_controllers_notes_controller_notescontroller_edit",
       "community": 104,
@@ -2677,7 +2677,7 @@
       "label": ".update()",
       "file_type": "code",
       "source_file": "modules/notes/app/app/controllers/notes_controller.rb",
-      "source_location": "L30",
+      "source_location": "L32",
       "_origin": "ast",
       "id": "modules_notes_app_app_controllers_notes_controller_notescontroller_update",
       "community": 104,
@@ -2688,7 +2688,7 @@
       "label": ".destroy()",
       "file_type": "code",
       "source_file": "modules/notes/app/app/controllers/notes_controller.rb",
-      "source_location": "L38",
+      "source_location": "L42",
       "_origin": "ast",
       "id": "modules_notes_app_app_controllers_notes_controller_notescontroller_destroy",
       "community": 104,
@@ -2699,7 +2699,7 @@
       "label": ".set_note()",
       "file_type": "code",
       "source_file": "modules/notes/app/app/controllers/notes_controller.rb",
-      "source_location": "L45",
+      "source_location": "L49",
       "_origin": "ast",
       "id": "modules_notes_app_app_controllers_notes_controller_notescontroller_set_note",
       "community": 104,
@@ -2710,12 +2710,23 @@
       "label": ".note_params()",
       "file_type": "code",
       "source_file": "modules/notes/app/app/controllers/notes_controller.rb",
-      "source_location": "L51",
+      "source_location": "L55",
       "_origin": "ast",
       "id": "modules_notes_app_app_controllers_notes_controller_notescontroller_note_params",
       "community": 104,
       "community_name": "NotesController",
       "norm_label": ".note_params()"
+    },
+    {
+      "label": ".render_diary_range_conflict()",
+      "file_type": "code",
+      "source_file": "modules/notes/app/app/controllers/notes_controller.rb",
+      "source_location": "L67",
+      "_origin": "ast",
+      "id": "modules_notes_app_app_controllers_notes_controller_notescontroller_render_diary_range_conflict",
+      "community": 104,
+      "community_name": "NotesController",
+      "norm_label": ".render_diary_range_conflict()"
     },
     {
       "label": "application_helper.rb",
@@ -2746,8 +2757,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "modules_notes_app_app_helpers_diary_helper",
-      "community": 104,
-      "community_name": "NotesController",
+      "community": 110,
+      "community_name": "Note",
       "norm_label": "diary_helper.rb"
     },
     {
@@ -2757,8 +2768,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "modules_notes_app_app_helpers_diary_helper_diaryhelper",
-      "community": 104,
-      "community_name": "NotesController",
+      "community": 110,
+      "community_name": "Note",
       "norm_label": "diaryhelper"
     },
     {
@@ -2768,8 +2779,8 @@
       "source_location": "L2",
       "_origin": "ast",
       "id": "modules_notes_app_app_helpers_diary_helper_diaryhelper_quarter_start",
-      "community": 104,
-      "community_name": "NotesController",
+      "community": 110,
+      "community_name": "Note",
       "norm_label": ".quarter_start()"
     },
     {
@@ -2779,8 +2790,8 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "modules_notes_app_app_helpers_diary_helper_diaryhelper_range_for_iso_week",
-      "community": 104,
-      "community_name": "NotesController",
+      "community": 110,
+      "community_name": "Note",
       "norm_label": ".range_for_iso_week()"
     },
     {
@@ -2790,8 +2801,8 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "modules_notes_app_app_helpers_diary_helper_diaryhelper_range_for_month",
-      "community": 104,
-      "community_name": "NotesController",
+      "community": 110,
+      "community_name": "Note",
       "norm_label": ".range_for_month()"
     },
     {
@@ -3318,8 +3329,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "modules_notes_app_app_models_note",
-      "community": 110,
-      "community_name": "Note",
+      "community": 12,
+      "community_name": "RefreshStatus",
       "norm_label": "note.rb"
     },
     {
@@ -3329,8 +3340,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "modules_notes_app_app_models_note_note",
-      "community": 110,
-      "community_name": "Note",
+      "community": 12,
+      "community_name": "RefreshStatus",
       "norm_label": "note"
     },
     {
@@ -3340,8 +3351,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "modules_notes_app_app_models_note_rb_applicationrecord",
-      "community": 110,
-      "community_name": "Note",
+      "community": 12,
+      "community_name": "RefreshStatus",
       "norm_label": "applicationrecord"
     },
     {
@@ -3351,8 +3362,8 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "modules_notes_app_app_models_note_note_diary_dates_are_in_order",
-      "community": 110,
-      "community_name": "Note",
+      "community": 12,
+      "community_name": "RefreshStatus",
       "norm_label": ".diary_dates_are_in_order()"
     },
     {
@@ -4005,7 +4016,7 @@
       "label": ".request_with_query_parameters()",
       "file_type": "code",
       "source_file": "modules/notes/app/test/controllers/diary_controller_test.rb",
-      "source_location": "L106",
+      "source_location": "L139",
       "_origin": "ast",
       "id": "modules_notes_app_test_controllers_diary_controller_test_diarycontrollertest_request_with_query_parameters",
       "community": 126,
@@ -4090,14 +4101,25 @@
       "norm_label": ".ayaya_headers()"
     },
     {
+      "label": ".with_diary_unique_index_conflict()",
+      "file_type": "code",
+      "source_file": "modules/notes/app/test/controllers/notes_controller_test.rb",
+      "source_location": "L158",
+      "_origin": "ast",
+      "id": "modules_notes_app_test_controllers_notes_controller_test_notescontrollertest_with_diary_unique_index_conflict",
+      "community": 12,
+      "community_name": "RefreshStatus",
+      "norm_label": ".with_diary_unique_index_conflict()"
+    },
+    {
       "label": "diary_helper_test.rb",
       "file_type": "code",
       "source_file": "modules/notes/app/test/helpers/diary_helper_test.rb",
       "source_location": "L1",
       "_origin": "ast",
       "id": "modules_notes_app_test_helpers_diary_helper_test",
-      "community": 104,
-      "community_name": "NotesController",
+      "community": 110,
+      "community_name": "Note",
       "norm_label": "diary_helper_test.rb"
     },
     {
@@ -4107,8 +4129,8 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "modules_notes_app_test_helpers_diary_helper_test_diaryhelpertest",
-      "community": 104,
-      "community_name": "NotesController",
+      "community": 110,
+      "community_name": "Note",
       "norm_label": "diaryhelpertest"
     },
     {
@@ -4118,8 +4140,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "modules_notes_app_test_helpers_diary_helper_test_rb_testcase",
-      "community": 104,
-      "community_name": "NotesController",
+      "community": 110,
+      "community_name": "Note",
       "norm_label": "testcase"
     },
     {
@@ -10655,7 +10677,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "modules/notes/app/app/controllers/diary_controller.rb",
-      "source_location": "L12",
+      "source_location": "L15",
       "weight": 1.0,
       "_origin": "ast",
       "source": "modules_notes_app_app_controllers_diary_controller_diarycontroller",
@@ -10677,7 +10699,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "modules/notes/app/app/controllers/diary_controller.rb",
-      "source_location": "L27",
+      "source_location": "L30",
       "weight": 1.0,
       "_origin": "ast",
       "source": "modules_notes_app_app_controllers_diary_controller_diarycontroller",
@@ -10688,7 +10710,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "modules/notes/app/app/controllers/diary_controller.rb",
-      "source_location": "L35",
+      "source_location": "L38",
       "weight": 1.0,
       "_origin": "ast",
       "source": "modules_notes_app_app_controllers_diary_controller_diarycontroller",
@@ -10747,7 +10769,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "modules/notes/app/app/controllers/diary_controller.rb",
-      "source_location": "L14",
+      "source_location": "L17",
       "weight": 1.0,
       "_origin": "ast",
       "source": "modules_notes_app_app_controllers_diary_controller_diarycontroller_entry",
@@ -10759,7 +10781,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "modules/notes/app/app/controllers/diary_controller.rb",
-      "source_location": "L39",
+      "source_location": "L42",
       "weight": 1.0,
       "_origin": "ast",
       "source": "modules_notes_app_app_controllers_diary_controller_diarycontroller_parse_required_iso_date",
@@ -10881,7 +10903,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "modules/notes/app/app/controllers/notes_controller.rb",
-      "source_location": "L38",
+      "source_location": "L42",
       "weight": 1.0,
       "_origin": "ast",
       "source": "modules_notes_app_app_controllers_notes_controller_notescontroller",
@@ -10892,7 +10914,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "modules/notes/app/app/controllers/notes_controller.rb",
-      "source_location": "L27",
+      "source_location": "L29",
       "weight": 1.0,
       "_origin": "ast",
       "source": "modules_notes_app_app_controllers_notes_controller_notescontroller",
@@ -10925,7 +10947,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "modules/notes/app/app/controllers/notes_controller.rb",
-      "source_location": "L51",
+      "source_location": "L55",
       "weight": 1.0,
       "_origin": "ast",
       "source": "modules_notes_app_app_controllers_notes_controller_notescontroller",
@@ -10936,7 +10958,18 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "modules/notes/app/app/controllers/notes_controller.rb",
-      "source_location": "L45",
+      "source_location": "L67",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "modules_notes_app_app_controllers_notes_controller_notescontroller",
+      "target": "modules_notes_app_app_controllers_notes_controller_notescontroller_render_diary_range_conflict",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "modules/notes/app/app/controllers/notes_controller.rb",
+      "source_location": "L49",
       "weight": 1.0,
       "_origin": "ast",
       "source": "modules_notes_app_app_controllers_notes_controller_notescontroller",
@@ -10958,7 +10991,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "modules/notes/app/app/controllers/notes_controller.rb",
-      "source_location": "L30",
+      "source_location": "L32",
       "weight": 1.0,
       "_origin": "ast",
       "source": "modules_notes_app_app_controllers_notes_controller_notescontroller",
@@ -10974,6 +11007,30 @@
       "_origin": "ast",
       "source": "modules_notes_app_app_controllers_notes_controller_notescontroller",
       "target": "modules_notes_app_app_controllers_notes_controller_rb_applicationcontroller",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "modules/notes/app/app/controllers/notes_controller.rb",
+      "source_location": "L26",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "modules_notes_app_app_controllers_notes_controller_notescontroller_create",
+      "target": "modules_notes_app_app_controllers_notes_controller_notescontroller_render_diary_range_conflict",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "modules/notes/app/app/controllers/notes_controller.rb",
+      "source_location": "L39",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "modules_notes_app_app_controllers_notes_controller_notescontroller_update",
+      "target": "modules_notes_app_app_controllers_notes_controller_notescontroller_render_diary_range_conflict",
       "confidence_score": 1.0
     },
     {
@@ -12141,6 +12198,18 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "modules/notes/app/test/controllers/notes_controller_test.rb",
+      "source_location": "L159",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "modules_notes_app_test_controllers_notes_controller_test_notescontrollertest_with_diary_unique_index_conflict",
+      "target": "modules_notes_app_app_models_note_note"
+    },
+    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "modules/notes/app/bin/docker-entrypoint",
@@ -12408,7 +12477,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "modules/notes/app/test/controllers/diary_controller_test.rb",
-      "source_location": "L106",
+      "source_location": "L139",
       "weight": 1.0,
       "_origin": "ast",
       "source": "modules_notes_app_test_controllers_diary_controller_test_diarycontrollertest",
@@ -12468,6 +12537,17 @@
       "_origin": "ast",
       "source": "modules_notes_app_test_controllers_notes_controller_test_notescontrollertest",
       "target": "modules_notes_app_test_controllers_notes_controller_test_notescontrollertest_ayaya_headers",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "modules/notes/app/test/controllers/notes_controller_test.rb",
+      "source_location": "L158",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "modules_notes_app_test_controllers_notes_controller_test_notescontrollertest",
+      "target": "modules_notes_app_test_controllers_notes_controller_test_notescontrollertest_with_diary_unique_index_conflict",
       "confidence_score": 1.0
     },
     {
@@ -15498,5 +15578,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "8e9a9b363a182aa0394bd677b3232239711ec37b"
+  "built_at_commit": "ab5cd2d7adda4cdd088a70692c58f5a6a686d396"
 }

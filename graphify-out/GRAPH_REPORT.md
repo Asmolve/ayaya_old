@@ -1,16 +1,16 @@
 # Graph Report - ayaya  (2026-08-09)
 
 ## Corpus Check
-- 155 files · ~80,433 words
+- 155 files · ~54,974 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 680 nodes · 710 edges · 130 communities (78 shown, 52 thin omitted)
+- 682 nodes · 715 edges · 130 communities (80 shown, 50 thin omitted)
 - Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 19 edges (avg confidence: 0.78)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `8e9a9b36`
+- Built from commit: `ab5cd2d7`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -98,8 +98,8 @@
 5. `Admin UI/UX Improvements Design` - 19 edges
 6. `create_app()` - 18 edges
 7. `RegisteredModule` - 17 edges
-8. `File Structure` - 13 edges
-9. `NotesController` - 12 edges
+8. `NotesController` - 13 edges
+9. `File Structure` - 13 edges
 10. `DiaryCalendarTest` - 12 edges
 
 ## Surprising Connections (you probably didn't know these)
@@ -117,7 +117,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (130 total, 52 thin omitted)
+## Communities (130 total, 50 thin omitted)
 
 ### Community 0 - "Ayaya Module Contract v1"
 Cohesion: 0.06
@@ -159,6 +159,10 @@ Nodes (4): DiaryCalendar, draftKey(), expiresAt(), normalizeRange()
 Cohesion: 0.18
 Nodes (10): Ayaya Project Overview, Core Responsibilities, Core Technology Choices, Explicitly Out Of Scope For Version 1, First Reference Module, Module Responsibilities, Module Technology Choices, Product Shape (+2 more)
 
+### Community 12 - "RefreshStatus"
+Cohesion: 0.22
+Nodes (4): Note, ApplicationRecord, NotesControllerTest, IntegrationTest
+
 ### Community 13 - "Ayaya Core Foundation Notes"
 Cohesion: 0.11
 Nodes (15): ActiveAdmin, Ayaya Core Foundation Notes, Docker Development Runtime, Foundation Verification, Module Registry, NGINX Static Routing, Bundle Runtime, Development (+7 more)
@@ -184,8 +188,12 @@ Cohesion: 0.08
 Nodes (25): Acceptance Criteria, Admin Actions, Admin UI/UX Improvements Design, Current Problems, Dashboard Requirements, Data Flow, Disable Module, Enable Module (+17 more)
 
 ### Community 104 - "NotesController"
-Cohesion: 0.07
-Nodes (10): AyayaIdentity, DiaryController, ApplicationController, NotesController, ApplicationController, DiaryHelper, LocalUser, ApplicationRecord (+2 more)
+Cohesion: 0.12
+Nodes (5): AyayaIdentity, NotesController, ApplicationController, LocalUser, ApplicationRecord
+
+### Community 110 - "Note"
+Cohesion: 0.17
+Nodes (5): DiaryController, ApplicationController, DiaryHelper, DiaryHelperTest, TestCase
 
 ### Community 113 - "StatusController"
 Cohesion: 0.29
@@ -210,15 +218,17 @@ Nodes (10): Calendar and Modal UX, Data Model, Diary Mode Design, Draft Cache, E
 ## Knowledge Gaps
 - **206 isolated node(s):** `Internal`, `ApplicationHelper`, `AdapterProtocol`, `AdapterProtocol`, `Result` (+201 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **52 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **50 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `RegisteredModule` connect `Ayaya Module Contract v1` to `RegisteredModule`?**
-  _High betweenness centrality (0.018) - this node is a cross-community bridge._
+  _High betweenness centrality (0.019) - this node is a cross-community bridge._
 - **Why does `NotesController` connect `NotesController` to `RegisteredModule`?**
   _High betweenness centrality (0.016) - this node is a cross-community bridge._
+- **Why does `AyayaIdentity` connect `NotesController` to `Note`?**
+  _High betweenness centrality (0.011) - this node is a cross-community bridge._
 - **What connects `Internal`, `ApplicationHelper`, `AdapterProtocol` to the rest of the system?**
   _206 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Ayaya Module Contract v1` be split into smaller, more focused modules?**
@@ -227,5 +237,3 @@ _Questions this graph is uniquely positioned to answer:_
   _Cohesion score 0.07407407407407407 - nodes in this community are weakly interconnected._
 - **Should `Client` be split into smaller, more focused modules?**
   _Cohesion score 0.08 - nodes in this community are weakly interconnected._
-- **Should `Ayaya Architecture Constitution` be split into smaller, more focused modules?**
-  _Cohesion score 0.06451612903225806 - nodes in this community are weakly interconnected._

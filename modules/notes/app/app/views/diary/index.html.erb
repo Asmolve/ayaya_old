@@ -48,7 +48,12 @@
                 <% (week_start..(week_start + 6.days)).each do |date| %>
                   <td class="<%= "diary-weekend" if date.saturday? || date.sunday? %>">
                     <% if date.month == month.month %>
-                      <button type="button" class="diary-day" data-date="<%= date %>"><%= date.day %></button>
+                      <button type="button" class="diary-day" data-date="<%= date %>">
+                        <%= date.day %>
+                        <% if @visible_diary_entries.any? { |entry| entry.start_date <= date && entry.end_date >= date } %>
+                          <span class="diary-entry-indicator" aria-hidden="true">•</span>
+                        <% end %>
+                      </button>
                     <% end %>
                   </td>
                 <% end %>

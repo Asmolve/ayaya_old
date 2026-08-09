@@ -5,6 +5,9 @@ class DiaryController < ApplicationController
   def index
     @quarter_start = quarter_start(parse_iso_date(params[:quarter]) || Date.current)
     @months = 3.times.map { |offset| @quarter_start + offset.months }
+    @visible_diary_entries = current_local_user.notes.diary.where(
+      "start_date <= ? AND end_date >= ?", @quarter_start.advance(months: 3) - 1.day, @quarter_start
+    )
   rescue Date::Error
     render plain: "quarter must be an ISO date", status: :unprocessable_entity
   end

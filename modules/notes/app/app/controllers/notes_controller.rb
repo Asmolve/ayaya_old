@@ -49,6 +49,14 @@ class NotesController < ApplicationController
   end
 
   def note_params
-    params.require(:note).permit(:title, :body)
+    permitted = %i[title body]
+
+    if action_name == "create" && params.dig(:note, :entry_type) == "diary"
+      permitted += %i[entry_type start_date end_date diary_content]
+    elsif @note&.diary?
+      permitted += %i[start_date end_date diary_content]
+    end
+
+    params.require(:note).permit(*permitted)
   end
 end

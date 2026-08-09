@@ -42,6 +42,21 @@ class NotesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to "/m/notes/notes/#{note.id}"
   end
 
+  test "creates a diary entry with its inclusive range and rich content" do
+    assert_difference("Note.diary.count", 1) do
+      post "/m/notes/notes", params: { note: {
+        title: "Day", entry_type: "diary", start_date: "2026-09-07", end_date: "2026-09-07",
+        diary_content: "<div>Remember this</div>"
+      } }, headers: ayaya_headers(core_user_id: "1")
+    end
+
+    entry = Note.last
+    assert_predicate entry, :diary?
+    assert_equal Date.new(2026, 9, 7), entry.start_date
+    assert_equal Date.new(2026, 9, 7), entry.end_date
+    assert_includes entry.diary_content.to_s, "Remember this"
+  end
+
   test "does not show another user's note" do
     other = LocalUser.create!(core_user_id: "2")
     note = Note.create!(local_user: other, title: "Other", body: "Hidden")
@@ -59,6 +74,35 @@ class NotesControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to "/m/notes/notes/#{note.id}"
     assert_equal "New", note.reload.title
+  end
+
+  test "updates a diary entry's inclusive dates" do
+    owner = LocalUser.create!(core_user_id: "1")
+    entry = Note.create!(local_user: owner, title: "Week", entry_type: :diary,
+                         start_date: Date.new(2026, 9, 7), end_date: Date.new(2026, 9, 7))
+
+    patch "/m/notes/notes/#{entry.id}", params: { note: {
+      title: "Longer week", start_date: "2026-09-07", end_date: "2026-09-13", diary_content: "Updated"
+    } }, headers: ayaya_headers(core_user_id: "1")
+
+    assert_redirected_to "/m/notes/notes/#{entry.id}"
+    assert_equal [ Date.new(2026, 9, 7), Date.new(2026, 9, 13) ], entry.reload.attributes.values_at("start_date", "end_date")
+    assert_includes entry.diary_content.to_s, "Updated"
+  end
+
+  test "does not allow a regular note to become diary through an update" do
+    owner = LocalUser.create!(core_user_id: "1")
+    note = Note.create!(local_user: owner, title: "Regular", body: "Body")
+
+    patch "/m/notes/notes/#{note.id}", params: { note: {
+      entry_type: "diary", start_date: "2026-09-07", end_date: "2026-09-07", diary_content: "Forged"
+    } }, headers: ayaya_headers(core_user_id: "1")
+
+    assert_redirected_to "/m/notes/notes/#{note.id}"
+    assert_predicate note.reload, :regular?
+    assert_nil note.start_date
+    assert_nil note.end_date
+    assert_empty note.diary_content.to_s
   end
 
   test "does not delete another user's note" do

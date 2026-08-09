@@ -32,6 +32,16 @@ class NotesControllerTest < ActionDispatch::IntegrationTest
     assert_not_includes response.body, "Other"
   end
 
+  test "labels diary records with their inclusive dates in Notes" do
+    user = LocalUser.create!(core_user_id: "1")
+    Note.create!(local_user: user, title: "Trip", entry_type: :diary,
+                 start_date: Date.new(2026, 9, 7), end_date: Date.new(2026, 9, 11))
+
+    get "/m/notes", headers: ayaya_headers
+
+    assert_includes response.body, "Trip · 07.09.2026 — 11.09.2026"
+  end
+
   test "creates note owned by current local user" do
     assert_difference("Note.count", 1) do
       post "/m/notes/notes", params: { note: { title: "New note", body: "Body" } }, headers: ayaya_headers(core_user_id: "1")

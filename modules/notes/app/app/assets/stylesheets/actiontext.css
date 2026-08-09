@@ -1,0 +1,17 @@
+trix-editor {
+  min-height: 12rem;
+  padding: 0.75rem;
+  border: 1px solid #c9d0d7;
+  border-radius: 0.375rem;
+  background: #fff;
+}
+
+trix-toolbar .trix-button-group {
+  margin-bottom: 0.5rem;
+  border-color: #c9d0d7;
+}
+
+trix-editor:focus {
+  outline: 3px solid #275dad;
+  outline-offset: 2px;
+}

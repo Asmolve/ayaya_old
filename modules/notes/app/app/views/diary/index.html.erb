@@ -1,0 +1,95 @@
+<% russian_month_names = %w[Январь Февраль Март Апрель Май Июнь Июль Август Сентябрь Октябрь Ноябрь Декабрь] %>
+<% weekday_names = %w[Пн Вт Ср Чт Пт Сб Вс] %>
+
+<main class="notes-page">
+  <nav class="notes-mode-nav" aria-label="Notes mode">
+    <%= link_to "Notes", notes_root_path %>
+    <%= link_to "Diary", diary_path, aria: { current: "page" } %>
+  </nav>
+
+  <header class="diary-header">
+    <div>
+      <h1>Diary</h1>
+      <p><%= @quarter_start.year %></p>
+    </div>
+    <nav class="diary-quarter-nav" aria-label="Diary quarter">
+      <%= link_to "Previous quarter", diary_path(quarter: @quarter_start.advance(months: -3)), class: "diary-quarter-link" %>
+      <%= link_to "Next quarter", diary_path(quarter: @quarter_start.advance(months: 3)), class: "diary-quarter-link" %>
+    </nav>
+  </header>
+
+  <section class="diary-calendar" data-diary-calendar data-entry-lookup-url="<%= diary_entry_path %>"
+    data-local-user-id="<%= current_local_user.id %>">
+    <% @months.each do |month| %>
+      <% first_week = month.beginning_of_month.beginning_of_week(:monday) %>
+      <% last_week = month.end_of_month.end_of_week(:monday) %>
+      <article class="diary-month" aria-label="<%= russian_month_names[month.month - 1] %> <%= month.year %>">
+        <button type="button" class="diary-month-name"
+          data-range-start="<%= month.beginning_of_month %>"
+          data-range-end="<%= month.end_of_month %>"><%= russian_month_names[month.month - 1] %></button>
+
+        <table class="diary-month-grid">
+          <thead>
+            <tr>
+              <th scope="col" class="diary-week-label">Week</th>
+              <% weekday_names.each_with_index do |name, index| %>
+                <th scope="col" class="<%= "diary-weekend" if index >= 5 %>"><%= name %></th>
+              <% end %>
+            </tr>
+          </thead>
+          <tbody>
+            <% (first_week..last_week).step(7) do |week_start| %>
+              <tr>
+                <th scope="row">
+                  <button type="button" class="diary-week-number"
+                    data-range-start="<%= week_start %>"
+                    data-range-end="<%= week_start + 6.days %>"><%= week_start.cweek %></button>
+                </th>
+                <% (week_start..(week_start + 6.days)).each do |date| %>
+                  <td class="<%= "diary-weekend" if date.saturday? || date.sunday? %>">
+                    <% if date.month == month.month %>
+                      <button type="button" class="diary-day" data-date="<%= date %>"><%= date.day %></button>
+                    <% end %>
+                  </td>
+                <% end %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </article>
+    <% end %>
+  </section>
+</main>
+
+<section id="diary-modal" class="diary-modal" role="dialog" aria-modal="true" aria-labelledby="diary-modal-title" aria-hidden="true">
+  <div class="diary-modal__panel">
+    <header>
+      <h2 id="diary-modal-title">Diary entry</h2>
+      <button type="button" class="diary-modal__close" data-diary-close aria-label="Close diary editor">×</button>
+    </header>
+
+    <%= form_with model: Note.new, id: "diary-form" do |form| %>
+      <%= form.hidden_field :entry_type, value: "diary" %>
+      <p>
+        <%= form.label :start_date %>
+        <%= form.date_field :start_date %>
+      </p>
+      <p>
+        <%= form.label :end_date %>
+        <%= form.date_field :end_date %>
+      </p>
+      <p>
+        <%= form.label :title %>
+        <%= form.text_field :title, required: true %>
+      </p>
+      <p>
+        <%= form.label :diary_content, "Entry" %>
+        <%= form.rich_text_area :diary_content %>
+      </p>
+      <div class="diary-modal__actions">
+        <%= form.submit "Save" %>
+        <button type="button" data-diary-delete>Delete</button>
+      </div>
+    <% end %>
+  </div>
+</section>

@@ -8,3 +8,135 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+:root {
+  color: #1d2935;
+  background: #f5f7f9;
+  font-family: system-ui, sans-serif;
+}
+
+body { margin: 0; }
+
+button,
+input,
+a,
+trix-editor { font: inherit; }
+
+button:focus-visible,
+input:focus-visible,
+a:focus-visible,
+trix-editor:focus-visible {
+  outline: 3px solid #275dad;
+  outline-offset: 2px;
+}
+
+.notes-page {
+  max-width: 84rem;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.notes-mode-nav,
+.diary-header,
+.diary-quarter-nav,
+.diary-modal__actions {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.notes-mode-nav { margin-bottom: 1.5rem; }
+
+.notes-mode-nav a[aria-current="page"] {
+  color: #172b4d;
+  font-weight: 700;
+}
+
+.diary-header {
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.diary-header h1,
+.diary-header p { margin: 0; }
+
+.diary-calendar {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.diary-month {
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid #d8dee5;
+  background: #fff;
+}
+
+.diary-month-name,
+.diary-week-number,
+.diary-day {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.diary-month-name {
+  padding: 0;
+  font-weight: 700;
+}
+
+.diary-month-grid {
+  width: 100%;
+  margin-top: 0.75rem;
+  border-collapse: collapse;
+  table-layout: fixed;
+  text-align: center;
+}
+
+.diary-month-grid th,
+.diary-month-grid td { height: 2rem; }
+
+.diary-week-label,
+.diary-week-number { color: #627080; }
+
+.diary-day { min-width: 2rem; min-height: 2rem; border-radius: 50%; }
+.diary-day:hover { background: #e8f0fc; }
+.diary-weekend { color: #b42318; }
+
+.diary-modal {
+  position: fixed;
+  z-index: 10;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  opacity: 0;
+  pointer-events: none;
+  background: rgb(20 33 45 / 42%);
+  transform: scale(1.02);
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.diary-modal.is-open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+.diary-modal__panel {
+  width: min(100%, 42rem);
+  max-height: calc(100vh - 2rem);
+  overflow: auto;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  background: #fff;
+}
+
+.diary-modal__panel header { display: flex; justify-content: space-between; align-items: center; }
+.diary-modal__close { border: 0; background: transparent; font-size: 1.5rem; cursor: pointer; }
+
+@media (max-width: 48rem) {
+  .diary-header { align-items: flex-start; flex-direction: column; }
+  .diary-calendar { grid-template-columns: 1fr; }
+}

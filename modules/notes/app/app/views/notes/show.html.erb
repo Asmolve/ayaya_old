@@ -4,7 +4,13 @@
     <%= link_to "Edit", edit_note_path(@note) %>
   </header>
 
-  <p><%= simple_format(@note.body) %></p>
+  <div class="note-content">
+    <% if @note.diary? %>
+      <%= @note.diary_content %>
+    <% else %>
+      <%= simple_format(@note.body) %>
+    <% end %>
+  </div>
 
   <%= button_to "Delete", note_path(@note), method: :delete, data: { turbo_confirm: "Delete this note?" } %>
   <%= link_to "Back", notes_root_path %>

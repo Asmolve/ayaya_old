@@ -21,6 +21,19 @@ class DiaryControllerTest < ActionDispatch::IntegrationTest
     assert_includes response.parsed_body.fetch("content"), "Diary body"
   end
 
+  test "renders a three-month calendar and modal hooks" do
+    get "/m/notes/diary?quarter=2026-09-01", headers: ayaya_headers
+
+    assert_response :success
+    %w[Июль Август Сентябрь].each { |name| assert_includes response.body, name }
+    assert_includes response.body, "data-diary-calendar"
+    assert_includes response.body, 'data-entry-lookup-url="/m/notes/diary/entry"'
+    assert_includes response.body, 'data-local-user-id="'
+    assert_includes response.body, 'id="diary-modal"'
+    assert_includes response.body, 'id="diary-form"'
+    assert_includes response.body, "trix-editor"
+  end
+
   test "does not return another user's diary entry" do
     owner = LocalUser.create!(core_user_id: "2")
     Note.create!(local_user: owner, title: "Private", entry_type: :diary,

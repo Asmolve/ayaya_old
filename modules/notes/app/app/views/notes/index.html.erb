@@ -1,4 +1,9 @@
-<main>
+<main class="notes-page">
+  <nav class="notes-mode-nav" aria-label="Notes mode">
+    <%= link_to "Notes", notes_root_path, aria: { current: "page" } %>
+    <%= link_to "Diary", diary_path %>
+  </nav>
+
   <header>
     <h1>Notes</h1>
     <%= link_to "New note", new_note_path %>
@@ -7,7 +12,11 @@
   <% if @notes.any? %>
     <ul>
       <% @notes.each do |note| %>
-        <li><%= link_to note.title, note_path(note) %></li>
+        <li>
+          <%= link_to note_path(note) do %>
+            <%= note.title %><%= " · #{note.start_date.strftime("%d.%m.%Y")} — #{note.end_date.strftime("%d.%m.%Y")}" if note.diary? %>
+          <% end %>
+        </li>
       <% end %>
     </ul>
   <% else %>

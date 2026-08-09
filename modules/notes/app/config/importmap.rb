@@ -3,4 +3,3 @@
 pin "application"
 pin "trix", to: "trix.js"
 pin "@rails/actiontext", to: "actiontext.esm.js"
-pin "diary_calendar"

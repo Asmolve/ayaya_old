@@ -1,16 +1,16 @@
-# Graph Report - ayaya  (2026-08-03)
+# Graph Report - ayaya  (2026-08-09)
 
 ## Corpus Check
-- 140 files · ~47,727 words
+- 155 files · ~80,433 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 574 nodes · 556 edges · 119 communities (74 shown, 45 thin omitted)
-- Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 17 edges (avg confidence: 0.8)
+- 680 nodes · 710 edges · 130 communities (78 shown, 52 thin omitted)
+- Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 19 edges (avg confidence: 0.78)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `8fa2b643`
+- Built from commit: `8e9a9b36`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -74,25 +74,33 @@
 - LocalUserTest
 - Note
 - CreateNotes
-- NoteTest
 - StatusController
 - Internal::Ayaya::StatusControllerTest
 - create_app
 - client.rb
 - TestCase
+- Diary Mode Design
+- CreateActiveStorageTables
 - TestCase
+- CreateActionTextTables
+- AddDiaryFieldsToNotes
+- ApplicationRecord
+- TestCase
+- DiaryControllerTest
+- DiaryController
+- ApplicationController
 
 ## God Nodes (most connected - your core abstractions)
-1. `Ayaya Architecture Constitution` - 24 edges
-2. `Ayaya Module Contract v1` - 21 edges
-3. `Reference Notes Module Design` - 19 edges
-4. `Admin UI/UX Improvements Design` - 19 edges
-5. `create_app()` - 18 edges
-6. `RegisteredModule` - 16 edges
-7. `File Structure` - 13 edges
-8. `NotesController` - 12 edges
-9. `17. Вопросы для уточнения` - 11 edges
-10. `write_manifest()` - 10 edges
+1. `DiaryCalendar` - 29 edges
+2. `Ayaya Architecture Constitution` - 24 edges
+3. `Ayaya Module Contract v1` - 21 edges
+4. `Reference Notes Module Design` - 19 edges
+5. `Admin UI/UX Improvements Design` - 19 edges
+6. `create_app()` - 18 edges
+7. `RegisteredModule` - 17 edges
+8. `File Structure` - 13 edges
+9. `NotesController` - 12 edges
+10. `DiaryCalendarTest` - 12 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `create_app()` --indirect_call--> `require_adapter_secret()`  [INFERRED]
@@ -109,7 +117,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (119 total, 45 thin omitted)
+## Communities (130 total, 52 thin omitted)
 
 ### Community 0 - "Ayaya Module Contract v1"
 Cohesion: 0.06
@@ -128,8 +136,8 @@ Cohesion: 0.06
 Nodes (30): 10. Хранение данных, 11. Scheduler, 12. Интеграции, 13. Развёртывание, 14. Масштабирование, 15. Нефункциональные требования, 16. Предварительная архитектура, 17. Вопросы для уточнения (+22 more)
 
 ### Community 4 - "RegisteredModule"
-Cohesion: 0.08
-Nodes (16): AdapterProtocol, Client, Error, InvalidResponse, Unauthorized, Unavailable, Modules, RefreshManifest (+8 more)
+Cohesion: 0.06
+Nodes (22): failure_result(), reference_notes_runtime?(), refresh_reference_manifest(), refresh_reference_status(), AdapterProtocol, Client, Error, InvalidResponse (+14 more)
 
 ### Community 5 - "init_spec.md"
 Cohesion: 0.11
@@ -144,8 +152,8 @@ Cohesion: 0.33
 Nodes (3): AdapterProtocol, ManifestValidator, Result
 
 ### Community 10 - "AyayaContract::ComposeExposureTest"
-Cohesion: 0.26
-Nodes (6): failure_result(), reference_notes_runtime?(), refresh_reference_manifest(), refresh_reference_status(), Modules, RegisterReferenceNotes
+Cohesion: 0.15
+Nodes (4): DiaryCalendar, draftKey(), expiresAt(), normalizeRange()
 
 ### Community 11 - "Runner"
 Cohesion: 0.18
@@ -154,10 +162,6 @@ Nodes (10): Ayaya Project Overview, Core Responsibilities, Core Technology Choic
 ### Community 13 - "Ayaya Core Foundation Notes"
 Cohesion: 0.11
 Nodes (15): ActiveAdmin, Ayaya Core Foundation Notes, Docker Development Runtime, Foundation Verification, Module Registry, NGINX Static Routing, Bundle Runtime, Development (+7 more)
-
-### Community 14 - "CreateActiveAdminComments"
-Cohesion: 0.40
-Nodes (3): SystemTestCase, ApplicationSystemTestCase, HomeTest
 
 ### Community 61 - "HomeTest"
 Cohesion: 0.10
@@ -180,8 +184,8 @@ Cohesion: 0.08
 Nodes (25): Acceptance Criteria, Admin Actions, Admin UI/UX Improvements Design, Current Problems, Dashboard Requirements, Data Flow, Disable Module, Enable Module (+17 more)
 
 ### Community 104 - "NotesController"
-Cohesion: 0.12
-Nodes (5): AyayaIdentity, NotesController, ApplicationController, LocalUser, ApplicationRecord
+Cohesion: 0.07
+Nodes (10): AyayaIdentity, DiaryController, ApplicationController, NotesController, ApplicationController, DiaryHelper, LocalUser, ApplicationRecord (+2 more)
 
 ### Community 113 - "StatusController"
 Cohesion: 0.29
@@ -195,25 +199,33 @@ Nodes (31): BaseModel, FastAPI, MockTransport, require_adapter_secret(), create_
 Cohesion: 0.22
 Nodes (8): Admin UI/UX Improvements Implementation Plan, File Structure, Final Verification, Global Constraints, Task 1: RegisteredModule State Helpers, Task 2: ActiveAdmin Dashboard Operations Overview, Task 3: Registered Modules Resource UX Cleanup, Task 4: Module Operational Admin Actions
 
+### Community 117 - "TestCase"
+Cohesion: 0.22
+Nodes (8): Diary Mode Implementation Plan, File Structure, Global Constraints, Task 1: Add Diary persistence and rich-content infrastructure, Task 2: Add scoped Diary routes and date-range helpers, Task 3: Render three-month Diary UI and Action Text editor, Task 4: Add selection, modal behaviour, and 24-hour drafts, Task 5: Verify end-to-end integration and refresh the graph
+
+### Community 118 - "Diary Mode Design"
+Cohesion: 0.18
+Nodes (10): Calendar and Modal UX, Data Model, Diary Mode Design, Draft Cache, Error Handling and Security, Goal, Non-goals, Routes and Server Behaviour (+2 more)
+
 ## Knowledge Gaps
-- **190 isolated node(s):** `Modules`, `Register Notes In Core`, `Internal`, `ApplicationHelper`, `AdapterProtocol` (+185 more)
+- **206 isolated node(s):** `Internal`, `ApplicationHelper`, `AdapterProtocol`, `AdapterProtocol`, `Result` (+201 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **45 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **52 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `RegisteredModule` connect `Ayaya Module Contract v1` to `RegisteredModule`?**
-  _High betweenness centrality (0.020) - this node is a cross-community bridge._
+  _High betweenness centrality (0.018) - this node is a cross-community bridge._
 - **Why does `NotesController` connect `NotesController` to `RegisteredModule`?**
-  _High betweenness centrality (0.010) - this node is a cross-community bridge._
-- **Are the 13 inferred relationships involving `create_app()` (e.g. with `require_adapter_secret()` and `test_live_requires_adapter_secret()`) actually correct?**
-  _`create_app()` has 13 INFERRED edges - model-reasoned connections that need verification._
-- **What connects `Modules`, `Register Notes In Core`, `Internal` to the rest of the system?**
-  _190 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _High betweenness centrality (0.016) - this node is a cross-community bridge._
+- **What connects `Internal`, `ApplicationHelper`, `AdapterProtocol` to the rest of the system?**
+  _206 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Ayaya Module Contract v1` be split into smaller, more focused modules?**
   _Cohesion score 0.06258890469416785 - nodes in this community are weakly interconnected._
 - **Should `TestCase` be split into smaller, more focused modules?**
   _Cohesion score 0.07407407407407407 - nodes in this community are weakly interconnected._
 - **Should `Client` be split into smaller, more focused modules?**
   _Cohesion score 0.08 - nodes in this community are weakly interconnected._
+- **Should `Ayaya Architecture Constitution` be split into smaller, more focused modules?**
+  _Cohesion score 0.06451612903225806 - nodes in this community are weakly interconnected._

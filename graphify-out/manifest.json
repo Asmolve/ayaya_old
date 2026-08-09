@@ -575,8 +575,8 @@
     "semantic_hash": ""
   },
   "modules/notes/app/config/application.rb": {
-    "mtime": 1785543200.68525,
-    "ast_hash": "73d0a3226a0cae54c9d9daeb9773b193",
+    "mtime": 1786284170.8141744,
+    "ast_hash": "4d1a5be460f0212142ea681836b6246b",
     "semantic_hash": ""
   },
   "modules/notes/app/config/boot.rb": {
@@ -595,8 +595,8 @@
     "semantic_hash": ""
   },
   "modules/notes/app/config/environments/development.rb": {
-    "mtime": 1785543265.8871102,
-    "ast_hash": "2d00e858cbbaeffe31d4cd44171140bf",
+    "mtime": 1786291805.6101754,
+    "ast_hash": "36e67de086e2f17441faf131e52d75f4",
     "semantic_hash": ""
   },
   "modules/notes/app/config/environments/production.rb": {
@@ -605,8 +605,8 @@
     "semantic_hash": ""
   },
   "modules/notes/app/config/environments/test.rb": {
-    "mtime": 1785543200.689958,
-    "ast_hash": "6502f9a625270d316069b8a138b82025",
+    "mtime": 1786285037.894734,
+    "ast_hash": "2c6dbe9e9fa0ae7b7941180f840614c2",
     "semantic_hash": ""
   },
   "modules/notes/app/config/initializers/assets.rb": {
@@ -635,8 +635,8 @@
     "semantic_hash": ""
   },
   "modules/notes/app/config/routes.rb": {
-    "mtime": 1785543266.2491896,
-    "ast_hash": "5c0e61256384abc1baec9fc07a7bdb6b",
+    "mtime": 1786284958.2347822,
+    "ast_hash": "a6ad78bf016a72683ca71cd23939f42b",
     "semantic_hash": ""
   },
   "modules/notes/app/db/seeds.rb": {
@@ -720,8 +720,8 @@
     "semantic_hash": ""
   },
   "modules/notes/app/app/controllers/notes_controller.rb": {
-    "mtime": 1785547021.462494,
-    "ast_hash": "6dc9df1dfd65ee91c06c3a8613a5916b",
+    "mtime": 1786284958.2997558,
+    "ast_hash": "a8f312ef061f1b90d14c391d6431e9e1",
     "semantic_hash": ""
   },
   "modules/notes/app/app/models/local_user.rb": {
@@ -735,8 +735,8 @@
     "semantic_hash": ""
   },
   "modules/notes/app/db/schema.rb": {
-    "mtime": 1785547021.6029503,
-    "ast_hash": "40a08dc308cae0aba5154f4f7025855c",
+    "mtime": 1786292669.9505901,
+    "ast_hash": "35071fb99bfc8624965ea0eba2f85ec9",
     "semantic_hash": ""
   },
   "modules/notes/app/test/controllers/ayaya_identity_test.rb": {
@@ -750,8 +750,8 @@
     "semantic_hash": ""
   },
   "modules/notes/app/app/models/note.rb": {
-    "mtime": 1785544251.0445662,
-    "ast_hash": "c78893e0c80154df562490fd55ed8715",
+    "mtime": 1786284589.072977,
+    "ast_hash": "d958126ac9ebaccdb530b02794aff45a",
     "semantic_hash": ""
   },
   "modules/notes/app/db/migrate/20260801000001_create_notes.rb": {
@@ -760,13 +760,13 @@
     "semantic_hash": ""
   },
   "modules/notes/app/test/controllers/notes_controller_test.rb": {
-    "mtime": 1785544430.216528,
-    "ast_hash": "f05cdfc918e98370dfcc8f9661e46237",
+    "mtime": 1786285891.0295012,
+    "ast_hash": "03e45ea0899aaa5719efa44c920bf185",
     "semantic_hash": ""
   },
   "modules/notes/app/test/models/note_test.rb": {
-    "mtime": 1785544252.5097013,
-    "ast_hash": "8854bed5e47147ab916f3ae6787ca14c",
+    "mtime": 1786284574.0897126,
+    "ast_hash": "2245359746c35bafd029bc8147d31f38",
     "semantic_hash": ""
   },
   "modules/notes/app/app/controllers/internal/ayaya/status_controller.rb": {
@@ -857,6 +857,96 @@
   "test/services/modules/register_reference_notes_test.rb": {
     "mtime": 1785702046.3665266,
     "ast_hash": "0e4d510122721c6f80d0959945a86f5f",
+    "semantic_hash": ""
+  },
+  "config/initializers/new_framework_defaults_8_1.rb": {
+    "mtime": 1785709191.9917696,
+    "ast_hash": "e6c67f0f779fadb0e27345385ba045e2",
+    "semantic_hash": ""
+  },
+  ".superpowers/brainstorm/19158-1786269718/content/diary-calendar-layout.html": {
+    "mtime": 1786269793.3072195,
+    "ast_hash": "407989ecb68fa8a7867b45cc0a5b3655",
+    "semantic_hash": ""
+  },
+  ".superpowers/brainstorm/19158-1786269718/content/waiting-1.html": {
+    "mtime": 1786271626.3858545,
+    "ast_hash": "efb0a9b78f7ffa0daa5cb386155bfc54",
+    "semantic_hash": ""
+  },
+  "docs/superpowers/specs/2026-08-09-diary-mode-design.md": {
+    "mtime": 1786283524.1574087,
+    "ast_hash": "95beef3f31bd555f931edaa9b850a6fc",
+    "semantic_hash": ""
+  },
+  "modules/notes/app/db/migrate/20260809000000_add_diary_fields_to_notes.rb": {
+    "mtime": 1786284170.9387999,
+    "ast_hash": "16c013e5ea2bd7fef818326b54d93181",
+    "semantic_hash": ""
+  },
+  "modules/notes/app/db/migrate/20260809000001_create_active_storage_tables.active_storage.rb": {
+    "mtime": 1786284351.5049396,
+    "ast_hash": "138dbf4db42bbee9fbcce58aab45b38c",
+    "semantic_hash": ""
+  },
+  "modules/notes/app/db/migrate/20260809000002_create_action_text_tables.action_text.rb": {
+    "mtime": 1786284351.5753553,
+    "ast_hash": "8dcd570f598cbc34101a7ccd1b77800d",
+    "semantic_hash": ""
+  },
+  "docs/superpowers/plans/2026-08-09-diary-mode.md": {
+    "mtime": 1786283860.8299186,
+    "ast_hash": "4df8e2bcbcd90c1e43147545a7e771a3",
+    "semantic_hash": ""
+  },
+  "modules/notes/app/app/controllers/diary_controller.rb": {
+    "mtime": 1786285711.4366293,
+    "ast_hash": "0032fe2043b666d7b85558ce452cf23b",
+    "semantic_hash": ""
+  },
+  "modules/notes/app/app/helpers/diary_helper.rb": {
+    "mtime": 1786284958.1077237,
+    "ast_hash": "9a8fe841c774c9c5175f744a3feaf2e8",
+    "semantic_hash": ""
+  },
+  "modules/notes/app/test/controllers/diary_controller_test.rb": {
+    "mtime": 1786290511.8492846,
+    "ast_hash": "cb44a9d4f563d947510a163d0ca1fcb1",
+    "semantic_hash": ""
+  },
+  "modules/notes/app/test/helpers/diary_helper_test.rb": {
+    "mtime": 1786284830.0303843,
+    "ast_hash": "b809ff8197dfec779b4f99119714b620",
+    "semantic_hash": ""
+  },
+  "modules/notes/app/config/storage.yml": {
+    "mtime": 1786291805.5443895,
+    "ast_hash": "7d292d91b0defa29e7cddc2a49212b1f",
+    "semantic_hash": ""
+  },
+  "modules/notes/app/app/javascript/application.js": {
+    "mtime": 1786290511.5904512,
+    "ast_hash": "5c176caed30d5f538e1c371ad1c7d708",
+    "semantic_hash": ""
+  },
+  "modules/notes/app/config/importmap.rb": {
+    "mtime": 1786290511.6547127,
+    "ast_hash": "9aecd44d48197bf35241802a8127747f",
+    "semantic_hash": ""
+  },
+  "modules/notes/app/app/javascript/diary_calendar.js": {
+    "mtime": 1786292397.0533,
+    "ast_hash": "f02355096bff4abd7ed29d1470cc6e35",
+    "semantic_hash": ""
+  },
+  "modules/notes/app/test/application_system_test_case.rb": {
+    "mtime": 1786290249.2054687,
+    "ast_hash": "0e2f1dc76dace29ce85f03dede915529",
+    "semantic_hash": ""
+  },
+  "modules/notes/app/test/system/diary_calendar_test.rb": {
+    "mtime": 1786292369.8111775,
+    "ast_hash": "d7bd5ed4f8ffc3151742840c7019ac6f",
     "semantic_hash": ""
   }
 }

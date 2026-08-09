@@ -34,14 +34,14 @@ class DiaryControllerTest < ActionDispatch::IntegrationTest
     assert_includes response.body, "trix-editor"
   end
 
-  test "loads Action Text without an unresolved Diary module" do
+  test "loads Action Text with the resolved Diary calendar module" do
     application_entrypoint = Rails.root.join("app/javascript/application.js").read
     importmap = Rails.root.join("config/importmap.rb").read
 
     assert_includes application_entrypoint, 'import "trix"'
     assert_includes application_entrypoint, 'import "@rails/actiontext"'
-    assert_not_includes application_entrypoint, "diary_calendar"
-    assert_not_includes importmap, 'pin "diary_calendar"'
+    assert_includes application_entrypoint, 'import "diary_calendar"'
+    assert_includes importmap, 'pin "diary_calendar"'
   end
 
   test "does not return another user's diary entry" do

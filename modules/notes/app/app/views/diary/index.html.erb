@@ -68,7 +68,9 @@
       <button type="button" class="diary-modal__close" data-diary-close aria-label="Close diary editor">×</button>
     </header>
 
-    <%= form_with model: Note.new, id: "diary-form" do |form| %>
+    <div class="diary-modal__errors" data-diary-errors aria-live="polite" hidden></div>
+
+    <%= form_with model: Note.new, id: "diary-form", data: { diary_form: true } do |form| %>
       <%= form.hidden_field :entry_type, value: "diary" %>
       <p>
         <%= form.label :start_date %>

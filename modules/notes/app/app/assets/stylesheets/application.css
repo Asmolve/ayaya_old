@@ -102,6 +102,7 @@ trix-editor:focus-visible {
 
 .diary-day { min-width: 2rem; min-height: 2rem; border-radius: 50%; }
 .diary-day:hover { background: #e8f0fc; }
+.diary-day.is-selecting { background: #cbdcf6; }
 .diary-weekend { color: #b42318; }
 
 .diary-modal {
@@ -135,6 +136,7 @@ trix-editor:focus-visible {
 
 .diary-modal__panel header { display: flex; justify-content: space-between; align-items: center; }
 .diary-modal__close { border: 0; background: transparent; font-size: 1.5rem; cursor: pointer; }
+.diary-modal__errors { margin-bottom: 1rem; color: #b42318; }
 
 @media (max-width: 48rem) {
   .diary-header { align-items: flex-start; flex-direction: column; }

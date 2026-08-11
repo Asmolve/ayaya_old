@@ -102,6 +102,13 @@ trix-editor:focus-visible {
 
 .diary-quarter-link:hover { background: #edf3f6; }
 
+.diary-quarter-current {
+  width: auto;
+  padding: 0 0.7rem;
+  font-size: 0.85rem;
+  font-weight: 650;
+}
+
 .diary-calendar {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -142,6 +149,7 @@ trix-editor:focus-visible {
 
 .diary-month-grid th,
 .diary-month-grid td { height: 2.35rem; }
+.diary-month-grid td { padding: 0; }
 
 .diary-week-label,
 .diary-week-number { color: #627080; }
@@ -156,7 +164,16 @@ trix-editor:focus-visible {
 }
 
 .diary-day:hover { background: #edf3f6; }
-.diary-day.is-selecting { background: #b9d6d0; }
+.diary-day.is-selecting {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  border-radius: 0;
+  background: #b9d6d0;
+}
+.diary-day.is-selection-start { border-radius: 999px 0 0 999px; }
+.diary-day.is-selection-end { border-radius: 0 999px 999px 0; }
+.diary-day.is-selection-start.is-selection-end { border-radius: 50%; }
 .diary-entry-indicator { display: block; color: #247260; font-size: 0.75rem; line-height: 0.25rem; }
 .diary-weekend { color: #a7453a; }
 

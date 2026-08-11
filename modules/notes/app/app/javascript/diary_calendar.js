@@ -89,7 +89,9 @@ class DiaryCalendar {
   cancelDrag() {
     this.dragStart = null
     this.dragEnd = null
-    this.calendar.querySelectorAll(".is-selecting").forEach((day) => day.classList.remove("is-selecting"))
+    this.calendar.querySelectorAll(".is-selecting, .is-selection-start, .is-selection-end").forEach((day) => {
+      day.classList.remove("is-selecting", "is-selection-start", "is-selection-end")
+    })
   }
 
   selectDay(event) {
@@ -111,6 +113,8 @@ class DiaryCalendar {
     const [ start, end ] = normalizeRange(this.dragStart, this.dragEnd)
     this.calendar.querySelectorAll("[data-date]").forEach((day) => {
       day.classList.toggle("is-selecting", day.dataset.date >= start && day.dataset.date <= end)
+      day.classList.toggle("is-selection-start", day.dataset.date === start)
+      day.classList.toggle("is-selection-end", day.dataset.date === end)
     })
   }
 

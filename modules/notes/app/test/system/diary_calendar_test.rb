@@ -13,6 +13,26 @@ class DiaryCalendarTest < ApplicationSystemTestCase
     assert_equal "2026-09-07", find("#note_end_date").value
   end
 
+  test "quarter navigation offers an accessible link to the current quarter" do
+    visit_as_ayaya_user "/m/notes/diary?quarter=2026-09-01"
+
+    assert_link "Current quarter", href: diary_path(quarter: Date.current.beginning_of_quarter)
+  end
+
+  test "a multi-day selection renders a connected interior preview" do
+    visit_as_ayaya_user "/m/notes/diary?quarter=2026-09-01"
+
+    actions = page.driver.browser.action
+    touch = actions.add_pointer_input(:touch, "diary-touch-preview")
+    touch.create_pointer_move(origin: find('[data-date="2026-09-07"]').native)
+    touch.create_pointer_down(:touch)
+    touch.create_pointer_move(duration: 0.2, origin: find('[data-date="2026-09-09"]').native)
+    actions.perform
+
+    assert_selector '[data-date="2026-09-08"].is-selecting'
+    assert_equal "0px", page.evaluate_script("getComputedStyle(document.querySelector('[data-date=\"2026-09-08\"]')).borderTopLeftRadius")
+  end
+
   test "Diary modal keeps the editor toolbar within the panel on a narrow viewport" do
     page.driver.browser.manage.window.resize_to(390, 844)
     visit_as_ayaya_user "/m/notes/diary?quarter=2026-09-01"

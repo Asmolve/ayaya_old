@@ -14,6 +14,7 @@
     </div>
     <nav class="diary-quarter-nav" aria-label="Diary quarter">
       <%= link_to "←", diary_path(quarter: @quarter_start.advance(months: -3)), class: "diary-quarter-link", aria: { label: "Previous quarter" } %>
+      <%= link_to "Current quarter", diary_path(quarter: quarter_start(Date.current)), class: "diary-quarter-link diary-quarter-current" %>
       <%= link_to "→", diary_path(quarter: @quarter_start.advance(months: 3)), class: "diary-quarter-link", aria: { label: "Next quarter" } %>
     </nav>
   </header>

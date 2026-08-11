@@ -181,6 +181,7 @@ trix-editor:focus-visible {
 }
 
 .diary-modal__panel {
+  box-sizing: border-box;
   display: flex;
   width: min(100%, 42rem);
   max-height: calc(100vh - 2rem);

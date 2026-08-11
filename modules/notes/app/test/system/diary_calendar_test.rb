@@ -20,6 +20,12 @@ class DiaryCalendarTest < ApplicationSystemTestCase
     find('[data-date="2026-09-07"]').click
 
     assert_selector "#diary-modal.is-open .diary-modal__panel"
+    assert page.evaluate_script(<<~JS)
+      (() => {
+        const panel = document.querySelector('.diary-modal__panel').getBoundingClientRect()
+        return panel.left >= 0 && panel.right <= window.innerWidth
+      })()
+    JS
     assert_equal "auto", page.evaluate_script("getComputedStyle(document.querySelector('.trix-button-row')).overflowX")
   end
 

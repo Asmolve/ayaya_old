@@ -34,6 +34,12 @@ class DiaryControllerTest < ActionDispatch::IntegrationTest
     assert_includes response.body, "trix-editor"
   end
 
+  test "Diary document links scoped Notes CSS and JavaScript assets" do
+    get "/m/notes/diary", headers: ayaya_headers
+
+    assert_includes response.body, "/m/notes/assets/"
+  end
+
   test "marks each visible day intersecting the current user's diary entries" do
     owner = LocalUser.create!(core_user_id: "1")
     Note.create!(local_user: owner, title: "Quarter boundary", entry_type: :diary,

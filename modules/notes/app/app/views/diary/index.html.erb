@@ -13,8 +13,8 @@
       <p><%= @quarter_start.year %></p>
     </div>
     <nav class="diary-quarter-nav" aria-label="Diary quarter">
-      <%= link_to "Previous quarter", diary_path(quarter: @quarter_start.advance(months: -3)), class: "diary-quarter-link" %>
-      <%= link_to "Next quarter", diary_path(quarter: @quarter_start.advance(months: 3)), class: "diary-quarter-link" %>
+      <%= link_to "←", diary_path(quarter: @quarter_start.advance(months: -3)), class: "diary-quarter-link", aria: { label: "Previous quarter" } %>
+      <%= link_to "→", diary_path(quarter: @quarter_start.advance(months: 3)), class: "diary-quarter-link", aria: { label: "Next quarter" } %>
     </nav>
   </header>
 
@@ -75,7 +75,7 @@
 
     <div class="diary-modal__errors" data-diary-errors aria-live="polite" hidden></div>
 
-    <%= form_with model: Note.new, id: "diary-form", data: { diary_form: true } do |form| %>
+    <%= form_with model: Note.new, id: "diary-form", class: "diary-modal__form", data: { diary_form: true } do |form| %>
       <%= form.hidden_field :entry_type, value: "diary" %>
       <p>
         <%= form.label :start_date %>

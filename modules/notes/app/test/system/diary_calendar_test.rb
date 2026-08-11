@@ -13,6 +13,16 @@ class DiaryCalendarTest < ApplicationSystemTestCase
     assert_equal "2026-09-07", find("#note_end_date").value
   end
 
+  test "Diary modal keeps the editor toolbar within the panel on a narrow viewport" do
+    page.driver.browser.manage.window.resize_to(390, 844)
+    visit_as_ayaya_user "/m/notes/diary?quarter=2026-09-01"
+
+    find('[data-date="2026-09-07"]').click
+
+    assert_selector "#diary-modal.is-open .diary-modal__panel"
+    assert_equal "auto", page.evaluate_script("getComputedStyle(document.querySelector('.trix-button-row')).overflowX")
+  end
+
   test "dragging across cells chooses both inclusive boundaries" do
     visit_as_ayaya_user "/m/notes/diary?quarter=2026-09-01"
 

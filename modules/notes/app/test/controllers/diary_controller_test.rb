@@ -37,7 +37,9 @@ class DiaryControllerTest < ActionDispatch::IntegrationTest
   test "Diary document links scoped Notes CSS and JavaScript assets" do
     get "/m/notes/diary", headers: ayaya_headers
 
-    assert_includes response.body, "/m/notes/assets/"
+    assert_select 'link[rel="stylesheet"][href^="/m/notes/assets/"]', minimum: 2
+    assert_match %r{"application":\s*"/m/notes/assets/application-[^"]+\.js"}, response.body
+    assert_match %r{"diary_calendar":\s*"/m/notes/assets/diary_calendar-[^"]+\.js"}, response.body
   end
 
   test "marks each visible day intersecting the current user's diary entries" do

@@ -19,6 +19,8 @@ class AyayaContract::ComposeExposureTest < ActiveSupport::TestCase
     assert %w[pic_obtainer_api pic_obtainer_migrate pic_obtainer_postgres pic_obtainer_worker].all? { |name| services.key?(name) }
     assert_nil services.dig("pic_obtainer_api", "ports")
     assert_nil services.dig("pic_obtainer_worker", "ports")
+    assert_equal "${PIC_OBTAINER_AYAYA_ADAPTER_SECRET:?Set PIC_OBTAINER_AYAYA_ADAPTER_SECRET in .env}", services.dig("core", "environment", "PIC_OBTAINER_AYAYA_ADAPTER_SECRET")
+    refute_includes services.fetch("core").fetch("environment").keys, "PIC_OBTAINER_RULE34_API_KEY"
     assert_equal "service_healthy", services.dig("pic_obtainer_migrate", "depends_on", "pic_obtainer_postgres", "condition")
     assert_equal "service_completed_successfully", services.dig("pic_obtainer_api", "depends_on", "pic_obtainer_migrate", "condition")
     assert_equal "service_completed_successfully", services.dig("pic_obtainer_worker", "depends_on", "pic_obtainer_migrate", "condition")
@@ -63,6 +65,7 @@ class AyayaContract::ComposeExposureTest < ActiveSupport::TestCase
       NOTES_ADAPTER_SECRET NOTES_INTERNAL_STATUS_SECRET
       NOTES_APP_INTERNAL_STATUS_URL NOTES_MODULE_YML CORE_HOST_PORT NGINX_HOST_PORT
       PIC_OBTAINER_IMAGE PIC_OBTAINER_POSTGRES_PASSWORD PIC_OBTAINER_MEDIA_HOST_PATH
+      PIC_OBTAINER_DATABASE_URL
       PIC_OBTAINER_IMPORT_HOST_PATH PIC_OBTAINER_AYAYA_ADAPTER_SECRET
       PIC_OBTAINER_RULE34_USER_ID PIC_OBTAINER_RULE34_API_KEY
     ].each do |key|

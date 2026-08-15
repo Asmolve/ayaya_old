@@ -30,6 +30,7 @@ services:
       AYAYA_ALLOWED_HOSTS: ${CORE_ALLOWED_HOSTS:?Set CORE_ALLOWED_HOSTS in .env}
       NOTES_ADAPTER_URL: ${NOTES_ADAPTER_URL:?Set NOTES_ADAPTER_URL in .env}
       NOTES_ADAPTER_SECRET: ${NOTES_ADAPTER_SECRET:?Set NOTES_ADAPTER_SECRET before starting Compose}
+      PIC_OBTAINER_AYAYA_ADAPTER_SECRET: ${PIC_OBTAINER_AYAYA_ADAPTER_SECRET:?Set PIC_OBTAINER_AYAYA_ADAPTER_SECRET in .env}
     depends_on:
       postgres:
         condition: service_healthy
@@ -109,7 +110,7 @@ services:
 
   pic_obtainer_migrate:
     image: ${PIC_OBTAINER_IMAGE:?Set PIC_OBTAINER_IMAGE in .env}
-    command: ["alembic", "-x", "db_url=postgresql+psycopg://pic_obtainer:${PIC_OBTAINER_POSTGRES_PASSWORD:?Set PIC_OBTAINER_POSTGRES_PASSWORD in .env}@pic_obtainer_postgres:5432/ayaya_mod_pic_obtainer", "upgrade", "head"]
+    command: ["alembic", "-x", "db_url=${PIC_OBTAINER_DATABASE_URL:?Set a URL-encoded PIC_OBTAINER_DATABASE_URL in .env}", "upgrade", "head"]
     depends_on:
       pic_obtainer_postgres:
         condition: service_healthy
@@ -118,7 +119,7 @@ services:
     image: ${PIC_OBTAINER_IMAGE:?Set PIC_OBTAINER_IMAGE in .env}
     command: ["uvicorn", "pic_obtainer.api.main:create_app", "--factory", "--host", "0.0.0.0", "--port", "8000"]
     environment:
-      PIC_OBTAINER_DATABASE_URL: postgresql+psycopg://pic_obtainer:${PIC_OBTAINER_POSTGRES_PASSWORD:?Set PIC_OBTAINER_POSTGRES_PASSWORD in .env}@pic_obtainer_postgres:5432/ayaya_mod_pic_obtainer
+      PIC_OBTAINER_DATABASE_URL: ${PIC_OBTAINER_DATABASE_URL:?Set a URL-encoded PIC_OBTAINER_DATABASE_URL in .env}
       PIC_OBTAINER_MEDIA_ROOT: /var/lib/pic-obtainer/media
       PIC_OBTAINER_IMPORT_ROOT: /var/lib/pic-obtainer/imports
       PIC_OBTAINER_ROOT_PATH: /m/pic_obtainer
@@ -134,7 +135,7 @@ services:
     image: ${PIC_OBTAINER_IMAGE:?Set PIC_OBTAINER_IMAGE in .env}
     command: ["pic-obtainer-worker"]
     environment:
-      PIC_OBTAINER_DATABASE_URL: postgresql+psycopg://pic_obtainer:${PIC_OBTAINER_POSTGRES_PASSWORD:?Set PIC_OBTAINER_POSTGRES_PASSWORD in .env}@pic_obtainer_postgres:5432/ayaya_mod_pic_obtainer
+      PIC_OBTAINER_DATABASE_URL: ${PIC_OBTAINER_DATABASE_URL:?Set a URL-encoded PIC_OBTAINER_DATABASE_URL in .env}
       PIC_OBTAINER_MEDIA_ROOT: /var/lib/pic-obtainer/media
       PIC_OBTAINER_IMPORT_ROOT: /var/lib/pic-obtainer/imports
       PIC_OBTAINER_RULE34_API_BASE_URL: ${PIC_OBTAINER_RULE34_API_BASE_URL:-https://api.rule34.xxx/index.php}

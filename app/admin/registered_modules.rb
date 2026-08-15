@@ -135,25 +135,32 @@ ActiveAdmin.register RegisteredModule do
     private
 
     def refresh_reference_manifest(registered_module)
-      return failure_result("Only the local reference Notes adapter can be refreshed here.") unless reference_notes_runtime?(registered_module)
+      adapter_secret = adapter_secret_for(registered_module)
+      return failure_result("No adapter secret is configured for this module.") if adapter_secret.nil?
 
       Modules::RefreshManifest.call(
         registered_module: registered_module,
-        adapter_secret: Modules::RegisterReferenceNotes.adapter_secret
+        adapter_secret:
       )
     end
 
     def refresh_reference_status(registered_module)
-      return failure_result("Only the local reference Notes adapter can be refreshed here.") unless reference_notes_runtime?(registered_module)
+      adapter_secret = adapter_secret_for(registered_module)
+      return failure_result("No adapter secret is configured for this module.") if adapter_secret.nil?
 
       Modules::RefreshStatus.call(
         registered_module: registered_module,
-        adapter_secret: Modules::RegisterReferenceNotes.adapter_secret
+        adapter_secret:
       )
     end
 
-    def reference_notes_runtime?(registered_module)
-      registered_module.module_key == "notes" && registered_module.adapter_url == Modules::RegisterReferenceNotes.adapter_url
+    def adapter_secret_for(registered_module)
+      case registered_module.module_key
+      when "notes"
+        Modules::RegisterReferenceNotes.adapter_secret if registered_module.adapter_url == Modules::RegisterReferenceNotes.adapter_url
+      when "pic_obtainer"
+        ENV["PIC_OBTAINER_AYAYA_ADAPTER_SECRET"].presence
+      end
     end
 
     def failure_result(message)

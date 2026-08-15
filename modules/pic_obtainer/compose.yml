@@ -1,6 +1,7 @@
 services:
   pic_obtainer_api:
     image: ${PIC_OBTAINER_IMAGE:?Set PIC_OBTAINER_IMAGE to the Pic Obtainer image}
+    command: ["uvicorn", "pic_obtainer.api.main:create_app", "--factory", "--host", "0.0.0.0", "--port", "8000"]
     environment:
       PIC_OBTAINER_DATABASE_URL: ${PIC_OBTAINER_DATABASE_URL:?Set PIC_OBTAINER_DATABASE_URL}
       PIC_OBTAINER_MEDIA_ROOT: ${PIC_OBTAINER_MEDIA_ROOT:?Set PIC_OBTAINER_MEDIA_ROOT}

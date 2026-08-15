@@ -52,4 +52,18 @@ class PicObtainerModuleTest < ActionDispatch::IntegrationTest
   ensure
     ENV.delete("PIC_OBTAINER_AYAYA_ADAPTER_SECRET")
   end
+
+  test "disabled or unhealthy Pic Obtainer is unavailable at the auth boundary" do
+    admin = User.create!(email: "pic-boundary-admin@example.test", password: "password123", role: "admin")
+    mod = registered_module
+    sign_in admin
+
+    mod.update!(admin_state: "disabled")
+    get "/internal/auth/module_access", headers: { "X-Original-URI" => "/m/pic_obtainer/" }
+    assert_response :forbidden
+
+    mod.update!(admin_state: "enabled", runtime_status: "unhealthy")
+    get "/internal/auth/module_access", headers: { "X-Original-URI" => "/m/pic_obtainer/" }
+    assert_response :service_unavailable
+  end
 end

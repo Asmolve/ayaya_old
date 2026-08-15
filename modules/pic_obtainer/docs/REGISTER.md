@@ -26,3 +26,7 @@
 If the adapter is unreachable or returns an incompatible manifest, Core keeps
 the module unavailable. Re-run status refresh after correcting the API,
 worker, database, or migration deployment.
+
+For a live smoke check, set `AYAYA_E2E_BASE_URL` and an operator
+`AYAYA_E2E_COOKIE`, then run Pic Obtainer's opt-in deployment test. The test is
+skipped without those environment variables.

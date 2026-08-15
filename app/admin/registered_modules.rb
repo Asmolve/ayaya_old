@@ -135,7 +135,7 @@ ActiveAdmin.register RegisteredModule do
     private
 
     def refresh_reference_manifest(registered_module)
-      adapter_secret = adapter_secret_for(registered_module)
+      adapter_secret = Modules::AdapterSecret.for(registered_module)
       return failure_result("No adapter secret is configured for this module.") if adapter_secret.nil?
 
       Modules::RefreshManifest.call(
@@ -145,22 +145,13 @@ ActiveAdmin.register RegisteredModule do
     end
 
     def refresh_reference_status(registered_module)
-      adapter_secret = adapter_secret_for(registered_module)
+      adapter_secret = Modules::AdapterSecret.for(registered_module)
       return failure_result("No adapter secret is configured for this module.") if adapter_secret.nil?
 
       Modules::RefreshStatus.call(
         registered_module: registered_module,
         adapter_secret:
       )
-    end
-
-    def adapter_secret_for(registered_module)
-      case registered_module.module_key
-      when "notes"
-        Modules::RegisterReferenceNotes.adapter_secret if registered_module.adapter_url == Modules::RegisterReferenceNotes.adapter_url
-      when "pic_obtainer"
-        ENV["PIC_OBTAINER_AYAYA_ADAPTER_SECRET"].presence
-      end
     end
 
     def failure_result(message)

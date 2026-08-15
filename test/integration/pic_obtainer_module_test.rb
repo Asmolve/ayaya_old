@@ -40,4 +40,16 @@ class PicObtainerModuleTest < ActionDispatch::IntegrationTest
 
     assert_response :forbidden
   end
+
+  test "Core selects the Pic Obtainer adapter secret for refreshes and fails closed" do
+    mod = registered_module
+    ENV["PIC_OBTAINER_AYAYA_ADAPTER_SECRET"] = "pic-secret"
+
+    assert_equal "pic-secret", Modules::AdapterSecret.for(mod)
+
+    ENV.delete("PIC_OBTAINER_AYAYA_ADAPTER_SECRET")
+    assert_nil Modules::AdapterSecret.for(mod)
+  ensure
+    ENV.delete("PIC_OBTAINER_AYAYA_ADAPTER_SECRET")
+  end
 end

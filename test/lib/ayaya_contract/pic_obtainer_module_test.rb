@@ -7,7 +7,6 @@ class AyayaContract::PicObtainerModuleTest < ActiveSupport::TestCase
     environment = {
       "PIC_OBTAINER_IMAGE" => "pic-obtainer:test",
       "PIC_OBTAINER_DATABASE_URL" => "postgresql+psycopg://pic_obtainer:pic_obtainer@postgres:5432/ayaya_mod_pic_obtainer",
-      "PIC_OBTAINER_POSTGRES_PASSWORD" => "pic_obtainer",
       "PIC_OBTAINER_MEDIA_ROOT" => "/var/lib/pic-obtainer/media",
       "PIC_OBTAINER_MEDIA_HOST_PATH" => "/tmp/pic-obtainer-media",
       "PIC_OBTAINER_IMPORT_ROOT" => "/var/lib/pic-obtainer/imports",

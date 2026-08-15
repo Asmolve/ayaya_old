@@ -4,7 +4,7 @@ services:
     environment:
       POSTGRES_DB: ayaya_mod_pic_obtainer
       POSTGRES_USER: pic_obtainer
-      POSTGRES_PASSWORD: ${PIC_OBTAINER_POSTGRES_PASSWORD:-pic_obtainer}
+      POSTGRES_PASSWORD: pic_obtainer
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U pic_obtainer -d ayaya_mod_pic_obtainer"]
       interval: 5s
@@ -15,7 +15,7 @@ services:
 
   migrate:
     image: ${PIC_OBTAINER_IMAGE:?Set PIC_OBTAINER_IMAGE to the Pic Obtainer image}
-    command: ["alembic", "-x", "db_url=${PIC_OBTAINER_DATABASE_URL:-postgresql+psycopg://pic_obtainer:${PIC_OBTAINER_POSTGRES_PASSWORD:-pic_obtainer}@postgres:5432/ayaya_mod_pic_obtainer}", "upgrade", "head"]
+    command: ["alembic", "-x", "db_url=${PIC_OBTAINER_DATABASE_URL:-postgresql+psycopg://pic_obtainer:pic_obtainer@postgres:5432/ayaya_mod_pic_obtainer}", "upgrade", "head"]
     depends_on:
       postgres:
         condition: service_healthy
@@ -24,7 +24,7 @@ services:
     image: ${PIC_OBTAINER_IMAGE:?Set PIC_OBTAINER_IMAGE to the Pic Obtainer image}
     command: ["uvicorn", "pic_obtainer.api.main:create_app", "--factory", "--host", "0.0.0.0", "--port", "8000"]
     environment:
-      PIC_OBTAINER_DATABASE_URL: ${PIC_OBTAINER_DATABASE_URL:-postgresql+psycopg://pic_obtainer:${PIC_OBTAINER_POSTGRES_PASSWORD:-pic_obtainer}@postgres:5432/ayaya_mod_pic_obtainer}
+      PIC_OBTAINER_DATABASE_URL: ${PIC_OBTAINER_DATABASE_URL:-postgresql+psycopg://pic_obtainer:pic_obtainer@postgres:5432/ayaya_mod_pic_obtainer}
       PIC_OBTAINER_MEDIA_ROOT: ${PIC_OBTAINER_MEDIA_ROOT:?Set PIC_OBTAINER_MEDIA_ROOT}
       PIC_OBTAINER_AYAYA_ADAPTER_SECRET: ${PIC_OBTAINER_AYAYA_ADAPTER_SECRET:?Set Pic Obtainer adapter secret}
       PIC_OBTAINER_IMPORT_ROOT: ${PIC_OBTAINER_IMPORT_ROOT:?Set PIC_OBTAINER_IMPORT_ROOT}
@@ -39,7 +39,7 @@ services:
     image: ${PIC_OBTAINER_IMAGE:?Set PIC_OBTAINER_IMAGE to the Pic Obtainer image}
     command: ["pic-obtainer-worker"]
     environment:
-      PIC_OBTAINER_DATABASE_URL: ${PIC_OBTAINER_DATABASE_URL:-postgresql+psycopg://pic_obtainer:${PIC_OBTAINER_POSTGRES_PASSWORD:-pic_obtainer}@postgres:5432/ayaya_mod_pic_obtainer}
+      PIC_OBTAINER_DATABASE_URL: ${PIC_OBTAINER_DATABASE_URL:-postgresql+psycopg://pic_obtainer:pic_obtainer@postgres:5432/ayaya_mod_pic_obtainer}
       PIC_OBTAINER_MEDIA_ROOT: ${PIC_OBTAINER_MEDIA_ROOT:?Set PIC_OBTAINER_MEDIA_ROOT}
       PIC_OBTAINER_RULE34_API_BASE_URL: ${PIC_OBTAINER_RULE34_API_BASE_URL:-https://api.rule34.xxx/index.php}
       PIC_OBTAINER_RULE34_USER_ID: ${PIC_OBTAINER_RULE34_USER_ID:?Set Rule34 user ID}

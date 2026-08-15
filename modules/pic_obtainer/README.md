@@ -41,9 +41,10 @@ Optional worker variables are `PIC_OBTAINER_RULE34_API_BASE_URL`,
 `PIC_OBTAINER_RULE34_REQUEST_LIMIT`, and
 `PIC_OBTAINER_RULE34_REQUEST_WINDOW_SECONDS`.
 
-`PIC_OBTAINER_POSTGRES_PASSWORD` optionally changes the private PostgreSQL
-password; when `PIC_OBTAINER_DATABASE_URL` is omitted, all module services
-derive their URL from that value consistently.
+When `PIC_OBTAINER_DATABASE_URL` is omitted, the descriptor uses its private
+PostgreSQL service and the fixed internal development credential consistently.
+Operators using an external database must provide a complete
+`PIC_OBTAINER_DATABASE_URL` explicitly.
 
 The adapter secret may be stored in a Docker secret or injected as an
 environment variable. Do not commit its value. The Rule34 credentials must be

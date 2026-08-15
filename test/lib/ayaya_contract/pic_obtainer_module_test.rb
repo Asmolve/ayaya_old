@@ -6,7 +6,7 @@ class AyayaContract::PicObtainerModuleTest < ActiveSupport::TestCase
   test "pic obtainer deployment descriptor uses the registered module contract" do
     environment = {
       "PIC_OBTAINER_IMAGE" => "pic-obtainer:test",
-      "PIC_OBTAINER_DATABASE_URL" => "postgresql+psycopg://pic_obtainer:test@postgres:5432/pic_obtainer",
+      "PIC_OBTAINER_DATABASE_URL" => "postgresql+psycopg://pic_obtainer:pic_obtainer@postgres:5432/ayaya_mod_pic_obtainer",
       "PIC_OBTAINER_MEDIA_ROOT" => "/var/lib/pic-obtainer/media",
       "PIC_OBTAINER_MEDIA_HOST_PATH" => "/tmp/pic-obtainer-media",
       "PIC_OBTAINER_IMPORT_ROOT" => "/var/lib/pic-obtainer/imports",
@@ -27,7 +27,11 @@ class AyayaContract::PicObtainerModuleTest < ActiveSupport::TestCase
     api = services.fetch("pic_obtainer_api")
     worker = services.fetch("pic_obtainer_worker")
 
-    assert_equal %w[pic_obtainer_api pic_obtainer_worker], services.keys.sort
+    assert_equal %w[migrate pic_obtainer_api pic_obtainer_worker postgres], services.keys.sort
+    assert_equal "service_healthy", services.fetch("migrate").fetch("depends_on").fetch("postgres").fetch("condition")
+    assert_equal "service_completed_successfully", services.fetch("pic_obtainer_api").fetch("depends_on").fetch("migrate").fetch("condition")
+    assert_equal "service_completed_successfully", services.fetch("pic_obtainer_worker").fetch("depends_on").fetch("migrate").fetch("condition")
+    assert_equal "ayaya_mod_pic_obtainer", services.fetch("postgres").fetch("environment").fetch("POSTGRES_DB")
     assert_equal [
       "uvicorn",
       "pic_obtainer.api.main:create_app",

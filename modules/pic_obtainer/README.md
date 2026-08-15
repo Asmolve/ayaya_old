@@ -14,6 +14,10 @@ build a Pic Obtainer image first, then provide its name through
 `PIC_OBTAINER_IMAGE`. The API service explicitly starts Uvicorn; the worker
 service explicitly starts `pic-obtainer-worker`.
 
+The descriptor includes a private PostgreSQL service and migration gate. Its
+database is always `ayaya_mod_pic_obtainer`; application services do not start
+until the `migrate` service completes successfully.
+
 Required non-secret variables:
 
 ```text
@@ -46,7 +50,6 @@ The operator workflow is:
 
 ```bash
 docker compose -f modules/pic_obtainer/compose.yml config
-docker compose -f modules/pic_obtainer/compose.yml run --rm pic_obtainer_api alembic -x db_url="$PIC_OBTAINER_DATABASE_URL" upgrade head
 docker compose -f modules/pic_obtainer/compose.yml up -d pic_obtainer_api pic_obtainer_worker
 curl -fsS http://pic_obtainer_api:8000/api/v1/health/live
 ```

@@ -4,15 +4,411 @@
   "graph": {},
   "nodes": [
     {
+      "label": "2026-08-11-diary-visual-refresh.md",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-08-11-diary-visual-refresh.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_superpowers_plans_2026_08_11_diary_visual_refresh",
+      "community": 123,
+      "community_name": "new_framework_defaults_8_1.rb",
+      "norm_label": "2026-08-11-diary-visual-refresh.md"
+    },
+    {
+      "label": "Diary Visual Refresh Implementation Plan",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-08-11-diary-visual-refresh.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_superpowers_plans_2026_08_11_diary_visual_refresh_diary_visual_refresh_implementation_plan",
+      "community": 123,
+      "community_name": "new_framework_defaults_8_1.rb",
+      "norm_label": "diary visual refresh implementation plan"
+    },
+    {
+      "label": "Global Constraints",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-08-11-diary-visual-refresh.md",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "docs_superpowers_plans_2026_08_11_diary_visual_refresh_global_constraints",
+      "community": 123,
+      "community_name": "new_framework_defaults_8_1.rb",
+      "norm_label": "global constraints"
+    },
+    {
+      "label": "Task 1: Route Notes assets through the module",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-08-11-diary-visual-refresh.md",
+      "source_location": "L20",
+      "_origin": "ast",
+      "id": "docs_superpowers_plans_2026_08_11_diary_visual_refresh_task_1_route_notes_assets_through_the_module",
+      "community": 123,
+      "community_name": "new_framework_defaults_8_1.rb",
+      "norm_label": "task 1: route notes assets through the module"
+    },
+    {
+      "label": "Task 2: Polish Diary navigation, calendar, and modal editor",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-08-11-diary-visual-refresh.md",
+      "source_location": "L65",
+      "_origin": "ast",
+      "id": "docs_superpowers_plans_2026_08_11_diary_visual_refresh_task_2_polish_diary_navigation_calendar_and_modal_editor",
+      "community": 123,
+      "community_name": "new_framework_defaults_8_1.rb",
+      "norm_label": "task 2: polish diary navigation, calendar, and modal editor"
+    },
+    {
+      "label": "2026-08-15-pic-obtainer-ayaya-integration.md",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-08-15-pic-obtainer-ayaya-integration.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_superpowers_plans_2026_08_15_pic_obtainer_ayaya_integration",
+      "community": 133,
+      "community_name": "Repository map",
+      "norm_label": "2026-08-15-pic-obtainer-ayaya-integration.md"
+    },
+    {
+      "label": "Pic Obtainer Ayaya Integration Implementation Plan",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-08-15-pic-obtainer-ayaya-integration.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_superpowers_plans_2026_08_15_pic_obtainer_ayaya_integration_pic_obtainer_ayaya_integration_implementation_plan",
+      "community": 133,
+      "community_name": "Repository map",
+      "norm_label": "pic obtainer ayaya integration implementation plan"
+    },
+    {
+      "label": "Global Constraints",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-08-15-pic-obtainer-ayaya-integration.md",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "docs_superpowers_plans_2026_08_15_pic_obtainer_ayaya_integration_global_constraints",
+      "community": 133,
+      "community_name": "Repository map",
+      "norm_label": "global constraints"
+    },
+    {
+      "label": "Repository map",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-08-15-pic-obtainer-ayaya-integration.md",
+      "source_location": "L24",
+      "_origin": "ast",
+      "id": "docs_superpowers_plans_2026_08_15_pic_obtainer_ayaya_integration_repository_map",
+      "community": 133,
+      "community_name": "Repository map",
+      "norm_label": "repository map"
+    },
+    {
+      "label": "`/Users/exsamption/projects/pic_obtainer`",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-08-15-pic-obtainer-ayaya-integration.md",
+      "source_location": "L26",
+      "_origin": "ast",
+      "id": "docs_superpowers_plans_2026_08_15_pic_obtainer_ayaya_integration_users_exsamption_projects_pic_obtainer",
+      "community": 133,
+      "community_name": "Repository map",
+      "norm_label": "`/users/exsamption/projects/pic_obtainer`"
+    },
+    {
+      "label": "`/Users/exsamption/projects/ayaya`",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-08-15-pic-obtainer-ayaya-integration.md",
+      "source_location": "L36",
+      "_origin": "ast",
+      "id": "docs_superpowers_plans_2026_08_15_pic_obtainer_ayaya_integration_users_exsamption_projects_ayaya",
+      "community": 133,
+      "community_name": "Repository map",
+      "norm_label": "`/users/exsamption/projects/ayaya`"
+    },
+    {
+      "label": "Task 1: Define the independent module deployment boundary",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-08-15-pic-obtainer-ayaya-integration.md",
+      "source_location": "L49",
+      "_origin": "ast",
+      "id": "docs_superpowers_plans_2026_08_15_pic_obtainer_ayaya_integration_task_1_define_the_independent_module_deployment_boundary",
+      "community": 133,
+      "community_name": "Repository map",
+      "norm_label": "task 1: define the independent module deployment boundary"
+    },
+    {
+      "label": "Task 2: Add the authenticated Ayaya adapter surface",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-08-15-pic-obtainer-ayaya-integration.md",
+      "source_location": "L70",
+      "_origin": "ast",
+      "id": "docs_superpowers_plans_2026_08_15_pic_obtainer_ayaya_integration_task_2_add_the_authenticated_ayaya_adapter_surface",
+      "community": 133,
+      "community_name": "Repository map",
+      "norm_label": "task 2: add the authenticated ayaya adapter surface"
+    },
+    {
+      "label": "Task 3: Add trusted Ayaya identity handling",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-08-15-pic-obtainer-ayaya-integration.md",
+      "source_location": "L93",
+      "_origin": "ast",
+      "id": "docs_superpowers_plans_2026_08_15_pic_obtainer_ayaya_integration_task_3_add_trusted_ayaya_identity_handling",
+      "community": 133,
+      "community_name": "Repository map",
+      "norm_label": "task 3: add trusted ayaya identity handling"
+    },
+    {
+      "label": "Task 4: Add the server-rendered GUI over the existing facade",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-08-15-pic-obtainer-ayaya-integration.md",
+      "source_location": "L113",
+      "_origin": "ast",
+      "id": "docs_superpowers_plans_2026_08_15_pic_obtainer_ayaya_integration_task_4_add_the_server_rendered_gui_over_the_existing_facade",
+      "community": 133,
+      "community_name": "Repository map",
+      "norm_label": "task 4: add the server-rendered gui over the existing facade"
+    },
+    {
+      "label": "Task 5: Make media/import paths safe for the module deployment",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-08-15-pic-obtainer-ayaya-integration.md",
+      "source_location": "L144",
+      "_origin": "ast",
+      "id": "docs_superpowers_plans_2026_08_15_pic_obtainer_ayaya_integration_task_5_make_media_import_paths_safe_for_the_module_deployment",
+      "community": 133,
+      "community_name": "Repository map",
+      "norm_label": "task 5: make media/import paths safe for the module deployment"
+    },
+    {
+      "label": "Task 6: Align the `pic_obtainer` Compose topology with Ayaya",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-08-15-pic-obtainer-ayaya-integration.md",
+      "source_location": "L165",
+      "_origin": "ast",
+      "id": "docs_superpowers_plans_2026_08_15_pic_obtainer_ayaya_integration_task_6_align_the_pic_obtainer_compose_topology_with_ayaya",
+      "community": 133,
+      "community_name": "Repository map",
+      "norm_label": "task 6: align the `pic_obtainer` compose topology with ayaya"
+    },
+    {
+      "label": "Task 7: Connect the module to Ayaya NGINX and Core registration",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-08-15-pic-obtainer-ayaya-integration.md",
+      "source_location": "L187",
+      "_origin": "ast",
+      "id": "docs_superpowers_plans_2026_08_15_pic_obtainer_ayaya_integration_task_7_connect_the_module_to_ayaya_nginx_and_core_registration",
+      "community": 133,
+      "community_name": "Repository map",
+      "norm_label": "task 7: connect the module to ayaya nginx and core registration"
+    },
+    {
+      "label": "Task 8: Complete contract, end-to-end, and security verification",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-08-15-pic-obtainer-ayaya-integration.md",
+      "source_location": "L211",
+      "_origin": "ast",
+      "id": "docs_superpowers_plans_2026_08_15_pic_obtainer_ayaya_integration_task_8_complete_contract_end_to_end_and_security_verification",
+      "community": 133,
+      "community_name": "Repository map",
+      "norm_label": "task 8: complete contract, end-to-end, and security verification"
+    },
+    {
+      "label": "Verification checklist",
+      "file_type": "document",
+      "source_file": "docs/superpowers/plans/2026-08-15-pic-obtainer-ayaya-integration.md",
+      "source_location": "L231",
+      "_origin": "ast",
+      "id": "docs_superpowers_plans_2026_08_15_pic_obtainer_ayaya_integration_verification_checklist",
+      "community": 133,
+      "community_name": "Repository map",
+      "norm_label": "verification checklist"
+    },
+    {
+      "label": "2026-08-15-pic-obtainer-ayaya-integration-design.md",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-08-15-pic-obtainer-ayaya-integration-design.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_superpowers_specs_2026_08_15_pic_obtainer_ayaya_integration_design",
+      "community": 132,
+      "community_name": "Pic Obtainer Ayaya Integration Design",
+      "norm_label": "2026-08-15-pic-obtainer-ayaya-integration-design.md"
+    },
+    {
+      "label": "Pic Obtainer Ayaya Integration Design",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-08-15-pic-obtainer-ayaya-integration-design.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_superpowers_specs_2026_08_15_pic_obtainer_ayaya_integration_design_pic_obtainer_ayaya_integration_design",
+      "community": 132,
+      "community_name": "Pic Obtainer Ayaya Integration Design",
+      "norm_label": "pic obtainer ayaya integration design"
+    },
+    {
+      "label": "Status",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-08-15-pic-obtainer-ayaya-integration-design.md",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "docs_superpowers_specs_2026_08_15_pic_obtainer_ayaya_integration_design_status",
+      "community": 132,
+      "community_name": "Pic Obtainer Ayaya Integration Design",
+      "norm_label": "status"
+    },
+    {
+      "label": "Goal",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-08-15-pic-obtainer-ayaya-integration-design.md",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "docs_superpowers_specs_2026_08_15_pic_obtainer_ayaya_integration_design_goal",
+      "community": 132,
+      "community_name": "Pic Obtainer Ayaya Integration Design",
+      "norm_label": "goal"
+    },
+    {
+      "label": "Scope",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-08-15-pic-obtainer-ayaya-integration-design.md",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "docs_superpowers_specs_2026_08_15_pic_obtainer_ayaya_integration_design_scope",
+      "community": 132,
+      "community_name": "Pic Obtainer Ayaya Integration Design",
+      "norm_label": "scope"
+    },
+    {
+      "label": "Architecture",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-08-15-pic-obtainer-ayaya-integration-design.md",
+      "source_location": "L34",
+      "_origin": "ast",
+      "id": "docs_superpowers_specs_2026_08_15_pic_obtainer_ayaya_integration_design_architecture",
+      "community": 132,
+      "community_name": "Pic Obtainer Ayaya Integration Design",
+      "norm_label": "architecture"
+    },
+    {
+      "label": "Repository and deployment shape",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-08-15-pic-obtainer-ayaya-integration-design.md",
+      "source_location": "L64",
+      "_origin": "ast",
+      "id": "docs_superpowers_specs_2026_08_15_pic_obtainer_ayaya_integration_design_repository_and_deployment_shape",
+      "community": 132,
+      "community_name": "Pic Obtainer Ayaya Integration Design",
+      "norm_label": "repository and deployment shape"
+    },
+    {
+      "label": "Ayaya module contract",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-08-15-pic-obtainer-ayaya-integration-design.md",
+      "source_location": "L78",
+      "_origin": "ast",
+      "id": "docs_superpowers_specs_2026_08_15_pic_obtainer_ayaya_integration_design_ayaya_module_contract",
+      "community": 132,
+      "community_name": "Pic Obtainer Ayaya Integration Design",
+      "norm_label": "ayaya module contract"
+    },
+    {
+      "label": "HTTP and GUI design",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-08-15-pic-obtainer-ayaya-integration-design.md",
+      "source_location": "L121",
+      "_origin": "ast",
+      "id": "docs_superpowers_specs_2026_08_15_pic_obtainer_ayaya_integration_design_http_and_gui_design",
+      "community": 132,
+      "community_name": "Pic Obtainer Ayaya Integration Design",
+      "norm_label": "http and gui design"
+    },
+    {
+      "label": "Ayaya identity and access",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-08-15-pic-obtainer-ayaya-integration-design.md",
+      "source_location": "L146",
+      "_origin": "ast",
+      "id": "docs_superpowers_specs_2026_08_15_pic_obtainer_ayaya_integration_design_ayaya_identity_and_access",
+      "community": 132,
+      "community_name": "Pic Obtainer Ayaya Integration Design",
+      "norm_label": "ayaya identity and access"
+    },
+    {
+      "label": "Configuration and secrets",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-08-15-pic-obtainer-ayaya-integration-design.md",
+      "source_location": "L163",
+      "_origin": "ast",
+      "id": "docs_superpowers_specs_2026_08_15_pic_obtainer_ayaya_integration_design_configuration_and_secrets",
+      "community": 132,
+      "community_name": "Pic Obtainer Ayaya Integration Design",
+      "norm_label": "configuration and secrets"
+    },
+    {
+      "label": "Data and storage",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-08-15-pic-obtainer-ayaya-integration-design.md",
+      "source_location": "L175",
+      "_origin": "ast",
+      "id": "docs_superpowers_specs_2026_08_15_pic_obtainer_ayaya_integration_design_data_and_storage",
+      "community": 132,
+      "community_name": "Pic Obtainer Ayaya Integration Design",
+      "norm_label": "data and storage"
+    },
+    {
+      "label": "Error handling",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-08-15-pic-obtainer-ayaya-integration-design.md",
+      "source_location": "L183",
+      "_origin": "ast",
+      "id": "docs_superpowers_specs_2026_08_15_pic_obtainer_ayaya_integration_design_error_handling",
+      "community": 132,
+      "community_name": "Pic Obtainer Ayaya Integration Design",
+      "norm_label": "error handling"
+    },
+    {
+      "label": "Testing strategy",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-08-15-pic-obtainer-ayaya-integration-design.md",
+      "source_location": "L192",
+      "_origin": "ast",
+      "id": "docs_superpowers_specs_2026_08_15_pic_obtainer_ayaya_integration_design_testing_strategy",
+      "community": 132,
+      "community_name": "Pic Obtainer Ayaya Integration Design",
+      "norm_label": "testing strategy"
+    },
+    {
+      "label": "Implementation order",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-08-15-pic-obtainer-ayaya-integration-design.md",
+      "source_location": "L215",
+      "_origin": "ast",
+      "id": "docs_superpowers_specs_2026_08_15_pic_obtainer_ayaya_integration_design_implementation_order",
+      "community": 132,
+      "community_name": "Pic Obtainer Ayaya Integration Design",
+      "norm_label": "implementation order"
+    },
+    {
+      "label": "Acceptance criteria",
+      "file_type": "document",
+      "source_file": "docs/superpowers/specs/2026-08-15-pic-obtainer-ayaya-integration-design.md",
+      "source_location": "L224",
+      "_origin": "ast",
+      "id": "docs_superpowers_specs_2026_08_15_pic_obtainer_ayaya_integration_design_acceptance_criteria",
+      "community": 132,
+      "community_name": "Pic Obtainer Ayaya Integration Design",
+      "norm_label": "acceptance criteria"
+    },
+    {
       "label": "diary_calendar.js",
       "file_type": "code",
       "source_file": "modules/notes/app/app/javascript/diary_calendar.js",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "modules_notes_app_app_javascript_diary_calendar",
       "community": 10,
       "community_name": "AyayaContract::ComposeExposureTest",
-      "norm_label": "diary_calendar.js"
+      "norm_label": "diary_calendar.js",
+      "id": "modules_notes_app_app_javascript_diary_calendar"
     },
     {
       "label": "normalizeRange()",
@@ -20,10 +416,10 @@
       "source_file": "modules/notes/app/app/javascript/diary_calendar.js",
       "source_location": "L4",
       "_origin": "ast",
-      "id": "modules_notes_app_app_javascript_diary_calendar_normalizerange",
       "community": 10,
       "community_name": "AyayaContract::ComposeExposureTest",
-      "norm_label": "normalizerange()"
+      "norm_label": "normalizerange()",
+      "id": "modules_notes_app_app_javascript_diary_calendar_normalizerange"
     },
     {
       "label": "draftKey()",
@@ -31,10 +427,10 @@
       "source_file": "modules/notes/app/app/javascript/diary_calendar.js",
       "source_location": "L5",
       "_origin": "ast",
-      "id": "modules_notes_app_app_javascript_diary_calendar_draftkey",
       "community": 10,
       "community_name": "AyayaContract::ComposeExposureTest",
-      "norm_label": "draftkey()"
+      "norm_label": "draftkey()",
+      "id": "modules_notes_app_app_javascript_diary_calendar_draftkey"
     },
     {
       "label": "expiresAt()",
@@ -42,10 +438,10 @@
       "source_file": "modules/notes/app/app/javascript/diary_calendar.js",
       "source_location": "L6",
       "_origin": "ast",
-      "id": "modules_notes_app_app_javascript_diary_calendar_expiresat",
       "community": 10,
       "community_name": "AyayaContract::ComposeExposureTest",
-      "norm_label": "expiresat()"
+      "norm_label": "expiresat()",
+      "id": "modules_notes_app_app_javascript_diary_calendar_expiresat"
     },
     {
       "label": "DiaryCalendar",
@@ -53,10 +449,10 @@
       "source_file": "modules/notes/app/app/javascript/diary_calendar.js",
       "source_location": "L8",
       "_origin": "ast",
-      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar",
       "community": 10,
       "community_name": "AyayaContract::ComposeExposureTest",
-      "norm_label": "diarycalendar"
+      "norm_label": "diarycalendar",
+      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar"
     },
     {
       "label": ".constructor()",
@@ -64,10 +460,10 @@
       "source_file": "modules/notes/app/app/javascript/diary_calendar.js",
       "source_location": "L9",
       "_origin": "ast",
-      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_constructor",
       "community": 10,
       "community_name": "AyayaContract::ComposeExposureTest",
-      "norm_label": ".constructor()"
+      "norm_label": ".constructor()",
+      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_constructor"
     },
     {
       "label": ".connect()",
@@ -75,10 +471,10 @@
       "source_file": "modules/notes/app/app/javascript/diary_calendar.js",
       "source_location": "L31",
       "_origin": "ast",
-      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_connect",
       "community": 10,
       "community_name": "AyayaContract::ComposeExposureTest",
-      "norm_label": ".connect()"
+      "norm_label": ".connect()",
+      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_connect"
     },
     {
       "label": ".startDrag()",
@@ -86,10 +482,10 @@
       "source_file": "modules/notes/app/app/javascript/diary_calendar.js",
       "source_location": "L63",
       "_origin": "ast",
-      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_startdrag",
       "community": 10,
       "community_name": "AyayaContract::ComposeExposureTest",
-      "norm_label": ".startdrag()"
+      "norm_label": ".startdrag()",
+      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_startdrag"
     },
     {
       "label": ".extendDrag()",
@@ -97,10 +493,10 @@
       "source_file": "modules/notes/app/app/javascript/diary_calendar.js",
       "source_location": "L71",
       "_origin": "ast",
-      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_extenddrag",
       "community": 10,
       "community_name": "AyayaContract::ComposeExposureTest",
-      "norm_label": ".extenddrag()"
+      "norm_label": ".extenddrag()",
+      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_extenddrag"
     },
     {
       "label": ".finishDrag()",
@@ -108,10 +504,10 @@
       "source_file": "modules/notes/app/app/javascript/diary_calendar.js",
       "source_location": "L81",
       "_origin": "ast",
-      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_finishdrag",
       "community": 10,
       "community_name": "AyayaContract::ComposeExposureTest",
-      "norm_label": ".finishdrag()"
+      "norm_label": ".finishdrag()",
+      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_finishdrag"
     },
     {
       "label": ".cancelDrag()",
@@ -119,10 +515,10 @@
       "source_file": "modules/notes/app/app/javascript/diary_calendar.js",
       "source_location": "L89",
       "_origin": "ast",
-      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_canceldrag",
       "community": 10,
       "community_name": "AyayaContract::ComposeExposureTest",
-      "norm_label": ".canceldrag()"
+      "norm_label": ".canceldrag()",
+      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_canceldrag"
     },
     {
       "label": ".selectDay()",
@@ -130,10 +526,10 @@
       "source_file": "modules/notes/app/app/javascript/diary_calendar.js",
       "source_location": "L97",
       "_origin": "ast",
-      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_selectday",
       "community": 10,
       "community_name": "AyayaContract::ComposeExposureTest",
-      "norm_label": ".selectday()"
+      "norm_label": ".selectday()",
+      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_selectday"
     },
     {
       "label": ".dateAt()",
@@ -141,10 +537,10 @@
       "source_file": "modules/notes/app/app/javascript/diary_calendar.js",
       "source_location": "L107",
       "_origin": "ast",
-      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_dateat",
       "community": 10,
       "community_name": "AyayaContract::ComposeExposureTest",
-      "norm_label": ".dateat()"
+      "norm_label": ".dateat()",
+      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_dateat"
     },
     {
       "label": ".updateSelectionPreview()",
@@ -152,10 +548,10 @@
       "source_file": "modules/notes/app/app/javascript/diary_calendar.js",
       "source_location": "L112",
       "_origin": "ast",
-      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_updateselectionpreview",
       "community": 10,
       "community_name": "AyayaContract::ComposeExposureTest",
-      "norm_label": ".updateselectionpreview()"
+      "norm_label": ".updateselectionpreview()",
+      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_updateselectionpreview"
     },
     {
       "label": ".openRange()",
@@ -163,10 +559,10 @@
       "source_file": "modules/notes/app/app/javascript/diary_calendar.js",
       "source_location": "L121",
       "_origin": "ast",
-      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_openrange",
       "community": 10,
       "community_name": "AyayaContract::ComposeExposureTest",
-      "norm_label": ".openrange()"
+      "norm_label": ".openrange()",
+      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_openrange"
     },
     {
       "label": ".fetchEntry()",
@@ -174,10 +570,10 @@
       "source_file": "modules/notes/app/app/javascript/diary_calendar.js",
       "source_location": "L140",
       "_origin": "ast",
-      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_fetchentry",
       "community": 10,
       "community_name": "AyayaContract::ComposeExposureTest",
-      "norm_label": ".fetchentry()"
+      "norm_label": ".fetchentry()",
+      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_fetchentry"
     },
     {
       "label": ".resetForm()",
@@ -185,10 +581,10 @@
       "source_file": "modules/notes/app/app/javascript/diary_calendar.js",
       "source_location": "L152",
       "_origin": "ast",
-      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_resetform",
       "community": 10,
       "community_name": "AyayaContract::ComposeExposureTest",
-      "norm_label": ".resetform()"
+      "norm_label": ".resetform()",
+      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_resetform"
     },
     {
       "label": ".populateForm()",
@@ -196,10 +592,10 @@
       "source_file": "modules/notes/app/app/javascript/diary_calendar.js",
       "source_location": "L164",
       "_origin": "ast",
-      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_populateform",
       "community": 10,
       "community_name": "AyayaContract::ComposeExposureTest",
-      "norm_label": ".populateform()"
+      "norm_label": ".populateform()",
+      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_populateform"
     },
     {
       "label": ".restoreDraft()",
@@ -207,10 +603,10 @@
       "source_file": "modules/notes/app/app/javascript/diary_calendar.js",
       "source_location": "L180",
       "_origin": "ast",
-      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_restoredraft",
       "community": 10,
       "community_name": "AyayaContract::ComposeExposureTest",
-      "norm_label": ".restoredraft()"
+      "norm_label": ".restoredraft()",
+      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_restoredraft"
     },
     {
       "label": ".readDraft()",
@@ -218,10 +614,10 @@
       "source_file": "modules/notes/app/app/javascript/diary_calendar.js",
       "source_location": "L190",
       "_origin": "ast",
-      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_readdraft",
       "community": 10,
       "community_name": "AyayaContract::ComposeExposureTest",
-      "norm_label": ".readdraft()"
+      "norm_label": ".readdraft()",
+      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_readdraft"
     },
     {
       "label": ".queueDraft()",
@@ -229,10 +625,10 @@
       "source_file": "modules/notes/app/app/javascript/diary_calendar.js",
       "source_location": "L208",
       "_origin": "ast",
-      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_queuedraft",
       "community": 10,
       "community_name": "AyayaContract::ComposeExposureTest",
-      "norm_label": ".queuedraft()"
+      "norm_label": ".queuedraft()",
+      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_queuedraft"
     },
     {
       "label": ".persistDraft()",
@@ -240,10 +636,10 @@
       "source_file": "modules/notes/app/app/javascript/diary_calendar.js",
       "source_location": "L213",
       "_origin": "ast",
-      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_persistdraft",
       "community": 10,
       "community_name": "AyayaContract::ComposeExposureTest",
-      "norm_label": ".persistdraft()"
+      "norm_label": ".persistdraft()",
+      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_persistdraft"
     },
     {
       "label": ".save()",
@@ -251,10 +647,10 @@
       "source_file": "modules/notes/app/app/javascript/diary_calendar.js",
       "source_location": "L233",
       "_origin": "ast",
-      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_save",
       "community": 10,
       "community_name": "AyayaContract::ComposeExposureTest",
-      "norm_label": ".save()"
+      "norm_label": ".save()",
+      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_save"
     },
     {
       "label": ".deleteEntry()",
@@ -262,10 +658,10 @@
       "source_file": "modules/notes/app/app/javascript/diary_calendar.js",
       "source_location": "L253",
       "_origin": "ast",
-      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_deleteentry",
       "community": 10,
       "community_name": "AyayaContract::ComposeExposureTest",
-      "norm_label": ".deleteentry()"
+      "norm_label": ".deleteentry()",
+      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_deleteentry"
     },
     {
       "label": ".showResponseErrors()",
@@ -273,10 +669,10 @@
       "source_file": "modules/notes/app/app/javascript/diary_calendar.js",
       "source_location": "L273",
       "_origin": "ast",
-      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_showresponseerrors",
       "community": 10,
       "community_name": "AyayaContract::ComposeExposureTest",
-      "norm_label": ".showresponseerrors()"
+      "norm_label": ".showresponseerrors()",
+      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_showresponseerrors"
     },
     {
       "label": ".csrfHeaders()",
@@ -284,10 +680,10 @@
       "source_file": "modules/notes/app/app/javascript/diary_calendar.js",
       "source_location": "L279",
       "_origin": "ast",
-      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_csrfheaders",
       "community": 10,
       "community_name": "AyayaContract::ComposeExposureTest",
-      "norm_label": ".csrfheaders()"
+      "norm_label": ".csrfheaders()",
+      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_csrfheaders"
     },
     {
       "label": ".clearCurrentDraft()",
@@ -295,10 +691,10 @@
       "source_file": "modules/notes/app/app/javascript/diary_calendar.js",
       "source_location": "L284",
       "_origin": "ast",
-      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_clearcurrentdraft",
       "community": 10,
       "community_name": "AyayaContract::ComposeExposureTest",
-      "norm_label": ".clearcurrentdraft()"
+      "norm_label": ".clearcurrentdraft()",
+      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_clearcurrentdraft"
     },
     {
       "label": ".setEditorHTML()",
@@ -306,10 +702,10 @@
       "source_file": "modules/notes/app/app/javascript/diary_calendar.js",
       "source_location": "L288",
       "_origin": "ast",
-      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_seteditorhtml",
       "community": 10,
       "community_name": "AyayaContract::ComposeExposureTest",
-      "norm_label": ".seteditorhtml()"
+      "norm_label": ".seteditorhtml()",
+      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_seteditorhtml"
     },
     {
       "label": ".clearErrors()",
@@ -317,10 +713,10 @@
       "source_file": "modules/notes/app/app/javascript/diary_calendar.js",
       "source_location": "L296",
       "_origin": "ast",
-      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_clearerrors",
       "community": 10,
       "community_name": "AyayaContract::ComposeExposureTest",
-      "norm_label": ".clearerrors()"
+      "norm_label": ".clearerrors()",
+      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_clearerrors"
     },
     {
       "label": ".showErrors()",
@@ -328,10 +724,10 @@
       "source_file": "modules/notes/app/app/javascript/diary_calendar.js",
       "source_location": "L301",
       "_origin": "ast",
-      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_showerrors",
       "community": 10,
       "community_name": "AyayaContract::ComposeExposureTest",
-      "norm_label": ".showerrors()"
+      "norm_label": ".showerrors()",
+      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_showerrors"
     },
     {
       "label": ".show()",
@@ -339,10 +735,10 @@
       "source_file": "modules/notes/app/app/javascript/diary_calendar.js",
       "source_location": "L312",
       "_origin": "ast",
-      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_show",
       "community": 10,
       "community_name": "AyayaContract::ComposeExposureTest",
-      "norm_label": ".show()"
+      "norm_label": ".show()",
+      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_show"
     },
     {
       "label": ".close()",
@@ -350,10 +746,10 @@
       "source_file": "modules/notes/app/app/javascript/diary_calendar.js",
       "source_location": "L317",
       "_origin": "ast",
-      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_close",
       "community": 10,
       "community_name": "AyayaContract::ComposeExposureTest",
-      "norm_label": ".close()"
+      "norm_label": ".close()",
+      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_close"
     },
     {
       "label": ".isOpen()",
@@ -361,10 +757,10 @@
       "source_file": "modules/notes/app/app/javascript/diary_calendar.js",
       "source_location": "L322",
       "_origin": "ast",
-      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_isopen",
       "community": 10,
       "community_name": "AyayaContract::ComposeExposureTest",
-      "norm_label": ".isopen()"
+      "norm_label": ".isopen()",
+      "id": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_isopen"
     },
     {
       "label": "connectDiaryCalendars()",
@@ -372,10 +768,10 @@
       "source_file": "modules/notes/app/app/javascript/diary_calendar.js",
       "source_location": "L327",
       "_origin": "ast",
-      "id": "modules_notes_app_app_javascript_diary_calendar_connectdiarycalendars",
       "community": 10,
       "community_name": "AyayaContract::ComposeExposureTest",
-      "norm_label": "connectdiarycalendars()"
+      "norm_label": "connectdiarycalendars()",
+      "id": "modules_notes_app_app_javascript_diary_calendar_connectdiarycalendars"
     },
     {
       "label": "diary_calendar_test.rb",
@@ -383,10 +779,10 @@
       "source_file": "modules/notes/app/test/system/diary_calendar_test.rb",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "modules_notes_app_test_system_diary_calendar_test",
       "community": 124,
       "community_name": "ApplicationRecord",
-      "norm_label": "diary_calendar_test.rb"
+      "norm_label": "diary_calendar_test.rb",
+      "id": "modules_notes_app_test_system_diary_calendar_test"
     },
     {
       "label": "DiaryCalendarTest",
@@ -394,10 +790,10 @@
       "source_file": "modules/notes/app/test/system/diary_calendar_test.rb",
       "source_location": "L3",
       "_origin": "ast",
-      "id": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest",
       "community": 124,
       "community_name": "ApplicationRecord",
-      "norm_label": "diarycalendartest"
+      "norm_label": "diarycalendartest",
+      "id": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest"
     },
     {
       "label": "ApplicationSystemTestCase",
@@ -405,10 +801,10 @@
       "source_file": "",
       "source_location": "",
       "_origin": "ast",
-      "id": "applicationsystemtestcase",
       "community": 124,
       "community_name": "ApplicationRecord",
-      "norm_label": "applicationsystemtestcase"
+      "norm_label": "applicationsystemtestcase",
+      "id": "applicationsystemtestcase"
     },
     {
       "label": ".draft_key()",
@@ -416,10 +812,10 @@
       "source_file": "modules/notes/app/test/system/diary_calendar_test.rb",
       "source_location": "L218",
       "_origin": "ast",
-      "id": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest_draft_key",
       "community": 124,
       "community_name": "ApplicationRecord",
-      "norm_label": ".draft_key()"
+      "norm_label": ".draft_key()",
+      "id": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest_draft_key"
     },
     {
       "label": ".write_draft()",
@@ -427,10 +823,10 @@
       "source_file": "modules/notes/app/test/system/diary_calendar_test.rb",
       "source_location": "L222",
       "_origin": "ast",
-      "id": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest_write_draft",
       "community": 124,
       "community_name": "ApplicationRecord",
-      "norm_label": ".write_draft()"
+      "norm_label": ".write_draft()",
+      "id": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest_write_draft"
     },
     {
       "label": ".assert_draft_value()",
@@ -438,10 +834,10 @@
       "source_file": "modules/notes/app/test/system/diary_calendar_test.rb",
       "source_location": "L227",
       "_origin": "ast",
-      "id": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest_assert_draft_value",
       "community": 124,
       "community_name": "ApplicationRecord",
-      "norm_label": ".assert_draft_value()"
+      "norm_label": ".assert_draft_value()",
+      "id": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest_assert_draft_value"
     },
     {
       "label": ".stored_draft()",
@@ -449,10 +845,10 @@
       "source_file": "modules/notes/app/test/system/diary_calendar_test.rb",
       "source_location": "L231",
       "_origin": "ast",
-      "id": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest_stored_draft",
       "community": 124,
       "community_name": "ApplicationRecord",
-      "norm_label": ".stored_draft()"
+      "norm_label": ".stored_draft()",
+      "id": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest_stored_draft"
     },
     {
       "label": ".assert_draft_removed()",
@@ -460,10 +856,10 @@
       "source_file": "modules/notes/app/test/system/diary_calendar_test.rb",
       "source_location": "L243",
       "_origin": "ast",
-      "id": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest_assert_draft_removed",
       "community": 124,
       "community_name": "ApplicationRecord",
-      "norm_label": ".assert_draft_removed()"
+      "norm_label": ".assert_draft_removed()",
+      "id": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest_assert_draft_removed"
     },
     {
       "label": ".assert_input_value()",
@@ -471,10 +867,10 @@
       "source_file": "modules/notes/app/test/system/diary_calendar_test.rb",
       "source_location": "L254",
       "_origin": "ast",
-      "id": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest_assert_input_value",
       "community": 124,
       "community_name": "ApplicationRecord",
-      "norm_label": ".assert_input_value()"
+      "norm_label": ".assert_input_value()",
+      "id": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest_assert_input_value"
     },
     {
       "label": ".perform_touch_drag()",
@@ -482,10 +878,10 @@
       "source_file": "modules/notes/app/test/system/diary_calendar_test.rb",
       "source_location": "L265",
       "_origin": "ast",
-      "id": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest_perform_touch_drag",
       "community": 124,
       "community_name": "ApplicationRecord",
-      "norm_label": ".perform_touch_drag()"
+      "norm_label": ".perform_touch_drag()",
+      "id": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest_perform_touch_drag"
     },
     {
       "label": ".capture_save_csrf_header()",
@@ -493,10 +889,10 @@
       "source_file": "modules/notes/app/test/system/diary_calendar_test.rb",
       "source_location": "L275",
       "_origin": "ast",
-      "id": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest_capture_save_csrf_header",
       "community": 124,
       "community_name": "ApplicationRecord",
-      "norm_label": ".capture_save_csrf_header()"
+      "norm_label": ".capture_save_csrf_header()",
+      "id": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest_capture_save_csrf_header"
     },
     {
       "label": ".perform_touch_cancel()",
@@ -504,10 +900,10 @@
       "source_file": "modules/notes/app/test/system/diary_calendar_test.rb",
       "source_location": "L288",
       "_origin": "ast",
-      "id": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest_perform_touch_cancel",
       "community": 124,
       "community_name": "ApplicationRecord",
-      "norm_label": ".perform_touch_cancel()"
+      "norm_label": ".perform_touch_cancel()",
+      "id": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest_perform_touch_cancel"
     },
     {
       "label": ".delay_exact_range_lookup()",
@@ -515,10 +911,10 @@
       "source_file": "modules/notes/app/test/system/diary_calendar_test.rb",
       "source_location": "L297",
       "_origin": "ast",
-      "id": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest_delay_exact_range_lookup",
       "community": 124,
       "community_name": "ApplicationRecord",
-      "norm_label": ".delay_exact_range_lookup()"
+      "norm_label": ".delay_exact_range_lookup()",
+      "id": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest_delay_exact_range_lookup"
     },
     {
       "label": "dashboard.rb",
@@ -6763,61 +7159,6 @@
       "id": "docs_superpowers_plans_2026_08_09_diary_mode_task_5_verify_end_to_end_integration_and_refresh_the_graph"
     },
     {
-      "label": "2026-08-11-diary-visual-refresh.md",
-      "file_type": "document",
-      "source_file": "docs/superpowers/plans/2026-08-11-diary-visual-refresh.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 123,
-      "community_name": "new_framework_defaults_8_1.rb",
-      "norm_label": "2026-08-11-diary-visual-refresh.md",
-      "id": "docs_superpowers_plans_2026_08_11_diary_visual_refresh"
-    },
-    {
-      "label": "Diary Visual Refresh Implementation Plan",
-      "file_type": "document",
-      "source_file": "docs/superpowers/plans/2026-08-11-diary-visual-refresh.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 123,
-      "community_name": "new_framework_defaults_8_1.rb",
-      "norm_label": "diary visual refresh implementation plan",
-      "id": "docs_superpowers_plans_2026_08_11_diary_visual_refresh_diary_visual_refresh_implementation_plan"
-    },
-    {
-      "label": "Global Constraints",
-      "file_type": "document",
-      "source_file": "docs/superpowers/plans/2026-08-11-diary-visual-refresh.md",
-      "source_location": "L11",
-      "_origin": "ast",
-      "community": 123,
-      "community_name": "new_framework_defaults_8_1.rb",
-      "norm_label": "global constraints",
-      "id": "docs_superpowers_plans_2026_08_11_diary_visual_refresh_global_constraints"
-    },
-    {
-      "label": "Task 1: Route Notes assets through the module",
-      "file_type": "document",
-      "source_file": "docs/superpowers/plans/2026-08-11-diary-visual-refresh.md",
-      "source_location": "L20",
-      "_origin": "ast",
-      "community": 123,
-      "community_name": "new_framework_defaults_8_1.rb",
-      "norm_label": "task 1: route notes assets through the module",
-      "id": "docs_superpowers_plans_2026_08_11_diary_visual_refresh_task_1_route_notes_assets_through_the_module"
-    },
-    {
-      "label": "Task 2: Polish Diary navigation, calendar, and modal editor",
-      "file_type": "document",
-      "source_file": "docs/superpowers/plans/2026-08-11-diary-visual-refresh.md",
-      "source_location": "L65",
-      "_origin": "ast",
-      "community": 123,
-      "community_name": "new_framework_defaults_8_1.rb",
-      "norm_label": "task 2: polish diary navigation, calendar, and modal editor",
-      "id": "docs_superpowers_plans_2026_08_11_diary_visual_refresh_task_2_polish_diary_navigation_calendar_and_modal_editor"
-    },
-    {
       "label": "2026-08-01-reference-notes-module-design.md",
       "file_type": "document",
       "source_file": "docs/superpowers/specs/2026-08-01-reference-notes-module-design.md",
@@ -7656,6 +7997,369 @@
   ],
   "links": [
     {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-08-11-diary-visual-refresh.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_superpowers_plans_2026_08_11_diary_visual_refresh",
+      "target": "docs_superpowers_plans_2026_08_11_diary_visual_refresh_diary_visual_refresh_implementation_plan",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-08-11-diary-visual-refresh.md",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_superpowers_plans_2026_08_11_diary_visual_refresh_diary_visual_refresh_implementation_plan",
+      "target": "docs_superpowers_plans_2026_08_11_diary_visual_refresh_global_constraints",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-08-11-diary-visual-refresh.md",
+      "source_location": "L20",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_superpowers_plans_2026_08_11_diary_visual_refresh_global_constraints",
+      "target": "docs_superpowers_plans_2026_08_11_diary_visual_refresh_task_1_route_notes_assets_through_the_module",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-08-11-diary-visual-refresh.md",
+      "source_location": "L65",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_superpowers_plans_2026_08_11_diary_visual_refresh_global_constraints",
+      "target": "docs_superpowers_plans_2026_08_11_diary_visual_refresh_task_2_polish_diary_navigation_calendar_and_modal_editor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-08-15-pic-obtainer-ayaya-integration.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_superpowers_plans_2026_08_15_pic_obtainer_ayaya_integration",
+      "target": "docs_superpowers_plans_2026_08_15_pic_obtainer_ayaya_integration_pic_obtainer_ayaya_integration_implementation_plan",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-08-15-pic-obtainer-ayaya-integration.md",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_superpowers_plans_2026_08_15_pic_obtainer_ayaya_integration_pic_obtainer_ayaya_integration_implementation_plan",
+      "target": "docs_superpowers_plans_2026_08_15_pic_obtainer_ayaya_integration_global_constraints",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-08-15-pic-obtainer-ayaya-integration.md",
+      "source_location": "L24",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_superpowers_plans_2026_08_15_pic_obtainer_ayaya_integration_pic_obtainer_ayaya_integration_implementation_plan",
+      "target": "docs_superpowers_plans_2026_08_15_pic_obtainer_ayaya_integration_repository_map",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-08-15-pic-obtainer-ayaya-integration.md",
+      "source_location": "L231",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_superpowers_plans_2026_08_15_pic_obtainer_ayaya_integration_pic_obtainer_ayaya_integration_implementation_plan",
+      "target": "docs_superpowers_plans_2026_08_15_pic_obtainer_ayaya_integration_verification_checklist",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-08-15-pic-obtainer-ayaya-integration.md",
+      "source_location": "L49",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_superpowers_plans_2026_08_15_pic_obtainer_ayaya_integration_repository_map",
+      "target": "docs_superpowers_plans_2026_08_15_pic_obtainer_ayaya_integration_task_1_define_the_independent_module_deployment_boundary",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-08-15-pic-obtainer-ayaya-integration.md",
+      "source_location": "L70",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_superpowers_plans_2026_08_15_pic_obtainer_ayaya_integration_repository_map",
+      "target": "docs_superpowers_plans_2026_08_15_pic_obtainer_ayaya_integration_task_2_add_the_authenticated_ayaya_adapter_surface",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-08-15-pic-obtainer-ayaya-integration.md",
+      "source_location": "L93",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_superpowers_plans_2026_08_15_pic_obtainer_ayaya_integration_repository_map",
+      "target": "docs_superpowers_plans_2026_08_15_pic_obtainer_ayaya_integration_task_3_add_trusted_ayaya_identity_handling",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-08-15-pic-obtainer-ayaya-integration.md",
+      "source_location": "L113",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_superpowers_plans_2026_08_15_pic_obtainer_ayaya_integration_repository_map",
+      "target": "docs_superpowers_plans_2026_08_15_pic_obtainer_ayaya_integration_task_4_add_the_server_rendered_gui_over_the_existing_facade",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-08-15-pic-obtainer-ayaya-integration.md",
+      "source_location": "L144",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_superpowers_plans_2026_08_15_pic_obtainer_ayaya_integration_repository_map",
+      "target": "docs_superpowers_plans_2026_08_15_pic_obtainer_ayaya_integration_task_5_make_media_import_paths_safe_for_the_module_deployment",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-08-15-pic-obtainer-ayaya-integration.md",
+      "source_location": "L165",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_superpowers_plans_2026_08_15_pic_obtainer_ayaya_integration_repository_map",
+      "target": "docs_superpowers_plans_2026_08_15_pic_obtainer_ayaya_integration_task_6_align_the_pic_obtainer_compose_topology_with_ayaya",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-08-15-pic-obtainer-ayaya-integration.md",
+      "source_location": "L187",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_superpowers_plans_2026_08_15_pic_obtainer_ayaya_integration_repository_map",
+      "target": "docs_superpowers_plans_2026_08_15_pic_obtainer_ayaya_integration_task_7_connect_the_module_to_ayaya_nginx_and_core_registration",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-08-15-pic-obtainer-ayaya-integration.md",
+      "source_location": "L211",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_superpowers_plans_2026_08_15_pic_obtainer_ayaya_integration_repository_map",
+      "target": "docs_superpowers_plans_2026_08_15_pic_obtainer_ayaya_integration_task_8_complete_contract_end_to_end_and_security_verification",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-08-15-pic-obtainer-ayaya-integration.md",
+      "source_location": "L36",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_superpowers_plans_2026_08_15_pic_obtainer_ayaya_integration_repository_map",
+      "target": "docs_superpowers_plans_2026_08_15_pic_obtainer_ayaya_integration_users_exsamption_projects_ayaya",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/plans/2026-08-15-pic-obtainer-ayaya-integration.md",
+      "source_location": "L26",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_superpowers_plans_2026_08_15_pic_obtainer_ayaya_integration_repository_map",
+      "target": "docs_superpowers_plans_2026_08_15_pic_obtainer_ayaya_integration_users_exsamption_projects_pic_obtainer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/specs/2026-08-15-pic-obtainer-ayaya-integration-design.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_superpowers_specs_2026_08_15_pic_obtainer_ayaya_integration_design",
+      "target": "docs_superpowers_specs_2026_08_15_pic_obtainer_ayaya_integration_design_pic_obtainer_ayaya_integration_design",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/specs/2026-08-15-pic-obtainer-ayaya-integration-design.md",
+      "source_location": "L224",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_superpowers_specs_2026_08_15_pic_obtainer_ayaya_integration_design_pic_obtainer_ayaya_integration_design",
+      "target": "docs_superpowers_specs_2026_08_15_pic_obtainer_ayaya_integration_design_acceptance_criteria",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/specs/2026-08-15-pic-obtainer-ayaya-integration-design.md",
+      "source_location": "L34",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_superpowers_specs_2026_08_15_pic_obtainer_ayaya_integration_design_pic_obtainer_ayaya_integration_design",
+      "target": "docs_superpowers_specs_2026_08_15_pic_obtainer_ayaya_integration_design_architecture",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/specs/2026-08-15-pic-obtainer-ayaya-integration-design.md",
+      "source_location": "L146",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_superpowers_specs_2026_08_15_pic_obtainer_ayaya_integration_design_pic_obtainer_ayaya_integration_design",
+      "target": "docs_superpowers_specs_2026_08_15_pic_obtainer_ayaya_integration_design_ayaya_identity_and_access",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/specs/2026-08-15-pic-obtainer-ayaya-integration-design.md",
+      "source_location": "L78",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_superpowers_specs_2026_08_15_pic_obtainer_ayaya_integration_design_pic_obtainer_ayaya_integration_design",
+      "target": "docs_superpowers_specs_2026_08_15_pic_obtainer_ayaya_integration_design_ayaya_module_contract",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/specs/2026-08-15-pic-obtainer-ayaya-integration-design.md",
+      "source_location": "L163",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_superpowers_specs_2026_08_15_pic_obtainer_ayaya_integration_design_pic_obtainer_ayaya_integration_design",
+      "target": "docs_superpowers_specs_2026_08_15_pic_obtainer_ayaya_integration_design_configuration_and_secrets",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/specs/2026-08-15-pic-obtainer-ayaya-integration-design.md",
+      "source_location": "L175",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_superpowers_specs_2026_08_15_pic_obtainer_ayaya_integration_design_pic_obtainer_ayaya_integration_design",
+      "target": "docs_superpowers_specs_2026_08_15_pic_obtainer_ayaya_integration_design_data_and_storage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/specs/2026-08-15-pic-obtainer-ayaya-integration-design.md",
+      "source_location": "L183",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_superpowers_specs_2026_08_15_pic_obtainer_ayaya_integration_design_pic_obtainer_ayaya_integration_design",
+      "target": "docs_superpowers_specs_2026_08_15_pic_obtainer_ayaya_integration_design_error_handling",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/specs/2026-08-15-pic-obtainer-ayaya-integration-design.md",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_superpowers_specs_2026_08_15_pic_obtainer_ayaya_integration_design_pic_obtainer_ayaya_integration_design",
+      "target": "docs_superpowers_specs_2026_08_15_pic_obtainer_ayaya_integration_design_goal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/specs/2026-08-15-pic-obtainer-ayaya-integration-design.md",
+      "source_location": "L121",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_superpowers_specs_2026_08_15_pic_obtainer_ayaya_integration_design_pic_obtainer_ayaya_integration_design",
+      "target": "docs_superpowers_specs_2026_08_15_pic_obtainer_ayaya_integration_design_http_and_gui_design",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/specs/2026-08-15-pic-obtainer-ayaya-integration-design.md",
+      "source_location": "L215",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_superpowers_specs_2026_08_15_pic_obtainer_ayaya_integration_design_pic_obtainer_ayaya_integration_design",
+      "target": "docs_superpowers_specs_2026_08_15_pic_obtainer_ayaya_integration_design_implementation_order",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/specs/2026-08-15-pic-obtainer-ayaya-integration-design.md",
+      "source_location": "L64",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_superpowers_specs_2026_08_15_pic_obtainer_ayaya_integration_design_pic_obtainer_ayaya_integration_design",
+      "target": "docs_superpowers_specs_2026_08_15_pic_obtainer_ayaya_integration_design_repository_and_deployment_shape",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/specs/2026-08-15-pic-obtainer-ayaya-integration-design.md",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_superpowers_specs_2026_08_15_pic_obtainer_ayaya_integration_design_pic_obtainer_ayaya_integration_design",
+      "target": "docs_superpowers_specs_2026_08_15_pic_obtainer_ayaya_integration_design_scope",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/specs/2026-08-15-pic-obtainer-ayaya-integration-design.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_superpowers_specs_2026_08_15_pic_obtainer_ayaya_integration_design_pic_obtainer_ayaya_integration_design",
+      "target": "docs_superpowers_specs_2026_08_15_pic_obtainer_ayaya_integration_design_status",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/superpowers/specs/2026-08-15-pic-obtainer-ayaya-integration-design.md",
+      "source_location": "L192",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_superpowers_specs_2026_08_15_pic_obtainer_ayaya_integration_design_pic_obtainer_ayaya_integration_design",
+      "target": "docs_superpowers_specs_2026_08_15_pic_obtainer_ayaya_integration_design_testing_strategy",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "indirect_call",
       "confidence": "INFERRED",
       "source_file": "modules/notes/app/app/javascript/diary_calendar.js",
@@ -7663,9 +8367,9 @@
       "weight": 1.0,
       "_origin": "ast",
       "context": "argument",
+      "confidence_score": 0.5,
       "source": "modules_notes_app_app_javascript_diary_calendar",
-      "target": "modules_notes_app_app_javascript_diary_calendar_connectdiarycalendars",
-      "confidence_score": 0.5
+      "target": "modules_notes_app_app_javascript_diary_calendar_connectdiarycalendars"
     },
     {
       "relation": "contains",
@@ -7674,9 +8378,9 @@
       "source_location": "L8",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar"
     },
     {
       "relation": "contains",
@@ -7685,9 +8389,9 @@
       "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar",
-      "target": "modules_notes_app_app_javascript_diary_calendar_draftkey",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_draftkey"
     },
     {
       "relation": "contains",
@@ -7696,9 +8400,9 @@
       "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar",
-      "target": "modules_notes_app_app_javascript_diary_calendar_expiresat",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_expiresat"
     },
     {
       "relation": "contains",
@@ -7707,9 +8411,9 @@
       "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar",
-      "target": "modules_notes_app_app_javascript_diary_calendar_normalizerange",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_normalizerange"
     },
     {
       "relation": "calls",
@@ -7719,9 +8423,9 @@
       "source_location": "L84",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_finishdrag",
-      "target": "modules_notes_app_app_javascript_diary_calendar_normalizerange",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_normalizerange"
     },
     {
       "relation": "calls",
@@ -7731,9 +8435,9 @@
       "source_location": "L122",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_openrange",
-      "target": "modules_notes_app_app_javascript_diary_calendar_normalizerange",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_normalizerange"
     },
     {
       "relation": "calls",
@@ -7743,9 +8447,9 @@
       "source_location": "L113",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_updateselectionpreview",
-      "target": "modules_notes_app_app_javascript_diary_calendar_normalizerange",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_normalizerange"
     },
     {
       "relation": "calls",
@@ -7755,9 +8459,9 @@
       "source_location": "L285",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_clearcurrentdraft",
-      "target": "modules_notes_app_app_javascript_diary_calendar_draftkey",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_draftkey"
     },
     {
       "relation": "calls",
@@ -7767,9 +8471,9 @@
       "source_location": "L227",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_persistdraft",
-      "target": "modules_notes_app_app_javascript_diary_calendar_draftkey",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_draftkey"
     },
     {
       "relation": "calls",
@@ -7779,9 +8483,9 @@
       "source_location": "L191",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_readdraft",
-      "target": "modules_notes_app_app_javascript_diary_calendar_draftkey",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_draftkey"
     },
     {
       "relation": "calls",
@@ -7791,9 +8495,9 @@
       "source_location": "L223",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_persistdraft",
-      "target": "modules_notes_app_app_javascript_diary_calendar_expiresat",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_expiresat"
     },
     {
       "relation": "method",
@@ -7802,9 +8506,9 @@
       "source_location": "L89",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_canceldrag",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_canceldrag"
     },
     {
       "relation": "method",
@@ -7813,9 +8517,9 @@
       "source_location": "L284",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_clearcurrentdraft",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_clearcurrentdraft"
     },
     {
       "relation": "method",
@@ -7824,9 +8528,9 @@
       "source_location": "L296",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_clearerrors",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_clearerrors"
     },
     {
       "relation": "method",
@@ -7835,9 +8539,9 @@
       "source_location": "L317",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_close",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_close"
     },
     {
       "relation": "method",
@@ -7846,9 +8550,9 @@
       "source_location": "L31",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_connect",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_connect"
     },
     {
       "relation": "method",
@@ -7857,9 +8561,9 @@
       "source_location": "L9",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_constructor",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_constructor"
     },
     {
       "relation": "method",
@@ -7868,9 +8572,9 @@
       "source_location": "L279",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_csrfheaders",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_csrfheaders"
     },
     {
       "relation": "method",
@@ -7879,9 +8583,9 @@
       "source_location": "L107",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_dateat",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_dateat"
     },
     {
       "relation": "method",
@@ -7890,9 +8594,9 @@
       "source_location": "L253",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_deleteentry",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_deleteentry"
     },
     {
       "relation": "method",
@@ -7901,9 +8605,9 @@
       "source_location": "L71",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_extenddrag",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_extenddrag"
     },
     {
       "relation": "method",
@@ -7912,9 +8616,9 @@
       "source_location": "L140",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_fetchentry",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_fetchentry"
     },
     {
       "relation": "method",
@@ -7923,9 +8627,9 @@
       "source_location": "L81",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_finishdrag",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_finishdrag"
     },
     {
       "relation": "method",
@@ -7934,9 +8638,9 @@
       "source_location": "L322",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_isopen",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_isopen"
     },
     {
       "relation": "method",
@@ -7945,9 +8649,9 @@
       "source_location": "L121",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_openrange",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_openrange"
     },
     {
       "relation": "method",
@@ -7956,9 +8660,9 @@
       "source_location": "L213",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_persistdraft",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_persistdraft"
     },
     {
       "relation": "method",
@@ -7967,9 +8671,9 @@
       "source_location": "L164",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_populateform",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_populateform"
     },
     {
       "relation": "method",
@@ -7978,9 +8682,9 @@
       "source_location": "L208",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_queuedraft",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_queuedraft"
     },
     {
       "relation": "method",
@@ -7989,9 +8693,9 @@
       "source_location": "L190",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_readdraft",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_readdraft"
     },
     {
       "relation": "method",
@@ -8000,9 +8704,9 @@
       "source_location": "L152",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_resetform",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_resetform"
     },
     {
       "relation": "method",
@@ -8011,9 +8715,9 @@
       "source_location": "L180",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_restoredraft",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_restoredraft"
     },
     {
       "relation": "method",
@@ -8022,9 +8726,9 @@
       "source_location": "L233",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_save",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_save"
     },
     {
       "relation": "method",
@@ -8033,9 +8737,9 @@
       "source_location": "L97",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_selectday",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_selectday"
     },
     {
       "relation": "method",
@@ -8044,9 +8748,9 @@
       "source_location": "L288",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_seteditorhtml",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_seteditorhtml"
     },
     {
       "relation": "method",
@@ -8055,9 +8759,9 @@
       "source_location": "L312",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_show",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_show"
     },
     {
       "relation": "method",
@@ -8066,9 +8770,9 @@
       "source_location": "L301",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_showerrors",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_showerrors"
     },
     {
       "relation": "method",
@@ -8077,9 +8781,9 @@
       "source_location": "L273",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_showresponseerrors",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_showresponseerrors"
     },
     {
       "relation": "method",
@@ -8088,9 +8792,9 @@
       "source_location": "L63",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_startdrag",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_startdrag"
     },
     {
       "relation": "method",
@@ -8099,9 +8803,9 @@
       "source_location": "L112",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_updateselectionpreview",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_updateselectionpreview"
     },
     {
       "relation": "calls",
@@ -8111,9 +8815,9 @@
       "source_location": "L28",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_constructor",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_connect",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_connect"
     },
     {
       "relation": "calls",
@@ -8123,9 +8827,9 @@
       "source_location": "L43",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_connect",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_canceldrag",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_canceldrag"
     },
     {
       "relation": "calls",
@@ -8135,9 +8839,9 @@
       "source_location": "L47",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_connect",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_close",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_close"
     },
     {
       "relation": "calls",
@@ -8147,9 +8851,9 @@
       "source_location": "L55",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_connect",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_deleteentry",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_deleteentry"
     },
     {
       "relation": "calls",
@@ -8159,9 +8863,9 @@
       "source_location": "L34",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_connect",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_extenddrag",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_extenddrag"
     },
     {
       "relation": "calls",
@@ -8171,9 +8875,9 @@
       "source_location": "L41",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_connect",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_finishdrag",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_finishdrag"
     },
     {
       "relation": "calls",
@@ -8183,9 +8887,9 @@
       "source_location": "L52",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_connect",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_isopen",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_isopen"
     },
     {
       "relation": "calls",
@@ -8195,9 +8899,9 @@
       "source_location": "L38",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_connect",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_openrange",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_openrange"
     },
     {
       "relation": "calls",
@@ -8207,9 +8911,9 @@
       "source_location": "L57",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_connect",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_queuedraft",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_queuedraft"
     },
     {
       "relation": "calls",
@@ -8219,9 +8923,9 @@
       "source_location": "L54",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_connect",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_save",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_save"
     },
     {
       "relation": "calls",
@@ -8231,9 +8935,9 @@
       "source_location": "L35",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_connect",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_selectday",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_selectday"
     },
     {
       "relation": "calls",
@@ -8243,9 +8947,9 @@
       "source_location": "L33",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_connect",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_startdrag",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_startdrag"
     },
     {
       "relation": "calls",
@@ -8255,9 +8959,9 @@
       "source_location": "L68",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_startdrag",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_updateselectionpreview",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_updateselectionpreview"
     },
     {
       "relation": "calls",
@@ -8267,9 +8971,9 @@
       "source_location": "L74",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_extenddrag",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_dateat",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_dateat"
     },
     {
       "relation": "calls",
@@ -8279,9 +8983,9 @@
       "source_location": "L78",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_extenddrag",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_updateselectionpreview",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_updateselectionpreview"
     },
     {
       "relation": "calls",
@@ -8291,9 +8995,9 @@
       "source_location": "L85",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_finishdrag",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_canceldrag",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_canceldrag"
     },
     {
       "relation": "calls",
@@ -8303,9 +9007,9 @@
       "source_location": "L84",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_finishdrag",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_dateat",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_dateat"
     },
     {
       "relation": "calls",
@@ -8315,9 +9019,9 @@
       "source_location": "L86",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_finishdrag",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_openrange",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_openrange"
     },
     {
       "relation": "calls",
@@ -8327,9 +9031,9 @@
       "source_location": "L104",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_selectday",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_openrange",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_openrange"
     },
     {
       "relation": "calls",
@@ -8339,9 +9043,9 @@
       "source_location": "L128",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_openrange",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_fetchentry",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_fetchentry"
     },
     {
       "relation": "calls",
@@ -8351,9 +9055,9 @@
       "source_location": "L131",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_openrange",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_populateform",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_populateform"
     },
     {
       "relation": "calls",
@@ -8363,9 +9067,9 @@
       "source_location": "L124",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_openrange",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_resetform",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_resetform"
     },
     {
       "relation": "calls",
@@ -8375,9 +9079,9 @@
       "source_location": "L132",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_openrange",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_restoredraft",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_restoredraft"
     },
     {
       "relation": "calls",
@@ -8387,9 +9091,9 @@
       "source_location": "L125",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_openrange",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_show",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_show"
     },
     {
       "relation": "calls",
@@ -8399,9 +9103,9 @@
       "source_location": "L136",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_openrange",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_showerrors",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_showerrors"
     },
     {
       "relation": "calls",
@@ -8411,9 +9115,9 @@
       "source_location": "L158",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_resetform",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_clearerrors",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_clearerrors"
     },
     {
       "relation": "calls",
@@ -8423,9 +9127,9 @@
       "source_location": "L161",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_resetform",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_seteditorhtml",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_seteditorhtml"
     },
     {
       "relation": "calls",
@@ -8435,9 +9139,9 @@
       "source_location": "L176",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_populateform",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_seteditorhtml",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_seteditorhtml"
     },
     {
       "relation": "calls",
@@ -8447,9 +9151,9 @@
       "source_location": "L181",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_restoredraft",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_readdraft",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_readdraft"
     },
     {
       "relation": "calls",
@@ -8459,9 +9163,9 @@
       "source_location": "L187",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_restoredraft",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_seteditorhtml",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_seteditorhtml"
     },
     {
       "relation": "calls",
@@ -8471,9 +9175,9 @@
       "source_location": "L210",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_queuedraft",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_persistdraft",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_persistdraft"
     },
     {
       "relation": "calls",
@@ -8483,9 +9187,9 @@
       "source_location": "L245",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_save",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_clearcurrentdraft",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_clearcurrentdraft"
     },
     {
       "relation": "calls",
@@ -8495,9 +9199,9 @@
       "source_location": "L235",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_save",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_clearerrors",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_clearerrors"
     },
     {
       "relation": "calls",
@@ -8507,9 +9211,9 @@
       "source_location": "L246",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_save",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_close",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_close"
     },
     {
       "relation": "calls",
@@ -8519,9 +9223,9 @@
       "source_location": "L240",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_save",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_csrfheaders",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_csrfheaders"
     },
     {
       "relation": "calls",
@@ -8531,9 +9235,9 @@
       "source_location": "L249",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_save",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_showerrors",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_showerrors"
     },
     {
       "relation": "calls",
@@ -8543,9 +9247,9 @@
       "source_location": "L243",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_save",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_showresponseerrors",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_showresponseerrors"
     },
     {
       "relation": "calls",
@@ -8555,9 +9259,9 @@
       "source_location": "L265",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_deleteentry",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_clearcurrentdraft",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_clearcurrentdraft"
     },
     {
       "relation": "calls",
@@ -8567,9 +9271,9 @@
       "source_location": "L256",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_deleteentry",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_clearerrors",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_clearerrors"
     },
     {
       "relation": "calls",
@@ -8579,9 +9283,9 @@
       "source_location": "L266",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_deleteentry",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_close",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_close"
     },
     {
       "relation": "calls",
@@ -8591,9 +9295,9 @@
       "source_location": "L260",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_deleteentry",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_csrfheaders",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_csrfheaders"
     },
     {
       "relation": "calls",
@@ -8603,9 +9307,9 @@
       "source_location": "L269",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_deleteentry",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_showerrors",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_showerrors"
     },
     {
       "relation": "calls",
@@ -8615,9 +9319,9 @@
       "source_location": "L263",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_deleteentry",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_showresponseerrors",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_showresponseerrors"
     },
     {
       "relation": "calls",
@@ -8627,9 +9331,9 @@
       "source_location": "L276",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_showresponseerrors",
-      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_showerrors",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_app_javascript_diary_calendar_diarycalendar_showerrors"
     },
     {
       "relation": "contains",
@@ -8638,9 +9342,9 @@
       "source_location": "L3",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_test_system_diary_calendar_test",
-      "target": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest"
     },
     {
       "relation": "inherits",
@@ -8649,9 +9353,9 @@
       "source_location": "L3",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest",
-      "target": "applicationsystemtestcase",
-      "confidence_score": 1.0
+      "target": "applicationsystemtestcase"
     },
     {
       "relation": "method",
@@ -8660,9 +9364,9 @@
       "source_location": "L243",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest",
-      "target": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest_assert_draft_removed",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest_assert_draft_removed"
     },
     {
       "relation": "method",
@@ -8671,9 +9375,9 @@
       "source_location": "L227",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest",
-      "target": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest_assert_draft_value",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest_assert_draft_value"
     },
     {
       "relation": "method",
@@ -8682,9 +9386,9 @@
       "source_location": "L254",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest",
-      "target": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest_assert_input_value",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest_assert_input_value"
     },
     {
       "relation": "method",
@@ -8693,9 +9397,9 @@
       "source_location": "L275",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest",
-      "target": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest_capture_save_csrf_header",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest_capture_save_csrf_header"
     },
     {
       "relation": "method",
@@ -8704,9 +9408,9 @@
       "source_location": "L297",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest",
-      "target": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest_delay_exact_range_lookup",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest_delay_exact_range_lookup"
     },
     {
       "relation": "method",
@@ -8715,9 +9419,9 @@
       "source_location": "L218",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest",
-      "target": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest_draft_key",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest_draft_key"
     },
     {
       "relation": "method",
@@ -8726,9 +9430,9 @@
       "source_location": "L288",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest",
-      "target": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest_perform_touch_cancel",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest_perform_touch_cancel"
     },
     {
       "relation": "method",
@@ -8737,9 +9441,9 @@
       "source_location": "L265",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest",
-      "target": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest_perform_touch_drag",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest_perform_touch_drag"
     },
     {
       "relation": "method",
@@ -8748,9 +9452,9 @@
       "source_location": "L231",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest",
-      "target": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest_stored_draft",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest_stored_draft"
     },
     {
       "relation": "method",
@@ -8759,9 +9463,9 @@
       "source_location": "L222",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest",
-      "target": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest_write_draft",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest_write_draft"
     },
     {
       "relation": "calls",
@@ -8771,9 +9475,9 @@
       "source_location": "L228",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest_assert_draft_value",
-      "target": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest_stored_draft",
-      "confidence_score": 1.0
+      "target": "modules_notes_app_test_system_diary_calendar_test_diarycalendartest_stored_draft"
     },
     {
       "relation": "contains",
@@ -15018,50 +15722,6 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "docs/superpowers/plans/2026-08-11-diary-visual-refresh.md",
-      "source_location": "L1",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "docs_superpowers_plans_2026_08_11_diary_visual_refresh",
-      "target": "docs_superpowers_plans_2026_08_11_diary_visual_refresh_diary_visual_refresh_implementation_plan"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/superpowers/plans/2026-08-11-diary-visual-refresh.md",
-      "source_location": "L11",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "docs_superpowers_plans_2026_08_11_diary_visual_refresh_diary_visual_refresh_implementation_plan",
-      "target": "docs_superpowers_plans_2026_08_11_diary_visual_refresh_global_constraints"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/superpowers/plans/2026-08-11-diary-visual-refresh.md",
-      "source_location": "L20",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "docs_superpowers_plans_2026_08_11_diary_visual_refresh_global_constraints",
-      "target": "docs_superpowers_plans_2026_08_11_diary_visual_refresh_task_1_route_notes_assets_through_the_module"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/superpowers/plans/2026-08-11-diary-visual-refresh.md",
-      "source_location": "L65",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "docs_superpowers_plans_2026_08_11_diary_visual_refresh_global_constraints",
-      "target": "docs_superpowers_plans_2026_08_11_diary_visual_refresh_task_2_polish_diary_navigation_calendar_and_modal_editor"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": "docs/superpowers/specs/2026-08-01-reference-notes-module-design.md",
       "source_location": "L1",
       "weight": 1.0,
@@ -15820,5 +16480,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "79f8cd01af3c2d094a5df4df7bceda60787b1580"
+  "built_at_commit": "1a389278067051dc6fb1d0d63729744d6be5a735"
 }

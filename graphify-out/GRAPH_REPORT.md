@@ -1,16 +1,16 @@
-# Graph Report - ayaya  (2026-08-11)
+# Graph Report - ayaya  (2026-08-15)
 
 ## Corpus Check
-- 156 files · ~54,975 words
+- 158 files · ~58,323 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 694 nodes · 725 edges · 132 communities (81 shown, 51 thin omitted)
+- 725 nodes · 754 edges · 134 communities (83 shown, 51 thin omitted)
 - Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 19 edges (avg confidence: 0.78)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `79f8cd01`
+- Built from commit: `1a389278`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -92,6 +92,8 @@
 - DiaryController
 - ApplicationController
 - ApplicationSystemTestCase
+- Pic Obtainer Ayaya Integration Design
+- Repository map
 
 ## God Nodes (most connected - your core abstractions)
 1. `DiaryCalendar` - 29 edges
@@ -101,9 +103,9 @@
 5. `Admin UI/UX Improvements Design` - 19 edges
 6. `create_app()` - 18 edges
 7. `RegisteredModule` - 17 edges
-8. `NotesController` - 13 edges
-9. `File Structure` - 13 edges
-10. `DiaryCalendarTest` - 12 edges
+8. `Pic Obtainer Ayaya Integration Design` - 15 edges
+9. `NotesController` - 13 edges
+10. `File Structure` - 13 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `create_app()` --indirect_call--> `require_adapter_secret()`  [INFERRED]
@@ -120,7 +122,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (132 total, 51 thin omitted)
+## Communities (134 total, 51 thin omitted)
 
 ### Community 0 - "Ayaya Module Contract v1"
 Cohesion: 0.06
@@ -226,8 +228,16 @@ Nodes (10): Calendar and Modal UX, Data Model, Diary Mode Design, Draft Cache, E
 Cohesion: 0.40
 Nodes (4): Diary Visual Refresh Implementation Plan, Global Constraints, Task 1: Route Notes assets through the module, Task 2: Polish Diary navigation, calendar, and modal editor
 
+### Community 132 - "Pic Obtainer Ayaya Integration Design"
+Cohesion: 0.12
+Nodes (15): Acceptance criteria, Architecture, Ayaya identity and access, Ayaya module contract, Configuration and secrets, Data and storage, Error handling, Goal (+7 more)
+
+### Community 133 - "Repository map"
+Cohesion: 0.13
+Nodes (14): Global Constraints, Pic Obtainer Ayaya Integration Implementation Plan, Repository map, Task 1: Define the independent module deployment boundary, Task 2: Add the authenticated Ayaya adapter surface, Task 3: Add trusted Ayaya identity handling, Task 4: Add the server-rendered GUI over the existing facade, Task 5: Make media/import paths safe for the module deployment (+6 more)
+
 ## Knowledge Gaps
-- **213 isolated node(s):** `Internal`, `ApplicationHelper`, `AdapterProtocol`, `AdapterProtocol`, `Result` (+208 more)
+- **239 isolated node(s):** `Task 1: Route Notes assets through the module`, `Task 2: Polish Diary navigation, calendar, and modal editor`, `Global Constraints`, ``/Users/exsamption/projects/pic_obtainer``, ``/Users/exsamption/projects/ayaya`` (+234 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **51 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -235,13 +245,13 @@ Nodes (4): Diary Visual Refresh Implementation Plan, Global Constraints, Task 1:
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `RegisteredModule` connect `Ayaya Module Contract v1` to `RegisteredModule`?**
-  _High betweenness centrality (0.018) - this node is a cross-community bridge._
-- **Why does `NotesController` connect `NotesController` to `RegisteredModule`?**
   _High betweenness centrality (0.016) - this node is a cross-community bridge._
+- **Why does `NotesController` connect `NotesController` to `RegisteredModule`?**
+  _High betweenness centrality (0.014) - this node is a cross-community bridge._
 - **Why does `AyayaIdentity` connect `NotesController` to `Note`?**
-  _High betweenness centrality (0.011) - this node is a cross-community bridge._
-- **What connects `Internal`, `ApplicationHelper`, `AdapterProtocol` to the rest of the system?**
-  _213 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _High betweenness centrality (0.010) - this node is a cross-community bridge._
+- **What connects `Task 1: Route Notes assets through the module`, `Task 2: Polish Diary navigation, calendar, and modal editor`, `Global Constraints` to the rest of the system?**
+  _239 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Ayaya Module Contract v1` be split into smaller, more focused modules?**
   _Cohesion score 0.06258890469416785 - nodes in this community are weakly interconnected._
 - **Should `TestCase` be split into smaller, more focused modules?**

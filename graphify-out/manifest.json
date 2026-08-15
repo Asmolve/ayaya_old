@@ -943,5 +943,15 @@
     "mtime": 1786476994.6427727,
     "ast_hash": "e2858cf1975fa43398ab1391e57bc8e3",
     "semantic_hash": ""
+  },
+  "docs/superpowers/plans/2026-08-15-pic-obtainer-ayaya-integration.md": {
+    "mtime": 1786824705.7286944,
+    "ast_hash": "c98dc735b2e640a66097e5d2309f14fc",
+    "semantic_hash": ""
+  },
+  "docs/superpowers/specs/2026-08-15-pic-obtainer-ayaya-integration-design.md": {
+    "mtime": 1786824280.0808835,
+    "ast_hash": "4a8124c5c8a3b0ff479dae5049fed978",
+    "semantic_hash": ""
   }
 }

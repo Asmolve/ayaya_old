@@ -12,6 +12,20 @@ class AyayaContract::ComposeExposureTest < ActiveSupport::TestCase
     assert_nil services.dig("notes_adapter", "ports")
   end
 
+  test "pic obtainer services remain internal and migration gated" do
+    compose = YAML.safe_load_file("compose.yml", aliases: true)
+    services = compose.fetch("services")
+
+    assert %w[pic_obtainer_api pic_obtainer_migrate pic_obtainer_postgres pic_obtainer_worker].all? { |name| services.key?(name) }
+    assert_nil services.dig("pic_obtainer_api", "ports")
+    assert_nil services.dig("pic_obtainer_worker", "ports")
+    assert_equal "service_healthy", services.dig("pic_obtainer_migrate", "depends_on", "pic_obtainer_postgres", "condition")
+    assert_equal "service_completed_successfully", services.dig("pic_obtainer_api", "depends_on", "pic_obtainer_migrate", "condition")
+    assert_equal "service_completed_successfully", services.dig("pic_obtainer_worker", "depends_on", "pic_obtainer_migrate", "condition")
+    assert_equal "ayaya_mod_pic_obtainer", services.dig("pic_obtainer_postgres", "environment", "POSTGRES_DB")
+    refute_includes services.fetch("pic_obtainer_api").fetch("environment").keys, "PIC_OBTAINER_RULE34_API_KEY"
+  end
+
   test "publishes the platform edge on the public development port" do
     compose = YAML.safe_load_file("compose.yml", aliases: true)
     services = compose.fetch("services")
@@ -23,9 +37,19 @@ class AyayaContract::ComposeExposureTest < ActiveSupport::TestCase
   test "preserves the public host and port through nginx" do
     nginx = File.read("deploy/nginx/ayaya.example.conf")
 
-    assert_equal 3, nginx.scan("proxy_set_header Host $http_host;").length
+    assert_equal 4, nginx.scan("proxy_set_header Host $http_host;").length
     assert_includes nginx, "proxy_set_header X-Forwarded-Host $http_host;"
     assert_not_includes nginx, "proxy_set_header X-Forwarded-Port $server_port;"
+  end
+
+  test "routes Pic Obtainer through Core auth and rebuilds trusted headers" do
+    nginx = File.read("deploy/nginx/ayaya.example.conf")
+
+    assert_includes nginx, "location /m/pic_obtainer/"
+    assert_includes nginx, "proxy_pass http://$pic_obtainer_api_upstream:8000/;"
+    assert_equal 2, nginx.scan("auth_request /internal/auth/module_access;").length
+    assert_includes nginx, "proxy_set_header X-Ayaya-Module-Key $ayaya_module_key;"
+    assert_includes nginx, "proxy_pass_request_headers off;"
   end
 
   test "provides a complete tracked compose environment template" do
@@ -38,6 +62,9 @@ class AyayaContract::ComposeExposureTest < ActiveSupport::TestCase
       CORE_ALLOWED_HOSTS NOTES_ALLOWED_HOSTS NOTES_ADAPTER_URL
       NOTES_ADAPTER_SECRET NOTES_INTERNAL_STATUS_SECRET
       NOTES_APP_INTERNAL_STATUS_URL NOTES_MODULE_YML CORE_HOST_PORT NGINX_HOST_PORT
+      PIC_OBTAINER_IMAGE PIC_OBTAINER_POSTGRES_PASSWORD PIC_OBTAINER_MEDIA_HOST_PATH
+      PIC_OBTAINER_IMPORT_HOST_PATH PIC_OBTAINER_AYAYA_ADAPTER_SECRET
+      PIC_OBTAINER_RULE34_USER_ID PIC_OBTAINER_RULE34_API_KEY
     ].each do |key|
       assert_match(/^#{key}=/, template)
     end

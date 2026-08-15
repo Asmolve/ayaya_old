@@ -93,6 +93,60 @@ services:
     volumes:
       - ./modules/notes/module.yml:/module/module.yml:ro
 
+  pic_obtainer_postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: ayaya_mod_pic_obtainer
+      POSTGRES_USER: pic_obtainer
+      POSTGRES_PASSWORD: ${PIC_OBTAINER_POSTGRES_PASSWORD:?Set PIC_OBTAINER_POSTGRES_PASSWORD in .env}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U pic_obtainer -d ayaya_mod_pic_obtainer"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+    volumes:
+      - pic_obtainer_postgres_data:/var/lib/postgresql/data
+
+  pic_obtainer_migrate:
+    image: ${PIC_OBTAINER_IMAGE:?Set PIC_OBTAINER_IMAGE in .env}
+    command: ["alembic", "-x", "db_url=postgresql+psycopg://pic_obtainer:${PIC_OBTAINER_POSTGRES_PASSWORD:?Set PIC_OBTAINER_POSTGRES_PASSWORD in .env}@pic_obtainer_postgres:5432/ayaya_mod_pic_obtainer", "upgrade", "head"]
+    depends_on:
+      pic_obtainer_postgres:
+        condition: service_healthy
+
+  pic_obtainer_api:
+    image: ${PIC_OBTAINER_IMAGE:?Set PIC_OBTAINER_IMAGE in .env}
+    command: ["uvicorn", "pic_obtainer.api.main:create_app", "--factory", "--host", "0.0.0.0", "--port", "8000"]
+    environment:
+      PIC_OBTAINER_DATABASE_URL: postgresql+psycopg://pic_obtainer:${PIC_OBTAINER_POSTGRES_PASSWORD:?Set PIC_OBTAINER_POSTGRES_PASSWORD in .env}@pic_obtainer_postgres:5432/ayaya_mod_pic_obtainer
+      PIC_OBTAINER_MEDIA_ROOT: /var/lib/pic-obtainer/media
+      PIC_OBTAINER_IMPORT_ROOT: /var/lib/pic-obtainer/imports
+      PIC_OBTAINER_ROOT_PATH: /m/pic_obtainer
+      PIC_OBTAINER_AYAYA_ADAPTER_SECRET: ${PIC_OBTAINER_AYAYA_ADAPTER_SECRET:?Set PIC_OBTAINER_AYAYA_ADAPTER_SECRET in .env}
+    depends_on:
+      pic_obtainer_migrate:
+        condition: service_completed_successfully
+    volumes:
+      - ${PIC_OBTAINER_MEDIA_HOST_PATH:?Set PIC_OBTAINER_MEDIA_HOST_PATH in .env}:/var/lib/pic-obtainer/media
+      - ${PIC_OBTAINER_IMPORT_HOST_PATH:?Set PIC_OBTAINER_IMPORT_HOST_PATH in .env}:/var/lib/pic-obtainer/imports:ro
+
+  pic_obtainer_worker:
+    image: ${PIC_OBTAINER_IMAGE:?Set PIC_OBTAINER_IMAGE in .env}
+    command: ["pic-obtainer-worker"]
+    environment:
+      PIC_OBTAINER_DATABASE_URL: postgresql+psycopg://pic_obtainer:${PIC_OBTAINER_POSTGRES_PASSWORD:?Set PIC_OBTAINER_POSTGRES_PASSWORD in .env}@pic_obtainer_postgres:5432/ayaya_mod_pic_obtainer
+      PIC_OBTAINER_MEDIA_ROOT: /var/lib/pic-obtainer/media
+      PIC_OBTAINER_IMPORT_ROOT: /var/lib/pic-obtainer/imports
+      PIC_OBTAINER_RULE34_API_BASE_URL: ${PIC_OBTAINER_RULE34_API_BASE_URL:-https://api.rule34.xxx/index.php}
+      PIC_OBTAINER_RULE34_USER_ID: ${PIC_OBTAINER_RULE34_USER_ID:?Set PIC_OBTAINER_RULE34_USER_ID in .env}
+      PIC_OBTAINER_RULE34_API_KEY: ${PIC_OBTAINER_RULE34_API_KEY:?Set PIC_OBTAINER_RULE34_API_KEY in .env}
+    depends_on:
+      pic_obtainer_migrate:
+        condition: service_completed_successfully
+    volumes:
+      - ${PIC_OBTAINER_MEDIA_HOST_PATH:?Set PIC_OBTAINER_MEDIA_HOST_PATH in .env}:/var/lib/pic-obtainer/media
+      - ${PIC_OBTAINER_IMPORT_HOST_PATH:?Set PIC_OBTAINER_IMPORT_HOST_PATH in .env}:/var/lib/pic-obtainer/imports:ro
+
   nginx:
     image: nginx:1.27-alpine
     depends_on:
@@ -105,3 +159,4 @@ services:
 
 volumes:
   postgres_data:
+  pic_obtainer_postgres_data:

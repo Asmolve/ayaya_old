@@ -1,16 +1,16 @@
-# Graph Report - ayaya  (2026-08-09)
+# Graph Report - ayaya  (2026-08-11)
 
 ## Corpus Check
-- 156 files · ~55,041 words
+- 156 files · ~54,975 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 697 nodes · 726 edges · 134 communities (83 shown, 51 thin omitted)
+- 694 nodes · 725 edges · 132 communities (81 shown, 51 thin omitted)
 - Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 19 edges (avg confidence: 0.78)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `7d42dab0`
+- Built from commit: `79f8cd01`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -91,9 +91,7 @@
 - DiaryControllerTest
 - DiaryController
 - ApplicationController
-- DiaryController
-- Ayaya
-- TestCase
+- ApplicationSystemTestCase
 
 ## God Nodes (most connected - your core abstractions)
 1. `DiaryCalendar` - 29 edges
@@ -122,7 +120,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (134 total, 51 thin omitted)
+## Communities (132 total, 51 thin omitted)
 
 ### Community 0 - "Ayaya Module Contract v1"
 Cohesion: 0.06
@@ -169,8 +167,8 @@ Cohesion: 0.22
 Nodes (4): Note, ApplicationRecord, NotesControllerTest, IntegrationTest
 
 ### Community 13 - "Ayaya Core Foundation Notes"
-Cohesion: 0.22
-Nodes (7): ActiveAdmin, Ayaya Core Foundation Notes, Docker Development Runtime, Foundation Verification, Module Registry, NGINX Static Routing, Register Notes In Core
+Cohesion: 0.11
+Nodes (15): ActiveAdmin, Ayaya Core Foundation Notes, Docker Development Runtime, Foundation Verification, Module Registry, NGINX Static Routing, Bundle Runtime, Development (+7 more)
 
 ### Community 61 - "HomeTest"
 Cohesion: 0.10
@@ -201,8 +199,8 @@ Cohesion: 0.17
 Nodes (5): DiaryController, ApplicationController, DiaryHelper, DiaryHelperTest, TestCase
 
 ### Community 112 - "AyayaIdentity"
-Cohesion: 0.25
-Nodes (7): Compose environment configuration design, Configuration layout, Goal, Ignore rules, Scope, Setup flow, Validation
+Cohesion: 0.29
+Nodes (6): Asset Delivery, Diary Visual Refresh Design, Goal, Modal Editor, Navigation and Calendar, Verification
 
 ### Community 113 - "StatusController"
 Cohesion: 0.29
@@ -225,19 +223,11 @@ Cohesion: 0.18
 Nodes (10): Calendar and Modal UX, Data Model, Diary Mode Design, Draft Cache, Error Handling and Security, Goal, Non-goals, Routes and Server Behaviour (+2 more)
 
 ### Community 123 - "new_framework_defaults_8_1.rb"
-Cohesion: 0.33
-Nodes (5): Bundle Runtime, Development, Notes Module, Services, Smoke Test
-
-### Community 129 - "DiaryController"
-Cohesion: 0.29
-Nodes (6): Compose Environment Configuration Implementation Plan, Global Constraints, Plan self-review, Task 1: Add template, ignore rules, and coverage, Task 2: Interpolate Compose configuration, Task 3: Document setup
-
-### Community 132 - "Ayaya"
-Cohesion: 0.50
-Nodes (3): Ayaya, Local Docker Runtime, Local Rails Runtime
+Cohesion: 0.40
+Nodes (4): Diary Visual Refresh Implementation Plan, Global Constraints, Task 1: Route Notes assets through the module, Task 2: Polish Diary navigation, calendar, and modal editor
 
 ## Knowledge Gaps
-- **216 isolated node(s):** `Local Docker Runtime`, `Local Rails Runtime`, `Global Constraints`, `File Structure`, `Task 1: Add Diary persistence and rich-content infrastructure` (+211 more)
+- **213 isolated node(s):** `Internal`, `ApplicationHelper`, `AdapterProtocol`, `AdapterProtocol`, `Result` (+208 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **51 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -247,11 +237,11 @@ _Questions this graph is uniquely positioned to answer:_
 - **Why does `RegisteredModule` connect `Ayaya Module Contract v1` to `RegisteredModule`?**
   _High betweenness centrality (0.018) - this node is a cross-community bridge._
 - **Why does `NotesController` connect `NotesController` to `RegisteredModule`?**
-  _High betweenness centrality (0.015) - this node is a cross-community bridge._
+  _High betweenness centrality (0.016) - this node is a cross-community bridge._
 - **Why does `AyayaIdentity` connect `NotesController` to `Note`?**
-  _High betweenness centrality (0.010) - this node is a cross-community bridge._
-- **What connects `Local Docker Runtime`, `Local Rails Runtime`, `Global Constraints` to the rest of the system?**
-  _216 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _High betweenness centrality (0.011) - this node is a cross-community bridge._
+- **What connects `Internal`, `ApplicationHelper`, `AdapterProtocol` to the rest of the system?**
+  _213 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Ayaya Module Contract v1` be split into smaller, more focused modules?**
   _Cohesion score 0.06258890469416785 - nodes in this community are weakly interconnected._
 - **Should `TestCase` be split into smaller, more focused modules?**

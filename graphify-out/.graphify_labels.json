@@ -128,9 +128,7 @@
   "126": "DiaryControllerTest",
   "127": "DiaryController",
   "128": "ApplicationController",
-  "129": "DiaryController",
+  "129": "ApplicationSystemTestCase",
   "130": "application.js",
-  "131": "importmap.rb",
-  "132": "Ayaya",
-  "133": "TestCase"
+  "131": "importmap.rb"
 }

@@ -895,8 +895,8 @@
     "semantic_hash": ""
   },
   "modules/notes/app/test/controllers/diary_controller_test.rb": {
-    "mtime": 1786293486.4546452,
-    "ast_hash": "dcdead78bb954a2ff9bcaf349ca77b0d",
+    "mtime": 1786477306.81413,
+    "ast_hash": "c2a09fad90689b848394ece7a758b38b",
     "semantic_hash": ""
   },
   "modules/notes/app/test/helpers/diary_helper_test.rb": {
@@ -920,8 +920,8 @@
     "semantic_hash": ""
   },
   "modules/notes/app/app/javascript/diary_calendar.js": {
-    "mtime": 1786292397.0533,
-    "ast_hash": "f02355096bff4abd7ed29d1470cc6e35",
+    "mtime": 1786478243.1237113,
+    "ast_hash": "a3e714e166ae1063a53c24a60727a967",
     "semantic_hash": ""
   },
   "modules/notes/app/test/application_system_test_case.rb": {
@@ -930,18 +930,18 @@
     "semantic_hash": ""
   },
   "modules/notes/app/test/system/diary_calendar_test.rb": {
-    "mtime": 1786292369.8111775,
-    "ast_hash": "d7bd5ed4f8ffc3151742840c7019ac6f",
+    "mtime": 1786478221.7212446,
+    "ast_hash": "1b8a95d83c07f0aa2aae430e616a1de6",
     "semantic_hash": ""
   },
-  "docs/superpowers/plans/2026-08-09-compose-env.md": {
-    "mtime": 1786301787.475179,
-    "ast_hash": "ef1d4bab01f4f5fc3cf3b50b4ebd8653",
+  "docs/superpowers/specs/2026-08-11-diary-visual-refresh-design.md": {
+    "mtime": 1786476820.9544933,
+    "ast_hash": "47f43aa674cd5d4d3b4c2dcd21969ac9",
     "semantic_hash": ""
   },
-  "docs/superpowers/specs/2026-08-09-compose-env-design.md": {
-    "mtime": 1786301688.7924154,
-    "ast_hash": "8b41e06f51ded867771100042261e14e",
+  "docs/superpowers/plans/2026-08-11-diary-visual-refresh.md": {
+    "mtime": 1786476994.6427727,
+    "ast_hash": "e2858cf1975fa43398ab1391e57bc8e3",
     "semantic_hash": ""
   }
 }

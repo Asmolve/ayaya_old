@@ -46,14 +46,17 @@ The operator workflow is:
 
 ```bash
 docker compose -f modules/pic_obtainer/compose.yml config
-docker compose -f modules/pic_obtainer/compose.yml run --rm pic_obtainer_api alembic upgrade head
+docker compose -f modules/pic_obtainer/compose.yml run --rm pic_obtainer_api alembic -x db_url="$PIC_OBTAINER_DATABASE_URL" upgrade head
 docker compose -f modules/pic_obtainer/compose.yml up -d pic_obtainer_api pic_obtainer_worker
-curl -fsS http://pic_obtainer_api:8000/ayaya/health/live
+curl -fsS http://pic_obtainer_api:8000/api/v1/health/live
 ```
 
-In the full Ayaya Compose network, the health request is made from an internal
-service or through the Core status refresh flow. The media and import host
-directories are persistent operator-managed data and must be backed up with
-the module database. Roll back by stopping the two module services, restoring
-the previous image and compatible database backup, then rerunning the explicit
-Alembic migration before starting the services.
+The current application health route is `/api/v1/health/live`. After the Ayaya
+adapter task is deployed, the platform contract route is
+`/ayaya/health/live`, and Core status refreshes use the adapter route. In the
+full Ayaya Compose network, health requests are made from an internal service
+or through the Core status refresh flow. The media and import host directories
+are persistent operator-managed data and must be backed up with the module
+database. Roll back by stopping the two module services, restoring the previous
+image and compatible database backup, then rerunning the explicit Alembic
+migration before starting the services.

@@ -33,7 +33,7 @@ module Modules
       adapter_secret = ENV[config.adapter_secret_env].presence
       return result(success?: false, errors: [ "Local adapter URL is not configured." ]) if adapter_url.blank? || adapter_secret.blank?
 
-      registration = RegisterAdapter.call(adapter_url:, adapter_secret:, client:)
+      registration = RegisterAdapter.call(adapter_url:, adapter_secret:, client:, expected_module_key: config.module_key)
       return registration if registration.success?
 
       result(
@@ -43,6 +43,11 @@ module Modules
       )
     rescue KeyError
       result(success?: false, errors: [ "Unknown local module registration." ])
+    rescue ActiveRecord::RecordNotUnique
+      existing = RegisteredModule.find_by(module_key: config.module_key)
+      return result(success?: true, registered_module: existing, errors: []) if existing
+
+      result(success?: false, errors: [ "Local module registration raced with another registration." ])
     rescue AdapterProtocol::Client::Error, SocketError, SystemCallError, Timeout::Error, Net::OpenTimeout, Net::ReadTimeout
       result(success?: false, errors: [ "Local adapter registration failed." ])
     end

@@ -53,6 +53,22 @@ class Modules::LocalRegistrationTest < ActiveSupport::TestCase
     assert_not_equal "secret", result.registered_module.adapter_secret_digest
   end
 
+  test "rejects an adapter manifest for a different module" do
+    ENV["PIC_OBTAINER_ADAPTER_URL"] = "http://pic_obtainer_api:8000"
+    ENV["PIC_OBTAINER_AYAYA_ADAPTER_SECRET"] = "secret"
+    manifest = VALID_MANIFEST.deep_dup
+    manifest["identity"]["module_key"] = "notes"
+    manifest["routes"]["ui_base_path"] = "/m/notes"
+    manifest["routes"]["api_base_path"] = "/m/notes/api"
+
+    result = Modules::LocalRegistration.call("pic_obtainer", client: FakeClient.new(manifest))
+
+    assert_not result.success?
+    assert_includes result.errors, "identity.module_key does not match expected module key"
+    assert_equal 0, RegisteredModule.where(module_key: "notes").count
+    assert_not_includes result.errors.join("; "), "secret"
+  end
+
   test "returns a safe error when credentials are missing" do
     ENV.delete("PIC_OBTAINER_ADAPTER_URL")
     ENV.delete("PIC_OBTAINER_AYAYA_ADAPTER_SECRET")
@@ -85,6 +101,29 @@ class Modules::LocalRegistrationTest < ActiveSupport::TestCase
     assert result.success?
     assert_equal existing.id, result.registered_module.id
     assert_equal 1, RegisteredModule.where(module_key: "pic_obtainer").count
+  end
+
+  test "returns the concurrently registered module after a uniqueness race" do
+    ENV["PIC_OBTAINER_ADAPTER_URL"] = "http://pic_obtainer_api:8000"
+    ENV["PIC_OBTAINER_AYAYA_ADAPTER_SECRET"] = "secret"
+    registered = nil
+    test_case = self
+    register_race = lambda do |**|
+      registered = test_case.send(:create_registered_module, module_key: "pic_obtainer")
+      raise ActiveRecord::RecordNotUnique, "duplicate key includes secret"
+    end
+
+    original_call = Modules::RegisterAdapter.method(:call)
+    Modules::RegisterAdapter.define_singleton_method(:call, register_race)
+    begin
+      result = Modules::LocalRegistration.call("pic_obtainer", client: FakeClient.new(VALID_MANIFEST))
+
+      assert result.success?
+      assert_equal registered.id, result.registered_module.id
+      assert_not_includes result.errors.join("; "), "secret"
+    ensure
+      Modules::RegisterAdapter.define_singleton_method(:call, original_call)
+    end
   end
 
   private

@@ -4,13 +4,14 @@ module Modules
   class RegisterAdapter
     Result = Struct.new(:success?, :registered_module, :errors, keyword_init: true)
 
-    def self.call(adapter_url:, adapter_secret:, client: nil)
-      new(adapter_url:, adapter_secret:, client:).call
+    def self.call(adapter_url:, adapter_secret:, client: nil, expected_module_key: nil)
+      new(adapter_url:, adapter_secret:, client:, expected_module_key:).call
     end
 
-    def initialize(adapter_url:, adapter_secret:, client: nil)
+    def initialize(adapter_url:, adapter_secret:, client: nil, expected_module_key: nil)
       @adapter_url = adapter_url
       @adapter_secret = adapter_secret
+      @expected_module_key = expected_module_key
       @client = client || AdapterProtocol::Client.new(adapter_url:, adapter_secret:)
     end
 
@@ -20,6 +21,10 @@ module Modules
       return Result.new(success?: false, errors: validation.errors) unless validation.valid?
 
       identity = manifest.fetch("identity")
+      if expected_module_key && identity.fetch("module_key") != expected_module_key
+        return Result.new(success?: false, errors: [ "identity.module_key does not match expected module key" ])
+      end
+
       protocol = manifest.fetch("protocol")
       access = manifest.fetch("access")
 
@@ -49,7 +54,7 @@ module Modules
 
     private
 
-    attr_reader :adapter_url, :adapter_secret, :client
+    attr_reader :adapter_url, :adapter_secret, :client, :expected_module_key
 
     def digest_secret(secret)
       Digest::SHA256.hexdigest(secret)

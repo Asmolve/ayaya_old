@@ -4,10 +4,10 @@ module Modules
 
     CONFIGURATIONS = {
       "pic_obtainer" => Configuration.new(
-        module_key: "pic_obtainer",
-        display_name: "Pic Obtainer",
-        adapter_url_env: "PIC_OBTAINER_ADAPTER_URL",
-        adapter_secret_env: "PIC_OBTAINER_AYAYA_ADAPTER_SECRET"
+        module_key: "pic_obtainer".freeze,
+        display_name: "Pic Obtainer".freeze,
+        adapter_url_env: "PIC_OBTAINER_ADAPTER_URL".freeze,
+        adapter_secret_env: "PIC_OBTAINER_AYAYA_ADAPTER_SECRET".freeze
       )
     }.freeze
 

@@ -36,6 +36,10 @@ class Modules::LocalRegistrationTest < ActiveSupport::TestCase
     assert_equal "PIC_OBTAINER_ADAPTER_URL", config.adapter_url_env
     assert_equal "PIC_OBTAINER_AYAYA_ADAPTER_SECRET", config.adapter_secret_env
     assert_predicate config, :frozen?
+    assert_raises(FrozenError) { config.module_key << "_changed" }
+    assert_raises(FrozenError) { config.display_name << " changed" }
+    assert_raises(FrozenError) { config.adapter_url_env << "_CHANGED" }
+    assert_raises(FrozenError) { config.adapter_secret_env << "_CHANGED" }
   end
 
   test "registers Pic Obtainer with server-side credentials" do

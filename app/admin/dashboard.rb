@@ -13,6 +13,16 @@ ActiveAdmin.register_page "Dashboard" do
     end
   end
 
+  page_action :register_pic_obtainer, method: :post do
+    result = Modules::LocalRegistration.call("pic_obtainer")
+
+    if result.success?
+      redirect_to admin_registered_module_path(result.registered_module), notice: "Pic Obtainer registered."
+    else
+      redirect_to admin_root_path, alert: "Pic Obtainer registration failed: #{result.errors.join('; ')}"
+    end
+  end
+
   content title: proc { I18n.t("active_admin.dashboard") } do
     registered_modules = RegisteredModule.order(:module_key)
 
@@ -68,6 +78,12 @@ ActiveAdmin.register_page "Dashboard" do
               status_tag registered_module.availability_label, label: registered_module.availability_label
             end
           end
+        end
+      end
+
+      unless RegisteredModule.exists?(module_key: "pic_obtainer")
+        para do
+          link_to "Register Pic Obtainer", admin_dashboard_register_pic_obtainer_path, method: :post
         end
       end
 

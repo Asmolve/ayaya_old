@@ -5,6 +5,17 @@ require "set"
 class AdminAccessTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
+  PIC_OBTAINER_MANIFEST = {
+    "identity" => { "module_key" => "pic_obtainer", "name" => "Pic Obtainer", "version" => "0.1.0" },
+    "protocol" => { "adapter_protocol_version" => "1.0", "capabilities" => [ "manifest.v1", "health.v1", "status.v1" ] },
+    "routes" => { "ui_base_path" => "/m/pic_obtainer", "api_base_path" => "/m/pic_obtainer/api" },
+    "access" => { "default_policy" => "authenticated" }
+  }.freeze
+
+  PicObtainerRegistrationClient = Struct.new(:manifest_response) do
+    def manifest = manifest_response
+  end
+
   test "signed-in non-admin cannot access ActiveAdmin" do
     user = User.create!(email: "user@example.test", password: "password123", role: "user")
     sign_in user
@@ -43,6 +54,44 @@ class AdminAccessTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_includes response.body, "No modules registered"
     assert_includes response.body, "Register the local Notes adapter"
+    assert_includes response.body, "Register Pic Obtainer"
+  end
+
+  test "admin can register Pic Obtainer from the dashboard" do
+    admin = User.create!(email: "pic-admin@example.test", password: "password123", role: "admin")
+    sign_in admin
+
+    with_pic_obtainer_configuration do
+      stub_pic_obtainer_registration_client do
+        post admin_dashboard_register_pic_obtainer_path
+      end
+    end
+
+    registered_module = RegisteredModule.find_by!(module_key: "pic_obtainer")
+    assert_redirected_to admin_registered_module_path(registered_module)
+    assert_equal "registered", registered_module.admin_state
+  end
+
+  test "dashboard shows Pic Obtainer registration only when absent" do
+    admin = User.create!(email: "pic-dashboard-admin@example.test", password: "password123", role: "admin")
+    sign_in admin
+
+    get admin_root_path
+    assert_includes response.body, "Register Pic Obtainer"
+
+    create_registered_module(module_key: "pic_obtainer")
+    get admin_root_path
+    assert_not_includes response.body, "Register Pic Obtainer"
+  end
+
+  test "non-admin cannot register Pic Obtainer from the dashboard" do
+    user = User.create!(email: "pic-user@example.test", password: "password123", role: "user")
+    sign_in user
+
+    post admin_dashboard_register_pic_obtainer_path
+
+    assert_response :not_found
+    assert_nil RegisteredModule.find_by(module_key: "pic_obtainer")
   end
 
   test "admin dashboard shows module operations summary" do
@@ -264,6 +313,46 @@ class AdminAccessTest < ActionDispatch::IntegrationTest
   end
 
   private
+
+    def with_pic_obtainer_configuration
+      old_adapter_url = ENV["PIC_OBTAINER_ADAPTER_URL"]
+      old_adapter_secret = ENV["PIC_OBTAINER_AYAYA_ADAPTER_SECRET"]
+      ENV["PIC_OBTAINER_ADAPTER_URL"] = "http://pic_obtainer_api:8000"
+      ENV["PIC_OBTAINER_AYAYA_ADAPTER_SECRET"] = "secret"
+      yield
+    ensure
+      restore_env("PIC_OBTAINER_ADAPTER_URL", old_adapter_url)
+      restore_env("PIC_OBTAINER_AYAYA_ADAPTER_SECRET", old_adapter_secret)
+    end
+
+    def stub_pic_obtainer_registration_client(&block)
+      original_new = AdapterProtocol::Client.method(:new)
+      client = PicObtainerRegistrationClient.new(PIC_OBTAINER_MANIFEST)
+      AdapterProtocol::Client.define_singleton_method(:new) { |**| client }
+      yield
+    ensure
+      AdapterProtocol::Client.define_singleton_method(:new, original_new)
+    end
+
+    def create_registered_module(module_key:)
+      RegisteredModule.create!(
+        module_key:,
+        name: "Pic Obtainer",
+        version: "0.1.0",
+        adapter_url: "http://pic_obtainer_api:8000",
+        adapter_secret_digest: "digest",
+        adapter_protocol_version: "1.0",
+        admin_state: "registered",
+        runtime_status: "unknown",
+        access_policy_mode: "authenticated",
+        manifest_snapshot: {},
+        status_snapshot: {}
+      )
+    end
+
+    def restore_env(key, value)
+      value.nil? ? ENV.delete(key) : ENV[key] = value
+    end
 
     def admin_get_links(html)
       Nokogiri::HTML5(html).css("a[href]").filter_map do |anchor|

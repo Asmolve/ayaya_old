@@ -16,6 +16,13 @@ class AdminAccessTest < ActionDispatch::IntegrationTest
     def manifest = manifest_response
   end
 
+  PLANNING_MANIFEST = {
+    "identity" => { "module_key" => "planning", "name" => "Planning", "version" => "0.1.0" },
+    "protocol" => { "adapter_protocol_version" => "1.0", "capabilities" => [ "manifest.v1", "health.v1", "status.v1" ] },
+    "routes" => { "ui_base_path" => "/m/planning", "api_base_path" => "/m/planning/api" },
+    "access" => { "default_policy" => "authenticated" }
+  }.freeze
+
   test "signed-in non-admin cannot access ActiveAdmin" do
     user = User.create!(email: "user@example.test", password: "password123", role: "user")
     sign_in user
@@ -55,6 +62,22 @@ class AdminAccessTest < ActionDispatch::IntegrationTest
     assert_includes response.body, "No modules registered"
     assert_includes response.body, "Register the local Notes adapter"
     assert_includes response.body, "Register Pic Obtainer"
+    assert_includes response.body, "Register Planning"
+  end
+
+  test "admin can register Planning from the dashboard" do
+    admin = User.create!(email: "planning-admin@example.test", password: "password123", role: "admin")
+    sign_in admin
+
+    with_planning_configuration do
+      stub_registration_client(PLANNING_MANIFEST) do
+        post admin_dashboard_register_planning_path
+      end
+    end
+
+    registered_module = RegisteredModule.find_by!(module_key: "planning")
+    assert_redirected_to admin_registered_module_path(registered_module)
+    assert_equal "registered", registered_module.admin_state
   end
 
   test "admin can register Pic Obtainer from the dashboard" do
@@ -62,7 +85,7 @@ class AdminAccessTest < ActionDispatch::IntegrationTest
     sign_in admin
 
     with_pic_obtainer_configuration do
-      stub_pic_obtainer_registration_client do
+      stub_registration_client(PIC_OBTAINER_MANIFEST) do
         post admin_dashboard_register_pic_obtainer_path
       end
     end
@@ -325,9 +348,20 @@ class AdminAccessTest < ActionDispatch::IntegrationTest
       restore_env("PIC_OBTAINER_AYAYA_ADAPTER_SECRET", old_adapter_secret)
     end
 
-    def stub_pic_obtainer_registration_client(&block)
+    def with_planning_configuration
+      old_adapter_url = ENV["PLANNING_ADAPTER_URL"]
+      old_adapter_secret = ENV["PLANNING_ADAPTER_SECRET"]
+      ENV["PLANNING_ADAPTER_URL"] = "http://planning_adapter:8080"
+      ENV["PLANNING_ADAPTER_SECRET"] = "planning-secret"
+      yield
+    ensure
+      restore_env("PLANNING_ADAPTER_URL", old_adapter_url)
+      restore_env("PLANNING_ADAPTER_SECRET", old_adapter_secret)
+    end
+
+    def stub_registration_client(manifest)
       original_new = AdapterProtocol::Client.method(:new)
-      client = PicObtainerRegistrationClient.new(PIC_OBTAINER_MANIFEST)
+      client = PicObtainerRegistrationClient.new(manifest)
       AdapterProtocol::Client.define_singleton_method(:new) { |**| client }
       yield
     ensure

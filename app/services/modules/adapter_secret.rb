@@ -8,6 +8,8 @@ module Modules
         Modules::RegisterReferenceNotes.adapter_secret if registered_module.adapter_url == Modules::RegisterReferenceNotes.adapter_url
       when "pic_obtainer"
         ENV["PIC_OBTAINER_AYAYA_ADAPTER_SECRET"].presence
+      when "planning"
+        ENV["PLANNING_ADAPTER_SECRET"].presence
       end
     end
   end

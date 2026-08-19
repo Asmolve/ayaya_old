@@ -8,6 +8,13 @@ class Modules::LocalRegistrationTest < ActiveSupport::TestCase
     "access" => { "default_policy" => "authenticated" }
   }.freeze
 
+  PLANNING_MANIFEST = {
+    "identity" => { "module_key" => "planning", "name" => "Planning", "version" => "0.1.0" },
+    "protocol" => { "adapter_protocol_version" => "1.0", "capabilities" => [ "manifest.v1", "health.v1", "status.v1" ] },
+    "routes" => { "ui_base_path" => "/m/planning", "api_base_path" => "/m/planning/api" },
+    "access" => { "default_policy" => "authenticated" }
+  }.freeze
+
   FakeClient = Struct.new(:manifest_response) do
     def manifest = manifest_response
   end
@@ -40,6 +47,25 @@ class Modules::LocalRegistrationTest < ActiveSupport::TestCase
     assert_raises(FrozenError) { config.display_name << " changed" }
     assert_raises(FrozenError) { config.adapter_url_env << "_CHANGED" }
     assert_raises(FrozenError) { config.adapter_secret_env << "_CHANGED" }
+  end
+
+  test "resolves Planning local registration configuration" do
+    config = Modules::LocalRegistration.configuration("planning")
+
+    assert_equal "planning", config.module_key
+    assert_equal "Planning", config.display_name
+    assert_equal "PLANNING_ADAPTER_URL", config.adapter_url_env
+    assert_equal "PLANNING_ADAPTER_SECRET", config.adapter_secret_env
+  end
+
+  test "registers Planning with server-side credentials" do
+    with_planning_configuration do
+      result = Modules::LocalRegistration.call("planning", client: FakeClient.new(PLANNING_MANIFEST))
+
+      assert result.success?
+      assert_equal "planning", result.registered_module.module_key
+      assert_not_equal "planning-secret", result.registered_module.adapter_secret_digest
+    end
   end
 
   test "registers Pic Obtainer with server-side credentials" do
@@ -146,5 +172,16 @@ class Modules::LocalRegistrationTest < ActiveSupport::TestCase
 
   def restore_env(key, value)
     value.nil? ? ENV.delete(key) : ENV[key] = value
+  end
+
+  def with_planning_configuration
+    previous_url = ENV["PLANNING_ADAPTER_URL"]
+    previous_secret = ENV["PLANNING_ADAPTER_SECRET"]
+    ENV["PLANNING_ADAPTER_URL"] = "http://planning_adapter:8080"
+    ENV["PLANNING_ADAPTER_SECRET"] = "planning-secret"
+    yield
+  ensure
+    restore_env("PLANNING_ADAPTER_URL", previous_url)
+    restore_env("PLANNING_ADAPTER_SECRET", previous_secret)
   end
 end

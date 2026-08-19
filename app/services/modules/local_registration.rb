@@ -8,6 +8,12 @@ module Modules
         display_name: "Pic Obtainer".freeze,
         adapter_url_env: "PIC_OBTAINER_ADAPTER_URL".freeze,
         adapter_secret_env: "PIC_OBTAINER_AYAYA_ADAPTER_SECRET".freeze
+      ),
+      "planning" => Configuration.new(
+        module_key: "planning".freeze,
+        display_name: "Planning".freeze,
+        adapter_url_env: "PLANNING_ADAPTER_URL".freeze,
+        adapter_secret_env: "PLANNING_ADAPTER_SECRET".freeze
       )
     }.freeze
 

@@ -20,6 +20,8 @@ class AyayaContract::ComposeExposureTest < ActiveSupport::TestCase
     assert_nil services.dig("pic_obtainer_api", "ports")
     assert_nil services.dig("pic_obtainer_worker", "ports")
     assert_equal "${PIC_OBTAINER_AYAYA_ADAPTER_SECRET:?Set PIC_OBTAINER_AYAYA_ADAPTER_SECRET in .env}", services.dig("core", "environment", "PIC_OBTAINER_AYAYA_ADAPTER_SECRET")
+    assert_equal "${PLANNING_ADAPTER_URL:?Set PLANNING_ADAPTER_URL in .env}", services.dig("core", "environment", "PLANNING_ADAPTER_URL")
+    assert_equal "${PLANNING_ADAPTER_SECRET:?Set PLANNING_ADAPTER_SECRET in .env}", services.dig("core", "environment", "PLANNING_ADAPTER_SECRET")
     refute_includes services.fetch("core").fetch("environment").keys, "PIC_OBTAINER_RULE34_API_KEY"
     assert_equal "service_healthy", services.dig("pic_obtainer_migrate", "depends_on", "pic_obtainer_postgres", "condition")
     assert_equal "service_completed_successfully", services.dig("pic_obtainer_api", "depends_on", "pic_obtainer_migrate", "condition")
@@ -77,6 +79,8 @@ class AyayaContract::ComposeExposureTest < ActiveSupport::TestCase
       PIC_OBTAINER_DATABASE_URL
       PIC_OBTAINER_IMPORT_HOST_PATH PIC_OBTAINER_AYAYA_ADAPTER_SECRET
       PIC_OBTAINER_RULE34_USER_ID PIC_OBTAINER_RULE34_API_KEY
+      PLANNING_DATABASE_NAME PLANNING_SECRET_KEY_BASE PLANNING_ADAPTER_URL
+      PLANNING_ADAPTER_SECRET PLANNING_INTERNAL_STATUS_SECRET
     ].each do |key|
       assert_match(/^#{key}=/, template)
     end

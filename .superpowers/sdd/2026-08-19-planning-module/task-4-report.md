@@ -105,3 +105,26 @@
 ### Concern
 
 - The host Ruby 2.6 installation does not contain the Rails 8 bundle, so the root contract test ran in the existing Core container image against the isolated PostgreSQL container. The standalone bundle requires the root `ayaya` Compose project to have created the external `ayaya_default` network before deployment.
+
+## Core registry integration
+
+### Delivered
+
+- Registered Planning as a Core local adapter configuration using `PLANNING_ADAPTER_URL` and `PLANNING_ADAPTER_SECRET`.
+- Passed those values to the Core Compose service and documented their tracked `.env.example` entries.
+- Added the administrator-only **Register Planning** dashboard action and link. Registration uses Core-side environment credentials and preserves the existing adapter registry boundary.
+- Added the Planning branch to `Modules::AdapterSecret.for`, enabling authenticated manifest and status refreshes through the existing registry UI.
+- Documented the exact root-Core configuration, registration, refresh, and health-gated enablement flow in the Planning README.
+
+### Verification
+
+- RED: focused Docker Rails suite failed before the implementation with missing Planning registry configuration, dashboard route/link, adapter-secret lookup, and Compose environment values.
+- GREEN: focused Core Rails suite passed: 41 runs, 258 assertions, 0 failures, 0 errors, 0 skips.
+- `docker compose config` passed using temporary inert Planning values because the private local `.env` predates the new required keys.
+- `git diff --check` passed.
+- `graphify update .` completed successfully (1 source-file zero-node warning for `hooks.json`).
+
+### Full-suite concern
+
+- Full Core Rails suite: 86 runs, 385 assertions, 1 failure, 1 error. Neither failure is in this integration: `AyayaContract::PicObtainerModuleTest` invokes a Docker binary unavailable inside the Core test container, and `HomeControllerTest#test_lists_accessible_enabled_modules` expects `Notes` while the current user-owned home UI renders `Open Notes`.
+- The host Ruby 2.6 environment lacks the Rails 8 bundle, so all runnable Rails verification used the existing Core Docker image.

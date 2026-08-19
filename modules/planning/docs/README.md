@@ -34,7 +34,7 @@ Deploy in this order:
 1. Start the root platform network and services, including `postgres`, `core`, and `nginx`.
 2. Build the Planning images and run the explicit migration command.
 3. Start or replace `planning_app` and `planning_adapter` from the standalone bundle.
-4. In Core's existing module administration workflow, register or refresh the Planning manifest through `http://planning_adapter:8080`, provide the same externally managed `PLANNING_ADAPTER_SECRET`, and enable the module only after a healthy adapter status.
+4. Configure Core with the same `PLANNING_ADAPTER_SECRET`, register Planning through the Core dashboard, refresh its status, and enable it only after the adapter reports healthy. See [Core registration and enablement](#core-registration-and-enablement).
 5. Add the static `/m/planning` route shown in `deploy/nginx/ayaya.example.conf`, reload NGINX, and verify the route through NGINX rather than by contacting the app directly.
 
 The adapter is intentionally internal-only, so execute the readiness check from its Compose service:
@@ -44,6 +44,23 @@ docker compose --env-file .env -f modules/planning/compose.yml exec -T planning_
 ```
 
 The command must print a JSON response with `"ready": true`. If it does not, leave the module disabled or unavailable until the Rails app and its database status are healthy; do not treat the adapter process merely being live as a successful deployment.
+
+## Core registration and enablement
+
+Core owns only the module registry and adapter access; Planning domain behavior remains in this module. Configure the root platform `.env` with the adapter address visible on the shared Docker network and the same secret used by `planning_adapter`:
+
+```dotenv
+PLANNING_ADAPTER_URL=http://planning_adapter:8080
+PLANNING_ADAPTER_SECRET=replace-with-the-same-value-used-by-planning_adapter
+```
+
+Apply the root Compose configuration so the `core` service receives both values:
+
+```bash
+docker compose --env-file .env up -d core
+```
+
+After the Planning adapter readiness check succeeds, sign in as a Core administrator and use **Dashboard → Register Planning**. Core reads the URL and secret from its own environment and registers the adapter manifest; neither value is entered through the browser. On the resulting registered-module page, select **Refresh manifest**, then **Refresh status**. Select **Enable** only when the refreshed runtime status is `healthy` (or another Core user-available status). If registration or either refresh fails, keep the module disabled, correct the adapter or configuration, and retry the dashboard action.
 
 ### Rollback
 

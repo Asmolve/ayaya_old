@@ -53,6 +53,30 @@ class PicObtainerModuleTest < ActionDispatch::IntegrationTest
     ENV.delete("PIC_OBTAINER_AYAYA_ADAPTER_SECRET")
   end
 
+  test "Core selects the Planning adapter secret for refreshes and fails closed" do
+    mod = RegisteredModule.create!(
+      module_key: "planning",
+      name: "Planning",
+      version: "0.1.0",
+      adapter_url: "http://planning_adapter:8080",
+      adapter_secret_digest: Digest::SHA256.hexdigest("planning-secret"),
+      adapter_protocol_version: "1.0",
+      admin_state: "enabled",
+      runtime_status: "healthy",
+      access_policy_mode: "authenticated",
+      manifest_snapshot: {},
+      status_snapshot: {}
+    )
+    ENV["PLANNING_ADAPTER_SECRET"] = "planning-secret"
+
+    assert_equal "planning-secret", Modules::AdapterSecret.for(mod)
+
+    ENV.delete("PLANNING_ADAPTER_SECRET")
+    assert_nil Modules::AdapterSecret.for(mod)
+  ensure
+    ENV.delete("PLANNING_ADAPTER_SECRET")
+  end
+
   test "disabled or unhealthy Pic Obtainer is unavailable at the auth boundary" do
     admin = User.create!(email: "pic-boundary-admin@example.test", password: "password123", role: "admin")
     mod = registered_module

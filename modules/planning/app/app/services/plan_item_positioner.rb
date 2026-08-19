@@ -18,7 +18,7 @@ class PlanItemPositioner
     validate_payload!
 
     @plan_item.plan.with_lock do
-      items_by_priority = @plan_item.plan.plan_items.lock.order(:id).to_a.group_by(&:priority)
+      items_by_priority = @plan_item.plan.plan_items.lock.order(:position, :id).to_a.group_by(&:priority)
       PlanItem.priorities.each_key { |priority| items_by_priority[priority] ||= [] }
 
       items_by_priority.fetch(@plan_item.priority).delete(@plan_item)

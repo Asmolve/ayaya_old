@@ -109,6 +109,30 @@ class PlanItemsControllerTest < ActionDispatch::IntegrationTest
     assert_equal [ [ moved.id, 0 ], [ next_item.id, 1 ] ], plan.plan_items.next.order(:position).pluck(:id, :position)
   end
 
+  test "uses stored lane positions for consecutive moves without reordering untouched items" do
+    owner = LocalUser.create!(core_user_id: "1")
+    plan = Plan.create!(local_user: owner, title: "Launch")
+    first = PlanItem.create!(plan: plan, title: "First", priority: "now", position: 2)
+    second = PlanItem.create!(plan: plan, title: "Second", priority: "now", position: 0)
+    third = PlanItem.create!(plan: plan, title: "Third", priority: "now", position: 1)
+
+    patch "/m/planning/plan_items/#{second.id}/position",
+      params: { priority: "now", position: 1 },
+      as: :json,
+      headers: ayaya_headers
+
+    assert_response :success
+    assert_equal [ third.id, second.id, first.id ], plan.plan_items.now.order(:position, :id).pluck(:id)
+
+    patch "/m/planning/plan_items/#{second.id}/position",
+      params: { priority: "now", position: 2 },
+      as: :json,
+      headers: ayaya_headers
+
+    assert_response :success
+    assert_equal [ third.id, first.id, second.id ], plan.plan_items.now.order(:position, :id).pluck(:id)
+  end
+
   test "returns JSON validation errors and scopes position moves to the current user" do
     owner = LocalUser.create!(core_user_id: "1")
     plan = Plan.create!(local_user: owner, title: "Launch")

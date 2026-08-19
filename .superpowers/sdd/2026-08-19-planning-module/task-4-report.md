@@ -78,3 +78,30 @@
 
 - Rails tests ran in the module Ruby 3.4/Chromium image with an isolated, auto-removed PostgreSQL container because the host Ruby lacks the `pg` bundle.
 - No Core, unrelated files, agents, or Graphify output were changed in this final-fix scope.
+
+## Review fixes — stored ordering and standalone topology
+
+### Delivered
+
+- `PlanItemPositioner` now loads a plan's items in stored `position`, then `id` order before grouping lanes. The controller regression creates three items whose persisted order differs from creation order, performs two moves, and verifies the untouched items retain their stored order.
+- The standalone Planning Compose bundle attaches `planning_app` and `planning_adapter` to the root platform's external `ayaya_default` network. The README documents the exact network, service DNS reachability, Core registration endpoint, and static NGINX routing sequence.
+- The established NGINX example now defines the `planning_app` upstream and authenticated `/m/planning` route. It uses the same Core `auth_request` and trusted-header allowlist as the existing module routes. The root NGINX/Compose contract test covers the new route; Core runtime code was not changed.
+
+### RED / GREEN
+
+- RED: the three-item position regression failed against the previous `order(:id)` implementation. After the first move it returned `[first, second, third]` instead of the stored-position result `[third, second, first]`.
+- GREEN: loading with `order(:position, :id)` makes both moves preserve the expected ordering.
+
+### Verification
+
+- Focused Planning controller suite: 13 runs, 58 assertions, 0 failures/errors.
+- Full Planning Rails suite: 30 runs, 127 assertions, 0 failures/errors.
+- Full Planning adapter suite: 18 passed.
+- Focused root NGINX/Compose contract suite: 9 runs, 114 assertions, 0 failures/errors.
+- `docker compose --env-file .env --project-name ayaya-planning -f modules/planning/compose.yml config` passed with inert placeholder Planning secrets.
+- `docker run --rm -v "$PWD/deploy/nginx/ayaya.example.conf:/etc/nginx/nginx.conf:ro" nginx:1.27-alpine nginx -t` passed.
+- `git diff --check` passed.
+
+### Concern
+
+- The host Ruby 2.6 installation does not contain the Rails 8 bundle, so the root contract test ran in the existing Core container image against the isolated PostgreSQL container. The standalone bundle requires the root `ayaya` Compose project to have created the external `ayaya_default` network before deployment.

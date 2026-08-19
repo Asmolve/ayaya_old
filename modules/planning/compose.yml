@@ -16,6 +16,8 @@ services:
       WEB_CONCURRENCY: ${PLANNING_WEB_CONCURRENCY:-2}
       SECRET_KEY_BASE: ${PLANNING_SECRET_KEY_BASE:?Set PLANNING_SECRET_KEY_BASE in .env}
       PLANNING_INTERNAL_STATUS_SECRET: ${PLANNING_INTERNAL_STATUS_SECRET:?Set PLANNING_INTERNAL_STATUS_SECRET in .env}
+    networks:
+      - platform
 
   planning_adapter:
     build:
@@ -27,3 +29,10 @@ services:
       PLANNING_MODULE_YML: /module/module.yml
     volumes:
       - ./module.yml:/module/module.yml:ro
+    networks:
+      - platform
+
+networks:
+  platform:
+    external: true
+    name: ayaya_default

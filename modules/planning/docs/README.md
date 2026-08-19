@@ -27,7 +27,17 @@ The application entrypoint is boot-only and never runs schema changes. Run the e
 
 ## Deployment operations
 
-Deploy in this order: build the two images, run the explicit migration command, start or replace `planning_app` and `planning_adapter`, then run the adapter readiness check below. The adapter is intentionally internal-only, so execute the check from its Compose service:
+The standalone bundle attaches both services to the external Docker network `ayaya_default`, which is the default network created by the root Compose project (`name: ayaya`). Start the root platform first so that network and the `postgres`, `core`, and `nginx` service names are reachable. `planning_app` reaches its database at `postgres`; platform NGINX reaches the app at `planning_app:3000`; and Core reaches the adapter at `planning_adapter:8080`. Neither Planning service publishes a host port.
+
+Deploy in this order:
+
+1. Start the root platform network and services, including `postgres`, `core`, and `nginx`.
+2. Build the Planning images and run the explicit migration command.
+3. Start or replace `planning_app` and `planning_adapter` from the standalone bundle.
+4. In Core's existing module administration workflow, register or refresh the Planning manifest through `http://planning_adapter:8080`, provide the same externally managed `PLANNING_ADAPTER_SECRET`, and enable the module only after a healthy adapter status.
+5. Add the static `/m/planning` route shown in `deploy/nginx/ayaya.example.conf`, reload NGINX, and verify the route through NGINX rather than by contacting the app directly.
+
+The adapter is intentionally internal-only, so execute the readiness check from its Compose service:
 
 ```bash
 docker compose --env-file .env -f modules/planning/compose.yml exec -T planning_adapter python -c 'import os, urllib.request; request = urllib.request.Request("http://127.0.0.1:8080/ayaya/health/ready", headers={"Authorization": f"Bearer {os.environ[\"PLANNING_ADAPTER_SECRET\"]}"}); print(urllib.request.urlopen(request).read().decode())'
@@ -45,7 +55,7 @@ Planning records live in the module PostgreSQL database (`ayaya_mod_planning`), 
 
 ## NGINX and trusted identity
 
-Expose only the platform NGINX route for `/m/planning`; keep `planning_app` and its internal status route off public ports. NGINX must run Core `auth_request`, discard every client-supplied `X-Ayaya-*` header, and then inject only the identity headers derived from the successful Core response: `X-Ayaya-User-Id`, `X-Ayaya-User-Email`, `X-Ayaya-User-Display-Name`, `X-Ayaya-User-Role`, `X-Ayaya-Module-Key: planning`, and `X-Ayaya-Request-Id`.
+Expose only the platform NGINX route for `/m/planning`; keep `planning_app` and its internal status route off public ports. The tracked NGINX example is the module integration surface: its `planning_app` upstream and `location /m/planning` block perform Core `auth_request`, discard every client-supplied `X-Ayaya-*` header, and then inject only the identity headers derived from the successful Core response: `X-Ayaya-User-Id`, `X-Ayaya-User-Email`, `X-Ayaya-User-Display-Name`, `X-Ayaya-User-Role`, `X-Ayaya-Module-Key: planning`, and `X-Ayaya-Request-Id`.
 
 The Planning app treats those headers as trusted only at that internal NGINX boundary. Direct requests must not be exposed publicly, because a direct client could otherwise forge the identity headers.
 

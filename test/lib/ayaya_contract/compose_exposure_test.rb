@@ -39,7 +39,7 @@ class AyayaContract::ComposeExposureTest < ActiveSupport::TestCase
   test "preserves the public host and port through nginx" do
     nginx = File.read("deploy/nginx/ayaya.example.conf")
 
-    assert_equal 4, nginx.scan("proxy_set_header Host $http_host;").length
+    assert_equal 5, nginx.scan("proxy_set_header Host $http_host;").length
     assert_includes nginx, "proxy_set_header X-Forwarded-Host $http_host;"
     assert_not_includes nginx, "proxy_set_header X-Forwarded-Port $server_port;"
   end
@@ -49,7 +49,16 @@ class AyayaContract::ComposeExposureTest < ActiveSupport::TestCase
 
     assert_includes nginx, "location /m/pic_obtainer/"
     assert_includes nginx, "proxy_pass http://$pic_obtainer_api_upstream:8000/;"
-    assert_equal 2, nginx.scan("auth_request /internal/auth/module_access;").length
+    assert_equal 3, nginx.scan("auth_request /internal/auth/module_access;").length
+    assert_includes nginx, "proxy_set_header X-Ayaya-Module-Key $ayaya_module_key;"
+    assert_includes nginx, "proxy_pass_request_headers off;"
+  end
+
+  test "routes Planning through Core auth and rebuilds trusted headers" do
+    nginx = File.read("deploy/nginx/ayaya.example.conf")
+
+    assert_includes nginx, "location /m/planning"
+    assert_includes nginx, "proxy_pass http://$planning_app_upstream:3000;"
     assert_includes nginx, "proxy_set_header X-Ayaya-Module-Key $ayaya_module_key;"
     assert_includes nginx, "proxy_pass_request_headers off;"
   end

@@ -210,3 +210,27 @@ def test_status_maps_malformed_planning_app_status_to_unreachable(tmp_path, monk
     assert response.status_code == 200
     assert response.json()["runtime_status"] == "unreachable"
     assert response.json()["degraded_reasons"] == ["planning_app_unreachable"]
+
+
+@pytest.mark.parametrize(
+    "status",
+    [
+        {"runtime_status": "invented", "components": {"app": "healthy", "database": "healthy"}},
+        {"runtime_status": "healthy", "components": {"database": "healthy"}},
+        {"runtime_status": "healthy", "components": {"app": "healthy"}},
+    ],
+)
+def test_status_degrades_invalid_runtime_contracts(tmp_path, monkeypatch, status):
+    manifest_path = tmp_path / "module.yml"
+    write_manifest(manifest_path)
+    configure(monkeypatch, manifest_path)
+    app = create_app(status_transport=status_transport(status))
+
+    response = TestClient(app).get(
+        "/ayaya/status",
+        headers={"Authorization": "Bearer secret"},
+    )
+
+    assert response.status_code == 200
+    assert response.json()["runtime_status"] == "unreachable"
+    assert response.json()["components"] == {"adapter": "healthy", "app": "unreachable", "database": "unknown"}

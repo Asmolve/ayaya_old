@@ -22,7 +22,7 @@
 
 - Current test status: no test blocker. Browser coverage executed successfully in the Docker image after installing Chromium and passing its container flags.
 - The host Ruby 2.6 environment lacks the module's `pg` bundle, so Rails verification was run in the module's Ruby 3.4 Docker image.
-- Graphify refresh was attempted with `graphify update .`; the installed watcher failed with `Operation not permitted`, so graph artifacts were not refreshed.
+- The earlier Graphify watcher failure was superseded by the successful follow-up refresh recorded in Verification; no Graphify mutation was included in this final-fix scope.
 - RuboCop reports 507 existing offenses across the 39-file module baseline and is not currently a clean gate. No unrelated cleanup was included.
 
 ## Follow-up review fixes
@@ -38,4 +38,21 @@
 - Focused Rails controller/system/browser suite: 20 runs, 104 assertions, 0 failures/errors.
 - Full planning Rails suite: 28 runs, 119 assertions, 0 failures/errors.
 - Full planning adapter suite: 13 passed.
+- Brakeman 8.0.6: 0 security warnings.
+
+## Final-fix round
+
+- Production Compose now sets `RAILS_ENV=production` and production-safe Puma, logging, static-file, thread, worker, and secret-key settings. The image runs Puma directly.
+- The application entrypoint is boot-only; deployment documentation now requires the explicit `bin/rails db:migrate` step before startup.
+- Item creation ignores client-supplied positions and appends within the current owner's selected plan and priority lane. Successful JavaScript moves now place the DOM node at the normalized position returned by the server.
+- Adapter status parsing now accepts only contract runtime states, requires meaningful `app` and `database` component states, and converts malformed upstream payloads to the safe unreachable response.
+- Planning deployment documentation now defines the NGINX route/header-stripping boundary and confirms that only Core-derived identity headers are trusted.
+
+### Final-fix verification
+
+- Red: the new creation-position and browser normalized-position tests failed against the prior behavior.
+- Focused Rails controller/browser suite: 19 runs, 80 assertions, 0 failures/errors.
+- Full planning Rails suite: 29 runs, 123 assertions, 0 failures/errors.
+- Full planning adapter suite: 16 passed.
+- `docker compose --project-name ayaya -f modules/planning/compose.yml config` completed successfully with the documented required environment values.
 - Brakeman 8.0.6: 0 security warnings.

@@ -10,6 +10,9 @@ from .manifest import load_manifest
 from .settings import Settings, get_settings
 from .status_client import fetch_planning_app_status
 
+RUNTIME_STATUSES = frozenset({"healthy", "degraded", "unhealthy", "unreachable", "incompatible"})
+COMPONENT_STATUSES = RUNTIME_STATUSES | {"unknown"}
+
 
 def status_fields(app_status: dict[str, Any]) -> tuple[str, dict[str, Any], str, list[Any]]:
     runtime_status = app_status.get("runtime_status", "unhealthy")
@@ -17,10 +20,13 @@ def status_fields(app_status: dict[str, Any]) -> tuple[str, dict[str, Any], str,
     checked_at = app_status.get("checked_at") or datetime.now(timezone.utc).isoformat()
     degraded_reasons = app_status.get("degraded_reasons", [])
 
-    if not isinstance(runtime_status, str):
-        raise ValueError("planning app runtime status must be a string")
+    if runtime_status not in RUNTIME_STATUSES:
+        raise ValueError("planning app runtime status is invalid")
     if not isinstance(components, dict):
         raise ValueError("planning app components must be a mapping")
+    for component in ("app", "database"):
+        if components.get(component) not in COMPONENT_STATUSES:
+            raise ValueError(f"planning app {component} component status is invalid")
     if not isinstance(checked_at, str):
         raise ValueError("planning app checked_at must be a string")
     if not isinstance(degraded_reasons, list):
@@ -46,7 +52,7 @@ def create_app(status_transport: httpx.BaseTransport | None = None) -> FastAPI:
             load_manifest(settings.module_yml)
             app_status = fetch_planning_app_status(settings, transport=status_transport)
             runtime_status, components, _, _ = status_fields(app_status)
-            if runtime_status != "healthy" or components.get("database") != "healthy":
+            if runtime_status != "healthy" or components.get("app") != "healthy" or components.get("database") != "healthy":
                 raise ValueError("planning app is not healthy")
             return {"status": "ok", "component": "adapter", "ready": True}
         except Exception:

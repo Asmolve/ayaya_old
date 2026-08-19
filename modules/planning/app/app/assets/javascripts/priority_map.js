@@ -98,6 +98,11 @@ class PriorityMap {
       const movedItem = await response.json()
       item.dataset.itemPriority = movedItem.priority
       item.dataset.itemPosition = movedItem.position
+      const normalizedDestination = this.root.querySelector(`[data-priority-lane="${movedItem.priority}"] [data-priority-items]`)
+      if (normalizedDestination) {
+        const siblings = Array.from(normalizedDestination.children).filter((candidate) => candidate !== item)
+        normalizedDestination.insertBefore(item, siblings[movedItem.position] || null)
+      }
       this.announce(`Moved ${item.dataset.itemTitle} to ${this.laneName(movedItem.priority)}.`)
     } catch (_) {
       snapshot.parent.insertBefore(item, snapshot.next)

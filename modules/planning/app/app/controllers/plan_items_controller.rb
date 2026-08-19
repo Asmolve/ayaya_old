@@ -9,7 +9,9 @@ class PlanItemsController < ApplicationController
 
   def create
     @plan = current_local_user.plans.find(plan_item_params.fetch(:plan_id))
-    @plan_item = @plan.plan_items.build(plan_item_params.except(:plan_id))
+    attributes = plan_item_params.to_h.symbolize_keys.except(:plan_id, :position)
+    @plan_item = @plan.plan_items.build(attributes)
+    @plan_item.position = @plan.plan_items.where(priority: @plan_item.priority).count
 
     if @plan_item.save
       redirect_to planning_root_path(plan_id: @plan.id)

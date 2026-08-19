@@ -17,6 +17,22 @@ class PriorityMapBrowserTest < ApplicationSystemTestCase
     assert_selector "[data-priority-lane='next']", text: "Second"
   end
 
+  test "places a successful move at the normalized server position" do
+    third = PlanItem.create!(plan: @plan, title: "Third", priority: "next", position: 0)
+    visit_as_ayaya_user "/m/planning?plan_id=#{@plan.id}"
+    page.execute_script(<<~JAVASCRIPT)
+      window.fetch = () => Promise.resolve(new Response(JSON.stringify({ priority: "next", position: 0 }), {
+        status: 200,
+        headers: { "Content-Type": "application/json" }
+      }))
+    JAVASCRIPT
+
+    find("select[aria-label='Move First to a lane']").select("Next")
+
+    assert_text "Moved First to Next."
+    assert_equal [ @first.id, third.id ], page.all("[data-priority-lane='next'] [data-priority-item]").map { |node| node["data-item-id"].to_i }
+  end
+
   test "associates every priority select with a unique explicit label" do
     visit_as_ayaya_user "/m/planning?plan_id=#{@plan.id}"
 

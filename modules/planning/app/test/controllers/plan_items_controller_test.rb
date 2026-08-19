@@ -12,8 +12,23 @@ class PlanItemsControllerTest < ActionDispatch::IntegrationTest
     end
 
     item = PlanItem.last
-    assert_equal [ plan.id, "now", 2 ], [ item.plan_id, item.priority, item.position ]
+    assert_equal [ plan.id, "now", 0 ], [ item.plan_id, item.priority, item.position ]
     assert_redirected_to "/m/planning?plan_id=#{plan.id}"
+  end
+
+  test "appends a new item in its owner plan lane regardless of a submitted position" do
+    owner = LocalUser.create!(core_user_id: "1")
+    plan = Plan.create!(local_user: owner, title: "Launch")
+    other_plan = Plan.create!(local_user: owner, title: "Private backlog")
+    first = PlanItem.create!(plan: plan, title: "First", priority: "now", position: 0)
+    PlanItem.create!(plan: other_plan, title: "Elsewhere", priority: "now", position: 0)
+
+    post "/m/planning/plan_items", params: {
+      plan_item: { plan_id: plan.id, title: "Submitted first", priority: "now", position: 0 }
+    }, headers: ayaya_headers
+
+    assert_redirected_to "/m/planning?plan_id=#{plan.id}"
+    assert_equal [ [ first.id, 0 ], [ PlanItem.last.id, 1 ] ], plan.plan_items.now.order(:position).pluck(:id, :position)
   end
 
   test "advertises only usable plan item read routes" do

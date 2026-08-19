@@ -1,0 +1,23 @@
+identity:
+  module_key: planning
+  name: Planning
+  version: 0.1.0
+
+protocol:
+  adapter_protocol_version: "1.0"
+  capabilities:
+    - manifest.v1
+    - health.v1
+    - status.v1
+
+presentation:
+  description: Personal priority planning
+  icon: list-checks
+  category: productivity
+
+routes:
+  ui_base_path: /m/planning
+  api_base_path: /m/planning/api
+
+access:
+  default_policy: authenticated

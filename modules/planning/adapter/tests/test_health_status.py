@@ -1,0 +1,124 @@
+from pathlib import Path
+
+import httpx
+import pytest
+from fastapi.testclient import TestClient
+
+from app.main import create_app
+from app.settings import get_settings
+
+
+def write_manifest(path: Path) -> None:
+    path.write_text(
+        """
+identity:
+  module_key: planning
+  name: Planning
+  version: 0.1.0
+protocol:
+  adapter_protocol_version: "1.0"
+  capabilities:
+    - manifest.v1
+    - health.v1
+    - status.v1
+routes:
+  ui_base_path: /m/planning
+  api_base_path: /m/planning/api
+access:
+  default_policy: authenticated
+""".strip(),
+        encoding="utf-8",
+    )
+
+
+def configure(monkeypatch, manifest_path: Path) -> None:
+    monkeypatch.setenv("PLANNING_MODULE_YML", str(manifest_path))
+    monkeypatch.setenv("PLANNING_ADAPTER_SECRET", "secret")
+    monkeypatch.setenv("PLANNING_INTERNAL_STATUS_SECRET", "internal")
+    monkeypatch.setenv(
+        "PLANNING_APP_INTERNAL_STATUS_URL",
+        "http://planning-app/internal/ayaya/status",
+    )
+
+
+@pytest.fixture(autouse=True)
+def clear_settings_cache():
+    get_settings.cache_clear()
+    yield
+    get_settings.cache_clear()
+
+
+def test_live_requires_adapter_secret(tmp_path, monkeypatch):
+    manifest_path = tmp_path / "module.yml"
+    write_manifest(manifest_path)
+    configure(monkeypatch, manifest_path)
+
+    assert TestClient(create_app()).get("/ayaya/health/live").status_code == 401
+
+
+def test_live_returns_ok(tmp_path, monkeypatch):
+    manifest_path = tmp_path / "module.yml"
+    write_manifest(manifest_path)
+    configure(monkeypatch, manifest_path)
+
+    response = TestClient(create_app()).get(
+        "/ayaya/health/live",
+        headers={"Authorization": "Bearer secret"},
+    )
+
+    assert response.status_code == 200
+    assert response.json() == {"status": "ok", "component": "adapter"}
+
+
+def status_transport(status: dict) -> httpx.MockTransport:
+    def handler(request: httpx.Request) -> httpx.Response:
+        assert request.headers["Authorization"] == "Bearer internal"
+        return httpx.Response(200, json=status)
+
+    return httpx.MockTransport(handler)
+
+
+def test_ready_returns_unavailable_when_planning_app_is_unreachable(tmp_path, monkeypatch):
+    manifest_path = tmp_path / "module.yml"
+    write_manifest(manifest_path)
+    configure(monkeypatch, manifest_path)
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        raise httpx.ConnectError("unreachable", request=request)
+
+    response = TestClient(create_app(status_transport=httpx.MockTransport(handler))).get(
+        "/ayaya/health/ready",
+        headers={"Authorization": "Bearer secret"},
+    )
+
+    assert response.status_code == 503
+    assert response.json()["ready"] is False
+
+
+def test_status_maps_planning_app_status(tmp_path, monkeypatch):
+    manifest_path = tmp_path / "module.yml"
+    write_manifest(manifest_path)
+    configure(monkeypatch, manifest_path)
+    app = create_app(
+        status_transport=status_transport(
+            {
+                "module_key": "planning",
+                "runtime_status": "healthy",
+                "components": {"app": "healthy", "database": "healthy"},
+                "checked_at": "2026-08-19T00:00:00Z",
+                "degraded_reasons": [],
+            }
+        )
+    )
+
+    response = TestClient(app).get(
+        "/ayaya/status",
+        headers={"Authorization": "Bearer secret"},
+    )
+
+    assert response.status_code == 200
+    body = response.json()
+    assert body["runtime_status"] == "healthy"
+    assert body["module_key"] == "planning"
+    assert body["module_version"] == "0.1.0"
+    assert body["components"]["database"] == "healthy"

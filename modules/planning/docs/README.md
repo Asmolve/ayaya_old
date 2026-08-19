@@ -25,6 +25,24 @@ Required environment values are `DATABASE_HOST`, `DATABASE_PORT`, `DATABASE_USER
 
 The application entrypoint is boot-only and never runs schema changes. Run the explicit `db:migrate` command above during deployment before starting or replacing the application service.
 
+## Deployment operations
+
+Deploy in this order: build the two images, run the explicit migration command, start or replace `planning_app` and `planning_adapter`, then run the adapter readiness check below. The adapter is intentionally internal-only, so execute the check from its Compose service:
+
+```bash
+docker compose --env-file .env -f modules/planning/compose.yml exec -T planning_adapter python -c 'import os, urllib.request; request = urllib.request.Request("http://127.0.0.1:8080/ayaya/health/ready", headers={"Authorization": f"Bearer {os.environ[\"PLANNING_ADAPTER_SECRET\"]}"}); print(urllib.request.urlopen(request).read().decode())'
+```
+
+The command must print a JSON response with `"ready": true`. If it does not, leave the module disabled or unavailable until the Rails app and its database status are healthy; do not treat the adapter process merely being live as a successful deployment.
+
+### Rollback
+
+Code rollback and database rollback are separate operations. To roll back an unsuccessful release, stop or replace both Planning services with the previously deployed, compatible image versions, then rerun the readiness check. Do not automatically run `db:rollback`: use a down migration only when the release's migrations are explicitly reversible and the prior application version is compatible with the resulting schema. When database state must be restored, restore the last verified backup before returning traffic to the previous release.
+
+### Persistent data, backups, and retention
+
+Planning records live in the module PostgreSQL database (`ayaya_mod_planning`), which must be backed by persistent storage outside the application and adapter containers. Image replacement and code rollback must never remove that database or its storage. Take encrypted, access-controlled PostgreSQL backups before each migration and on a regular schedule; keep daily backups for 30 days and monthly backups for 12 months, or use a stricter organizational policy. Periodically restore a backup into an isolated database and verify it before relying on the retention policy. The module has no automatic deletion or archival policy for plans and plan items; retain application data until an operator applies an approved data-retention process.
+
 ## NGINX and trusted identity
 
 Expose only the platform NGINX route for `/m/planning`; keep `planning_app` and its internal status route off public ports. NGINX must run Core `auth_request`, discard every client-supplied `X-Ayaya-*` header, and then inject only the identity headers derived from the successful Core response: `X-Ayaya-User-Id`, `X-Ayaya-User-Email`, `X-Ayaya-User-Display-Name`, `X-Ayaya-User-Role`, `X-Ayaya-Module-Key: planning`, and `X-Ayaya-Request-Id`.

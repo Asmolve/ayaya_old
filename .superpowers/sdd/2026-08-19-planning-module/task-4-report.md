@@ -56,3 +56,25 @@
 - Full planning adapter suite: 16 passed.
 - `docker compose --project-name ayaya -f modules/planning/compose.yml config` completed successfully with the documented required environment values.
 - Brakeman 8.0.6: 0 security warnings.
+
+## Task 4 final fixes
+
+### Delivered
+
+- Successful JavaScript moves now reindex all lane item datasets and hidden move/lane form fields, refresh lane-select values, and reset up/down disabled states. A browser regression performs two keyboard moves without refreshing and checks the persisted order, disabled controls, and hidden positions.
+- Adapter status now changes a contradictory `healthy` runtime to `unhealthy` when a known app or database component is non-healthy, and to `unreachable` when either required component is `unknown`. Existing malformed or missing component handling remains an unreachable fallback.
+- Deployment documentation now contains an authenticated adapter readiness command, code/database rollback guidance, and PostgreSQL persistence, backup, restore-verification, and retention notes.
+
+### Verification
+
+- Red adapter regression: 2 intended failures before the coercion change (`healthy` had been emitted for unknown and contradictory components).
+- Focused browser suite: 8 runs, 35 assertions, 0 failures/errors.
+- Full Planning Rails suite: 29 runs, 123 assertions, 0 failures/errors.
+- Full Planning adapter suite: 18 passed.
+- JavaScript syntax and scoped whitespace checks passed.
+- Planning Compose interpolation passed with inert placeholder credentials. The local `.env` lacks the required Planning secrets, so it cannot validate the bundle without placeholders.
+
+### Notes
+
+- Rails tests ran in the module Ruby 3.4/Chromium image with an isolated, auto-removed PostgreSQL container because the host Ruby lacks the `pg` bundle.
+- No Core, unrelated files, agents, or Graphify output were changed in this final-fix scope.

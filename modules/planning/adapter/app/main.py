@@ -32,6 +32,12 @@ def status_fields(app_status: dict[str, Any]) -> tuple[str, dict[str, Any], str,
     if not isinstance(degraded_reasons, list):
         raise ValueError("planning app degraded reasons must be a list")
 
+    component_statuses = [components[component] for component in ("app", "database")]
+    if runtime_status == "healthy" and "unknown" in component_statuses:
+        runtime_status = "unreachable"
+    elif runtime_status == "healthy" and any(status != "healthy" for status in component_statuses):
+        runtime_status = "unhealthy"
+
     return runtime_status, components, checked_at, degraded_reasons
 
 

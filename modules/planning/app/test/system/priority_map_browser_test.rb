@@ -76,6 +76,25 @@ class PriorityMapBrowserTest < ApplicationSystemTestCase
     assert_equal [ @second.id, @first.id ], @plan.plan_items.now.order(:position).pluck(:id)
   end
 
+  test "reindexes controls after consecutive keyboard moves without a refresh" do
+    visit_as_ayaya_user "/m/planning?plan_id=#{@plan.id}"
+
+    find("button[aria-label='Move Second up']").send_keys(:enter)
+
+    assert_text "Moved Second to Now."
+    assert_selector "button[aria-label='Move Second up']:disabled"
+    assert_no_selector "button[aria-label='Move First up']:disabled"
+
+    find("button[aria-label='Move First up']").send_keys(:enter)
+
+    assert_text "Moved First to Now."
+    assert_equal [ @first.id, @second.id ], @plan.plan_items.now.order(:position).pluck(:id)
+    assert_selector "button[aria-label='Move First up']:disabled"
+    assert_selector "button[aria-label='Move Second down']:disabled"
+    assert_equal [ "0", "1", "0" ], move_control_positions(@first)
+    assert_equal [ "0", "1", "1" ], move_control_positions(@second)
+  end
+
   test "keeps lanes and inspector usable at a narrow viewport" do
     page.current_window.resize_to(390, 844)
     visit_as_ayaya_user "/m/planning?plan_id=#{@plan.id}"
@@ -108,5 +127,9 @@ class PriorityMapBrowserTest < ApplicationSystemTestCase
 
     assert_equal ids.uniq, ids
     ids.each { |id| assert_selector "label[for='#{id}']" }
+  end
+
+  def move_control_positions(item)
+    all("[data-item-id='#{item.id}'] form input[name='plan_item[position]']", visible: :all).map(&:value)
   end
 end

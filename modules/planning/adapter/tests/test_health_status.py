@@ -234,3 +234,43 @@ def test_status_degrades_invalid_runtime_contracts(tmp_path, monkeypatch, status
     assert response.status_code == 200
     assert response.json()["runtime_status"] == "unreachable"
     assert response.json()["components"] == {"adapter": "healthy", "app": "unreachable", "database": "unknown"}
+
+
+@pytest.mark.parametrize(
+    ("status", "expected_runtime_status"),
+    [
+        (
+            {
+                "runtime_status": "healthy",
+                "components": {"app": "unknown", "database": "healthy"},
+                "checked_at": "2026-08-19T00:00:00Z",
+                "degraded_reasons": [],
+            },
+            "unreachable",
+        ),
+        (
+            {
+                "runtime_status": "healthy",
+                "components": {"app": "healthy", "database": "unhealthy"},
+                "checked_at": "2026-08-19T00:00:00Z",
+                "degraded_reasons": [],
+            },
+            "unhealthy",
+        ),
+    ],
+)
+def test_status_never_publishes_healthy_for_unknown_or_contradictory_components(
+    tmp_path, monkeypatch, status, expected_runtime_status
+):
+    manifest_path = tmp_path / "module.yml"
+    write_manifest(manifest_path)
+    configure(monkeypatch, manifest_path)
+    app = create_app(status_transport=status_transport(status))
+
+    response = TestClient(app).get(
+        "/ayaya/status",
+        headers={"Authorization": "Bearer secret"},
+    )
+
+    assert response.status_code == 200
+    assert response.json()["runtime_status"] == expected_runtime_status

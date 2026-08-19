@@ -103,6 +103,8 @@ class PriorityMap {
         const siblings = Array.from(normalizedDestination.children).filter((candidate) => candidate !== item)
         normalizedDestination.insertBefore(item, siblings[movedItem.position] || null)
       }
+      this.reindexLanes()
+      this.select(item)
       this.announce(`Moved ${item.dataset.itemTitle} to ${this.laneName(movedItem.priority)}.`)
     } catch (_) {
       snapshot.parent.insertBefore(item, snapshot.next)
@@ -115,6 +117,36 @@ class PriorityMap {
 
   announce(message) {
     if (this.status) this.status.textContent = message
+  }
+
+  reindexLanes() {
+    this.root.querySelectorAll("[data-priority-lane]").forEach((lane) => {
+      const priority = lane.dataset.priorityLane
+      const items = Array.from(lane.querySelectorAll("[data-priority-items] > [data-priority-item]"))
+
+      items.forEach((item, index) => {
+        item.dataset.itemPriority = priority
+        item.dataset.itemPosition = index
+
+        const moveForms = item.querySelectorAll(".item-move-form")
+        this.updateMoveForm(moveForms[0], priority, Math.max(index - 1, 0), index === 0)
+        this.updateMoveForm(moveForms[1], priority, Math.min(index + 1, items.length - 1), index === items.length - 1)
+
+        const laneMoveForm = item.querySelector(".lane-move-form")
+        if (laneMoveForm) {
+          laneMoveForm.querySelector("input[name='plan_item[position]']").value = index
+          laneMoveForm.querySelector("select[name='plan_item[priority]']").value = priority
+        }
+      })
+    })
+  }
+
+  updateMoveForm(form, priority, position, disabled) {
+    if (!form) return
+
+    form.querySelector("input[name='plan_item[priority]']").value = priority
+    form.querySelector("input[name='plan_item[position]']").value = position
+    form.querySelector("button").disabled = disabled
   }
 
   laneName(priority) {

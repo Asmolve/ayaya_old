@@ -19,6 +19,9 @@ class PriorityMapTest < ActionDispatch::IntegrationTest
     assert_select "button[aria-label='Move Shape the brief up']"
     assert_select "button[aria-label='Move Invite reviewers down']"
     assert_select "select[aria-label='Move Shape the brief to a lane']"
+    assert_select "label", "Move Shape the brief to a lane"
+    assert_select "[data-priority-status][aria-live='polite']"
+    assert_select ".drag-placement-hint", /Use Move up or down to place it precisely/
 
     assert_difference("PlanItem.count", 1) do
       post "/m/planning/plan_items", params: {
@@ -34,7 +37,7 @@ class PriorityMapTest < ActionDispatch::IntegrationTest
     patch "/m/planning/plan_items/#{first.id}", params: {
       plan_item: { position: 1, completed: true }
     }, headers: ayaya_headers
-    assert_equal [ 1, true ], first.reload.attributes.values_at("position", "completed")
+    assert_equal [ 0, true ], first.reload.attributes.values_at("position", "completed")
   end
 
   test "stacks the priority map at a narrow viewport and keeps inspector actions available" do

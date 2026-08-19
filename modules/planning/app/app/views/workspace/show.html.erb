@@ -73,6 +73,7 @@
                         <% end %>
                         <%= form_with model: item, class: "lane-move-form", data: { priority_move: true } do |form| %>
                           <%= form.hidden_field :position, value: index %>
+                          <%= form.label :priority, "Move #{item.title} to a lane", class: "visually-hidden" %>
                           <%= form.select :priority, PlanItem.priorities.keys.map { |lane| [lane.capitalize, lane] }, {}, { aria: { label: "Move #{item.title} to a lane" }, data: { priority_lane_select: true } } %>
                           <%= form.submit "Move" %>
                         <% end %>
@@ -81,6 +82,7 @@
                     </li>
                   <% end %>
                 </ol>
+                <p class="drag-placement-hint">Dragging moves an item to the end of a lane. Use Move up or down to place it precisely.</p>
               </section>
             <% end %>
           </div>
@@ -126,4 +128,5 @@
       </section>
     <% end %>
   </section>
+  <p class="priority-status" data-priority-status aria-live="polite" aria-atomic="true"></p>
 </main>

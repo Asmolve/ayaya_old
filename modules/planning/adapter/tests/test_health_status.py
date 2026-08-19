@@ -139,6 +139,30 @@ def test_ready_returns_unavailable_when_planning_app_status_is_malformed(tmp_pat
     assert response.json() == {"status": "error", "component": "adapter", "ready": False}
 
 
+def test_ready_reflects_an_unhealthy_planning_database(tmp_path, monkeypatch):
+    manifest_path = tmp_path / "module.yml"
+    write_manifest(manifest_path)
+    configure(monkeypatch, manifest_path)
+    app = create_app(
+        status_transport=status_transport(
+            {
+                "runtime_status": "healthy",
+                "components": {"app": "healthy", "database": "unhealthy"},
+                "checked_at": "2026-08-19T00:00:00Z",
+                "degraded_reasons": ["database_unavailable"],
+            }
+        )
+    )
+
+    response = TestClient(app).get(
+        "/ayaya/health/ready",
+        headers={"Authorization": "Bearer secret"},
+    )
+
+    assert response.status_code == 503
+    assert response.json() == {"status": "error", "component": "adapter", "ready": False}
+
+
 def test_status_maps_planning_app_status(tmp_path, monkeypatch):
     manifest_path = tmp_path / "module.yml"
     write_manifest(manifest_path)

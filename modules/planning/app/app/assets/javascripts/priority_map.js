@@ -2,6 +2,7 @@ class PriorityMap {
   constructor(root) {
     this.root = root
     this.inspector = root.querySelector("[data-item-inspector]")
+    this.status = root.querySelector("[data-priority-status]")
     this.reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
     this.connect()
   }
@@ -89,12 +90,25 @@ class PriorityMap {
         body: JSON.stringify({ priority, position: Number(position) })
       })
       if (!response.ok) throw new Error("Priority map update failed")
+      const movedItem = await response.json()
+      item.dataset.itemPriority = movedItem.priority
+      item.dataset.itemPosition = movedItem.position
+      this.announce(`Moved ${item.dataset.itemTitle} to ${this.laneName(movedItem.priority)}.`)
     } catch (_) {
       snapshot.parent.insertBefore(item, snapshot.next)
       item.dataset.itemPriority = snapshot.priority
       item.dataset.itemPosition = snapshot.position
       this.select(item)
+      this.announce(`Could not move ${item.dataset.itemTitle}. Changes were reverted.`)
     }
+  }
+
+  announce(message) {
+    if (this.status) this.status.textContent = message
+  }
+
+  laneName(priority) {
+    return priority.charAt(0).toUpperCase() + priority.slice(1)
   }
 }
 

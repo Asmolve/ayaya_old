@@ -45,8 +45,8 @@ def create_app(status_transport: httpx.BaseTransport | None = None) -> FastAPI:
         try:
             load_manifest(settings.module_yml)
             app_status = fetch_planning_app_status(settings, transport=status_transport)
-            runtime_status, _, _, _ = status_fields(app_status)
-            if runtime_status != "healthy":
+            runtime_status, components, _, _ = status_fields(app_status)
+            if runtime_status != "healthy" or components.get("database") != "healthy":
                 raise ValueError("planning app is not healthy")
             return {"status": "ok", "component": "adapter", "ready": True}
         except Exception:

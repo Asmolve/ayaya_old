@@ -76,6 +76,74 @@ class PlanItemsControllerTest < ActionDispatch::IntegrationTest
     assert_response :not_found
   end
 
+  test "moves an item through the JSON position endpoint and normalizes both lanes" do
+    owner = LocalUser.create!(core_user_id: "1")
+    plan = Plan.create!(local_user: owner, title: "Launch")
+    first = PlanItem.create!(plan: plan, title: "First", priority: "now", position: 0)
+    moved = PlanItem.create!(plan: plan, title: "Move me", priority: "now", position: 1)
+    next_item = PlanItem.create!(plan: plan, title: "Already next", priority: "next", position: 4)
+
+    patch "/m/planning/plan_items/#{moved.id}/position",
+      params: { priority: "next", position: 0 },
+      as: :json,
+      headers: ayaya_headers
+
+    assert_response :success
+    assert_equal [ moved.id, "next", 0 ], JSON.parse(response.body).values_at("id", "priority", "position")
+    assert_equal [ [ first.id, 0 ] ], plan.plan_items.now.order(:position).pluck(:id, :position)
+    assert_equal [ [ moved.id, 0 ], [ next_item.id, 1 ] ], plan.plan_items.next.order(:position).pluck(:id, :position)
+  end
+
+  test "returns JSON validation errors and scopes position moves to the current user" do
+    owner = LocalUser.create!(core_user_id: "1")
+    plan = Plan.create!(local_user: owner, title: "Launch")
+    item = PlanItem.create!(plan: plan, title: "First")
+    other = LocalUser.create!(core_user_id: "2")
+    private_item = PlanItem.create!(plan: Plan.create!(local_user: other, title: "Private"), title: "Nope")
+
+    patch "/m/planning/plan_items/#{item.id}/position",
+      params: { priority: "urgent", position: -1 },
+      as: :json,
+      headers: ayaya_headers
+
+    assert_response :unprocessable_entity
+    assert_equal [ "Priority is invalid", "Position must be a non-negative integer" ], JSON.parse(response.body).fetch("errors")
+
+    patch "/m/planning/plan_items/#{private_item.id}/position",
+      params: { priority: "now", position: 0 },
+      as: :json,
+      headers: ayaya_headers
+
+    assert_response :not_found
+    assert_equal({ "error" => "not_found" }, JSON.parse(response.body))
+  end
+
+  test "HTML move controls reorder an item without JavaScript" do
+    owner = LocalUser.create!(core_user_id: "1")
+    plan = Plan.create!(local_user: owner, title: "Launch")
+    first = PlanItem.create!(plan: plan, title: "First", priority: "now", position: 0)
+    second = PlanItem.create!(plan: plan, title: "Second", priority: "now", position: 1)
+
+    patch "/m/planning/plan_items/#{second.id}",
+      params: { plan_item: { priority: "now", position: 0 } },
+      headers: ayaya_headers
+
+    assert_redirected_to "/m/planning?plan_id=#{plan.id}"
+    assert_equal [ [ second.id, 0 ], [ first.id, 1 ] ], plan.plan_items.now.order(:position).pluck(:id, :position)
+  end
+
+  test "HTML move controls render validation errors for an invalid position payload" do
+    owner = LocalUser.create!(core_user_id: "1")
+    item = PlanItem.create!(plan: Plan.create!(local_user: owner, title: "Launch"), title: "First")
+
+    patch "/m/planning/plan_items/#{item.id}",
+      params: { plan_item: { priority: "urgent", position: -1 } },
+      headers: ayaya_headers
+
+    assert_response :unprocessable_entity
+    assert_select ".planning-errors", /Priority is invalid/
+  end
+
   private
 
   def ayaya_headers

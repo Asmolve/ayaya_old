@@ -13,7 +13,7 @@ a { color: inherit; }
 .plan-navigation, .priority-items { margin: 0; padding: 0; list-style: none; }
 .plan-navigation { border-top: 1px solid #d7c8b2; }
 .plan-navigation a { display: block; padding: .75rem 0; border-bottom: 1px solid #d7c8b2; text-decoration: none; }
-.plan-navigation a[aria-current="page"] { color: #9b641b; font-weight: 700; }
+.plan-navigation a[aria-current="page"] { color: #6f4520; font-weight: 700; }
 .plan-form, .item-form, .inspector-form { display: grid; gap: .7rem; }
 .plan-form { margin-top: auto; }
 input, select, textarea { width: 100%; padding: .65rem .7rem; color: #28231d; background: #fffaf1; border: 1px solid #cdbda5; border-radius: .25rem; }

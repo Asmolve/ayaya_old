@@ -19,7 +19,8 @@ class PriorityMapTest < ActionDispatch::IntegrationTest
     assert_select "button[aria-label='Move Shape the brief up']"
     assert_select "button[aria-label='Move Invite reviewers down']"
     assert_select "select[aria-label='Move Shape the brief to a lane']"
-    assert_select "label", "Move Shape the brief to a lane"
+    assert_select "select#plan-item-#{first.id}-priority"
+    assert_select "label[for='plan-item-#{first.id}-priority']", "Move Shape the brief to a lane"
     assert_select "[data-priority-status][aria-live='polite']"
     assert_select ".drag-placement-hint", /Use Move up or down to place it precisely/
 
@@ -52,6 +53,12 @@ class PriorityMapTest < ActionDispatch::IntegrationTest
     assert_match(/\.priority-lanes\s*\{\s*grid-template-columns:\s*1fr/, stylesheet)
     assert_select "aside[data-item-inspector] form"
     assert_select "a", "Edit item"
+  end
+
+  test "uses a normal-text contrast color for the selected plan rail link" do
+    stylesheet = File.read(Rails.root.join("app/assets/stylesheets/application.css"))
+
+    assert_match(/\.plan-navigation a\[aria-current="page"\] \{ color: #6f4520;/, stylesheet)
   end
 
   private

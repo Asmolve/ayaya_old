@@ -37,7 +37,12 @@ class PriorityMap {
     form.action = `/m/planning/plan_items/${item.dataset.itemId}`
     form.querySelector("[data-inspector-title]").value = item.dataset.itemTitle
     form.querySelector("[data-inspector-notes]").value = item.dataset.itemNotes || ""
-    form.querySelector("[data-inspector-priority]").value = item.dataset.itemPriority
+    const priorityInput = form.querySelector("[data-inspector-priority]")
+    const priorityLabel = form.querySelector("[data-inspector-priority-label]")
+    const priorityId = `selected-plan-item-${item.dataset.itemId}-priority`
+    priorityInput.value = item.dataset.itemPriority
+    priorityInput.id = priorityId
+    priorityLabel.htmlFor = priorityId
     form.querySelector("[data-inspector-completed]").checked = item.dataset.itemCompleted === "true"
     if (!this.reducedMotion) this.inspector.animate([{ opacity: .55 }, { opacity: 1 }], { duration: 150 })
   }

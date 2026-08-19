@@ -54,6 +54,7 @@
 
                 <ol class="priority-items" data-priority-items>
                   <% items.each_with_index do |item, index| %>
+                    <% priority_select_id = "plan-item-#{item.id}-priority" %>
                     <li class="priority-item <%= "is-complete" if item.completed? %> <%= "is-selected" if item == first_item %>" data-priority-item data-item-id="<%= item.id %>" data-item-title="<%= item.title %>" data-item-notes="<%= item.notes %>" data-item-priority="<%= item.priority %>" data-item-position="<%= index %>" data-item-completed="<%= item.completed? %>" draggable="true">
                       <button class="item-select" type="button" data-planning-select aria-pressed="<%= item == first_item %>">
                         <span><%= item.title %></span>
@@ -73,8 +74,8 @@
                         <% end %>
                         <%= form_with model: item, class: "lane-move-form", data: { priority_move: true } do |form| %>
                           <%= form.hidden_field :position, value: index %>
-                          <%= form.label :priority, "Move #{item.title} to a lane", class: "visually-hidden" %>
-                          <%= form.select :priority, PlanItem.priorities.keys.map { |lane| [lane.capitalize, lane] }, {}, { aria: { label: "Move #{item.title} to a lane" }, data: { priority_lane_select: true } } %>
+                          <%= form.label :priority, "Move #{item.title} to a lane", for: priority_select_id, class: "visually-hidden" %>
+                          <%= form.select :priority, PlanItem.priorities.keys.map { |lane| [lane.capitalize, lane] }, {}, { id: priority_select_id, aria: { label: "Move #{item.title} to a lane" }, data: { priority_lane_select: true } } %>
                           <%= form.submit "Move" %>
                         <% end %>
                         <%= link_to "Edit item", edit_plan_item_path(item), class: "item-edit-link" %>
@@ -92,10 +93,12 @@
               <ul class="planning-errors"><% @plan_item.errors.full_messages.each do |message| %><li><%= message %></li><% end %></ul>
             <% end %>
             <%= form.hidden_field :plan_id, value: @selected_plan.id %>
+            <% inline_priority_id = "new-plan-item-priority" %>
             <%= form.label :title, "Add an item" %>
             <div class="inline-add-fields">
               <%= form.text_field :title, required: true, placeholder: "Name the next piece of work" %>
-              <%= form.select :priority, PlanItem.priorities.keys.map { |priority| [priority.capitalize, priority] } %>
+              <%= form.label :priority, "Priority", for: inline_priority_id, class: "visually-hidden" %>
+              <%= form.select :priority, PlanItem.priorities.keys.map { |priority| [priority.capitalize, priority] }, {}, id: inline_priority_id %>
               <%= form.submit "Add item" %>
             </div>
           <% end %>
@@ -105,13 +108,14 @@
           <p class="planning-eyebrow">Selected item</p>
           <h3 id="inspector-title" data-inspector-heading><%= first_item ? first_item.title : "Nothing selected" %></h3>
           <% if first_item %>
+            <% inspector_priority_id = "selected-plan-item-#{first_item.id}-priority" %>
             <%= form_with model: first_item, class: "inspector-form", data: { inspector_form: true } do |form| %>
               <%= form.label :title, "Title" %>
               <%= form.text_field :title, required: true, data: { inspector_title: true } %>
               <%= form.label :notes, "Notes" %>
               <%= form.text_area :notes, rows: 6, data: { inspector_notes: true } %>
-              <%= form.label :priority, "Priority" %>
-              <%= form.select :priority, PlanItem.priorities.keys.map { |priority| [priority.capitalize, priority] }, {}, data: { inspector_priority: true } %>
+              <%= form.label :priority, "Priority", for: inspector_priority_id, data: { inspector_priority_label: true } %>
+              <%= form.select :priority, PlanItem.priorities.keys.map { |priority| [priority.capitalize, priority] }, {}, { id: inspector_priority_id, data: { inspector_priority: true } } %>
               <label class="completion-control"><%= form.checkbox :completed, data: { inspector_completed: true } %> Mark complete</label>
               <%= form.submit "Save item" %>
             <% end %>

@@ -27,9 +27,13 @@ class PlanItemsController < ApplicationController
 
   def update
     attributes = plan_item_params.to_h.symbolize_keys.except(:plan_id)
-    reposition(@plan_item, attributes) if ordering_attributes?(attributes)
+    @plan_item.assign_attributes(attributes.except(:priority, :position))
 
-    if @plan_item.update(attributes.except(:priority, :position))
+    if @plan_item.valid?
+      ActiveRecord::Base.transaction do
+        @plan_item.save!
+        reposition(@plan_item, attributes) if ordering_attributes?(attributes)
+      end
       redirect_to planning_root_path(plan_id: @plan_item.plan_id)
     else
       render :edit, status: :unprocessable_entity
@@ -45,7 +49,7 @@ class PlanItemsController < ApplicationController
   end
 
   def position
-    item = reposition(@plan_item, position_params)
+    item = PlanItemPositioner.new(@plan_item, **position_params).call
 
     respond_to do |format|
       format.json { render json: position_payload(item) }
@@ -72,7 +76,8 @@ class PlanItemsController < ApplicationController
   end
 
   def position_params
-    params.permit(:priority, :position).to_h.symbolize_keys
+    payload = params.permit(:priority, :position)
+    { priority: payload[:priority], position: position_value(payload[:position]) }
   end
 
   def ordering_attributes?(attributes)

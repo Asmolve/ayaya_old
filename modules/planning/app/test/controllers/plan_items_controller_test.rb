@@ -118,6 +118,32 @@ class PlanItemsControllerTest < ActionDispatch::IntegrationTest
     assert_equal({ "error" => "not_found" }, JSON.parse(response.body))
   end
 
+  test "requires both priority and position for a JSON position move" do
+    owner = LocalUser.create!(core_user_id: "1")
+    item = PlanItem.create!(plan: Plan.create!(local_user: owner, title: "Launch"), title: "First")
+
+    [ {}, { priority: "now" }, { position: 0 } ].each do |payload|
+      patch "/m/planning/plan_items/#{item.id}/position", params: payload, as: :json, headers: ayaya_headers
+
+      assert_response :unprocessable_entity
+    end
+  end
+
+  test "does not reorder an item when normal update validation fails" do
+    owner = LocalUser.create!(core_user_id: "1")
+    plan = Plan.create!(local_user: owner, title: "Launch")
+    item = PlanItem.create!(plan: plan, title: "First", priority: "now", position: 0)
+    next_item = PlanItem.create!(plan: plan, title: "Next", priority: "next", position: 0)
+
+    patch "/m/planning/plan_items/#{item.id}",
+      params: { plan_item: { title: "", priority: "next", position: 0 } },
+      headers: ayaya_headers
+
+    assert_response :unprocessable_entity
+    assert_equal [ "now", 0 ], item.reload.attributes.values_at("priority", "position")
+    assert_equal [ "next", 0 ], next_item.reload.attributes.values_at("priority", "position")
+  end
+
   test "HTML move controls reorder an item without JavaScript" do
     owner = LocalUser.create!(core_user_id: "1")
     plan = Plan.create!(local_user: owner, title: "Launch")

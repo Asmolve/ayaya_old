@@ -1,30 +1,34 @@
-<main>
-  <h1>Ayaya</h1>
-
-  <nav>
-    <% if current_user.admin? %>
-      <%= link_to "Admin", admin_root_path %>
-    <% end %>
-    <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
-  </nav>
-
-  <section>
-    <h2>Modules</h2>
-
-    <% if @modules.any? %>
-      <ul>
-        <% @modules.each do |registered_module| %>
-          <% presentation = registered_module.manifest_snapshot.fetch("presentation", {}) %>
-          <li>
-            <%= link_to registered_module.name, "/m/#{registered_module.module_key}" %>
-            <% if presentation["description"].present? %>
-              <p><%= presentation["description"] %></p>
-            <% end %>
-          </li>
-        <% end %>
-      </ul>
-    <% else %>
-      <p>No modules are available.</p>
-    <% end %>
+<main class="platform-main">
+  <section class="platform-intro" aria-labelledby="modules-heading">
+    <div>
+      <p class="eyebrow">Your workspace</p>
+      <h1 id="modules-heading">Modules</h1>
+      <p class="platform-lede">Your connected tools, gathered in one quiet place.</p>
+    </div>
+    <p class="platform-count"><%= @modules.size %> available</p>
   </section>
+
+  <% if @modules.any? %>
+    <section class="module-list" aria-label="Available modules">
+      <% @modules.each do |registered_module| %>
+        <% presentation = registered_module.manifest_snapshot.fetch("presentation", {}) %>
+        <article class="module-row">
+          <div class="module-row__identity">
+            <span class="module-row__glyph" aria-hidden="true"><%= registered_module.name.first.upcase %></span>
+            <div>
+              <h2><%= registered_module.name %></h2>
+              <p><%= presentation["description"].presence || "Open this module" %></p>
+            </div>
+          </div>
+          <%= link_to "Open #{registered_module.name}", "/m/#{registered_module.module_key}", class: "module-row__action" %>
+        </article>
+      <% end %>
+    </section>
+  <% else %>
+    <section class="empty-state">
+      <span class="empty-state__glyph" aria-hidden="true">—</span>
+      <h2>No modules available</h2>
+      <p>When a module is enabled, it will appear here.</p>
+    </section>
+  <% end %>
 </main>

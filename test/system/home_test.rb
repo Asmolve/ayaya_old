@@ -24,7 +24,9 @@ class HomeTest < ApplicationSystemTestCase
     click_button "Log in"
 
     assert_text "Ayaya"
+    assert_link "Modules", href: "/"
     assert_link "Notes", href: "/m/notes"
+    assert_link "Open Notes", href: "/m/notes"
     assert_text "Personal notes"
   end
 end

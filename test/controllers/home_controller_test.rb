@@ -27,7 +27,7 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
     get "/"
 
     assert_response :success
-    assert_select "a[href='/m/notes']", text: "Notes"
+    assert_select "a[href='/m/notes']", text: "Open Notes"
     assert_includes response.body, "Personal notes"
   end
 end

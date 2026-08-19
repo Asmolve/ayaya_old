@@ -16,6 +16,25 @@ class PlanItemsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to "/m/planning?plan_id=#{plan.id}"
   end
 
+  test "advertises only usable plan item read routes" do
+    owner = LocalUser.create!(core_user_id: "1")
+    plan = Plan.create!(local_user: owner, title: "Launch")
+    item = PlanItem.create!(plan: plan, title: "Write brief")
+
+    get "/m/planning/plan_items/#{item.id}", headers: ayaya_headers
+    assert_redirected_to "/m/planning?plan_id=#{plan.id}"
+
+    get "/m/planning/plan_items/#{item.id}/edit", headers: ayaya_headers
+    assert_response :success
+
+    assert_raises(ActionController::RoutingError) do
+      Rails.application.routes.recognize_path("/m/planning/plan_items", method: :get)
+    end
+    assert_raises(ActionController::RoutingError) do
+      Rails.application.routes.recognize_path("/m/planning/plan_items/new", method: :get)
+    end
+  end
+
   test "renders errors for a blank title and invalid priority" do
     owner = LocalUser.create!(core_user_id: "1")
     plan = Plan.create!(local_user: owner, title: "Launch")

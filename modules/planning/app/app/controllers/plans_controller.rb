@@ -7,10 +7,6 @@ class PlansController < ApplicationController
     redirect_to planning_root_path(plan_id: @plan.id)
   end
 
-  def new
-    @plan = current_local_user.plans.build
-  end
-
   def create
     @plan = current_local_user.plans.build(plan_params)
 

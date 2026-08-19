@@ -15,6 +15,24 @@ class PlansControllerTest < ActionDispatch::IntegrationTest
     assert_includes response.body, "Create plan"
   end
 
+  test "advertises only usable plan read routes" do
+    owner = LocalUser.create!(core_user_id: "1")
+    plan = Plan.create!(local_user: owner, title: "Launch")
+
+    get "/m/planning/plans/#{plan.id}", headers: ayaya_headers
+    assert_redirected_to "/m/planning?plan_id=#{plan.id}"
+
+    get "/m/planning/plans/#{plan.id}/edit", headers: ayaya_headers
+    assert_response :success
+
+    assert_raises(ActionController::RoutingError) do
+      Rails.application.routes.recognize_path("/m/planning/plans", method: :get)
+    end
+    assert_raises(ActionController::RoutingError) do
+      Rails.application.routes.recognize_path("/m/planning/plans/new", method: :get)
+    end
+  end
+
   test "creates a plan for the current user" do
     assert_difference("Plan.count", 1) do
       post "/m/planning/plans", params: { plan: { title: "Launch" } }, headers: ayaya_headers

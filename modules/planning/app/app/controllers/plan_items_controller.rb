@@ -7,10 +7,6 @@ class PlanItemsController < ApplicationController
     redirect_to planning_root_path(plan_id: @plan_item.plan_id)
   end
 
-  def new
-    @plan_item = current_local_user.plan_items.build
-  end
-
   def create
     @plan = current_local_user.plans.find(plan_item_params.fetch(:plan_id))
     @plan_item = @plan.plan_items.build(plan_item_params.except(:plan_id))

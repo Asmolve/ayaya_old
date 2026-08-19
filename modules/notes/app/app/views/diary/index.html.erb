@@ -9,8 +9,9 @@
 
   <header class="diary-header">
     <div>
+      <p class="notes-eyebrow">Notes / time view</p>
       <h1>Diary</h1>
-      <p><%= @quarter_start.year %></p>
+      <p class="diary-period"><%= @quarter_start.strftime("%B %Y") %> · quarter</p>
     </div>
     <nav class="diary-quarter-nav" aria-label="Diary quarter">
       <%= link_to "←", diary_path(quarter: @quarter_start.advance(months: -3)), class: "diary-quarter-link", aria: { label: "Previous quarter" } %>

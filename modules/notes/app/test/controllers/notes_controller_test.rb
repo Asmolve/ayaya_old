@@ -15,7 +15,7 @@ class NotesControllerTest < ActionDispatch::IntegrationTest
     get "/m/notes", headers: ayaya_headers(core_user_id: "1")
 
     assert_response :success
-    assert_includes response.body, "No notes yet."
+    assert_includes response.body, "No notes yet"
     assert_includes response.body, "New note"
   end
 
@@ -39,7 +39,8 @@ class NotesControllerTest < ActionDispatch::IntegrationTest
 
     get "/m/notes", headers: ayaya_headers
 
-    assert_includes response.body, "Trip · 07.09.2026 — 11.09.2026"
+    assert_includes response.body, "Trip"
+    assert_includes response.body, "07.09.2026 — 11.09.2026"
   end
 
   test "creates note owned by current local user" do

@@ -16,6 +16,8 @@ class DiaryCalendarTest < ApplicationSystemTestCase
   test "quarter navigation offers an accessible link to the current quarter" do
     visit_as_ayaya_user "/m/notes/diary?quarter=2026-09-01"
 
+    assert_link "Ayaya", href: "/"
+    assert_link "Notes", href: "/m/notes"
     assert_link "Current quarter", href: diary_path(quarter: Date.current.beginning_of_quarter)
   end
 

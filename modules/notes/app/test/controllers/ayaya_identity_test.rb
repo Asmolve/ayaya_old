@@ -30,7 +30,7 @@ class AyayaIdentityTest < ActionDispatch::IntegrationTest
       }
 
       assert_response :success
-      assert_includes response.body, "No notes yet."
+      assert_includes response.body, "No notes yet"
       assert_includes response.body, "New note"
       local_user = LocalUser.find_by!(core_user_id: "1")
       assert_equal "user@example.test", local_user.email
@@ -51,7 +51,7 @@ class AyayaIdentityTest < ActionDispatch::IntegrationTest
     end
 
     assert_response :success
-    assert_includes response.body, "No notes yet."
+    assert_includes response.body, "No notes yet"
     assert_includes response.body, "New note"
     local_user.reload
     assert_equal "updated@example.test", local_user.email

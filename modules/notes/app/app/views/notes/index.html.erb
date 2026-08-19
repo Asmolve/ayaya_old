@@ -4,22 +4,32 @@
     <%= link_to "Diary", diary_path %>
   </nav>
 
-  <header>
-    <h1>Notes</h1>
-    <%= link_to "New note", new_note_path %>
+  <header class="notes-page__header">
+    <div>
+      <p class="notes-eyebrow">Reference module</p>
+      <h1>Notes</h1>
+      <p class="notes-lede">Short thoughts and longer ideas, kept close at hand.</p>
+    </div>
+    <%= link_to "New note", new_note_path, class: "notes-primary-action" %>
   </header>
 
   <% if @notes.any? %>
-    <ul>
+    <ul class="notes-list">
       <% @notes.each do |note| %>
-        <li>
+        <li class="notes-list__item">
           <%= link_to note_path(note) do %>
-            <%= note.title %><%= " · #{note.start_date.strftime("%d.%m.%Y")} — #{note.end_date.strftime("%d.%m.%Y")}" if note.diary? %>
+            <strong><%= note.title %></strong>
+            <span><%= note.diary? ? "#{note.start_date.strftime("%d.%m.%Y")} — #{note.end_date.strftime("%d.%m.%Y")}" : "Note" %></span>
           <% end %>
         </li>
       <% end %>
     </ul>
   <% else %>
-    <p>No notes yet.</p>
+    <section class="notes-empty">
+      <span aria-hidden="true">✦</span>
+      <h2>No notes yet</h2>
+      <p>Start with one small thought.</p>
+      <%= link_to "Create a note", new_note_path, class: "notes-text-action" %>
+    </section>
   <% end %>
 </main>

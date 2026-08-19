@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "App" %></title>
+    <title><%= content_for(:title) || "Notes · Ayaya" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="App">
+    <meta name="application-name" content="Notes · Ayaya">
     <meta name="mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -25,6 +25,17 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="notes-shell">
+      <header class="notes-topbar">
+        <%= link_to "/", class: "notes-brand", aria: { label: "Back to Ayaya modules" } do %>
+          <span class="notes-brand__mark">A</span>
+          <span>Ayaya</span>
+        <% end %>
+        <span class="notes-topbar__divider" aria-hidden="true">/</span>
+        <span class="notes-topbar__module">Notes</span>
+        <%= link_to "← Modules", "/", class: "notes-back-link" %>
+      </header>
+      <%= yield %>
+    </div>
   </body>
 </html>

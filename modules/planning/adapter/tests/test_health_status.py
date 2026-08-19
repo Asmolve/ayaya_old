@@ -70,6 +70,31 @@ def test_live_returns_ok(tmp_path, monkeypatch):
     assert response.json() == {"status": "ok", "component": "adapter"}
 
 
+@pytest.mark.parametrize("path", ["/ayaya/health/ready", "/ayaya/status"])
+def test_ready_and_status_reject_missing_adapter_secret(tmp_path, monkeypatch, path):
+    manifest_path = tmp_path / "module.yml"
+    write_manifest(manifest_path)
+    configure(monkeypatch, manifest_path)
+
+    response = TestClient(create_app()).get(path)
+
+    assert response.status_code == 401
+
+
+@pytest.mark.parametrize("path", ["/ayaya/health/ready", "/ayaya/status"])
+def test_ready_and_status_reject_wrong_adapter_secret(tmp_path, monkeypatch, path):
+    manifest_path = tmp_path / "module.yml"
+    write_manifest(manifest_path)
+    configure(monkeypatch, manifest_path)
+
+    response = TestClient(create_app()).get(
+        path,
+        headers={"Authorization": "Bearer wrong-secret"},
+    )
+
+    assert response.status_code == 401
+
+
 def status_transport(status: dict) -> httpx.MockTransport:
     def handler(request: httpx.Request) -> httpx.Response:
         assert request.headers["Authorization"] == "Bearer internal"
@@ -93,6 +118,25 @@ def test_ready_returns_unavailable_when_planning_app_is_unreachable(tmp_path, mo
 
     assert response.status_code == 503
     assert response.json()["ready"] is False
+
+
+def test_ready_returns_unavailable_when_planning_app_status_is_malformed(tmp_path, monkeypatch):
+    manifest_path = tmp_path / "module.yml"
+    write_manifest(manifest_path)
+    configure(monkeypatch, manifest_path)
+    app = create_app(
+        status_transport=status_transport(
+            {"runtime_status": "healthy", "components": ["not-a-mapping"]}
+        )
+    )
+
+    response = TestClient(app).get(
+        "/ayaya/health/ready",
+        headers={"Authorization": "Bearer secret"},
+    )
+
+    assert response.status_code == 503
+    assert response.json() == {"status": "error", "component": "adapter", "ready": False}
 
 
 def test_status_maps_planning_app_status(tmp_path, monkeypatch):
@@ -122,3 +166,23 @@ def test_status_maps_planning_app_status(tmp_path, monkeypatch):
     assert body["module_key"] == "planning"
     assert body["module_version"] == "0.1.0"
     assert body["components"]["database"] == "healthy"
+
+
+def test_status_maps_malformed_planning_app_status_to_unreachable(tmp_path, monkeypatch):
+    manifest_path = tmp_path / "module.yml"
+    write_manifest(manifest_path)
+    configure(monkeypatch, manifest_path)
+    app = create_app(
+        status_transport=status_transport(
+            {"runtime_status": "healthy", "components": ["not-a-mapping"]}
+        )
+    )
+
+    response = TestClient(app).get(
+        "/ayaya/status",
+        headers={"Authorization": "Bearer secret"},
+    )
+
+    assert response.status_code == 200
+    assert response.json()["runtime_status"] == "unreachable"
+    assert response.json()["degraded_reasons"] == ["planning_app_unreachable"]

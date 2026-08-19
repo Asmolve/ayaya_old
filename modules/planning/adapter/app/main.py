@@ -1,4 +1,5 @@
 from datetime import datetime, timezone
+from typing import Any
 
 import httpx
 from fastapi import Depends, FastAPI
@@ -8,6 +9,24 @@ from .auth import require_adapter_secret
 from .manifest import load_manifest
 from .settings import Settings, get_settings
 from .status_client import fetch_planning_app_status
+
+
+def status_fields(app_status: dict[str, Any]) -> tuple[str, dict[str, Any], str, list[Any]]:
+    runtime_status = app_status.get("runtime_status", "unhealthy")
+    components = app_status.get("components", {})
+    checked_at = app_status.get("checked_at") or datetime.now(timezone.utc).isoformat()
+    degraded_reasons = app_status.get("degraded_reasons", [])
+
+    if not isinstance(runtime_status, str):
+        raise ValueError("planning app runtime status must be a string")
+    if not isinstance(components, dict):
+        raise ValueError("planning app components must be a mapping")
+    if not isinstance(checked_at, str):
+        raise ValueError("planning app checked_at must be a string")
+    if not isinstance(degraded_reasons, list):
+        raise ValueError("planning app degraded reasons must be a list")
+
+    return runtime_status, components, checked_at, degraded_reasons
 
 
 def create_app(status_transport: httpx.BaseTransport | None = None) -> FastAPI:
@@ -26,7 +45,8 @@ def create_app(status_transport: httpx.BaseTransport | None = None) -> FastAPI:
         try:
             load_manifest(settings.module_yml)
             app_status = fetch_planning_app_status(settings, transport=status_transport)
-            if app_status.get("runtime_status") != "healthy":
+            runtime_status, _, _, _ = status_fields(app_status)
+            if runtime_status != "healthy":
                 raise ValueError("planning app is not healthy")
             return {"status": "ok", "component": "adapter", "ready": True}
         except Exception:
@@ -40,10 +60,7 @@ def create_app(status_transport: httpx.BaseTransport | None = None) -> FastAPI:
         manifest_data = load_manifest(settings.module_yml)
         try:
             app_status = fetch_planning_app_status(settings, transport=status_transport)
-            runtime_status = app_status.get("runtime_status", "unhealthy")
-            components = app_status.get("components", {})
-            checked_at = app_status.get("checked_at") or datetime.now(timezone.utc).isoformat()
-            degraded_reasons = app_status.get("degraded_reasons", [])
+            runtime_status, components, checked_at, degraded_reasons = status_fields(app_status)
         except (httpx.HTTPError, ValueError):
             runtime_status = "unreachable"
             components = {"app": "unreachable", "database": "unknown"}

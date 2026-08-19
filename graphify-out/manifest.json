@@ -1,12 +1,12 @@
 {
   "app/admin/dashboard.rb": {
-    "mtime": 1785700583.630428,
-    "ast_hash": "9d908f40b6c2cce78535a9c0cdcec51a",
+    "mtime": 1787144356.4549181,
+    "ast_hash": "1e2b1a579b7d6e914a1aef38683be4a4",
     "semantic_hash": ""
   },
   "app/admin/registered_modules.rb": {
-    "mtime": 1785701987.669966,
-    "ast_hash": "3ef9e767a963907208c9dac1abc5a80c",
+    "mtime": 1786830065.9605463,
+    "ast_hash": "7f5a96a397f70b18aa2c35b3306afb38",
     "semantic_hash": ""
   },
   "app/admin/users.rb": {
@@ -90,8 +90,8 @@
     "semantic_hash": ""
   },
   "app/services/modules/register_adapter.rb": {
-    "mtime": 1785139533.9087677,
-    "ast_hash": "7be0057e4a29887c5473217164b8c2de",
+    "mtime": 1786912325.7799244,
+    "ast_hash": "48448f7058f9d44b8b63334da06f1706",
     "semantic_hash": ""
   },
   "app/views/pwa/service-worker.js": {
@@ -275,8 +275,8 @@
     "semantic_hash": ""
   },
   "test/controllers/home_controller_test.rb": {
-    "mtime": 1785110272.3551505,
-    "ast_hash": "b0f69e273336dec32fab0dcfa1a5ec09",
+    "mtime": 1787164688.9531987,
+    "ast_hash": "871ac392d8e268706ca0d8429b9e05f8",
     "semantic_hash": ""
   },
   "test/controllers/internal/module_access_controller_test.rb": {
@@ -285,8 +285,8 @@
     "semantic_hash": ""
   },
   "test/integration/admin_access_test.rb": {
-    "mtime": 1785700483.284848,
-    "ast_hash": "19a456088aa286a53ed31bc67c3653bd",
+    "mtime": 1787144356.67834,
+    "ast_hash": "b7a3e2e6177dab1ddd776ce5161c4076",
     "semantic_hash": ""
   },
   "test/lib/ayaya_contract/runner_test.rb": {
@@ -325,8 +325,8 @@
     "semantic_hash": ""
   },
   "test/services/modules/register_adapter_test.rb": {
-    "mtime": 1785139533.9689043,
-    "ast_hash": "6b6388df82fca1e2fd8b41355cb3e6ca",
+    "mtime": 1786912291.654147,
+    "ast_hash": "0b02b59879b69abda9c8fed3e3c64103",
     "semantic_hash": ""
   },
   "test/test_helper.rb": {
@@ -460,13 +460,13 @@
     "semantic_hash": ""
   },
   "compose.yml": {
-    "mtime": 1786302236.0341692,
-    "ast_hash": "de57e25491f5c2afcea156f326680db4",
+    "mtime": 1787144356.52967,
+    "ast_hash": "2392731c729aae5c375dab0046aa77af",
     "semantic_hash": ""
   },
   "test/system/home_test.rb": {
-    "mtime": 1785275032.4045913,
-    "ast_hash": "738be5e3c0850aeca7dc6457c5d0e049",
+    "mtime": 1787083529.97797,
+    "ast_hash": "d0d6df3a1182b45153c5a20bd1f1639b",
     "semantic_hash": ""
   },
   "docs/superpowers/plans/2026-08-01-reference-notes-module.md": {
@@ -740,8 +740,8 @@
     "semantic_hash": ""
   },
   "modules/notes/app/test/controllers/ayaya_identity_test.rb": {
-    "mtime": 1785544430.0701432,
-    "ast_hash": "6e153663306653e8c0ff098be0cb4984",
+    "mtime": 1787164882.459036,
+    "ast_hash": "53692608af71401e66e5b9844f6a7003",
     "semantic_hash": ""
   },
   "modules/notes/app/test/models/local_user_test.rb": {
@@ -760,8 +760,8 @@
     "semantic_hash": ""
   },
   "modules/notes/app/test/controllers/notes_controller_test.rb": {
-    "mtime": 1786293332.6547701,
-    "ast_hash": "f0e72bfeae1fba4f410faefe5c02e23c",
+    "mtime": 1787164882.3930461,
+    "ast_hash": "8d569d620d374b449b65b668c9c49aae",
     "semantic_hash": ""
   },
   "modules/notes/app/test/models/note_test.rb": {
@@ -825,8 +825,8 @@
     "semantic_hash": ""
   },
   "test/lib/ayaya_contract/compose_exposure_test.rb": {
-    "mtime": 1786302244.5144105,
-    "ast_hash": "2e53b5bb65071b8bde5c9d7a2c425880",
+    "mtime": 1787144289.441904,
+    "ast_hash": "941947288961d9db7e58019a96bb934d",
     "semantic_hash": ""
   },
   "modules/notes/docs/REGISTER.md": {
@@ -930,8 +930,8 @@
     "semantic_hash": ""
   },
   "modules/notes/app/test/system/diary_calendar_test.rb": {
-    "mtime": 1786478221.7212446,
-    "ast_hash": "1b8a95d83c07f0aa2aae430e616a1de6",
+    "mtime": 1787083530.061346,
+    "ast_hash": "2c4b71ffe38f9a10f2199932a4df98f9",
     "semantic_hash": ""
   },
   "docs/superpowers/specs/2026-08-11-diary-visual-refresh-design.md": {
@@ -952,6 +952,351 @@
   "docs/superpowers/specs/2026-08-15-pic-obtainer-ayaya-integration-design.md": {
     "mtime": 1786824280.0808835,
     "ast_hash": "4a8124c5c8a3b0ff479dae5049fed978",
+    "semantic_hash": ""
+  },
+  "test/lib/ayaya_contract/pic_obtainer_module_test.rb": {
+    "mtime": 1786829372.0579288,
+    "ast_hash": "35ecaa5c49c966786a3555e4516e1496",
+    "semantic_hash": ""
+  },
+  "modules/pic_obtainer/README.md": {
+    "mtime": 1786829371.9667654,
+    "ast_hash": "557ac06e97278df9cf97d5f1f1d73510",
+    "semantic_hash": ""
+  },
+  "modules/pic_obtainer/compose.yml": {
+    "mtime": 1786829534.910996,
+    "ast_hash": "b338d2a44adff07bfc9f9a7bb952b44b",
+    "semantic_hash": ""
+  },
+  "test/integration/pic_obtainer_module_test.rb": {
+    "mtime": 1787144289.28906,
+    "ast_hash": "ececd0e42709e5c9cbb7bcb141c2c41a",
+    "semantic_hash": ""
+  },
+  "modules/pic_obtainer/docs/REGISTER.md": {
+    "mtime": 1786911860.4179392,
+    "ast_hash": "021be89fec2d00f6383f1ea3db57de33",
+    "semantic_hash": ""
+  },
+  "app/services/modules/adapter_secret.rb": {
+    "mtime": 1787144356.3803954,
+    "ast_hash": "3d58639ccfe9bada1ed936ceb3c14236",
+    "semantic_hash": ""
+  },
+  "test/system/pic_obtainer_module_test.rb": {
+    "mtime": 1786830171.1541946,
+    "ast_hash": "3d782fde63a5535ab80f0dd1662e70d8",
+    "semantic_hash": ""
+  },
+  "docs/superpowers/specs/2026-08-16-admin-module-registration-design.md": {
+    "mtime": 1786910744.2176075,
+    "ast_hash": "08bfa59c67361111a9c0ce70361e7869",
+    "semantic_hash": ""
+  },
+  "docs/superpowers/plans/2026-08-16-admin-module-registration.md": {
+    "mtime": 1786910859.4943926,
+    "ast_hash": "ff9547370a7afe547aefd53db3536817",
+    "semantic_hash": ""
+  },
+  "app/services/modules/local_registration.rb": {
+    "mtime": 1787144356.3057735,
+    "ast_hash": "0ac1f32f6bc4108ad328c5d58e85b514",
+    "semantic_hash": ""
+  },
+  "test/services/modules/local_registration_test.rb": {
+    "mtime": 1787144289.2124455,
+    "ast_hash": "1a8cddd52769c6ec56dddf9a811851d3",
+    "semantic_hash": ""
+  },
+  "modules/planning/adapter/app/__init__.py": {
+    "mtime": 1787137452.851331,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "modules/planning/adapter/app/auth.py": {
+    "mtime": 1787137452.985714,
+    "ast_hash": "952ee09e8e12524309e5e324692a0346",
+    "semantic_hash": ""
+  },
+  "modules/planning/adapter/app/main.py": {
+    "mtime": 1787152168.1473932,
+    "ast_hash": "4bcbc7f98c471d4cd0b99510f1e136d5",
+    "semantic_hash": ""
+  },
+  "modules/planning/adapter/app/manifest.py": {
+    "mtime": 1787137453.0530918,
+    "ast_hash": "8cffecc0cee560f23fe9f6742a1cef16",
+    "semantic_hash": ""
+  },
+  "modules/planning/adapter/app/settings.py": {
+    "mtime": 1787137452.9182758,
+    "ast_hash": "f1e8d3b40a7b61309ebccdfd70ab55a8",
+    "semantic_hash": ""
+  },
+  "modules/planning/adapter/app/status_client.py": {
+    "mtime": 1787137453.1209626,
+    "ast_hash": "e444916de7d00b6b6b8410e2a7fd2f37",
+    "semantic_hash": ""
+  },
+  "modules/planning/adapter/tests/test_health_status.py": {
+    "mtime": 1787152216.8127518,
+    "ast_hash": "7dc9bac189c98d541f92ec82c9888a16",
+    "semantic_hash": ""
+  },
+  "modules/planning/adapter/tests/test_manifest.py": {
+    "mtime": 1787137883.815732,
+    "ast_hash": "33d46ec60075eaaca4d218b1f84d8505",
+    "semantic_hash": ""
+  },
+  "modules/planning/app/bin/docker-entrypoint": {
+    "mtime": 1787142345.2424738,
+    "ast_hash": "d8a3b3869205bc672660e67ecbff49f4",
+    "semantic_hash": ""
+  },
+  "modules/planning/app/bin/rails": {
+    "mtime": 1787137453.977036,
+    "ast_hash": "39ebb68cb694fcb19c823a0397db68cb",
+    "semantic_hash": ""
+  },
+  "modules/planning/app/config/application.rb": {
+    "mtime": 1787137454.2595289,
+    "ast_hash": "3386b331c82fabeb570a17195baad7ed",
+    "semantic_hash": ""
+  },
+  "modules/planning/app/config/boot.rb": {
+    "mtime": 1787137454.1905797,
+    "ast_hash": "278269fce1275fdffc2d1ca427a08d20",
+    "semantic_hash": ""
+  },
+  "modules/planning/app/config/environment.rb": {
+    "mtime": 1787137454.3298445,
+    "ast_hash": "0dd2b9a0141445ddf6759bfaa38d05c3",
+    "semantic_hash": ""
+  },
+  "modules/planning/app/config/environments/development.rb": {
+    "mtime": 1787137454.6714344,
+    "ast_hash": "99e727aa6a476f26442801aeab292049",
+    "semantic_hash": ""
+  },
+  "modules/planning/app/config/environments/production.rb": {
+    "mtime": 1787137454.806075,
+    "ast_hash": "73fd7094d2996f2faccc85708d15af4c",
+    "semantic_hash": ""
+  },
+  "modules/planning/app/config/environments/test.rb": {
+    "mtime": 1787137454.7388852,
+    "ast_hash": "359424395dc4019c357831bab932652c",
+    "semantic_hash": ""
+  },
+  "modules/planning/app/config/puma.rb": {
+    "mtime": 1787142353.3984797,
+    "ast_hash": "159f51d4d9175164af01a061b9047c39",
+    "semantic_hash": ""
+  },
+  "modules/planning/app/config/routes.rb": {
+    "mtime": 1787140478.7759209,
+    "ast_hash": "916fd6a20854274887fabacdd4e31626",
+    "semantic_hash": ""
+  },
+  "modules/planning/app/test/test_helper.rb": {
+    "mtime": 1787137454.9186034,
+    "ast_hash": "cb94cf720df8080e0bce8d86c66ed6d9",
+    "semantic_hash": ""
+  },
+  "docs/superpowers/plans/2026-08-19-planning-module.md": {
+    "mtime": 1787144825.0459976,
+    "ast_hash": "9e265b0fbb687308695650417a652093",
+    "semantic_hash": ""
+  },
+  "docs/superpowers/specs/2026-08-19-planning-module-design.md": {
+    "mtime": 1787144824.9733083,
+    "ast_hash": "96f3ca0f5459accb5d6f4cc69ce86542",
+    "semantic_hash": ""
+  },
+  "modules/planning/adapter/requirements.txt": {
+    "mtime": 1787137453.323032,
+    "ast_hash": "1f361befb217058bb3267617efc70a17",
+    "semantic_hash": ""
+  },
+  "modules/planning/app/README.md": {
+    "mtime": 1787140900.3348522,
+    "ast_hash": "d971532a1788502e766235130cfcc92b",
+    "semantic_hash": ""
+  },
+  "modules/planning/app/config/database.yml": {
+    "mtime": 1787137454.3993485,
+    "ast_hash": "a9a012909206680d39ca369fc006b507",
+    "semantic_hash": ""
+  },
+  "modules/planning/compose.yml": {
+    "mtime": 1787143720.4247804,
+    "ast_hash": "a02dd56f56c2a1045f24686ccf7bb570",
+    "semantic_hash": ""
+  },
+  "modules/planning/docs/CONTRACT.md": {
+    "mtime": 1787140900.2408834,
+    "ast_hash": "612427aa22b627ca882a1bdfcfec70e5",
+    "semantic_hash": ""
+  },
+  "modules/planning/docs/README.md": {
+    "mtime": 1787144356.7532163,
+    "ast_hash": "079c62ba7c38c1b8befee9d1f2bf5f0f",
+    "semantic_hash": ""
+  },
+  "modules/planning/docs/REGISTER.md": {
+    "mtime": 1787137455.2161903,
+    "ast_hash": "0ebd8c0ef4dc42296b6e03561c82e0e4",
+    "semantic_hash": ""
+  },
+  "modules/planning/module.yml": {
+    "mtime": 1787137452.671679,
+    "ast_hash": "fd384a810fd7db5b628dadde9ea50514",
+    "semantic_hash": ""
+  },
+  "modules/planning/app/app/controllers/application_controller.rb": {
+    "mtime": 1787138584.843102,
+    "ast_hash": "6c760adf3ae5209767a549b2d4b22257",
+    "semantic_hash": ""
+  },
+  "modules/planning/app/app/controllers/concerns/ayaya_identity.rb": {
+    "mtime": 1787138584.9154224,
+    "ast_hash": "d6b37ae48a2904d5c5400e51ecc5138c",
+    "semantic_hash": ""
+  },
+  "modules/planning/app/app/controllers/plan_items_controller.rb": {
+    "mtime": 1787152168.080859,
+    "ast_hash": "40af21db686a1ffa89176a709f1dfc26",
+    "semantic_hash": ""
+  },
+  "modules/planning/app/app/controllers/plans_controller.rb": {
+    "mtime": 1787139099.6836448,
+    "ast_hash": "48cd69aea996000ce4cd62ad716f47ac",
+    "semantic_hash": ""
+  },
+  "modules/planning/app/app/controllers/workspace_controller.rb": {
+    "mtime": 1787138602.9170053,
+    "ast_hash": "6dd7b92fc8ef82d8084775377f022b05",
+    "semantic_hash": ""
+  },
+  "modules/planning/app/app/models/application_record.rb": {
+    "mtime": 1787138537.9750733,
+    "ast_hash": "8061f2304feb5db0f90c9086b9c30377",
+    "semantic_hash": ""
+  },
+  "modules/planning/app/app/models/local_user.rb": {
+    "mtime": 1787138538.0465236,
+    "ast_hash": "735348e79f13a07ac8151096b5ede52a",
+    "semantic_hash": ""
+  },
+  "modules/planning/app/app/models/plan.rb": {
+    "mtime": 1787138538.1182754,
+    "ast_hash": "be91592a9e0c731cde759147262ffcbf",
+    "semantic_hash": ""
+  },
+  "modules/planning/app/app/models/plan_item.rb": {
+    "mtime": 1787138538.1899333,
+    "ast_hash": "fe8b432f9d43116bde9809afd29d372b",
+    "semantic_hash": ""
+  },
+  "modules/planning/app/db/migrate/20260819000000_create_local_users.rb": {
+    "mtime": 1787138538.9233797,
+    "ast_hash": "04d07568f096ff7ec445cbbe4400736e",
+    "semantic_hash": ""
+  },
+  "modules/planning/app/db/migrate/20260819000001_create_plans.rb": {
+    "mtime": 1787138538.9934936,
+    "ast_hash": "8aa463b01f255a45d9f82eb5de370ba8",
+    "semantic_hash": ""
+  },
+  "modules/planning/app/db/migrate/20260819000002_create_plan_items.rb": {
+    "mtime": 1787138539.064442,
+    "ast_hash": "307f38d434fc20f96a8362510ac5f248",
+    "semantic_hash": ""
+  },
+  "modules/planning/app/db/schema.rb": {
+    "mtime": 1787138553.9032664,
+    "ast_hash": "dc734d70d0c8add19cdc656199d541fd",
+    "semantic_hash": ""
+  },
+  "modules/planning/app/test/controllers/ayaya_identity_test.rb": {
+    "mtime": 1787138314.707577,
+    "ast_hash": "28e6fd5546b332e4cd7ed52b07502384",
+    "semantic_hash": ""
+  },
+  "modules/planning/app/test/controllers/plan_items_controller_test.rb": {
+    "mtime": 1787152106.0427558,
+    "ast_hash": "bd205a01e4e4d88c2e65c067e048521e",
+    "semantic_hash": ""
+  },
+  "modules/planning/app/test/controllers/plans_controller_test.rb": {
+    "mtime": 1787139075.6992178,
+    "ast_hash": "cce0e56476f36d6c19f6dfd9935078bc",
+    "semantic_hash": ""
+  },
+  "modules/planning/app/test/models/local_user_test.rb": {
+    "mtime": 1787138314.4115822,
+    "ast_hash": "082a26d30888cb3717ef00e4a0edd57b",
+    "semantic_hash": ""
+  },
+  "modules/planning/app/test/models/plan_item_test.rb": {
+    "mtime": 1787138314.5665715,
+    "ast_hash": "5a15de5ff32dd74fdc084d5c8d5fbb71",
+    "semantic_hash": ""
+  },
+  "modules/planning/app/test/models/plan_test.rb": {
+    "mtime": 1787138314.4908216,
+    "ast_hash": "545e6683993c07745e537082d40068c1",
+    "semantic_hash": ""
+  },
+  "modules/planning/app/app/assets/javascripts/priority_map.js": {
+    "mtime": 1787143021.5793018,
+    "ast_hash": "46899fdfeed8cfc9ed245400bea458e0",
+    "semantic_hash": ""
+  },
+  "modules/planning/app/config/importmap.rb": {
+    "mtime": 1787139688.6112132,
+    "ast_hash": "285f3bf96794505b6a3cd24b13db8c19",
+    "semantic_hash": ""
+  },
+  "modules/planning/app/test/system/priority_map_test.rb": {
+    "mtime": 1787141414.8475409,
+    "ast_hash": "9272df2e8fa6cbb65d47b3dde7da0c84",
+    "semantic_hash": ""
+  },
+  "modules/planning/app/app/controllers/internal/ayaya/status_controller.rb": {
+    "mtime": 1787140478.702265,
+    "ast_hash": "5c938045defe07ab963d56ca1b3f7b0f",
+    "semantic_hash": ""
+  },
+  "modules/planning/app/app/services/plan_item_positioner.rb": {
+    "mtime": 1787143720.3522782,
+    "ast_hash": "5f4ab8294e2ca3c9ad96294717475ba6",
+    "semantic_hash": ""
+  },
+  "modules/planning/app/test/application_system_test_case.rb": {
+    "mtime": 1787140829.0282402,
+    "ast_hash": "778b6ba5e725dac1091322f0c33fb03d",
+    "semantic_hash": ""
+  },
+  "modules/planning/app/test/controllers/internal/ayaya/status_controller_test.rb": {
+    "mtime": 1787140564.0087223,
+    "ast_hash": "68f53f41cae22709e0cd9059ef03ce01",
+    "semantic_hash": ""
+  },
+  "modules/planning/app/test/system/priority_map_browser_test.rb": {
+    "mtime": 1787143089.5371943,
+    "ast_hash": "b30945f0bf6c5dffb4bba11767cf5585",
+    "semantic_hash": ""
+  },
+  "modules/telegram/docs/TELEGRAM_DIALOG_ORGANIZER_TZ.md": {
+    "mtime": 1787145127.4473166,
+    "ast_hash": "5f052f9a26b502dd3bda4331c9d76604",
+    "semantic_hash": ""
+  },
+  "test/integration/layout_regression_test.rb": {
+    "mtime": 1787152322.4850836,
+    "ast_hash": "fc0f94a1b471d337d9ef2d6de605afca",
     "semantic_hash": ""
   }
 }

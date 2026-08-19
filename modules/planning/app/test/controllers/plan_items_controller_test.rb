@@ -31,6 +31,23 @@ class PlanItemsControllerTest < ActionDispatch::IntegrationTest
     assert_equal [ [ first.id, 0 ], [ PlanItem.last.id, 1 ] ], plan.plan_items.now.order(:position).pluck(:id, :position)
   end
 
+  test "normalizes a lane after deletion before appending a new item" do
+    owner = LocalUser.create!(core_user_id: "1")
+    plan = Plan.create!(local_user: owner, title: "Launch")
+    first = PlanItem.create!(plan: plan, title: "First", priority: "now", position: 0)
+    deleted = PlanItem.create!(plan: plan, title: "Deleted", priority: "now", position: 1)
+    last = PlanItem.create!(plan: plan, title: "Last", priority: "now", position: 2)
+
+    delete "/m/planning/plan_items/#{deleted.id}", headers: ayaya_headers
+    post "/m/planning/plan_items", params: {
+      plan_item: { plan_id: plan.id, title: "Appended", priority: "now" }
+    }, headers: ayaya_headers
+
+    assert_redirected_to "/m/planning?plan_id=#{plan.id}"
+    assert_equal [ [ first.id, 0 ], [ last.id, 1 ], [ PlanItem.last.id, 2 ] ],
+      plan.plan_items.now.order(:position, :id).pluck(:id, :position)
+  end
+
   test "advertises only usable plan item read routes" do
     owner = LocalUser.create!(core_user_id: "1")
     plan = Plan.create!(local_user: owner, title: "Launch")

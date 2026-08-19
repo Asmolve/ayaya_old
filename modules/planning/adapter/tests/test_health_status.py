@@ -126,7 +126,7 @@ def test_ready_returns_unavailable_when_planning_app_status_is_malformed(tmp_pat
     configure(monkeypatch, manifest_path)
     app = create_app(
         status_transport=status_transport(
-            {"runtime_status": "healthy", "components": ["not-a-mapping"]}
+            {"module_key": "planning", "runtime_status": "healthy", "components": ["not-a-mapping"]}
         )
     )
 
@@ -146,6 +146,7 @@ def test_ready_reflects_an_unhealthy_planning_database(tmp_path, monkeypatch):
     app = create_app(
         status_transport=status_transport(
             {
+                "module_key": "planning",
                 "runtime_status": "healthy",
                 "components": {"app": "healthy", "database": "unhealthy"},
                 "checked_at": "2026-08-19T00:00:00Z",
@@ -161,6 +162,36 @@ def test_ready_reflects_an_unhealthy_planning_database(tmp_path, monkeypatch):
 
     assert response.status_code == 503
     assert response.json() == {"status": "error", "component": "adapter", "ready": False}
+
+
+@pytest.mark.parametrize(
+    ("path", "expected_status"),
+    [("/ayaya/health/ready", 503), ("/ayaya/status", 200)],
+)
+def test_health_endpoints_reject_a_planning_status_with_missing_or_wrong_module_key(
+    tmp_path, monkeypatch, path, expected_status
+):
+    manifest_path = tmp_path / "module.yml"
+    write_manifest(manifest_path)
+    configure(monkeypatch, manifest_path)
+    status = {
+        "runtime_status": "healthy",
+        "components": {"app": "healthy", "database": "healthy"},
+        "checked_at": "2026-08-19T00:00:00Z",
+        "degraded_reasons": [],
+    }
+    for module_key in (None, "notes"):
+        invalid_status = status if module_key is None else {**status, "module_key": module_key}
+        response = TestClient(create_app(status_transport=status_transport(invalid_status))).get(
+            path,
+            headers={"Authorization": "Bearer secret"},
+        )
+
+        assert response.status_code == expected_status
+        if path == "/ayaya/health/ready":
+            assert response.json() == {"status": "error", "component": "adapter", "ready": False}
+        else:
+            assert response.json()["runtime_status"] == "unreachable"
 
 
 def test_status_maps_planning_app_status(tmp_path, monkeypatch):
@@ -198,7 +229,7 @@ def test_status_maps_malformed_planning_app_status_to_unreachable(tmp_path, monk
     configure(monkeypatch, manifest_path)
     app = create_app(
         status_transport=status_transport(
-            {"runtime_status": "healthy", "components": ["not-a-mapping"]}
+            {"module_key": "planning", "runtime_status": "healthy", "components": ["not-a-mapping"]}
         )
     )
 
@@ -215,9 +246,9 @@ def test_status_maps_malformed_planning_app_status_to_unreachable(tmp_path, monk
 @pytest.mark.parametrize(
     "status",
     [
-        {"runtime_status": "invented", "components": {"app": "healthy", "database": "healthy"}},
-        {"runtime_status": "healthy", "components": {"database": "healthy"}},
-        {"runtime_status": "healthy", "components": {"app": "healthy"}},
+        {"module_key": "planning", "runtime_status": "invented", "components": {"app": "healthy", "database": "healthy"}},
+        {"module_key": "planning", "runtime_status": "healthy", "components": {"database": "healthy"}},
+        {"module_key": "planning", "runtime_status": "healthy", "components": {"app": "healthy"}},
     ],
 )
 def test_status_degrades_invalid_runtime_contracts(tmp_path, monkeypatch, status):
@@ -241,6 +272,7 @@ def test_status_degrades_invalid_runtime_contracts(tmp_path, monkeypatch, status
     [
         (
             {
+                "module_key": "planning",
                 "runtime_status": "healthy",
                 "components": {"app": "unknown", "database": "healthy"},
                 "checked_at": "2026-08-19T00:00:00Z",
@@ -250,6 +282,7 @@ def test_status_degrades_invalid_runtime_contracts(tmp_path, monkeypatch, status
         ),
         (
             {
+                "module_key": "planning",
                 "runtime_status": "healthy",
                 "components": {"app": "healthy", "database": "unhealthy"},
                 "checked_at": "2026-08-19T00:00:00Z",

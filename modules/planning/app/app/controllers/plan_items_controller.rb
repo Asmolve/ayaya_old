@@ -14,6 +14,11 @@ class PlanItemsController < ApplicationController
     @plan_item.position = @plan.plan_items.where(priority: @plan_item.priority).count
 
     if @plan_item.save
+      PlanItemPositioner.new(
+        @plan_item,
+        priority: @plan_item.priority,
+        position: @plan_item.position
+      ).call
       redirect_to planning_root_path(plan_id: @plan.id)
     else
       @plan = Plan.new

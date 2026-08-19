@@ -15,11 +15,14 @@ COMPONENT_STATUSES = RUNTIME_STATUSES | {"unknown"}
 
 
 def status_fields(app_status: dict[str, Any]) -> tuple[str, dict[str, Any], str, list[Any]]:
+    module_key = app_status.get("module_key")
     runtime_status = app_status.get("runtime_status", "unhealthy")
     components = app_status.get("components", {})
     checked_at = app_status.get("checked_at") or datetime.now(timezone.utc).isoformat()
     degraded_reasons = app_status.get("degraded_reasons", [])
 
+    if module_key != "planning":
+        raise ValueError("planning app module key is invalid")
     if runtime_status not in RUNTIME_STATUSES:
         raise ValueError("planning app runtime status is invalid")
     if not isinstance(components, dict):

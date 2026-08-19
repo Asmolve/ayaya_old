@@ -1,0 +1,66 @@
+<main class="planning-workspace">
+  <aside class="plan-rail">
+    <p class="planning-eyebrow">Planning / workspace</p>
+    <h1>Priority Map</h1>
+
+    <nav aria-label="Plans">
+      <% if @plans.any? %>
+        <ul class="plan-navigation">
+          <% @plans.each do |plan| %>
+            <li><%= link_to plan.title, planning_root_path(plan_id: plan.id), aria: { current: plan == @selected_plan ? "page" : nil } %></li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>No plans yet.</p>
+      <% end %>
+    </nav>
+
+    <%= form_with model: @plan, class: "plan-form" do |form| %>
+      <% if @plan.errors.any? %>
+        <ul class="planning-errors"><% @plan.errors.full_messages.each do |message| %><li><%= message %></li><% end %></ul>
+      <% end %>
+      <%= form.label :title, "New plan" %>
+      <%= form.text_field :title, required: true %>
+      <%= form.submit "Create plan" %>
+    <% end %>
+  </aside>
+
+  <section class="priority-surface" aria-labelledby="selected-plan-title">
+    <% if @selected_plan %>
+      <header>
+        <p class="planning-eyebrow">Active plan</p>
+        <h2 id="selected-plan-title"><%= @selected_plan.title %></h2>
+      </header>
+
+      <div class="priority-lanes">
+        <% PlanItem.priorities.keys.each do |priority| %>
+          <section class="priority-lane" aria-labelledby="<%= priority %>-lane-title">
+            <h3 id="<%= priority %>-lane-title"><%= priority.capitalize %></h3>
+            <ul>
+              <% @selected_plan.plan_items.where(priority: priority).order(:position, :created_at).each do |item| %>
+                <li class="<%= "is-complete" if item.completed? %>"><%= item.title %></li>
+              <% end %>
+            </ul>
+          </section>
+        <% end %>
+      </div>
+
+      <%= form_with model: @plan_item, class: "item-form" do |form| %>
+        <% if @plan_item.errors.any? %>
+          <ul class="planning-errors"><% @plan_item.errors.full_messages.each do |message| %><li><%= message %></li><% end %></ul>
+        <% end %>
+        <%= form.hidden_field :plan_id, value: @selected_plan.id %>
+        <%= form.label :title, "Add item" %>
+        <%= form.text_field :title, required: true %>
+        <%= form.label :priority %>
+        <%= form.select :priority, PlanItem.priorities.keys.map { |priority| [priority.capitalize, priority] } %>
+        <%= form.submit "Create item" %>
+      <% end %>
+    <% else %>
+      <section class="planning-empty-state">
+        <h2>Start with a plan</h2>
+        <p>Create a plan in the rail, then add its first priority item.</p>
+      </section>
+    <% end %>
+  </section>
+</main>

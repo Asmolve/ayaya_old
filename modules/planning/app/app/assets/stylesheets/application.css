@@ -1,0 +1,15 @@
+:root { color: #27231d; background: #f7f2e8; font-family: Georgia, serif; }
+body { margin: 0; }
+.planning-workspace { display: grid; grid-template-columns: minmax(15rem, 22rem) 1fr; min-height: 100vh; }
+.plan-rail { padding: 2rem; background: #eee5d6; }
+.priority-surface { padding: 2rem; }
+.planning-eyebrow { color: #8b5b20; font: 600 .78rem/1.2 system-ui, sans-serif; letter-spacing: .08em; text-transform: uppercase; }
+.plan-navigation, .priority-lane ul { padding: 0; list-style: none; }
+.plan-navigation a { display: block; padding: .55rem 0; color: inherit; }
+.priority-lanes { display: grid; grid-template-columns: repeat(3, minmax(11rem, 1fr)); gap: 1rem; margin: 2rem 0; }
+.priority-lane { min-height: 11rem; padding: 1rem; border: 1px solid #d8cbb8; background: #fffaf1; }
+.priority-lane li { margin: .5rem 0; padding: .65rem; background: #f2e7d3; }
+.is-complete { color: #756d62; text-decoration: line-through; }
+.plan-form, .item-form { display: grid; gap: .6rem; max-width: 26rem; }
+.planning-errors { color: #9c2d21; }
+@media (max-width: 44rem) { .planning-workspace { grid-template-columns: 1fr; } .priority-lanes { grid-template-columns: 1fr; } }

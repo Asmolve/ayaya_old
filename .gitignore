@@ -17,6 +17,19 @@
 !/log/.keep
 !/tmp/.keep
 
+# Ignore runtime files in nested applications too.
+**/log/*
+**/tmp/*
+**/.bundle/
+**/.ruby-lsp/
+**/.pytest_cache/
+**/.mypy_cache/
+**/.ruff_cache/
+**/__pycache__/
+*.py[cod]
+*.swp
+*~
+
 # Ignore pidfiles, but keep the directory.
 /tmp/pids/*
 !/tmp/pids/

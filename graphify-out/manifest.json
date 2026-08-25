@@ -1,12 +1,12 @@
 {
   "app/admin/dashboard.rb": {
-    "mtime": 1787144356.4549181,
-    "ast_hash": "1e2b1a579b7d6e914a1aef38683be4a4",
+    "mtime": 1787172694.2703376,
+    "ast_hash": "09356ecee87e1c6ae23578c9cfaf8e8f",
     "semantic_hash": ""
   },
   "app/admin/registered_modules.rb": {
-    "mtime": 1786830065.9605463,
-    "ast_hash": "7f5a96a397f70b18aa2c35b3306afb38",
+    "mtime": 1787170726.6364212,
+    "ast_hash": "5a9b53a204a2a46d354e78f4e7f178f9",
     "semantic_hash": ""
   },
   "app/admin/users.rb": {
@@ -30,8 +30,8 @@
     "semantic_hash": ""
   },
   "app/controllers/internal/module_access_controller.rb": {
-    "mtime": 1785110128.7325907,
-    "ast_hash": "c6cf82b424ddd69334aacf1716e5b644",
+    "mtime": 1787261812.6610253,
+    "ast_hash": "1ddb16da51cb711be84197f122483064",
     "semantic_hash": ""
   },
   "app/helpers/application_helper.rb": {
@@ -280,13 +280,13 @@
     "semantic_hash": ""
   },
   "test/controllers/internal/module_access_controller_test.rb": {
-    "mtime": 1785110128.8801985,
-    "ast_hash": "e2075b81e94f942b22bdce15f36ddcf8",
+    "mtime": 1787265793.9730902,
+    "ast_hash": "1284b90a1363e10ee17d86cf6e34e64f",
     "semantic_hash": ""
   },
   "test/integration/admin_access_test.rb": {
-    "mtime": 1787144356.67834,
-    "ast_hash": "b7a3e2e6177dab1ddd776ce5161c4076",
+    "mtime": 1787172647.972255,
+    "ast_hash": "18bab1f0194cb89b8a09c0073cd97d60",
     "semantic_hash": ""
   },
   "test/lib/ayaya_contract/runner_test.rb": {
@@ -305,8 +305,8 @@
     "semantic_hash": ""
   },
   "test/services/adapter_protocol/client_test.rb": {
-    "mtime": 1785109197.6664922,
-    "ast_hash": "f889e862abcd5d4372b135b1254b9da5",
+    "mtime": 1787265793.8955321,
+    "ast_hash": "a31472b0d955a03814b81cdf7571d66b",
     "semantic_hash": ""
   },
   "test/services/adapter_protocol/manifest_validator_test.rb": {
@@ -330,8 +330,8 @@
     "semantic_hash": ""
   },
   "test/test_helper.rb": {
-    "mtime": 1785109924.1065865,
-    "ast_hash": "5fd1242316069901607d2950448d6865",
+    "mtime": 1787265793.8160262,
+    "ast_hash": "d0d21596c9b7b38623e95a2f8b86d7e4",
     "semantic_hash": ""
   },
   ".github/dependabot.yml": {
@@ -340,13 +340,13 @@
     "semantic_hash": ""
   },
   ".github/workflows/ci.yml": {
-    "mtime": 1785275032.102345,
-    "ast_hash": "28a2049bcd7689ba824ae75bab777069",
+    "mtime": 1787270382.375104,
+    "ast_hash": "c9351b9aaf0d7b9f2aaf20d09e78d68c",
     "semantic_hash": ""
   },
   ".rubocop.yml": {
-    "mtime": 1785139514.4542,
-    "ast_hash": "974053ba04ed4cf4a33d374960483478",
+    "mtime": 1787268215.6264865,
+    "ast_hash": "869be2d79d53f3323918e141d8aee21b",
     "semantic_hash": ""
   },
   "README.md": {
@@ -395,8 +395,8 @@
     "semantic_hash": ""
   },
   "docs/module_contract_v1.md": {
-    "mtime": 1785111852.5620625,
-    "ast_hash": "30a1f993c68128b051ba4baf88267f5d",
+    "mtime": 1787263478.794716,
+    "ast_hash": "a56e4b9f6222566a5519c2b9c72766b2",
     "semantic_hash": ""
   },
   "docs/project_overview.md": {
@@ -460,8 +460,8 @@
     "semantic_hash": ""
   },
   "compose.yml": {
-    "mtime": 1787144356.52967,
-    "ast_hash": "2392731c729aae5c375dab0046aa77af",
+    "mtime": 1787477207.8323827,
+    "ast_hash": "183eaad30279849e83e8f5857eeb250c",
     "semantic_hash": ""
   },
   "test/system/home_test.rb": {
@@ -825,8 +825,8 @@
     "semantic_hash": ""
   },
   "test/lib/ayaya_contract/compose_exposure_test.rb": {
-    "mtime": 1787144289.441904,
-    "ast_hash": "941947288961d9db7e58019a96bb934d",
+    "mtime": 1787268215.7044756,
+    "ast_hash": "6977813101e7e22157bdccc43678ee99",
     "semantic_hash": ""
   },
   "modules/notes/docs/REGISTER.md": {
@@ -980,8 +980,8 @@
     "semantic_hash": ""
   },
   "app/services/modules/adapter_secret.rb": {
-    "mtime": 1787144356.3803954,
-    "ast_hash": "3d58639ccfe9bada1ed936ceb3c14236",
+    "mtime": 1787173500.6093552,
+    "ast_hash": "f3fda1f66320a46d44bbab94debf40fa",
     "semantic_hash": ""
   },
   "test/system/pic_obtainer_module_test.rb": {
@@ -1000,13 +1000,13 @@
     "semantic_hash": ""
   },
   "app/services/modules/local_registration.rb": {
-    "mtime": 1787144356.3057735,
-    "ast_hash": "0ac1f32f6bc4108ad328c5d58e85b514",
+    "mtime": 1787172694.1081297,
+    "ast_hash": "476f251fe55ec9819154c8f9650f38e5",
     "semantic_hash": ""
   },
   "test/services/modules/local_registration_test.rb": {
-    "mtime": 1787144289.2124455,
-    "ast_hash": "1a8cddd52769c6ec56dddf9a811851d3",
+    "mtime": 1787172647.8080423,
+    "ast_hash": "b111e63d24a19f182d8d1a439785326d",
     "semantic_hash": ""
   },
   "modules/planning/adapter/app/__init__.py": {
@@ -1290,13 +1290,798 @@
     "semantic_hash": ""
   },
   "modules/telegram/docs/TELEGRAM_DIALOG_ORGANIZER_TZ.md": {
-    "mtime": 1787145127.4473166,
-    "ast_hash": "5f052f9a26b502dd3bda4331c9d76604",
+    "mtime": 1787261903.6089897,
+    "ast_hash": "89a53f7d2317e962671abbbd6f69048a",
     "semantic_hash": ""
   },
   "test/integration/layout_regression_test.rb": {
     "mtime": 1787152322.4850836,
     "ast_hash": "fc0f94a1b471d337d9ef2d6de605afca",
+    "semantic_hash": ""
+  },
+  "modules/telegram/adapter/app/__init__.py": {
+    "mtime": 1787172797.6665378,
+    "ast_hash": "eb984d24681c5fb1728413a3a622fce3",
+    "semantic_hash": ""
+  },
+  "modules/telegram/adapter/app/auth.py": {
+    "mtime": 1787175097.1650808,
+    "ast_hash": "bcc1d81600d933d86fb21d7139c7e106",
+    "semantic_hash": ""
+  },
+  "modules/telegram/adapter/app/main.py": {
+    "mtime": 1787265598.6317723,
+    "ast_hash": "b81093ae01bb9c8cda955dc0eeb68c02",
+    "semantic_hash": ""
+  },
+  "modules/telegram/adapter/app/manifest.py": {
+    "mtime": 1787175097.4084415,
+    "ast_hash": "5c217ae5e5d33dfa9a630291aea5bf82",
+    "semantic_hash": ""
+  },
+  "modules/telegram/adapter/app/settings.py": {
+    "mtime": 1787175097.087492,
+    "ast_hash": "278e642be37306bc19454487b9ac6afc",
+    "semantic_hash": ""
+  },
+  "modules/telegram/adapter/app/status_client.py": {
+    "mtime": 1787175097.2477195,
+    "ast_hash": "bbbda991bd0c34a8981ed7709caff0b5",
+    "semantic_hash": ""
+  },
+  "modules/telegram/adapter/tests/test_compose_contract.py": {
+    "mtime": 1787265726.847297,
+    "ast_hash": "e4c902b66038b067b6b03e16f4bb37db",
+    "semantic_hash": ""
+  },
+  "modules/telegram/adapter/tests/test_health_status.py": {
+    "mtime": 1787265555.3101673,
+    "ast_hash": "bac537156b850c065b1a7b09abe104bf",
+    "semantic_hash": ""
+  },
+  "modules/telegram/adapter/tests/test_manifest.py": {
+    "mtime": 1787174931.7528,
+    "ast_hash": "5d3fecb73209bad61fa9af77a2b99fd2",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/controllers/accounts_controller.rb": {
+    "mtime": 1787261062.1402066,
+    "ast_hash": "75c4694899a533224de11f264e80981e",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/controllers/application_controller.rb": {
+    "mtime": 1787172890.5308864,
+    "ast_hash": "6abcbfbfea88517098bf46c7a2e1ba41",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/controllers/concerns/ayaya_identity.rb": {
+    "mtime": 1787260552.4463444,
+    "ast_hash": "4c7fbd0a9e71dd4bf84fc798254b506d",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/controllers/dashboard_controller.rb": {
+    "mtime": 1787268082.3016622,
+    "ast_hash": "984a830c7a6cad9cca6d358cdef1d5fb",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/controllers/imports_controller.rb": {
+    "mtime": 1787172890.8163323,
+    "ast_hash": "5def7627d1a3ab585f621081bf738237",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/controllers/internal/ayaya/status_controller.rb": {
+    "mtime": 1787174040.7404068,
+    "ast_hash": "2df9645ac839f5423977537b5abeab85",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/controllers/operations_controller.rb": {
+    "mtime": 1787266214.7222295,
+    "ast_hash": "0d3423e1a9a20fd95fcd3bf831877497",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/models/account_lease.rb": {
+    "mtime": 1787263703.7729068,
+    "ast_hash": "3b0c8d5d101a323df14c7a1de57a6f37",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/models/application_record.rb": {
+    "mtime": 1787172702.4366684,
+    "ast_hash": "8061f2304feb5db0f90c9086b9c30377",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/models/assignment.rb": {
+    "mtime": 1787263702.921642,
+    "ast_hash": "d9afb75441e2339088ba297100e3ab4f",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/models/dialog.rb": {
+    "mtime": 1787263703.3489192,
+    "ast_hash": "f6729ed6405460a3f4c8aeaa82e7a364",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/models/folder.rb": {
+    "mtime": 1787268081.7686815,
+    "ast_hash": "b58ce9a9b67162293838da80a9f9b929",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/models/module_user.rb": {
+    "mtime": 1787172889.3832195,
+    "ast_hash": "fcb5d2c34a91e055fa535e00c2036bfc",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/models/operation.rb": {
+    "mtime": 1787265855.5476506,
+    "ast_hash": "a79f2cc7e45b685be30296b83a99ca68",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/models/operation_step.rb": {
+    "mtime": 1787264021.614379,
+    "ast_hash": "ac6203b8366fdd0c63b7b59e8bb94865",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/models/rule.rb": {
+    "mtime": 1787269461.6105318,
+    "ast_hash": "799f2fba0df97a3a90a03e7587b2b67b",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/models/snapshot.rb": {
+    "mtime": 1787263703.5513608,
+    "ast_hash": "1254d101dc31e20a300d6b9ff4682952",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/models/telegram_account.rb": {
+    "mtime": 1787269402.0029411,
+    "ast_hash": "cca9314257436b76d9b4fda837d633b6",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/services/telegram/canonical_snapshot.rb": {
+    "mtime": 1787173906.9134152,
+    "ast_hash": "8df1ad75a0cadfdeb3072b799d44c04e",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/services/telegram/encrypted_secret.rb": {
+    "mtime": 1787173970.8655043,
+    "ast_hash": "4f08a26db79c03c146054abc1f2539d9",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/services/telegram/rule_classifier.rb": {
+    "mtime": 1787263807.0776634,
+    "ast_hash": "db6ebca0b599a2707784bae3738c3a54",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/bin/rails": {
+    "mtime": 1787172701.6084747,
+    "ast_hash": "39ebb68cb694fcb19c823a0397db68cb",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/config/application.rb": {
+    "mtime": 1787261412.3845153,
+    "ast_hash": "032e35dda9818fb0b1a485df75875513",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/config/boot.rb": {
+    "mtime": 1787172701.6900327,
+    "ast_hash": "08915522df2a61ca0afa76dd537ee867",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/config/environment.rb": {
+    "mtime": 1787172701.9062495,
+    "ast_hash": "0dd2b9a0141445ddf6759bfaa38d05c3",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/config/environments/development.rb": {
+    "mtime": 1787172702.1564302,
+    "ast_hash": "c308a01286d64f1d33debf4ea14a12c6",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/config/environments/production.rb": {
+    "mtime": 1787172702.2621536,
+    "ast_hash": "c479701668b0c6e1c0df53d8e0257d4d",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/config/environments/test.rb": {
+    "mtime": 1787172702.0747633,
+    "ast_hash": "76fe17f37c196e67b4248b1315f52fed",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/config/routes.rb": {
+    "mtime": 1787268082.226621,
+    "ast_hash": "fccb829ee1a42f6695ba272f0a5b445f",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/db/migrate/20260819010000_create_telegram_domain.rb": {
+    "mtime": 1787172790.3149004,
+    "ast_hash": "1914b8d3effa41e0f7a1b3ccbe257fad",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/db/schema.rb": {
+    "mtime": 1787269684.8585541,
+    "ast_hash": "264a799d90cd61a1e73bc1de4a251e72",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/test/controllers/identity_and_security_test.rb": {
+    "mtime": 1787260573.255732,
+    "ast_hash": "b8ef23909bf6f5fca3c1f787ef081dbe",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/test/controllers/internal_status_controller_test.rb": {
+    "mtime": 1787172703.1133177,
+    "ast_hash": "fe466750b0167fb535a97a618a66182e",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/test/integration/cross_user_isolation_test.rb": {
+    "mtime": 1787172703.2058733,
+    "ast_hash": "4f7a3bd54ee8fdeb541f6a98a73983c5",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/test/services/canonical_snapshot_test.rb": {
+    "mtime": 1787173844.8031619,
+    "ast_hash": "d65f8f58e60ed71b0ec76df9a14dff89",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/test/services/dynamic_limits_test.rb": {
+    "mtime": 1787174087.4835374,
+    "ast_hash": "135721cfc0ee960259537ddfbd960a1e",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/test/services/encrypted_secret_test.rb": {
+    "mtime": 1787172702.7806137,
+    "ast_hash": "214dfb01a45b3f965d62544a3bbf27ac",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/test/services/reconciliation_test.rb": {
+    "mtime": 1787172702.9479394,
+    "ast_hash": "efbfd54260b3fa10d2a2a01dde628e7b",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/test/services/rule_classifier_test.rb": {
+    "mtime": 1787172702.6967156,
+    "ast_hash": "0d62b154930eec150801f5d5f58aa769",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/test/test_helper.rb": {
+    "mtime": 1787260566.8672976,
+    "ast_hash": "04f1c292087102f8098a9131a98c6433",
+    "semantic_hash": ""
+  },
+  "test/services/modules/adapter_secret_test.rb": {
+    "mtime": 1787173403.0168562,
+    "ast_hash": "a3a24a0b12d89ae84e73cebdcc752b2c",
+    "semantic_hash": ""
+  },
+  "modules/telegram/adapter/requirements.txt": {
+    "mtime": 1787175097.4872723,
+    "ast_hash": "a2ad42dbc4d99ea10328af2b1dd40b31",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/config/database.yml": {
+    "mtime": 1787172701.989466,
+    "ast_hash": "9b1dd9e2075e817008cb546870ebb715",
+    "semantic_hash": ""
+  },
+  "modules/telegram/compose.yml": {
+    "mtime": 1787265736.5128539,
+    "ast_hash": "e70d427857ddc8a0b211ebce00e95366",
+    "semantic_hash": ""
+  },
+  "modules/telegram/docs/CONTRACT.md": {
+    "mtime": 1787388742.5982478,
+    "ast_hash": "83bbc6dbd2dc02167f5386fe8e58721e",
+    "semantic_hash": ""
+  },
+  "modules/telegram/docs/README.md": {
+    "mtime": 1787388732.7115402,
+    "ast_hash": "65a230ed270622747bd30fa6a3ac1636",
+    "semantic_hash": ""
+  },
+  "modules/telegram/module.yml": {
+    "mtime": 1787172798.2358527,
+    "ast_hash": "0ac4e733fe4d189a2927626b79d00b12",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/services/telegram.rb": {
+    "mtime": 1787172985.0883396,
+    "ast_hash": "0b098de3a5dd85cc087913eb8d9bf353",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/services/telegram/client.rb": {
+    "mtime": 1787174454.9753022,
+    "ast_hash": "9ca61b4af3f92958acccc0d540969ee9",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/services/telegram/confirmation_required.rb": {
+    "mtime": 1787173157.4524302,
+    "ast_hash": "22970e150cd886b0a36dadf97ef193da",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/services/telegram/disconnect_account.rb": {
+    "mtime": 1787260679.5086384,
+    "ast_hash": "2030ddfe0c7eda1ed857b2aa5b15c534",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/services/telegram/dynamic_limits.rb": {
+    "mtime": 1787261144.4425185,
+    "ast_hash": "d543e78bc6299756b0abe08e56e093f5",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/services/telegram/environment_key_provider.rb": {
+    "mtime": 1787173044.079577,
+    "ast_hash": "18a0b039c5a71a1fb7933e3112103ab9",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/services/telegram/key_unavailable.rb": {
+    "mtime": 1787173043.8710601,
+    "ast_hash": "c7e4ec8a26d62acaaeed89ed1254bd9d",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/services/telegram/operation_executor.rb": {
+    "mtime": 1787269402.1502893,
+    "ast_hash": "413c3dfb6bf408c0a8135d00fc8dc9a7",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/services/telegram/ownership.rb": {
+    "mtime": 1787268327.083592,
+    "ast_hash": "aec1d53ce46cb967f4aa04ddd2480850",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/services/telegram/planner.rb": {
+    "mtime": 1787266403.5446532,
+    "ast_hash": "dcca1c7bd2fd16b033344e91749f4655",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/services/telegram/read_only_import.rb": {
+    "mtime": 1787268242.1272569,
+    "ast_hash": "7ffc78bef65ae914cc956e40d9d55ab7",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/services/telegram/reconciler.rb": {
+    "mtime": 1787264255.2616158,
+    "ast_hash": "a448bf0bb511109fe002a3bde01baf98",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/services/telegram/static_key_provider.rb": {
+    "mtime": 1787173043.990816,
+    "ast_hash": "fc5cbdf1df7241ec2c85f95902d0bd45",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/services/telegram/test_client.rb": {
+    "mtime": 1787269402.076646,
+    "ast_hash": "22309d030926e6032cab40da9a78fbde",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/config/initializers/content_security_policy.rb": {
+    "mtime": 1787172954.0705273,
+    "ast_hash": "5a8257264d7343360a8c541009bdd2c3",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/config/puma.rb": {
+    "mtime": 1787172954.4077125,
+    "ast_hash": "0a9192344fbed4f096b4b922420b2bd1",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/test/controllers/csrf_protection_test.rb": {
+    "mtime": 1787173085.748723,
+    "ast_hash": "16e55c2d40e68679dfad4e982dfcabc2",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/test/models/ownership_test.rb": {
+    "mtime": 1787268311.8846462,
+    "ast_hash": "5e6be37233815572bf99f270a843d993",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/test/services/client_registry_test.rb": {
+    "mtime": 1787173844.8862832,
+    "ast_hash": "0fa997b6b70ef8ec5effb8122f3b2c63",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/test/services/disconnect_account_test.rb": {
+    "mtime": 1787173085.5792809,
+    "ast_hash": "63d0bcd2aa535c6ee45dad5cf0aa9826",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/test/services/operation_executor_test.rb": {
+    "mtime": 1787174087.5628803,
+    "ast_hash": "17e4af49aa26fa1373b552d88d462f1d",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/test/services/privacy_logging_test.rb": {
+    "mtime": 1787173085.8335886,
+    "ast_hash": "bf7cee228aafe8eecc2695fa43f1a401",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/test/services/read_only_import_test.rb": {
+    "mtime": 1787268230.1842194,
+    "ast_hash": "e549693e18f4ae25c236ddedc21620ab",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/controllers/assignments_controller.rb": {
+    "mtime": 1787268082.1538382,
+    "ast_hash": "3e96987b5a8252f9644219f4bfc35929",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/controllers/rules_controller.rb": {
+    "mtime": 1787269613.9486983,
+    "ast_hash": "4942ae5aa922f18fe9f96f3c5f54229e",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/services/telegram/authentication_flow.rb": {
+    "mtime": 1787261061.934023,
+    "ast_hash": "72b4e8cfe27f2d2dec95c78ada3396bf",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/services/telegram/client_not_configured.rb": {
+    "mtime": 1787174455.4057024,
+    "ast_hash": "8d6110098a0b3cffa6c8f4bcf007bb81",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/services/telegram/client_registry.rb": {
+    "mtime": 1787174455.0525973,
+    "ast_hash": "2490290e45b22f1c2d5442e54c962c74",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/services/telegram/client_response_error.rb": {
+    "mtime": 1787174455.490047,
+    "ast_hash": "140c51de8e81a5c6f2e946143360d27a",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/services/telegram/dispatch_not_started.rb": {
+    "mtime": 1787174455.3212967,
+    "ast_hash": "f9ee1ce062bbb36aad899ee2e3f50364",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/services/telegram/key_provider.rb": {
+    "mtime": 1787173971.0392623,
+    "ast_hash": "6933f38633928669f8d7d01bd3257ec4",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/services/telegram/mtproto_client.rb": {
+    "mtime": 1787388352.8928156,
+    "ast_hash": "0aa0d14780c7309502db4028a68c98a0",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/services/telegram/operation_factory.rb": {
+    "mtime": 1787268081.9302523,
+    "ast_hash": "a57d98061cc0365e407912b3d7ee0d6e",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/services/telegram/outcome_unknown.rb": {
+    "mtime": 1787174455.23564,
+    "ast_hash": "eb49f9b1b7be2e536caec5901bdeae3e",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/services/telegram/preflight_conflict.rb": {
+    "mtime": 1787174040.3493664,
+    "ast_hash": "30bfa9ad00cc65ad1f5c936e7a369258",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/services/telegram/read_only_violation.rb": {
+    "mtime": 1787174455.1346183,
+    "ast_hash": "5d090e81cf7a35259ef847c40e9895b7",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/services/telegram/redactor.rb": {
+    "mtime": 1787174040.4294338,
+    "ast_hash": "9f0f088b5470ece0d4fa96483fcacc18",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/services/telegram/secret_file_key_provider.rb": {
+    "mtime": 1787173970.9521143,
+    "ast_hash": "0257319a79110a0e4f19ba514b1b13fb",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/db/migrate/20260820010000_harden_telegram_operations.rb": {
+    "mtime": 1787174087.6470678,
+    "ast_hash": "a6461ef1b9d717b3e248e7d59e617b31",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/test/services/review_remediation_test.rb": {
+    "mtime": 1787261260.7456534,
+    "ast_hash": "6083e5fc4849cd94c2b074b91c4184eb",
+    "semantic_hash": ""
+  },
+  "modules/telegram/adapter/module.yml": {
+    "mtime": 1787174952.2740605,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "modules/telegram/adapter/requirements-test.txt": {
+    "mtime": 1787175097.564869,
+    "ast_hash": "2da1cd211b0cda8a7de586bdffa77a07",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/services/telegram/encrypted_payload.rb": {
+    "mtime": 1787260552.0846972,
+    "ast_hash": "45234a5ba3e4ab22cb4713dbcec4cb4d",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/services/telegram/json_boundary.rb": {
+    "mtime": 1787260730.288985,
+    "ast_hash": "2b0fd1d2acd69f5463852e59fc95725d",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/services/telegram/operation_recovery.rb": {
+    "mtime": 1787269665.3885167,
+    "ast_hash": "2c98f67d731185004f18e80ff771664f",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/services/telegram/organizer.rb": {
+    "mtime": 1787266033.0987186,
+    "ast_hash": "0e7eae089b062c720a7acd50e4e597eb",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/services/telegram/trusted_identity.rb": {
+    "mtime": 1787260566.6599808,
+    "ast_hash": "b2e6c2a54615cf7b95f8ad6398af1a18",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/test/lib/docker_image_test.rb": {
+    "mtime": 1787260476.7586405,
+    "ast_hash": "7d62ac15c831e51f5d7af551597a26ec",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/test/services/task_six_review_test.rb": {
+    "mtime": 1787269649.6716213,
+    "ast_hash": "c843d798776e0d867df52362537b37f6",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/config/cable.yml": {
+    "mtime": 1787261387.1819925,
+    "ast_hash": "5610a81556c7d6981da315ef09fc1435",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/services/telegram/opaque_handle_transport.rb": {
+    "mtime": 1787269333.7137244,
+    "ast_hash": "21bbf6c1d7aecc957d415b4233a80859",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/test/services/opaque_handle_transport_test.rb": {
+    "mtime": 1787388352.8017986,
+    "ast_hash": "03ba54887e34dfad51619ea56b273c2e",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/test/services/task_eight_durability_test.rb": {
+    "mtime": 1787268290.3949833,
+    "ast_hash": "5be0e783e2a16c67ec71226bf006831c",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/jobs/telegram/operation_worker.rb": {
+    "mtime": 1787266214.7950194,
+    "ast_hash": "5bd9fe5f6b29b351ff9cdf470cb5c3a9",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/jobs/telegram/retention_purge_job.rb": {
+    "mtime": 1787264063.5660393,
+    "ast_hash": "8287e7ce333675bb73b4db50ae86d739",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/services/telegram/desired_state_builder.rb": {
+    "mtime": 1787268353.343251,
+    "ast_hash": "8c91383bc68784d9d973f7e05686aabc",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/services/telegram/filter_state.rb": {
+    "mtime": 1787265668.523255,
+    "ast_hash": "44a167f64bfd70897a838deab563f8f1",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/services/telegram/retention_purge.rb": {
+    "mtime": 1787268082.0789132,
+    "ast_hash": "f8f800cadd1add30ebbd77aca849feaa",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/services/telegram/safe_regex.rb": {
+    "mtime": 1787264171.2652264,
+    "ast_hash": "b05216735ca1a7f5a95b42da0a76af79",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/db/migrate/20260821010000_add_durable_organizer_state.rb": {
+    "mtime": 1787265794.666591,
+    "ast_hash": "c557645ffa9d32b9821457126e551e65",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/test/controllers/task_eight_dashboard_test.rb": {
+    "mtime": 1787269499.6397345,
+    "ast_hash": "c4c0001ef7dd2139f0bfa752d7ba284c",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/jobs/application_job.rb": {
+    "mtime": 1787264077.0422127,
+    "ast_hash": "a47643df83fb4a24c265204872af4e4c",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/jobs/telegram/operation_recovery_job.rb": {
+    "mtime": 1787264128.3167212,
+    "ast_hash": "39d875636672f4030243e46ab053bc58",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/services/telegram/state_comparison.rb": {
+    "mtime": 1787264255.1075125,
+    "ast_hash": "4a01781e456509b0c022d940b7c309aa",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/models/folder_proposal.rb": {
+    "mtime": 1787265992.1847007,
+    "ast_hash": "756aeb0d92d839194b55a9f2f7218ab4",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/services/telegram/worker_service.rb": {
+    "mtime": 1787269402.2267058,
+    "ast_hash": "436629dcb96e57033eaec91bd17f581d",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/bin/telegram_worker": {
+    "mtime": 1787265933.4177907,
+    "ast_hash": "c13dc38fc0e94e50dab7791aed6fff5f",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/db/migrate/20260821020000_add_durable_worker_schedule.rb": {
+    "mtime": 1787265855.4728832,
+    "ast_hash": "fa5815eeee6e85051a1fb8e46f23ad2d",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/db/migrate/20260821030000_add_folder_proposals_and_ownership_state.rb": {
+    "mtime": 1787268103.2323825,
+    "ast_hash": "8985491ca995a26746ec763773f120bc",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/test/migrations/add_durable_organizer_state_test.rb": {
+    "mtime": 1787265800.5998116,
+    "ast_hash": "11e2e1b0388292506e3176bfc09965cc",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/test/services/task_ten_filter_fidelity_test.rb": {
+    "mtime": 1787266319.0875988,
+    "ast_hash": "8e93a072586573148f7c23c527ea7888",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/test/services/task_ten_organizer_proposals_test.rb": {
+    "mtime": 1787267880.791832,
+    "ast_hash": "1e512dcb4197ed5718c33919408853c4",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/test/services/task_ten_worker_test.rb": {
+    "mtime": 1787269360.7770464,
+    "ast_hash": "c5c388dd93f98a146e4b9988f1bba302",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/controllers/folder_proposals_controller.rb": {
+    "mtime": 1787266214.6503034,
+    "ast_hash": "c30f79a1c9465661a64b018d2e429541",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/app/services/telegram/flood_wait.rb": {
+    "mtime": 1787269333.624768,
+    "ast_hash": "bfc0b53fb70161a490f4aee6ba6ba8d0",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/db/migrate/20260821040000_add_avatar_url_to_dialogs.rb": {
+    "mtime": 1787266659.787995,
+    "ast_hash": "a8fffea5cfd4f0d6218f10f340713e07",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/db/migrate/20260821050000_add_rate_limit_pause_to_telegram_accounts.rb": {
+    "mtime": 1787269401.9269226,
+    "ast_hash": "107e6d973a27b7a56f1b6207d8ac8a86",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/test/controllers/assignment_review_test.rb": {
+    "mtime": 1787268180.2069163,
+    "ast_hash": "d70231a83c6de6af244c2cb9ae7ace38",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/test/controllers/task_ten_dashboard_review_test.rb": {
+    "mtime": 1787267880.8670814,
+    "ast_hash": "e890e73329ace0578f4d5c899b26e236",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/test/migrations/add_folder_proposals_and_ownership_state_test.rb": {
+    "mtime": 1787267880.5676148,
+    "ast_hash": "916da9e2f6033446cae9a395b97f29f7",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/test/models/rule_test.rb": {
+    "mtime": 1787269448.1613514,
+    "ast_hash": "b3a07dcb883b86a20d943f15b875d4e9",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/test/services/retention_purge_test.rb": {
+    "mtime": 1787267880.7161477,
+    "ast_hash": "029ffa5c861eb1022dba2e37a53ef186",
+    "semantic_hash": ""
+  },
+  "modules/telegram/app/test/services/task_ten_rollback_test.rb": {
+    "mtime": 1787266377.9882748,
+    "ast_hash": "b181136a6b1428257225f83687036c1f",
+    "semantic_hash": ""
+  },
+  "modules/telegram/mtproto/app/__init__.py": {
+    "mtime": 1787388049.4773226,
+    "ast_hash": "a81cf78d688e4721f74df201efd41933",
+    "semantic_hash": ""
+  },
+  "modules/telegram/mtproto/app/auth.py": {
+    "mtime": 1787388049.6224504,
+    "ast_hash": "58ffa3853df003ec8a26a5235762357f",
+    "semantic_hash": ""
+  },
+  "modules/telegram/mtproto/app/challenges.py": {
+    "mtime": 1787388239.4192362,
+    "ast_hash": "2784241986d67e37604f17301afefccd",
+    "semantic_hash": ""
+  },
+  "modules/telegram/mtproto/app/handles.py": {
+    "mtime": 1787388239.3372347,
+    "ast_hash": "bbf442a48ba79ecfa8db9a591c9d1de7",
+    "semantic_hash": ""
+  },
+  "modules/telegram/mtproto/app/main.py": {
+    "mtime": 1787388283.6605415,
+    "ast_hash": "9b909015a793789c9b4dceb6667a6a3a",
+    "semantic_hash": ""
+  },
+  "modules/telegram/mtproto/app/migrate.py": {
+    "mtime": 1787388049.774274,
+    "ast_hash": "ba7c5c11803963eabb9cec1098a38386",
+    "semantic_hash": ""
+  },
+  "modules/telegram/mtproto/app/routes_auth.py": {
+    "mtime": 1787389121.688941,
+    "ast_hash": "8d007ccd669d810dea4efcd73b294dd0",
+    "semantic_hash": ""
+  },
+  "modules/telegram/mtproto/app/routes_state.py": {
+    "mtime": 1787389121.77661,
+    "ast_hash": "9ad35e460e9a35d29281f361c2ddfb6f",
+    "semantic_hash": ""
+  },
+  "modules/telegram/mtproto/app/settings.py": {
+    "mtime": 1787388049.5512075,
+    "ast_hash": "fe9656d8400bf7fd4d1f0ad409f93edb",
+    "semantic_hash": ""
+  },
+  "modules/telegram/mtproto/app/storage.py": {
+    "mtime": 1787389377.8723478,
+    "ast_hash": "c6f45b696e710442e6217cc80b1cc7b2",
+    "semantic_hash": ""
+  },
+  "modules/telegram/mtproto/app/telegram_client.py": {
+    "mtime": 1787389101.9726527,
+    "ast_hash": "99d85d13f78087750fb5511ac4dd1d5e",
+    "semantic_hash": ""
+  },
+  "modules/telegram/mtproto/tests/test_auth_routes.py": {
+    "mtime": 1787388722.3173673,
+    "ast_hash": "727b7837e918e7c6781ffbe7cd5f835e",
+    "semantic_hash": ""
+  },
+  "modules/telegram/mtproto/tests/test_compose_contract.py": {
+    "mtime": 1787388580.301658,
+    "ast_hash": "01997fa2951440090d7f03c2ebb66477",
+    "semantic_hash": ""
+  },
+  "modules/telegram/mtproto/tests/test_health.py": {
+    "mtime": 1787387995.570537,
+    "ast_hash": "da15f65840c6c9edc0229cb7750e9b0d",
+    "semantic_hash": ""
+  },
+  "modules/telegram/mtproto/tests/test_state_routes.py": {
+    "mtime": 1787388383.1526895,
+    "ast_hash": "84f3debe25b80adeab5d6eb910bcba64",
+    "semantic_hash": ""
+  },
+  "docs/superpowers/plans/2026-08-22-telegram-mtproto-transport.md": {
+    "mtime": 1787387977.197707,
+    "ast_hash": "fcce9c5477cc639d75d70a2edb7fa9b6",
+    "semantic_hash": ""
+  },
+  "docs/superpowers/specs/2026-08-22-telegram-mtproto-transport-design.md": {
+    "mtime": 1787387977.1194746,
+    "ast_hash": "67bb07311e724a4d01c976d12f1d9627",
+    "semantic_hash": ""
+  },
+  "modules/telegram/mtproto/requirements.txt": {
+    "mtime": 1787388366.3891196,
+    "ast_hash": "e82af911074a7011ff8e08b46c95727c",
     "semantic_hash": ""
   }
 }

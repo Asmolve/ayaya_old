@@ -1,0 +1,178 @@
+<main>
+  <header>
+    <p>Ayaya / Telegram</p>
+    <h1>Telegram Dialog Organizer</h1>
+    <p lang="ru">Локальная организация диалогов. Сообщения и секреты не покидают модуль.</p>
+  </header>
+
+  <% if @account %>
+    <section aria-labelledby="account-status">
+      <h2 id="account-status"><%= @account.connection_state == "authenticated" ? (@account.read_only? ? "Только анализ / Read-only" : "Готово к применению / Ready to apply") : "Telegram connection in progress" %></h2>
+      <p><%= @account.display_name.presence || @account.telegram_account_id %></p>
+      <p>Last sync / Последняя синхронизация: <%= @last_sync_at ? l(@last_sync_at, format: :long) : "never / ещё не выполнялась" %></p>
+      <% if @account.rate_limited? %><p role="status"><strong>Telegram pause active</strong> — Telegram asked this account to wait until <%= l(@account.rate_limited_until, format: :long) %>. Writes will resume automatically.</p><% end %>
+      <% if @account.connection_state == "awaiting_code" %>
+        <%= form_with url: telegram_submit_code_path, method: :post do |form| %><%= form.password_field :code, autocomplete: "one-time-code", required: true, aria: { label: "Telegram code" } %><%= form.submit "Submit code" %><% end %>
+      <% elsif @account.connection_state == "awaiting_password" %>
+        <%= form_with url: telegram_submit_password_path, method: :post do |form| %><%= form.password_field :password, autocomplete: "current-password", required: true, aria: { label: "Telegram 2FA password" } %><%= form.submit "Submit 2FA password" %><% end %>
+      <% elsif @account.connection_state == "awaiting_qr" %>
+        <p>QR authorization is waiting for confirmation in Telegram.</p>
+        <% if @account.auth_challenge["qr_data_uri"].present? %><%= image_tag @account.auth_challenge["qr_data_uri"], alt: "Telegram login QR code" %><% end %>
+        <%= button_to "Check QR authorization", telegram_poll_qr_path, method: :post %>
+      <% elsif @account.connection_state == "disconnected" %>
+        <%= form_with url: telegram_connect_path, method: :post do |form| %>
+          <%= form.telephone_field :phone, required: true, autocomplete: "tel", aria: { label: "Telegram phone" } %>
+          <%= form.text_field :api_id, required: true, aria: { label: "Telegram API ID" } %>
+          <%= form.password_field :api_hash, required: true, aria: { label: "Telegram API hash" } %>
+          <%= form.submit "Connect by code" %>
+        <% end %>
+        <%= button_to "Start QR connection", telegram_start_qr_path, method: :post %>
+      <% else %>
+        <%= button_to(@account.read_only? ? "Enable changes / Включить изменения" : "Enable read-only / Только анализ", telegram_read_only_path, method: :post, params: { read_only: !@account.read_only? }) %>
+        <%= button_to "Импортировать метаданные / Import metadata", telegram_imports_path, method: :post %>
+        <%= button_to "Prepare dry-run / Подготовить diff", telegram_dry_run_path, method: :post, disabled: @account.read_only? || @account.rate_limited? %>
+        <%= button_to "Disconnect / Отключить", telegram_disconnect_account_path(@account), method: :post, params: { confirm: "disconnect" }, form: { data: { turbo_confirm: "Revoke and delete local credentials?" } } %>
+      <% end %>
+    </section>
+
+    <section aria-labelledby="folders-title">
+      <h2 id="folders-title">Folders / Папки</h2>
+      <p>Template: <%= @base_categories.join(", ") %></p>
+      <ul><% @folders.each do |folder| %><li><strong><%= folder.title %></strong> — <%= folder.managed_by_app? ? "app-owned" : (folder.ownership_state == "proposed" ? "app create proposed" : "foreign (read-only)") %><% if folder.managed_by_app? %>, revision <%= folder.local_revision %><% end %>
+        <% if @limits["chats_per_folder_limit"].present? %><% used = @folder_usage.fetch(folder.id, 0) %><% capacity = @limits["chats_per_folder_limit"].to_i %><span> · <%= used %> / <%= capacity %> chats · <%= [ capacity - used, 0 ].max %> free / свободно</span><% end %></li><% end %></ul>
+      <% if @limits["folder_limit"].present? %><p>Remaining capacity / Свободно: <%= [ @limits["folder_limit"].to_i - @folders.count, 0 ].max %> folders / папок.</p><% end %>
+    </section>
+    <section aria-labelledby="limits-title">
+      <h2 id="limits-title">Current Telegram limits / Актуальные лимиты Telegram</h2>
+      <% if @limits.present? %>
+        <dl>
+          <dt>Folders</dt><dd><%= @limits["folder_limit"] %></dd>
+          <dt>Chats per folder</dt><dd><%= @limits["chats_per_folder_limit"] %></dd>
+          <dt>Pinned chats</dt><dd><%= @limits["pinned_limit"] %></dd>
+          <dt>Title length</dt><dd><%= @limits["title_length_limit"] %></dd>
+          <dt>Source</dt><dd><%= @limits["source"] %></dd>
+        </dl>
+      <% else %>
+        <p>Import metadata to load the current server limits.</p>
+      <% end %>
+    </section>
+    <section aria-labelledby="dialogs-title">
+      <h2 id="dialogs-title">Suggestions / Предложения</h2>
+      <table><thead><tr><th>Chat</th><th>Type</th><th>Username</th></tr></thead><tbody><% @dialogs.each do |dialog| %><tr><td><%= dialog.title %></td><td><%= dialog.peer_kind %></td><td><%= dialog.username %></td></tr><% end %></tbody></table>
+    </section>
+    <section aria-labelledby="assignments-title">
+      <h2 id="assignments-title">Suggestions and assignments / Предложения и назначения</h2>
+      <%= form_with url: telegram_root_path, method: :get do %>
+        <%= text_field_tag :q, @proposal_query, placeholder: "Search chat, username, or peer ID", aria: { label: "Search proposals" } %>
+        <%= select_tag :proposal_filter, options_for_select([[ "All proposals", "all" ], [ "Ready", "ready" ], [ "Uncertain", "uncertain" ], [ "Conflicts", "conflicts" ]], @proposal_filter), aria: { label: "Filter proposals" } %>
+        <%= submit_tag "Search" %>
+      <% end %>
+      <table><thead><tr><th>Select</th><th>Avatar</th><th>Chat</th><th>Type</th><th>Current folders</th><th>Proposed folder</th><th>Confidence</th><th>Reason</th><th>Conflict</th><th>Actions / Действия</th></tr></thead><tbody>
+          <% @assignments.each do |assignment| %><% dialog = @dialogs_by_peer[[assignment.peer_kind, assignment.peer_id]] %><tr>
+            <td><%= check_box_tag "assignment_ids[]", assignment.id, false, aria: { label: "Select #{dialog&.title || assignment.peer_id}", form: "bulk-proposals" } %></td>
+            <td><% if dialog&.avatar_url.present? %><%= image_tag dialog.avatar_url, alt: "#{dialog.title} avatar", width: 32, height: 32 %><% else %>—<% end %></td>
+            <td><%= dialog&.title || "#{assignment.peer_kind}:#{assignment.peer_id}" %><% if dialog&.username.present? %><small>@<%= dialog.username %></small><% end %></td>
+            <td><%= assignment.peer_kind %></td><td><%= @current_folder_titles_by_peer[[assignment.peer_kind, assignment.peer_id]].presence&.join(", ") || "—" %></td>
+            <td><%= assignment.folder&.title || assignment.explanation["proposed_folder_title"] || assignment.explanation["category"] || "Other" %></td>
+            <td><%= number_to_percentage(assignment.confidence.to_f * 100, precision: 0) %></td>
+            <td><details><summary>Why?</summary><%= assignment.explanation.fetch("used_features", []).join(", ").presence || "No automatic assignment reason" %></details></td>
+            <td><%= assignment.explanation["classification"] == "conflicted" ? "Conflict: #{assignment.explanation.fetch("matched_rule_ids", []).join(", ")}" : "—" %></td>
+            <td><%= form_with url: telegram_review_assignment_path(assignment), method: :patch do %><%= select_tag :folder_id, options_from_collection_for_select(@folders.select { |folder| folder.managed_by_app? || folder.ownership_state == "proposed" }, :id, :title, assignment.folder_id), include_blank: "Folder / Папка" %><%= button_tag "Accept / Принять", name: :review_action, value: "accept" %><%= button_tag "Change / Изменить", name: :review_action, value: "change" %><%= button_tag "Skip / Пропустить", name: :review_action, value: "skip" %><%= button_tag "Block / Заблокировать", name: :review_action, value: "block" %><% end %></td>
+          </tr><% end %>
+        </tbody></table>
+      <%= form_with url: telegram_bulk_assignments_path, method: :post, id: "bulk-proposals" do %>
+        <fieldset><legend>Bulk actions / Массовые действия</legend>
+          <%= select_tag :folder_id, options_from_collection_for_select(@folders.select { |folder| folder.managed_by_app? || folder.ownership_state == "proposed" }, :id, :title), include_blank: "Choose a folder for acceptance" %>
+          <%= select_tag :bulk_action, options_for_select([[ "Accept", "accept" ], [ "Block proposal / Exclude permanently", "exclude" ], [ "Skip for now", "skip" ]]) %>
+          <%= submit_tag "Accept proposal / Apply bulk action" %>
+        </fieldset>
+      <% end %>
+      <% if @account.connection_state == "authenticated" %>
+        <%= form_with url: telegram_assignments_path, method: :post do |form| %>
+          <%= text_field_tag "assignment[peer_kind]", nil, required: true, placeholder: "peer kind" %>
+          <%= text_field_tag "assignment[peer_id]", nil, required: true, placeholder: "peer id" %>
+          <%= select_tag "assignment[folder_id]", options_from_collection_for_select(@folders, :id, :title), include_blank: "Exclude permanently" %>
+          <%= form.submit "Save manual assignment" %>
+        <% end %>
+      <% end %>
+    </section>
+    <section aria-labelledby="folder-proposals-title">
+      <h2 id="folder-proposals-title">Folder create proposals / Предложения папок</h2>
+      <ul><% @folder_proposals.each do |proposal| %><li><strong><%= proposal.title %></strong> — <%= proposal.status %>
+        <% if proposal.status == "proposed" && @account.connection_state == "authenticated" %><%= button_to "Accept folder proposal", telegram_accept_folder_proposal_path(proposal), method: :post %><% end %>
+      </li><% end %></ul>
+    </section>
+    <section aria-labelledby="rules-title">
+      <h2 id="rules-title">Rules / Правила</h2>
+      <ul><% @rules.each do |rule| %><% condition = rule.condition_json.stringify_keys %><li><strong><%= rule.rule_id %> v<%= rule.version %></strong>
+        <% if @account.connection_state == "authenticated" %><%= form_with url: telegram_rule_path(rule), method: :patch do %>
+          <%= number_field_tag "rule[priority]", rule.priority, min: 1, required: true, aria: { label: "Priority for #{rule.rule_id}" } %>
+          <%= select_tag "rule[target_folder_id]", options_from_collection_for_select(@folders, :id, :title, rule.target_folder_id), include_blank: "No folder", aria: { label: "Target folder for #{rule.rule_id}" } %>
+          <fieldset><legend>Rule conditions</legend>
+            <%= text_field_tag "rule[condition_json][username]", condition["username"], placeholder: "username", aria: { label: "Username predicate for #{rule.rule_id}" } %>
+            <%= select_tag "rule[condition_json][peer_kind]", options_for_select([[ "Any type", "" ], [ "User", "user" ], [ "Group", "group" ], [ "Channel", "channel" ], [ "Bot", "bot" ]], condition["peer_kind"]), aria: { label: "Chat type predicate for #{rule.rule_id}" } %>
+            <%= text_field_tag "rule[condition_json][keywords]", Array(condition["keywords"]).join(", "), placeholder: "keywords, comma separated", aria: { label: "Keyword predicates for #{rule.rule_id}" } %>
+          </fieldset>
+          <%= hidden_field_tag "rule[enabled]", "0" %><%= check_box_tag "rule[enabled]", "1", rule.enabled?, id: "rule_enabled_#{rule.id}", aria: { label: "Enable #{rule.rule_id}" } %><%= label_tag "rule_enabled_#{rule.id}", "Enabled" %>
+          <%= submit_tag "Update rule" %>
+        <% end %><% else %> — priority <%= rule.priority %><% end %>
+      </li><% end %></ul>
+      <% if @account.connection_state == "authenticated" %>
+        <%= form_with url: telegram_rules_path, method: :post do |form| %>
+          <%= text_field_tag "rule[rule_id]", nil, required: true, placeholder: "rule id" %>
+          <%= number_field_tag "rule[version]", 1, min: 1, required: true %>
+          <%= number_field_tag "rule[priority]", 100, required: true %>
+          <%= select_tag "rule[target_folder_id]", options_from_collection_for_select(@folders, :id, :title), include_blank: "No folder" %>
+          <fieldset><legend>Rule conditions</legend>
+            <%= text_field_tag "rule[condition_json][username]", nil, placeholder: "username" %>
+            <%= select_tag "rule[condition_json][peer_kind]", options_for_select([[ "Any type", "" ], [ "User", "user" ], [ "Group", "group" ], [ "Channel", "channel" ], [ "Bot", "bot" ]]) %>
+            <%= text_field_tag "rule[condition_json][keywords]", nil, placeholder: "keywords, comma separated" %>
+          </fieldset>
+          <%= hidden_field_tag "rule[enabled]", "0" %><%= check_box_tag "rule[enabled]", "1", true, id: "new_rule_enabled" %><%= label_tag "new_rule_enabled", "Enabled" %>
+          <%= form.submit "Save rule" %>
+        <% end %>
+      <% end %>
+    </section>
+    <section aria-labelledby="telegram-devices-title">
+      <h2 id="telegram-devices-title">Telegram Devices &amp; session revocation</h2>
+      <ol>
+        <li>Open the official Telegram app on a device you trust.</li>
+        <li>Go to <strong>Settings → Devices</strong> (or <strong>Privacy &amp; Security → Active Sessions</strong>).</li>
+        <li>Review sessions and terminate any unrecognized device; enable Two-Step Verification for account protection.</li>
+      </ol>
+      <p><a href="https://telegram.org/faq#q-my-phone-was-stolen-what-do-i-do" target="_blank" rel="noopener noreferrer">Official Telegram session-revocation instructions</a></p>
+    </section>
+    <section aria-labelledby="operations-title">
+      <h2 id="operations-title">Diff & operations / Изменения</h2>
+      <ul><% @operations.each do |operation| %><li><strong><%= operation.operation_id %></strong> — <%= operation.status %>
+        <% plan = operation.plan_data rescue {} %>
+        <% steps = operation.operation_steps.order(:sequence).to_a %><% confirmed_steps = steps.count { |step| step.status == "confirmed" } %>
+        <% diff = plan.fetch("diff", {}) %><% conflicts = diff["conflicts"] || plan["conflicts"] || [] %><% change_count = %w[create update delete].sum { |action| Array(diff[action]).length } + Array(diff["details"]).sum { |detail| detail.fetch("fields", {}).length + Array(detail["chats_added"]).length + Array(detail["chats_removed"]).length + (detail["order_changed"] ? 1 : 0) } + (diff["order"].present? ? 1 : 0) %>
+        <p>Progress: <%= confirmed_steps %> / <%= steps.length %></p>
+        <% if plan["diff"].present? %><details><summary>Detailed diff / Подробный diff</summary>
+          <table><thead><tr><th>Action</th><th>Folder</th><th>Changes</th></tr></thead><tbody>
+            <% %w[create update delete].each do |action| %><% Array(plan.dig("diff", action)).each do |folder| %><tr><td><%= action %></td><td><%= folder["title"] || folder["telegram_folder_id"] %></td><td><%= folder.except("title", "telegram_folder_id").to_json %></td></tr><% end %><% end %>
+            <% Array(plan.dig("diff", "details")).each do |detail| %><tr><td>update</td><td><%= detail["telegram_folder_id"] %></td><td><%= detail.slice("fields", "chats_added", "chats_removed", "order_changed").to_json %></td></tr><% end %>
+            <% if diff["order"].present? %><tr><td>order</td><td>folders</td><td><%= diff["order"].to_json %></td></tr><% end %>
+          </tbody></table>
+          <% if conflicts.present? %><p>Conflicts: <%= conflicts.map { |conflict| conflict["reason"] }.join(", ") %></p><% end %>
+        </details><% end %>
+        <% if steps.any? %><details><summary>Per-RPC execution plan</summary><ol><% steps.each do |step| %><li><%= step.sequence + 1 %>. <code><%= step.rpc %></code> — <%= step.status %></li><% end %></ol></details><% end %>
+        <% if operation.status == "awaiting_confirmation" %><%= button_to "Confirm (#{change_count} changes)", telegram_apply_operation_path(operation.operation_id), method: :post, params: { confirm: "apply" }, disabled: @account.read_only? %><%= button_to "Stop operation / Остановить операцию", telegram_cancel_operation_path(operation.operation_id), method: :post %><% end %>
+        <% if operation.status == "completed" %><%= button_to "Prepare rollback", telegram_rollback_operation_path(operation.operation_id), method: :post %><% end %>
+      </li><% end %></ul>
+    </section>
+  <% else %>
+    <section>
+      <h2>Telegram is not connected / Telegram не подключён</h2>
+      <p>Connection is intentionally available only through a trusted Ayaya session.</p>
+      <%= form_with url: telegram_connect_path, method: :post do |form| %>
+        <%= form.telephone_field :phone, required: true, autocomplete: "tel", aria: { label: "Telegram phone" } %>
+        <%= form.text_field :api_id, required: true, aria: { label: "Telegram API ID" } %>
+        <%= form.password_field :api_hash, required: true, aria: { label: "Telegram API hash" } %>
+        <%= form.submit "Connect by code" %>
+      <% end %>
+      <%= button_to "Start QR connection", telegram_start_qr_path, method: :post %>
+    </section>
+  <% end %>
+</main>

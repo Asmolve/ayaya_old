@@ -45,27 +45,27 @@ ActiveAdmin.register RegisteredModule do
   end
 
   action_item :enable, only: :show do
-    link_to "Enable", enable_admin_registered_module_path(resource), method: :post
+    button_to "Enable", enable_admin_registered_module_path(resource), method: :post
   end
 
   action_item :disable, only: :show do
-    link_to "Disable", disable_admin_registered_module_path(resource), method: :post
+    button_to "Disable", disable_admin_registered_module_path(resource), method: :post
   end
 
   action_item :maintenance, only: :show do
-    link_to "Maintenance", maintenance_admin_registered_module_path(resource), method: :post
+    button_to "Maintenance", maintenance_admin_registered_module_path(resource), method: :post
   end
 
   action_item :clear_maintenance, only: :show do
-    link_to "Clear maintenance", clear_maintenance_admin_registered_module_path(resource), method: :post
+    button_to "Clear maintenance", clear_maintenance_admin_registered_module_path(resource), method: :post
   end
 
   action_item :refresh_manifest, only: :show do
-    link_to "Refresh manifest", refresh_manifest_admin_registered_module_path(resource), method: :post
+    button_to "Refresh manifest", refresh_manifest_admin_registered_module_path(resource), method: :post
   end
 
   action_item :refresh_status, only: :show do
-    link_to "Refresh status", refresh_status_admin_registered_module_path(resource), method: :post
+    button_to "Refresh status", refresh_status_admin_registered_module_path(resource), method: :post
   end
 
   index do

@@ -328,7 +328,7 @@ User traffic must pass through NGINX and Core `auth_request` before reaching the
 
 Module App ports must not be publicly exposed.
 
-NGINX must strip incoming `X-Ayaya-*` headers and set platform-trusted headers itself. A stock-NGINX route can do this by keeping `proxy_pass_request_headers off`, explicitly forwarding an allowlist of normal request headers needed by the Module App, and then setting exactly the six trusted `X-Ayaya-*` headers from the successful `auth_request` response. It must not forward arbitrary client `X-Ayaya-*` headers.
+NGINX must strip incoming `X-Ayaya-*` headers and set platform-trusted headers itself. A stock-NGINX route can do this by keeping `proxy_pass_request_headers off`, explicitly forwarding an allowlist of normal request headers needed by the Module App, and then setting exactly the six base trusted `X-Ayaya-*` headers from the successful `auth_request` response. It must not forward arbitrary client `X-Ayaya-*` headers. A module may require an additional signed identity header only when its documented contract defines both the signing secret and canonical header order; Telegram uses `X-Ayaya-Identity-Signature`.
 
 ## 12. Trusted Identity Headers
 
@@ -398,6 +398,8 @@ ayaya_mod_shopping_list
 
 Modules own migrations and schema.
 
+The platform deployment flow must provision each module's dedicated database role and database idempotently before its migration job runs. The Module App and migration job must use that dedicated role; Core must not receive its credentials.
+
 Core must not connect to module databases.
 
 Modules must not connect to Core or other module databases.
@@ -420,7 +422,7 @@ The module bundle must document:
 
 Automatic migrations on application start are forbidden or strongly discouraged.
 
-Migrations should be explicit deploy steps.
+Migrations should be explicit deploy steps in one documented, authoritative platform deployment flow. A bundle must not document a second deployment sequence that can bypass database provisioning or migration gates.
 
 ## 17. Background Jobs
 

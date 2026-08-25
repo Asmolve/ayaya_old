@@ -15,6 +15,13 @@ class Modules::LocalRegistrationTest < ActiveSupport::TestCase
     "access" => { "default_policy" => "authenticated" }
   }.freeze
 
+  TELEGRAM_MANIFEST = {
+    "identity" => { "module_key" => "telegram", "name" => "Telegram Dialog Organizer", "version" => "0.1.0" },
+    "protocol" => { "adapter_protocol_version" => "1.0", "capabilities" => [ "manifest.v1", "health.v1", "status.v1" ] },
+    "routes" => { "ui_base_path" => "/m/telegram", "api_base_path" => "/m/telegram/api" },
+    "access" => { "default_policy" => "authenticated" }
+  }.freeze
+
   FakeClient = Struct.new(:manifest_response) do
     def manifest = manifest_response
   end
@@ -58,6 +65,15 @@ class Modules::LocalRegistrationTest < ActiveSupport::TestCase
     assert_equal "PLANNING_ADAPTER_SECRET", config.adapter_secret_env
   end
 
+  test "resolves Telegram local registration configuration" do
+    config = Modules::LocalRegistration.configuration("telegram")
+
+    assert_equal "telegram", config.module_key
+    assert_equal "Telegram Dialog Organizer", config.display_name
+    assert_equal "TELEGRAM_ADAPTER_URL", config.adapter_url_env
+    assert_equal "TELEGRAM_ADAPTER_SECRET", config.adapter_secret_env
+  end
+
   test "registers Planning with server-side credentials" do
     with_planning_configuration do
       result = Modules::LocalRegistration.call("planning", client: FakeClient.new(PLANNING_MANIFEST))
@@ -65,6 +81,16 @@ class Modules::LocalRegistrationTest < ActiveSupport::TestCase
       assert result.success?
       assert_equal "planning", result.registered_module.module_key
       assert_not_equal "planning-secret", result.registered_module.adapter_secret_digest
+    end
+  end
+
+  test "registers Telegram with server-side credentials" do
+    with_telegram_configuration do
+      result = Modules::LocalRegistration.call("telegram", client: FakeClient.new(TELEGRAM_MANIFEST))
+
+      assert result.success?
+      assert_equal "telegram", result.registered_module.module_key
+      assert_not_equal "telegram-secret", result.registered_module.adapter_secret_digest
     end
   end
 
@@ -183,5 +209,16 @@ class Modules::LocalRegistrationTest < ActiveSupport::TestCase
   ensure
     restore_env("PLANNING_ADAPTER_URL", previous_url)
     restore_env("PLANNING_ADAPTER_SECRET", previous_secret)
+  end
+
+  def with_telegram_configuration
+    previous_url = ENV["TELEGRAM_ADAPTER_URL"]
+    previous_secret = ENV["TELEGRAM_ADAPTER_SECRET"]
+    ENV["TELEGRAM_ADAPTER_URL"] = "http://telegram_adapter:8080"
+    ENV["TELEGRAM_ADAPTER_SECRET"] = "telegram-secret"
+    yield
+  ensure
+    restore_env("TELEGRAM_ADAPTER_URL", previous_url)
+    restore_env("TELEGRAM_ADAPTER_SECRET", previous_secret)
   end
 end

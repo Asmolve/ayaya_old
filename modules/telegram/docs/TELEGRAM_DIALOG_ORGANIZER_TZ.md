@@ -327,9 +327,9 @@ Session и API credentials шифруются envelope encryption с AEAD, versi
 
 ## 16. Интеграция и окружение
 
-Root Compose должен добавить `telegram_app` и `telegram_adapter`, отдельную БД/volume либо выделенную БД в общем PostgreSQL, внутренние secrets и mounted `modules/telegram/module.yml`. Core получает только `TELEGRAM_ADAPTER_URL` и `TELEGRAM_ADAPTER_SECRET`; adapter получает `TELEGRAM_INTERNAL_STATUS_SECRET`, URL внутреннего статуса и путь к manifest. Core не получает URL или secret `telegram_app`.
+Root Compose должен добавить `telegram_app` и `telegram_adapter`, отдельную БД/volume либо выделенную БД в общем PostgreSQL, внутренние secrets и mounted `modules/telegram/module.yml`. Core получает `TELEGRAM_ADAPTER_URL`, `TELEGRAM_ADAPTER_SECRET` и общий с `telegram_app` `TELEGRAM_TRUSTED_IDENTITY_SECRET`; adapter получает `TELEGRAM_INTERNAL_STATUS_SECRET`, URL внутреннего статуса и путь к manifest. Core не получает URL или secret `telegram_app`, кроме секрета подписи trusted identity.
 
-NGINX добавляет маршрут `/m/telegram/` по тому же шаблону, что и `/m/notes/`, с `auth_request`, `proxy_pass_request_headers off`, очисткой spoofed headers и allowlist из шести trusted identity headers. Сеть должна позволять Core↔Adapter, Adapter↔App и NGINX↔App только по нужным направлениям; `telegram_app` и `telegram_adapter` не публикуются напрямую.
+NGINX добавляет маршрут `/m/telegram/` по тому же шаблону, что и `/m/notes/`, с `auth_request`, `proxy_pass_request_headers off`, очисткой spoofed headers и allowlist из семи trusted identity headers, включая HMAC signature. Сеть должна позволять Core↔Adapter, Adapter↔App, NGINX↔App и App↔private MTProto transport только по нужным направлениям; `telegram_app` и `telegram_adapter` не публикуются напрямую.
 
 Регистрация в Core выполняется тем же ручным или локальным registration flow, который используется для других модулей. Автоматическая регистрация и динамическая генерация NGINX-конфигурации в первую версию не входят.
 

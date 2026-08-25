@@ -14,6 +14,12 @@ module Modules
         display_name: "Planning".freeze,
         adapter_url_env: "PLANNING_ADAPTER_URL".freeze,
         adapter_secret_env: "PLANNING_ADAPTER_SECRET".freeze
+      ),
+      "telegram" => Configuration.new(
+        module_key: "telegram".freeze,
+        display_name: "Telegram Dialog Organizer".freeze,
+        adapter_url_env: "TELEGRAM_ADAPTER_URL".freeze,
+        adapter_secret_env: "TELEGRAM_ADAPTER_SECRET".freeze
       )
     }.freeze
 

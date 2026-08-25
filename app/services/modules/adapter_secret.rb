@@ -10,6 +10,8 @@ module Modules
         ENV["PIC_OBTAINER_AYAYA_ADAPTER_SECRET"].presence
       when "planning"
         ENV["PLANNING_ADAPTER_SECRET"].presence
+      when "telegram"
+        ENV["TELEGRAM_ADAPTER_SECRET"].presence if registered_module.adapter_url == ENV["TELEGRAM_ADAPTER_URL"]
       end
     end
   end

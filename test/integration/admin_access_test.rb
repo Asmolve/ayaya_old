@@ -23,6 +23,13 @@ class AdminAccessTest < ActionDispatch::IntegrationTest
     "access" => { "default_policy" => "authenticated" }
   }.freeze
 
+  TELEGRAM_MANIFEST = {
+    "identity" => { "module_key" => "telegram", "name" => "Telegram Dialog Organizer", "version" => "0.1.0" },
+    "protocol" => { "adapter_protocol_version" => "1.0", "capabilities" => [ "manifest.v1", "health.v1", "status.v1" ] },
+    "routes" => { "ui_base_path" => "/m/telegram", "api_base_path" => "/m/telegram/api" },
+    "access" => { "default_policy" => "authenticated" }
+  }.freeze
+
   test "signed-in non-admin cannot access ActiveAdmin" do
     user = User.create!(email: "user@example.test", password: "password123", role: "user")
     sign_in user
@@ -63,6 +70,28 @@ class AdminAccessTest < ActionDispatch::IntegrationTest
     assert_includes response.body, "Register the local Notes adapter"
     assert_includes response.body, "Register Pic Obtainer"
     assert_includes response.body, "Register Planning"
+    assert_includes response.body, "Register Telegram"
+  end
+
+  test "dashboard renders standard POST forms for local module registration" do
+    RegisteredModule.destroy_all
+    admin = User.create!(email: "registration-form-admin@example.test", password: "password123", role: "admin")
+    sign_in admin
+
+    get admin_root_path
+
+    assert_select "form[action='#{admin_dashboard_register_reference_notes_path}'][method='post']" do
+      assert_select "button[type='submit']", text: "Register the local Notes adapter"
+    end
+    assert_select "form[action='#{admin_dashboard_register_pic_obtainer_path}'][method='post']" do
+      assert_select "button[type='submit']", text: "Register Pic Obtainer"
+    end
+    assert_select "form[action='#{admin_dashboard_register_planning_path}'][method='post']" do
+      assert_select "button[type='submit']", text: "Register Planning"
+    end
+    assert_select "form[action='#{admin_dashboard_register_telegram_path}'][method='post']" do
+      assert_select "button[type='submit']", text: "Register Telegram"
+    end
   end
 
   test "admin can register Planning from the dashboard" do
@@ -76,6 +105,21 @@ class AdminAccessTest < ActionDispatch::IntegrationTest
     end
 
     registered_module = RegisteredModule.find_by!(module_key: "planning")
+    assert_redirected_to admin_registered_module_path(registered_module)
+    assert_equal "registered", registered_module.admin_state
+  end
+
+  test "admin can register Telegram from the dashboard" do
+    admin = User.create!(email: "telegram-admin@example.test", password: "password123", role: "admin")
+    sign_in admin
+
+    with_telegram_configuration do
+      stub_registration_client(TELEGRAM_MANIFEST) do
+        post admin_dashboard_register_telegram_path
+      end
+    end
+
+    registered_module = RegisteredModule.find_by!(module_key: "telegram")
     assert_redirected_to admin_registered_module_path(registered_module)
     assert_equal "registered", registered_module.admin_state
   end
@@ -357,6 +401,17 @@ class AdminAccessTest < ActionDispatch::IntegrationTest
     ensure
       restore_env("PLANNING_ADAPTER_URL", old_adapter_url)
       restore_env("PLANNING_ADAPTER_SECRET", old_adapter_secret)
+    end
+
+    def with_telegram_configuration
+      old_adapter_url = ENV["TELEGRAM_ADAPTER_URL"]
+      old_adapter_secret = ENV["TELEGRAM_ADAPTER_SECRET"]
+      ENV["TELEGRAM_ADAPTER_URL"] = "http://telegram_adapter:8080"
+      ENV["TELEGRAM_ADAPTER_SECRET"] = "telegram-secret"
+      yield
+    ensure
+      restore_env("TELEGRAM_ADAPTER_URL", old_adapter_url)
+      restore_env("TELEGRAM_ADAPTER_SECRET", old_adapter_secret)
     end
 
     def stub_registration_client(manifest)

@@ -41,8 +41,8 @@
 /.dockerignore
 /Dockerfile*
 
-# Ignore graphify cache files
-/graphify-out/cache
+# Ignore generated graphify artifacts.
+/graphify-out/
 
 # Ignore system attributes
 .DS_Store

@@ -1,0 +1,23 @@
+identity:
+  module_key: telegram
+  name: Telegram Dialog Organizer
+  version: 0.1.0
+
+protocol:
+  adapter_protocol_version: "1.0"
+  capabilities:
+    - manifest.v1
+    - health.v1
+    - status.v1
+
+presentation:
+  description: Local Telegram dialog organization
+  icon: messages-square
+  category: productivity
+
+routes:
+  ui_base_path: /m/telegram
+  api_base_path: /m/telegram/api
+
+access:
+  default_policy: authenticated

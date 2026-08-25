@@ -22,6 +22,8 @@ class NotesController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+  rescue ActiveRecord::RecordNotUnique
+    render_diary_range_conflict(:new)
   end
 
   def edit
@@ -33,6 +35,8 @@ class NotesController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  rescue ActiveRecord::RecordNotUnique
+    render_diary_range_conflict(:edit)
   end
 
   def destroy
@@ -49,6 +53,21 @@ class NotesController < ApplicationController
   end
 
   def note_params
-    params.require(:note).permit(:title, :body)
+    permitted = %i[title body]
+
+    if action_name == "create" && params.dig(:note, :entry_type) == "diary"
+      permitted += %i[entry_type start_date end_date diary_content]
+    elsif @note&.diary?
+      permitted += %i[start_date end_date diary_content]
+    end
+
+    params.require(:note).permit(*permitted)
+  end
+
+  def render_diary_range_conflict(template)
+    raise unless @note&.diary?
+
+    @note.errors.add(:start_date, "has already been taken for this range")
+    render template, status: :unprocessable_entity
   end
 end

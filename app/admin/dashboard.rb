@@ -13,6 +13,36 @@ ActiveAdmin.register_page "Dashboard" do
     end
   end
 
+  page_action :register_pic_obtainer, method: :post do
+    result = Modules::LocalRegistration.call("pic_obtainer")
+
+    if result.success?
+      redirect_to admin_registered_module_path(result.registered_module), notice: "Pic Obtainer registered."
+    else
+      redirect_to admin_root_path, alert: "Pic Obtainer registration failed: #{result.errors.join('; ')}"
+    end
+  end
+
+  page_action :register_planning, method: :post do
+    result = Modules::LocalRegistration.call("planning")
+
+    if result.success?
+      redirect_to admin_registered_module_path(result.registered_module), notice: "Planning registered."
+    else
+      redirect_to admin_root_path, alert: "Planning registration failed: #{result.errors.join('; ')}"
+    end
+  end
+
+  page_action :register_telegram, method: :post do
+    result = Modules::LocalRegistration.call("telegram")
+
+    if result.success?
+      redirect_to admin_registered_module_path(result.registered_module), notice: "Telegram Dialog Organizer registered."
+    else
+      redirect_to admin_root_path, alert: "Telegram Dialog Organizer registration failed: #{result.errors.join('; ')}"
+    end
+  end
+
   content title: proc { I18n.t("active_admin.dashboard") } do
     registered_modules = RegisteredModule.order(:module_key)
 
@@ -22,7 +52,7 @@ ActiveAdmin.register_page "Dashboard" do
           span class: "blank_slate" do
             span "No modules registered"
             small do
-              link_to "Register the local Notes adapter", admin_dashboard_register_reference_notes_path, method: :post
+              button_to "Register the local Notes adapter", admin_dashboard_register_reference_notes_path, method: :post
             end
           end
         end
@@ -68,6 +98,24 @@ ActiveAdmin.register_page "Dashboard" do
               status_tag registered_module.availability_label, label: registered_module.availability_label
             end
           end
+        end
+      end
+
+      unless RegisteredModule.exists?(module_key: "pic_obtainer")
+        para do
+          button_to "Register Pic Obtainer", admin_dashboard_register_pic_obtainer_path, method: :post
+        end
+      end
+
+      unless RegisteredModule.exists?(module_key: "planning")
+        para do
+          button_to "Register Planning", admin_dashboard_register_planning_path, method: :post
+        end
+      end
+
+      unless RegisteredModule.exists?(module_key: "telegram")
+        para do
+          button_to "Register Telegram", admin_dashboard_register_telegram_path, method: :post
         end
       end
 

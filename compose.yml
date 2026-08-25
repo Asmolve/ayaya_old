@@ -4,32 +4,42 @@ services:
   postgres:
     image: postgres:16-alpine
     environment:
-      POSTGRES_USER: ayaya
-      POSTGRES_PASSWORD: ayaya
-      POSTGRES_DB: ayaya_core_development
+      POSTGRES_USER: ${POSTGRES_USER:?Set POSTGRES_USER in .env}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+      POSTGRES_DB: ${CORE_DATABASE_NAME:?Set CORE_DATABASE_NAME in .env}
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ayaya -d ayaya_core_development"]
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
       interval: 5s
       timeout: 5s
       retries: 12
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    networks:
+      - default
+      - telegram_app_postgres
 
   core:
     build:
       context: .
       dockerfile: Dockerfile.dev
     environment:
-      RAILS_ENV: development
-      DATABASE_HOST: postgres
-      DATABASE_PORT: 5432
-      DATABASE_USERNAME: ayaya
-      DATABASE_PASSWORD: ayaya
-      DATABASE_NAME: ayaya_core_development
-      RAILS_LOG_TO_STDOUT: "true"
-      AYAYA_ALLOWED_HOSTS: ayaya.local,localhost
-      NOTES_ADAPTER_URL: ${NOTES_ADAPTER_URL:-http://notes_adapter:8080}
+      RAILS_ENV: ${RAILS_ENV:?Set RAILS_ENV in .env}
+      DATABASE_HOST: ${DATABASE_HOST:?Set DATABASE_HOST in .env}
+      DATABASE_PORT: ${DATABASE_PORT:?Set DATABASE_PORT in .env}
+      DATABASE_USERNAME: ${DATABASE_USERNAME:?Set DATABASE_USERNAME in .env}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD:?Set DATABASE_PASSWORD in .env}
+      DATABASE_NAME: ${CORE_DATABASE_NAME:?Set CORE_DATABASE_NAME in .env}
+      RAILS_LOG_TO_STDOUT: ${RAILS_LOG_TO_STDOUT:?Set RAILS_LOG_TO_STDOUT in .env}
+      AYAYA_ALLOWED_HOSTS: ${CORE_ALLOWED_HOSTS:?Set CORE_ALLOWED_HOSTS in .env}
+      NOTES_ADAPTER_URL: ${NOTES_ADAPTER_URL:?Set NOTES_ADAPTER_URL in .env}
       NOTES_ADAPTER_SECRET: ${NOTES_ADAPTER_SECRET:?Set NOTES_ADAPTER_SECRET before starting Compose}
+      PIC_OBTAINER_ADAPTER_URL: ${PIC_OBTAINER_ADAPTER_URL:?Set PIC_OBTAINER_ADAPTER_URL in .env}
+      PIC_OBTAINER_AYAYA_ADAPTER_SECRET: ${PIC_OBTAINER_AYAYA_ADAPTER_SECRET:?Set PIC_OBTAINER_AYAYA_ADAPTER_SECRET in .env}
+      PLANNING_ADAPTER_URL: ${PLANNING_ADAPTER_URL:?Set PLANNING_ADAPTER_URL in .env}
+      PLANNING_ADAPTER_SECRET: ${PLANNING_ADAPTER_SECRET:?Set PLANNING_ADAPTER_SECRET in .env}
+      TELEGRAM_ADAPTER_URL: ${TELEGRAM_ADAPTER_URL:?Set TELEGRAM_ADAPTER_URL in .env}
+      TELEGRAM_ADAPTER_SECRET: ${TELEGRAM_ADAPTER_SECRET:?Set TELEGRAM_ADAPTER_SECRET in .env}
+      TELEGRAM_TRUSTED_IDENTITY_SECRET: ${TELEGRAM_TRUSTED_IDENTITY_SECRET:?Set TELEGRAM_TRUSTED_IDENTITY_SECRET in .env}
     depends_on:
       postgres:
         condition: service_healthy
@@ -43,26 +53,29 @@ services:
       timeout: 5s
       retries: 24
     ports:
-      - "3001:3000"
+      - "${CORE_HOST_PORT:?Set CORE_HOST_PORT in .env}:3000"
     volumes:
       - .:/rails
     stdin_open: true
     tty: true
+    networks:
+      - default
+      - telegram_core_adapter
 
   notes_app:
     build:
       context: ./modules/notes/app
       dockerfile: Dockerfile.dev
     environment:
-      RAILS_ENV: development
-      DATABASE_HOST: postgres
-      DATABASE_PORT: 5432
-      DATABASE_USERNAME: ayaya
-      DATABASE_PASSWORD: ayaya
-      DATABASE_NAME: ayaya_mod_notes
-      RAILS_LOG_TO_STDOUT: "true"
-      AYAYA_ALLOWED_HOSTS: ayaya.local,localhost,notes_app
-      NOTES_INTERNAL_STATUS_SECRET: development-notes-internal-status-secret
+      RAILS_ENV: ${RAILS_ENV:?Set RAILS_ENV in .env}
+      DATABASE_HOST: ${DATABASE_HOST:?Set DATABASE_HOST in .env}
+      DATABASE_PORT: ${DATABASE_PORT:?Set DATABASE_PORT in .env}
+      DATABASE_USERNAME: ${DATABASE_USERNAME:?Set DATABASE_USERNAME in .env}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD:?Set DATABASE_PASSWORD in .env}
+      DATABASE_NAME: ${NOTES_DATABASE_NAME:?Set NOTES_DATABASE_NAME in .env}
+      RAILS_LOG_TO_STDOUT: ${RAILS_LOG_TO_STDOUT:?Set RAILS_LOG_TO_STDOUT in .env}
+      AYAYA_ALLOWED_HOSTS: ${NOTES_ALLOWED_HOSTS:?Set NOTES_ALLOWED_HOSTS in .env}
+      NOTES_INTERNAL_STATUS_SECRET: ${NOTES_INTERNAL_STATUS_SECRET:?Set NOTES_INTERNAL_STATUS_SECRET in .env}
     depends_on:
       postgres:
         condition: service_healthy
@@ -83,15 +96,265 @@ services:
     build:
       context: ./modules/notes/adapter
     environment:
-      NOTES_ADAPTER_SECRET: ${NOTES_ADAPTER_SECRET:?Set NOTES_ADAPTER_SECRET before starting Compose}
-      NOTES_INTERNAL_STATUS_SECRET: development-notes-internal-status-secret
-      NOTES_APP_INTERNAL_STATUS_URL: http://notes_app:3000/internal/ayaya/status
-      NOTES_MODULE_YML: /module/module.yml
+      NOTES_ADAPTER_SECRET: ${NOTES_ADAPTER_SECRET:?Set NOTES_ADAPTER_SECRET in .env}
+      NOTES_INTERNAL_STATUS_SECRET: ${NOTES_INTERNAL_STATUS_SECRET:?Set NOTES_INTERNAL_STATUS_SECRET in .env}
+      NOTES_APP_INTERNAL_STATUS_URL: ${NOTES_APP_INTERNAL_STATUS_URL:?Set NOTES_APP_INTERNAL_STATUS_URL in .env}
+      NOTES_MODULE_YML: ${NOTES_MODULE_YML:?Set NOTES_MODULE_YML in .env}
     depends_on:
       notes_app:
         condition: service_healthy
     volumes:
       - ./modules/notes/module.yml:/module/module.yml:ro
+
+  telegram_app:
+    build:
+      context: ./modules/telegram/app
+      target: production
+    environment: &telegram_app_runtime
+      RAILS_ENV: production
+      RAILS_LOG_TO_STDOUT: "true"
+      SECRET_KEY_BASE: ${TELEGRAM_SECRET_KEY_BASE:?Set TELEGRAM_SECRET_KEY_BASE in .env}
+      DATABASE_HOST: ${DATABASE_HOST:?Set DATABASE_HOST in .env}
+      DATABASE_PORT: ${DATABASE_PORT:?Set DATABASE_PORT in .env}
+      DATABASE_USERNAME: ${TELEGRAM_DATABASE_USERNAME:?Set TELEGRAM_DATABASE_USERNAME in .env}
+      DATABASE_PASSWORD: ${TELEGRAM_DATABASE_PASSWORD:?Set TELEGRAM_DATABASE_PASSWORD in .env}
+      DATABASE_NAME: ${TELEGRAM_DATABASE_NAME:?Set TELEGRAM_DATABASE_NAME in .env}
+      TELEGRAM_INTERNAL_STATUS_SECRET: ${TELEGRAM_INTERNAL_STATUS_SECRET:?Set TELEGRAM_INTERNAL_STATUS_SECRET in .env}
+      TELEGRAM_TRUSTED_IDENTITY_SECRET: ${TELEGRAM_TRUSTED_IDENTITY_SECRET:?Set TELEGRAM_TRUSTED_IDENTITY_SECRET in .env}
+      TELEGRAM_ENVELOPE_KEY_FILE: /run/secrets/telegram_envelope_keyring
+      TELEGRAM_MTPROTO_CLIENT_URL: ${TELEGRAM_MTPROTO_CLIENT_URL:?Set TELEGRAM_MTPROTO_CLIENT_URL in .env}
+      TELEGRAM_MTPROTO_CLIENT_TOKEN: ${TELEGRAM_MTPROTO_CLIENT_TOKEN:?Set TELEGRAM_MTPROTO_CLIENT_TOKEN in .env}
+    secrets: &telegram_app_secrets
+      - telegram_envelope_keyring
+    networks:
+      - telegram_adapter_app
+      - telegram_nginx_app
+      - telegram_app_postgres
+      - telegram_app_mtproto
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:3000/up >/dev/null"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 20s
+    depends_on:
+      telegram_migrate:
+        condition: service_completed_successfully
+      telegram_mtproto:
+        condition: service_healthy
+
+  telegram_worker:
+    build:
+      context: ./modules/telegram/app
+      target: production
+    command: ["bin/telegram_worker"]
+    environment: *telegram_app_runtime
+    secrets: *telegram_app_secrets
+    depends_on:
+      telegram_migrate:
+        condition: service_completed_successfully
+      telegram_mtproto:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - telegram_app_postgres
+      - telegram_app_mtproto
+
+  telegram_database:
+    image: postgres:16-alpine
+    environment:
+      PGPASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+      PGHOST: postgres
+      PGPORT: ${DATABASE_PORT:?Set DATABASE_PORT in .env}
+      PGUSER: ${POSTGRES_USER:?Set POSTGRES_USER in .env}
+      PGDATABASE: ${CORE_DATABASE_NAME:?Set CORE_DATABASE_NAME in .env}
+      TELEGRAM_DATABASE_NAME: ${TELEGRAM_DATABASE_NAME:?Set TELEGRAM_DATABASE_NAME in .env}
+      TELEGRAM_DATABASE_USERNAME: ${TELEGRAM_DATABASE_USERNAME:?Set TELEGRAM_DATABASE_USERNAME in .env}
+      TELEGRAM_DATABASE_PASSWORD: ${TELEGRAM_DATABASE_PASSWORD:?Set TELEGRAM_DATABASE_PASSWORD in .env}
+      TELEGRAM_MTPROTO_DATABASE_NAME: ${TELEGRAM_MTPROTO_DATABASE_NAME:?Set TELEGRAM_MTPROTO_DATABASE_NAME in .env}
+      TELEGRAM_MTPROTO_DATABASE_USERNAME: ${TELEGRAM_MTPROTO_DATABASE_USERNAME:?Set TELEGRAM_MTPROTO_DATABASE_USERNAME in .env}
+      TELEGRAM_MTPROTO_DATABASE_PASSWORD: ${TELEGRAM_MTPROTO_DATABASE_PASSWORD:?Set TELEGRAM_MTPROTO_DATABASE_PASSWORD in .env}
+    command:
+      - sh
+      - -ec
+      - |
+        psql --set=ON_ERROR_STOP=1 \
+          --set=telegram_database_name="$${TELEGRAM_DATABASE_NAME}" \
+          --set=telegram_database_username="$${TELEGRAM_DATABASE_USERNAME}" \
+          --set=telegram_database_password="$${TELEGRAM_DATABASE_PASSWORD}" \
+          --set=telegram_mtproto_database_name="$${TELEGRAM_MTPROTO_DATABASE_NAME}" \
+          --set=telegram_mtproto_database_username="$${TELEGRAM_MTPROTO_DATABASE_USERNAME}" \
+          --set=telegram_mtproto_database_password="$${TELEGRAM_MTPROTO_DATABASE_PASSWORD}" <<'SQL'
+        SELECT format('CREATE ROLE %I LOGIN PASSWORD %L', :'telegram_database_username', :'telegram_database_password')
+        WHERE NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = :'telegram_database_username')
+        \gexec
+        ALTER ROLE :"telegram_database_username" LOGIN PASSWORD :'telegram_database_password';
+        SELECT format('CREATE DATABASE %I OWNER %I', :'telegram_database_name', :'telegram_database_username')
+        WHERE NOT EXISTS (SELECT 1 FROM pg_database WHERE datname = :'telegram_database_name')
+        \gexec
+        ALTER DATABASE :"telegram_database_name" OWNER TO :"telegram_database_username";
+        SELECT format('CREATE ROLE %I LOGIN PASSWORD %L', :'telegram_mtproto_database_username', :'telegram_mtproto_database_password')
+        WHERE NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = :'telegram_mtproto_database_username')
+        \gexec
+        ALTER ROLE :"telegram_mtproto_database_username" LOGIN PASSWORD :'telegram_mtproto_database_password';
+        SELECT format('CREATE DATABASE %I OWNER %I', :'telegram_mtproto_database_name', :'telegram_mtproto_database_username')
+        WHERE NOT EXISTS (SELECT 1 FROM pg_database WHERE datname = :'telegram_mtproto_database_name')
+        \gexec
+        ALTER DATABASE :"telegram_mtproto_database_name" OWNER TO :"telegram_mtproto_database_username";
+        SQL
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - telegram_app_postgres
+
+  telegram_migrate:
+    build:
+      context: ./modules/telegram/app
+      target: production
+    command: ["bin/rails", "db:migrate"]
+    environment:
+      RAILS_ENV: production
+      RAILS_LOG_TO_STDOUT: "true"
+      SECRET_KEY_BASE: ${TELEGRAM_SECRET_KEY_BASE:?Set TELEGRAM_SECRET_KEY_BASE in .env}
+      DATABASE_HOST: ${DATABASE_HOST:?Set DATABASE_HOST in .env}
+      DATABASE_PORT: ${DATABASE_PORT:?Set DATABASE_PORT in .env}
+      DATABASE_USERNAME: ${TELEGRAM_DATABASE_USERNAME:?Set TELEGRAM_DATABASE_USERNAME in .env}
+      DATABASE_PASSWORD: ${TELEGRAM_DATABASE_PASSWORD:?Set TELEGRAM_DATABASE_PASSWORD in .env}
+      DATABASE_NAME: ${TELEGRAM_DATABASE_NAME:?Set TELEGRAM_DATABASE_NAME in .env}
+      TELEGRAM_INTERNAL_STATUS_SECRET: ${TELEGRAM_INTERNAL_STATUS_SECRET:?Set TELEGRAM_INTERNAL_STATUS_SECRET in .env}
+      TELEGRAM_ENVELOPE_KEY_FILE: /run/secrets/telegram_envelope_keyring
+    secrets:
+      - telegram_envelope_keyring
+    depends_on:
+      telegram_database:
+        condition: service_completed_successfully
+    networks:
+      - telegram_app_postgres
+
+  telegram_mtproto_migrate:
+    build:
+      context: ./modules/telegram/mtproto
+    command: ["python", "-m", "app.migrate"]
+    environment:
+      TELEGRAM_MTPROTO_DATABASE_URL: postgresql://${TELEGRAM_MTPROTO_DATABASE_USERNAME:?Set TELEGRAM_MTPROTO_DATABASE_USERNAME in .env}:${TELEGRAM_MTPROTO_DATABASE_PASSWORD:?Set TELEGRAM_MTPROTO_DATABASE_PASSWORD in .env}@postgres:${DATABASE_PORT:?Set DATABASE_PORT in .env}/${TELEGRAM_MTPROTO_DATABASE_NAME:?Set TELEGRAM_MTPROTO_DATABASE_NAME in .env}
+      TELEGRAM_MTPROTO_SESSION_ENCRYPTION_KEY: ${TELEGRAM_MTPROTO_SESSION_ENCRYPTION_KEY:?Set TELEGRAM_MTPROTO_SESSION_ENCRYPTION_KEY in .env}
+    depends_on:
+      telegram_database:
+        condition: service_completed_successfully
+    networks:
+      - telegram_app_postgres
+
+  telegram_mtproto:
+    build:
+      context: ./modules/telegram/mtproto
+    environment:
+      TELEGRAM_MTPROTO_CLIENT_TOKEN: ${TELEGRAM_MTPROTO_CLIENT_TOKEN:?Set TELEGRAM_MTPROTO_CLIENT_TOKEN in .env}
+      TELEGRAM_MTPROTO_DATABASE_URL: postgresql://${TELEGRAM_MTPROTO_DATABASE_USERNAME:?Set TELEGRAM_MTPROTO_DATABASE_USERNAME in .env}:${TELEGRAM_MTPROTO_DATABASE_PASSWORD:?Set TELEGRAM_MTPROTO_DATABASE_PASSWORD in .env}@postgres:${DATABASE_PORT:?Set DATABASE_PORT in .env}/${TELEGRAM_MTPROTO_DATABASE_NAME:?Set TELEGRAM_MTPROTO_DATABASE_NAME in .env}
+      TELEGRAM_MTPROTO_SESSION_ENCRYPTION_KEY: ${TELEGRAM_MTPROTO_SESSION_ENCRYPTION_KEY:?Set TELEGRAM_MTPROTO_SESSION_ENCRYPTION_KEY in .env}
+    depends_on:
+      telegram_mtproto_migrate:
+        condition: service_completed_successfully
+    networks:
+      - telegram_app_postgres
+      - telegram_app_mtproto
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - >-
+          python -c 'import os, urllib.request; request = urllib.request.Request("http://127.0.0.1:8081/health/ready", headers={"Authorization": "Bearer " + os.environ["TELEGRAM_MTPROTO_CLIENT_TOKEN"]}); urllib.request.urlopen(request, timeout=3)'
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 5s
+
+  telegram_adapter:
+    build:
+      context: ./modules/telegram
+      dockerfile: adapter/Dockerfile
+      target: production
+    environment:
+      TELEGRAM_ADAPTER_SECRET: ${TELEGRAM_ADAPTER_SECRET:?Set TELEGRAM_ADAPTER_SECRET in .env}
+      TELEGRAM_INTERNAL_STATUS_SECRET: ${TELEGRAM_INTERNAL_STATUS_SECRET:?Set TELEGRAM_INTERNAL_STATUS_SECRET in .env}
+      TELEGRAM_APP_INTERNAL_STATUS_URL: http://telegram_app:3000/internal/ayaya/status
+      TELEGRAM_MODULE_YML: /module/module.yml
+    depends_on:
+      telegram_app:
+        condition: service_healthy
+    volumes:
+      - ./modules/telegram/module.yml:/module/module.yml:ro
+    networks:
+      - telegram_core_adapter
+      - telegram_adapter_app
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - >-
+          python -c 'import os, urllib.request; request = urllib.request.Request("http://127.0.0.1:8080/ayaya/health/ready", headers={"Authorization": "Bearer " + os.environ["TELEGRAM_ADAPTER_SECRET"]}); urllib.request.urlopen(request, timeout=3)'
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+
+  pic_obtainer_postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: ayaya_mod_pic_obtainer
+      POSTGRES_USER: pic_obtainer
+      POSTGRES_PASSWORD: ${PIC_OBTAINER_POSTGRES_PASSWORD:?Set PIC_OBTAINER_POSTGRES_PASSWORD in .env}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U pic_obtainer -d ayaya_mod_pic_obtainer"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+    volumes:
+      - pic_obtainer_postgres_data:/var/lib/postgresql/data
+
+  pic_obtainer_migrate:
+    build:
+      context: ../pic_obtainer
+    image: ${PIC_OBTAINER_IMAGE:?Set PIC_OBTAINER_IMAGE in .env}
+    command: ["alembic", "-x", "db_url=${PIC_OBTAINER_DATABASE_URL:?Set a URL-encoded PIC_OBTAINER_DATABASE_URL in .env}", "upgrade", "head"]
+    depends_on:
+      pic_obtainer_postgres:
+        condition: service_healthy
+
+  pic_obtainer_api:
+    build:
+      context: ../pic_obtainer
+    image: ${PIC_OBTAINER_IMAGE:?Set PIC_OBTAINER_IMAGE in .env}
+    command: ["uvicorn", "pic_obtainer.api.main:create_app", "--factory", "--host", "0.0.0.0", "--port", "8000"]
+    environment:
+      PIC_OBTAINER_DATABASE_URL: ${PIC_OBTAINER_DATABASE_URL:?Set a URL-encoded PIC_OBTAINER_DATABASE_URL in .env}
+      PIC_OBTAINER_MEDIA_ROOT: /var/lib/pic-obtainer/media
+      PIC_OBTAINER_IMPORT_ROOT: /var/lib/pic-obtainer/imports
+      PIC_OBTAINER_ROOT_PATH: /m/pic_obtainer
+      PIC_OBTAINER_AYAYA_ADAPTER_SECRET: ${PIC_OBTAINER_AYAYA_ADAPTER_SECRET:?Set PIC_OBTAINER_AYAYA_ADAPTER_SECRET in .env}
+    depends_on:
+      pic_obtainer_migrate:
+        condition: service_completed_successfully
+    volumes:
+      - ${PIC_OBTAINER_MEDIA_HOST_PATH:?Set PIC_OBTAINER_MEDIA_HOST_PATH in .env}:/var/lib/pic-obtainer/media
+      - ${PIC_OBTAINER_IMPORT_HOST_PATH:?Set PIC_OBTAINER_IMPORT_HOST_PATH in .env}:/var/lib/pic-obtainer/imports:ro
+
+  pic_obtainer_worker:
+    build:
+      context: ../pic_obtainer
+    image: ${PIC_OBTAINER_IMAGE:?Set PIC_OBTAINER_IMAGE in .env}
+    command: ["pic-obtainer-worker"]
+    environment:
+      PIC_OBTAINER_DATABASE_URL: ${PIC_OBTAINER_DATABASE_URL:?Set a URL-encoded PIC_OBTAINER_DATABASE_URL in .env}
+      PIC_OBTAINER_MEDIA_ROOT: /var/lib/pic-obtainer/media
+      PIC_OBTAINER_IMPORT_ROOT: /var/lib/pic-obtainer/imports
+      PIC_OBTAINER_RULE34_API_BASE_URL: ${PIC_OBTAINER_RULE34_API_BASE_URL:-https://api.rule34.xxx/index.php}
+      PIC_OBTAINER_RULE34_USER_ID: ${PIC_OBTAINER_RULE34_USER_ID:?Set PIC_OBTAINER_RULE34_USER_ID in .env}
+      PIC_OBTAINER_RULE34_API_KEY: ${PIC_OBTAINER_RULE34_API_KEY:?Set PIC_OBTAINER_RULE34_API_KEY in .env}
+    depends_on:
+      pic_obtainer_migrate:
+        condition: service_completed_successfully
+    volumes:
+      - ${PIC_OBTAINER_MEDIA_HOST_PATH:?Set PIC_OBTAINER_MEDIA_HOST_PATH in .env}:/var/lib/pic-obtainer/media
+      - ${PIC_OBTAINER_IMPORT_HOST_PATH:?Set PIC_OBTAINER_IMPORT_HOST_PATH in .env}:/var/lib/pic-obtainer/imports:ro
 
   nginx:
     image: nginx:1.27-alpine
@@ -99,9 +362,29 @@ services:
       core:
         condition: service_healthy
     ports:
-      - "3000:80"
+      - "${NGINX_HOST_PORT:?Set NGINX_HOST_PORT in .env}:80"
     volumes:
       - ./deploy/nginx/ayaya.example.conf:/etc/nginx/nginx.conf:ro
+    networks:
+      - default
+      - telegram_nginx_app
 
 volumes:
   postgres_data:
+  pic_obtainer_postgres_data:
+
+secrets:
+  telegram_envelope_keyring:
+    file: ${TELEGRAM_ENVELOPE_KEY_FILE:?Set TELEGRAM_ENVELOPE_KEY_FILE to the keyring secret file}
+
+networks:
+  telegram_core_adapter:
+    internal: true
+  telegram_adapter_app:
+    internal: true
+  telegram_nginx_app:
+    internal: true
+  telegram_app_postgres:
+    internal: true
+  telegram_app_mtproto:
+    internal: true

@@ -1,0 +1,33 @@
+# Package topology descriptor only. Deploy Telegram exclusively through the
+# repository-root compose.yml so its database provisioning and migration gates
+# cannot be bypassed.
+name: ayaya
+
+services: {}
+
+x-ayaya-telegram-topology:
+  authoritative_deployment: ../../compose.yml
+  deploy_command: docker compose --env-file .env -f compose.yml up --build --wait telegram_adapter
+  peer_networks:
+    - telegram_core_adapter
+    - telegram_adapter_app
+    - telegram_nginx_app
+    - telegram_app_postgres
+    - telegram_app_mtproto
+
+networks:
+  telegram_core_adapter:
+    external: true
+    name: ayaya_telegram_core_adapter
+  telegram_adapter_app:
+    external: true
+    name: ayaya_telegram_adapter_app
+  telegram_nginx_app:
+    external: true
+    name: ayaya_telegram_nginx_app
+  telegram_app_postgres:
+    external: true
+    name: ayaya_telegram_app_postgres
+  telegram_app_mtproto:
+    external: true
+    name: ayaya_telegram_app_mtproto

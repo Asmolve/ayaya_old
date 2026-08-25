@@ -3,20 +3,20 @@ services:
     build:
       context: ./app
     environment:
-      DATABASE_HOST: postgres
-      DATABASE_PORT: 5432
-      DATABASE_USERNAME: ayaya
-      DATABASE_PASSWORD: ayaya
-      DATABASE_NAME: ayaya_mod_notes
-      NOTES_INTERNAL_STATUS_SECRET: development-notes-internal-status-secret
+      DATABASE_HOST: ${DATABASE_HOST:?Set DATABASE_HOST in .env}
+      DATABASE_PORT: ${DATABASE_PORT:?Set DATABASE_PORT in .env}
+      DATABASE_USERNAME: ${DATABASE_USERNAME:?Set DATABASE_USERNAME in .env}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD:?Set DATABASE_PASSWORD in .env}
+      DATABASE_NAME: ${NOTES_DATABASE_NAME:?Set NOTES_DATABASE_NAME in .env}
+      NOTES_INTERNAL_STATUS_SECRET: ${NOTES_INTERNAL_STATUS_SECRET:?Set NOTES_INTERNAL_STATUS_SECRET in .env}
 
   notes_adapter:
     build:
       context: ./adapter
     environment:
-      NOTES_ADAPTER_SECRET: ${NOTES_ADAPTER_SECRET:?Set NOTES_ADAPTER_SECRET before starting Compose}
-      NOTES_INTERNAL_STATUS_SECRET: development-notes-internal-status-secret
-      NOTES_APP_INTERNAL_STATUS_URL: http://notes_app:3000/internal/ayaya/status
-      NOTES_MODULE_YML: /module/module.yml
+      NOTES_ADAPTER_SECRET: ${NOTES_ADAPTER_SECRET:?Set NOTES_ADAPTER_SECRET in .env}
+      NOTES_INTERNAL_STATUS_SECRET: ${NOTES_INTERNAL_STATUS_SECRET:?Set NOTES_INTERNAL_STATUS_SECRET in .env}
+      NOTES_APP_INTERNAL_STATUS_URL: ${NOTES_APP_INTERNAL_STATUS_URL:?Set NOTES_APP_INTERNAL_STATUS_URL in .env}
+      NOTES_MODULE_YML: ${NOTES_MODULE_YML:?Set NOTES_MODULE_YML in .env}
     volumes:
       - ./module.yml:/module/module.yml:ro

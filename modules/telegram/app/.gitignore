@@ -1,0 +1,8 @@
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+/storage/*
+!/storage/.keep
+.env*
+/graphify-out/

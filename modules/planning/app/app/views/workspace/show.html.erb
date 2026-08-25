@@ -1,0 +1,136 @@
+<main class="planning-workspace" data-priority-map>
+  <aside class="plan-rail">
+    <p class="planning-eyebrow">Planning / workspace</p>
+    <h1>Priority Map</h1>
+    <p class="rail-introduction">Keep the next decision visible.</p>
+
+    <nav aria-label="Plans">
+      <% if @plans.any? %>
+        <ul class="plan-navigation">
+          <% @plans.each do |plan| %>
+            <li><%= link_to plan.title, planning_root_path(plan_id: plan.id), aria: { current: plan == @selected_plan ? "page" : nil } %></li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p class="quiet-copy">No plans yet.</p>
+      <% end %>
+    </nav>
+
+    <%= form_with model: @plan, class: "plan-form" do |form| %>
+      <% if @plan.errors.any? %>
+        <ul class="planning-errors"><% @plan.errors.full_messages.each do |message| %><li><%= message %></li><% end %></ul>
+      <% end %>
+      <%= form.label :title, "New plan" %>
+      <%= form.text_field :title, required: true, placeholder: "Name your plan" %>
+      <%= form.submit "Create plan" %>
+    <% end %>
+  </aside>
+
+  <section class="priority-surface" aria-labelledby="selected-plan-title">
+    <% if @selected_plan %>
+      <% items_by_priority = PlanItem.priorities.keys.index_with { |priority| @selected_plan.plan_items.where(priority: priority).order(:position, :created_at).to_a } %>
+      <% first_item = items_by_priority.values.flatten.first %>
+
+      <header class="workspace-heading">
+        <div>
+          <p class="planning-eyebrow">Active plan</p>
+          <h2 id="selected-plan-title"><%= @selected_plan.title %></h2>
+        </div>
+        <p class="quiet-copy">Arrange the work by the decision it needs next.</p>
+      </header>
+
+      <div class="priority-layout">
+        <section class="priority-canvas" aria-label="Priority lanes">
+          <div class="priority-lanes">
+            <% PlanItem.priorities.keys.each do |priority| %>
+              <% items = items_by_priority.fetch(priority) %>
+              <section class="priority-lane" data-priority-lane="<%= priority %>" aria-labelledby="<%= priority %>-lane-title">
+                <header class="lane-heading">
+                  <div>
+                    <p class="planning-eyebrow"><%= items.count %> <%= "item".pluralize(items.count) %></p>
+                    <h3 id="<%= priority %>-lane-title"><%= priority.capitalize %></h3>
+                  </div>
+                </header>
+
+                <ol class="priority-items" data-priority-items>
+                  <% items.each_with_index do |item, index| %>
+                    <% priority_select_id = "plan-item-#{item.id}-priority" %>
+                    <li class="priority-item <%= "is-complete" if item.completed? %> <%= "is-selected" if item == first_item %>" data-priority-item data-item-id="<%= item.id %>" data-item-title="<%= item.title %>" data-item-notes="<%= item.notes %>" data-item-priority="<%= item.priority %>" data-item-position="<%= index %>" data-item-completed="<%= item.completed? %>" draggable="true">
+                      <button class="item-select" type="button" data-planning-select aria-pressed="<%= item == first_item %>">
+                        <span><%= item.title %></span>
+                        <% if item.completed? %><small>Complete</small><% end %>
+                      </button>
+
+                      <div class="item-controls" aria-label="Arrange <%= item.title %>">
+                        <%= form_with model: item, class: "item-move-form", data: { priority_move: true } do |form| %>
+                          <%= form.hidden_field :priority, value: priority %>
+                          <%= form.hidden_field :position, value: [index - 1, 0].max %>
+                          <%= form.button "↑", aria: { label: "Move #{item.title} up" }, disabled: index.zero? %>
+                        <% end %>
+                        <%= form_with model: item, class: "item-move-form", data: { priority_move: true } do |form| %>
+                          <%= form.hidden_field :priority, value: priority %>
+                          <%= form.hidden_field :position, value: index + 1 %>
+                          <%= form.button "↓", aria: { label: "Move #{item.title} down" }, disabled: index == items.length - 1 %>
+                        <% end %>
+                        <%= form_with model: item, class: "lane-move-form", data: { priority_move: true } do |form| %>
+                          <%= form.hidden_field :position, value: index %>
+                          <%= form.label :priority, "Move #{item.title} to a lane", for: priority_select_id, class: "visually-hidden" %>
+                          <%= form.select :priority, PlanItem.priorities.keys.map { |lane| [lane.capitalize, lane] }, {}, { id: priority_select_id, aria: { label: "Move #{item.title} to a lane" }, data: { priority_lane_select: true } } %>
+                          <%= form.submit "Move" %>
+                        <% end %>
+                        <%= link_to "Edit item", edit_plan_item_path(item), class: "item-edit-link" %>
+                      </div>
+                    </li>
+                  <% end %>
+                </ol>
+                <p class="drag-placement-hint">Dragging moves an item to the end of a lane. Use Move up or down to place it precisely.</p>
+              </section>
+            <% end %>
+          </div>
+
+          <%= form_with model: @plan_item, class: "item-form", data: { inline_add: true } do |form| %>
+            <% if @plan_item.errors.any? %>
+              <ul class="planning-errors"><% @plan_item.errors.full_messages.each do |message| %><li><%= message %></li><% end %></ul>
+            <% end %>
+            <%= form.hidden_field :plan_id, value: @selected_plan.id %>
+            <% inline_priority_id = "new-plan-item-priority" %>
+            <%= form.label :title, "Add an item" %>
+            <div class="inline-add-fields">
+              <%= form.text_field :title, required: true, placeholder: "Name the next piece of work" %>
+              <%= form.label :priority, "Priority", for: inline_priority_id, class: "visually-hidden" %>
+              <%= form.select :priority, PlanItem.priorities.keys.map { |priority| [priority.capitalize, priority] }, {}, id: inline_priority_id %>
+              <%= form.submit "Add item" %>
+            </div>
+          <% end %>
+        </section>
+
+        <aside class="item-inspector" data-item-inspector aria-labelledby="inspector-title">
+          <p class="planning-eyebrow">Selected item</p>
+          <h3 id="inspector-title" data-inspector-heading><%= first_item ? first_item.title : "Nothing selected" %></h3>
+          <% if first_item %>
+            <% inspector_priority_id = "selected-plan-item-#{first_item.id}-priority" %>
+            <%= form_with model: first_item, class: "inspector-form", data: { inspector_form: true } do |form| %>
+              <%= form.label :title, "Title" %>
+              <%= form.text_field :title, required: true, data: { inspector_title: true } %>
+              <%= form.label :notes, "Notes" %>
+              <%= form.text_area :notes, rows: 6, data: { inspector_notes: true } %>
+              <%= form.label :priority, "Priority", for: inspector_priority_id, data: { inspector_priority_label: true } %>
+              <%= form.select :priority, PlanItem.priorities.keys.map { |priority| [priority.capitalize, priority] }, {}, { id: inspector_priority_id, data: { inspector_priority: true } } %>
+              <label class="completion-control"><%= form.checkbox :completed, data: { inspector_completed: true } %> Mark complete</label>
+              <%= form.submit "Save item" %>
+            <% end %>
+          <% else %>
+            <p class="quiet-copy">Add an item, then select it here to keep its detail close to the map.</p>
+          <% end %>
+        </aside>
+      </div>
+    <% else %>
+      <section class="planning-empty-state">
+        <p class="planning-eyebrow">First step</p>
+        <h2>Start with a plan</h2>
+        <p>Create a plan in the rail, then add its first priority item.</p>
+      </section>
+    <% end %>
+  </section>
+  <p class="priority-status" data-priority-status aria-live="polite" aria-atomic="true"></p>
+</main>

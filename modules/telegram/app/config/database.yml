@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS", 5) %>
+  host: <%= ENV.fetch("DATABASE_HOST", "127.0.0.1") %>
+  port: <%= ENV.fetch("DATABASE_PORT", 5432) %>
+  username: <%= ENV.fetch("DATABASE_USERNAME", ENV.fetch("USER", "postgres")) %>
+  password: <%= ENV["DATABASE_PASSWORD"] %>
+
+development:
+  <<: *default
+  database: <%= ENV.fetch("DATABASE_NAME", "ayaya_mod_telegram") %>
+
+test:
+  <<: *default
+  database: <%= ENV.fetch("DATABASE_TEST_NAME", "ayaya_mod_telegram_test") %>
+
+production:
+  <<: *default
+  database: <%= ENV.fetch("DATABASE_NAME", "ayaya_mod_telegram") %>

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   scope "/m/notes" do
     root "notes#index", as: :notes_root
+    get "diary", to: "diary#index", as: :diary
+    get "diary/entry", to: "diary#entry", defaults: { format: :json }
     resources :notes
   end
 

@@ -1,21 +1,25 @@
 <%= form_with model: @note do |form| %>
   <% if @note.errors.any? %>
-    <ul>
+    <ul class="notes-form-errors">
       <% @note.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
     </ul>
   <% end %>
 
-  <p>
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </p>
+  <div class="notes-form-grid">
+    <p>
+      <%= form.label :title %>
+      <%= form.text_field :title %>
+    </p>
 
-  <p>
-    <%= form.label :body %>
-    <%= form.text_area :body %>
-  </p>
+    <p>
+      <%= form.label :body %>
+      <%= form.text_area :body %>
+    </p>
+  </div>
 
-  <%= form.submit "Save" %>
+  <div class="notes-form-actions">
+    <%= form.submit "Save", class: "notes-primary-action" %>
+  </div>
 <% end %>

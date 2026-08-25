@@ -1,5 +1,4 @@
 require "test_helper"
-require "webmock/minitest"
 
 class AdapterProtocol::ClientTest < ActiveSupport::TestCase
   test "fetches manifest with bearer secret" do

@@ -1,7 +1,8 @@
-<main>
+<main class="notes-page notes-form-page">
+  <%= link_to "← Note", note_path(@note), class: "notes-back-link notes-back-link--content" %>
   <h1>Edit note</h1>
+  <p class="notes-lede">Make a small adjustment or keep going.</p>
 
   <%= render "form" %>
 
-  <%= link_to "Back", note_path(@note) %>
 </main>

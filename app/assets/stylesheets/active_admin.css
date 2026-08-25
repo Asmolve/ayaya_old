@@ -2889,3 +2889,24 @@
 
   .unsupported_browser {
     display: none; } }
+
+body.active_admin { background: #f4f6f2; color: #26302d; }
+#header { background: #26302d; box-shadow: none; }
+#header h1.site_title { letter-spacing: -0.03em; }
+#header ul.header-item.tabs > li > a { color: #dce7e2; }
+#title_bar { border-bottom: 1px solid #e4e8e4; background: transparent; box-shadow: none; }
+#title_bar h2 { color: #26302d; font-weight: 750; letter-spacing: -0.04em; }
+#active_admin_content .panel, .index_as_table { border: 1px solid #e4e8e4; border-radius: 0.9rem; box-shadow: none; overflow: hidden; }
+.panel > h3 { background: #fbfcfa; border-bottom: 1px solid #e4e8e4; color: #26302d; }
+.dashboard-summary .columns { gap: 1rem; }
+.dashboard-summary .column { border: 0; border-left: 1px solid #e4e8e4; padding-left: 1.25rem; }
+.dashboard-summary .column:first-child { border-left: 0; padding-left: 0; }
+.dashboard-summary .column p:last-child { color: #26302d; font-size: 1.6rem; font-weight: 750; }
+.status_tag { border-radius: 999px; box-shadow: none; font-weight: 650; }
+.status_tag.available, .status_tag.healthy, .status_tag.enabled { background: #dceee8; color: #2f6c5a; }
+.status_tag.needs_attention, .status_tag.unhealthy, .status_tag.unreachable { background: #f7e5df; color: #9a5547; }
+.status_tag.ready_to_enable, .status_tag.registered, .status_tag.degraded { background: #f2ecd5; color: #7c692b; }
+.index_table th { color: #79827d; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.07em; }
+.index_table td, .index_table th { border-color: #e4e8e4; }
+.index_table tr.even td { background: #fbfcfa; }
+#footer { color: #79827d; }

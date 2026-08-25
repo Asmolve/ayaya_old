@@ -41,4 +41,17 @@ class Modules::RegisterAdapterTest < ActiveSupport::TestCase
     assert_not result.success?
     assert_includes result.errors, "identity.module_key must be snake_case"
   end
+
+  test "rejects a manifest that does not match the expected module key" do
+    result = Modules::RegisterAdapter.call(
+      adapter_url: "http://notes_adapter:8080",
+      adapter_secret: "secret",
+      expected_module_key: "pic_obtainer",
+      client: FakeClient.new(VALID_MANIFEST)
+    )
+
+    assert_not result.success?
+    assert_includes result.errors, "identity.module_key does not match expected module key"
+    assert_equal 0, RegisteredModule.where(module_key: "notes").count
+  end
 end

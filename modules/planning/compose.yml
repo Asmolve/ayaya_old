@@ -1,0 +1,38 @@
+services:
+  planning_app:
+    build:
+      context: ./app
+    environment:
+      DATABASE_HOST: ${DATABASE_HOST:?Set DATABASE_HOST in .env}
+      DATABASE_PORT: ${DATABASE_PORT:?Set DATABASE_PORT in .env}
+      DATABASE_USERNAME: ${DATABASE_USERNAME:?Set DATABASE_USERNAME in .env}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD:?Set DATABASE_PASSWORD in .env}
+      DATABASE_NAME: ${PLANNING_DATABASE_NAME:?Set PLANNING_DATABASE_NAME in .env}
+      RAILS_ENV: production
+      RACK_ENV: production
+      RAILS_LOG_TO_STDOUT: "true"
+      RAILS_SERVE_STATIC_FILES: "true"
+      RAILS_MAX_THREADS: ${PLANNING_RAILS_MAX_THREADS:-3}
+      WEB_CONCURRENCY: ${PLANNING_WEB_CONCURRENCY:-2}
+      SECRET_KEY_BASE: ${PLANNING_SECRET_KEY_BASE:?Set PLANNING_SECRET_KEY_BASE in .env}
+      PLANNING_INTERNAL_STATUS_SECRET: ${PLANNING_INTERNAL_STATUS_SECRET:?Set PLANNING_INTERNAL_STATUS_SECRET in .env}
+    networks:
+      - platform
+
+  planning_adapter:
+    build:
+      context: ./adapter
+    environment:
+      PLANNING_ADAPTER_SECRET: ${PLANNING_ADAPTER_SECRET:?Set PLANNING_ADAPTER_SECRET in .env}
+      PLANNING_INTERNAL_STATUS_SECRET: ${PLANNING_INTERNAL_STATUS_SECRET:?Set PLANNING_INTERNAL_STATUS_SECRET in .env}
+      PLANNING_APP_INTERNAL_STATUS_URL: http://planning_app:3000/internal/ayaya/status
+      PLANNING_MODULE_YML: /module/module.yml
+    volumes:
+      - ./module.yml:/module/module.yml:ro
+    networks:
+      - platform
+
+networks:
+  platform:
+    external: true
+    name: ayaya_default

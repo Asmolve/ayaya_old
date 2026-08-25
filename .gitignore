@@ -9,12 +9,26 @@
 
 # Ignore all environment files.
 /.env*
+!/.env.example
 
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+
+# Ignore runtime files in nested applications too.
+**/log/*
+**/tmp/*
+**/.bundle/
+**/.ruby-lsp/
+**/.pytest_cache/
+**/.mypy_cache/
+**/.ruff_cache/
+**/__pycache__/
+*.py[cod]
+*.swp
+*~
 
 # Ignore pidfiles, but keep the directory.
 /tmp/pids/*
@@ -26,13 +40,15 @@
 # Ignore key files for decrypting credentials and more.
 /config/*.key
 
-# Ignore graphify cache files
-/graphify-out/cache
+# Ignore generated graphify artifacts.
+/graphify-out/
 
 # Ignore system attributes
 .DS_Store
 
-# Ignore graphify cache and backup files
-/graphify-out/cache
-/graphify-out/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]/
+# Ignore IDE settings
+/.idea
 
+
+# Superpowers brainstorm data
+/.superpowers/brainstorm/*

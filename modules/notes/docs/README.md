@@ -52,10 +52,12 @@ Required runtime environment:
 
 Development images:
 
+Run the standalone bundle commands from the repository root so they use the shared local `.env` file:
+
 ```bash
-docker compose build notes_app notes_adapter
-docker compose run --rm notes_app bin/rails db:prepare
-docker compose up notes_app notes_adapter
+docker compose --env-file .env -f modules/notes/compose.yml build notes_app notes_adapter
+docker compose --env-file .env -f modules/notes/compose.yml run --rm notes_app bin/rails db:prepare
+docker compose --env-file .env -f modules/notes/compose.yml up notes_app notes_adapter
 ```
 
 Production image examples:

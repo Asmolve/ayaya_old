@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: <%= ENV["DATABASE_HOST"] %>
+  port: <%= ENV["DATABASE_PORT"] %>
+  username: <%= ENV["DATABASE_USERNAME"] %>
+  password: <%= ENV["DATABASE_PASSWORD"] %>
+
+development:
+  <<: *default
+  database: <%= ENV.fetch("DATABASE_NAME") { "ayaya_mod_planning" } %>
+
+test:
+  <<: *default
+  database: <%= ENV.fetch("DATABASE_TEST_NAME") { "ayaya_mod_planning_test" } %>
+
+production:
+  <<: *default
+  database: <%= ENV.fetch("DATABASE_NAME") { "ayaya_mod_planning" } %>

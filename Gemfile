@@ -57,4 +57,4 @@ group :test do
   gem "webmock"
 end
 
-gem "rubocop", "~> 1.88"
+gem "rubocop", "~> 1.90"
